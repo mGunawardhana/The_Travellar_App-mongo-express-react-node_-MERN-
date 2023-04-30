@@ -28,7 +28,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="First Name"
+                  label="ID"
                   size="small"
                   fullWidth
                   required
@@ -37,7 +37,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="Last Name"
+                  label="First Name"
                   size="small"
                   fullWidth
                   required
@@ -48,7 +48,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="First Name"
+                  label="Last Name"
                   size="small"
                   fullWidth
                   required
@@ -57,7 +57,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="Last Name"
+                  label="Address"
                   size="small"
                   fullWidth
                   required
@@ -66,26 +66,37 @@ const CustomerForm = () => {
 
               <Stack spacing={2} direction="row" sx={{ marginBottom: 2 }}>
                 <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="First Name"
-                    size="small"
-                    fullWidth
-                    required
+                  type="text"
+                  variant="outlined"
+                  color="secondary"
+                  label="Contact"
+                  size="small"
+                  fullWidth
+                  required
                 />
                 <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="Last Name"
-                    size="small"
-                    fullWidth
-                    required
+                  type="text"
+                  variant="outlined"
+                  color="secondary"
+                  label="Email"
+                  size="small"
+                  fullWidth
+                  required
                 />
               </Stack>
-              <Button variant="outlined" color="secondary" type="submit">
-                Register
+              <Button
+                className="bg-green-500"
+                variant="contained"
+                color="success"
+                type="submit"
+              >
+                Save
+              </Button>
+              <Button variant="contained" type="submit">
+                Success
+              </Button>
+              <Button variant="contained" type="submit">
+                Success
               </Button>
             </form>
             {/* <small>
