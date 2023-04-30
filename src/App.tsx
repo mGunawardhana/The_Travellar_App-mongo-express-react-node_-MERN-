@@ -15,27 +15,30 @@ import "aos/dist/aos.css";
 // import Gallery from "./components/gallery/Gallery";
 // import TestimonialSlider from "./components/TestimonialSlider/TestimonialSlider";
 import CustomerForm from "./pages/customer/CustomerForm";
+import DriverForm from "./pages/driver/driverForm";
 
 //importing pages
 
 function App() {
-    Aos.init({
-        duration: 1800,
-        offset: 0,
-    });
+  Aos.init({
+    duration: 1800,
+    offset: 0,
+  });
 
-    return (
-        <div className="App">
-            {/* <Hero/>
+  return (
+    <div className="App">
+      {/* <Hero/>
             <AboutCard/>
             <Features/>
             <Testimonials/>
             <CtaSection/>
             <Gallery/>
-            <Footer/> */}
-            <CustomerForm/>
-        </div>
-    );
+            <Footer/> *
+            <CustomerForm />
+    */}
+          <DriverForm/>
+    </div>
+  );
 }
 
 export default App;
