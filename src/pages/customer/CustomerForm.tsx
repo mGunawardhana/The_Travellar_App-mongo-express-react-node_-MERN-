@@ -64,6 +64,26 @@ const CustomerForm = () => {
                 />
               </Stack>
 
+              <Stack spacing={2} direction="row" sx={{ marginBottom: 2 }}>
+                <TextField
+                    type="text"
+                    variant="outlined"
+                    color="secondary"
+                    label="First Name"
+                    size="small"
+                    fullWidth
+                    required
+                />
+                <TextField
+                    type="text"
+                    variant="outlined"
+                    color="secondary"
+                    label="Last Name"
+                    size="small"
+                    fullWidth
+                    required
+                />
+              </Stack>
               <Button variant="outlined" color="secondary" type="submit">
                 Register
               </Button>
