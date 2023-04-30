@@ -8,7 +8,7 @@ const Gallery = () => {
     <section className="relative">
       <div className="container mx-auto">
         <div
-          // style={{ boxShadow: " rgb(38, 57, 77) 0px 20px 30px -10px" }}
+          style={{ boxShadow: " rgb(38, 57, 77) 0px 20px 30px -10px" }}
           className=" min-h-[500px] rounded-[50px]"
           data-aos="fade-up"
           data-aos-offset="300"
