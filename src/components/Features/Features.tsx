@@ -15,7 +15,7 @@ const Features = () => {
       <div className="container mx-auto">
         <div className="text-center">
           <h2
-            className="h2 mb-6 xl:mb-12"
+            className="h2 mb-6 xl:mb-12 text-black"
             data-aos="fade-down"
             data-aos-delay="100"
           >
@@ -83,8 +83,8 @@ const Features = () => {
                 </div>
 
                 <div className="max-w-[220px]">
-                  <h3 className="h3 mb-4">{title}</h3>
-                  <p className="font-light italic mb-4">{description}</p>
+                  <h3 className="text-[28px] mb-4">{title}</h3>
+                  <p className="font-light italic mb-4 text-[22px]">{description}</p>
                   <div className="flex items-center gap-x-2 group">
                     <a className="text-primary font-bold" href="">
                       {linkText}
