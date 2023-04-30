@@ -18,22 +18,22 @@ import TestimonialSlider from "./components/TestimonialSlider/TestimonialSlider"
 //importing pages
 
 function App() {
-  Aos.init({
-    duration: 1800,
-    offset: 0,
-  });
+    Aos.init({
+        duration: 1800,
+        offset: 0,
+    });
 
-  return (
-    <div className="App">
-      <Hero />
-      <AboutCard />
-      <Gallery />
-      <Features />
-      <Testimonials />
-      <CtaSection />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Hero/>
+            <AboutCard/>
+            <Features/>
+            <Testimonials/>
+            <CtaSection/>
+            <Gallery/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;

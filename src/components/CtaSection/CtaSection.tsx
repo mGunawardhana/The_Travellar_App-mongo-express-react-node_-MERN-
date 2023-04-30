@@ -22,7 +22,7 @@ const CtaSection = () => {
           {/*buttons*/}
           <div className="flex flex-col xl:flex-row gap-y-4 gap-x-[30px]">
             <button
-              className="btn btn-secondary"
+              className="btn bg-amber-400"
               data-aos="fade-up"
               data-aos-delay="300"
             >

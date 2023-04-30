@@ -8,14 +8,14 @@ const Gallery = () => {
     <section className="relative">
       <div className="container mx-auto">
         <div
-          style={{ boxShadow: " rgb(38, 57, 77) 0px 20px 30px -10px" }}
-          className=" min-h-[500px] rounded-[50px]"
+          // style={{ boxShadow: " rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px" }}
+          className=" min-h-[400px] rounded-[12px]"
           data-aos="fade-up"
           data-aos-offset="300"
         >
-          <div className="flex flex-col justify-center px-2 xl:px-0 h-[800px]">
-            <h2 className="h2 text-white text-center mb-[80px]">
-              Testimonials
+          <div className="flex flex-col justify-center px-2 xl:px-0 h-[600px] mb-4 ">
+            <h2 className="h2 text-black text-center mb-[80px]">
+              Gallery
             </h2>
             <GallerySlider />
           </div>

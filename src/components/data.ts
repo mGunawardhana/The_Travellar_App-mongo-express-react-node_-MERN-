@@ -23,7 +23,7 @@ import Avatar3Img from "../assets/avatar3.png";
 import AboutImg from "../assets/Untitled design(1).png";
 
 //logo
-import LogoV2 from "../assets/footer.png";
+import LogoV2 from "../assets/footer3.png";
 
 import {BsChatDotsFill} from "react-icons/bs";
 

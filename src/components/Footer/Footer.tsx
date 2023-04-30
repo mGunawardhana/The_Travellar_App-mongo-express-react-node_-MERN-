@@ -17,18 +17,18 @@ const Footer = () => {
         <div className="flex flex-col xl:flex-row text-center xl:text-left gap-y-12">
           {/* info */}
           <div className="w-[45%] mx-auto flex flex-col items-center xl:items-start">
-            {/* logo */}
-            <a href="#">
-              <img className="mb-[65px]" src={logo} alt="" />
-            </a>
-            {/* address */}
-            <div className="max-w-[260px] mb-5 text-white font-bold">
-              {address}
-            </div>
-            {/* email */}
-            <div className="font-light italic">{email}</div>
-            {/* phone */}
-            <div className="font-light italic">{phone}</div>
+            {/*/!* logo *!/*/}
+            {/*<a href="#">*/}
+              <img className="mb-[20px] w-[400px] h-[400px]" src={logo} alt="" />
+            {/*</a>*/}
+            {/*/!* address *!/*/}
+            {/*<div className="max-w-[260px] mb-5 text-white font-bold">*/}
+            {/*  {address}*/}
+            {/*</div>*/}
+            {/*/!* email *!/*/}
+            {/*<div className="font-light italic">{email}</div>*/}
+            {/*/!* phone *!/*/}
+            {/*<div className="font-light italic">{phone}</div>*/}
           </div>
           {/* lists */}
           <div className="flex flex-1 flex-col gap-y-14 xl:flex-row justify-between p-10">
