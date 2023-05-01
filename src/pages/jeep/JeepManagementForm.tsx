@@ -25,6 +25,11 @@ const passengerCount = [
     {label:"16"},
 ];
 
+const fuelType = [
+    {label:"Petrol"},
+    {label:"Diesel"},
+];
+
 const JeepManagementForm = () => {
     return (
         <>
@@ -95,14 +100,13 @@ const JeepManagementForm = () => {
                                     />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Fuel Type"
+                                    <Autocomplete
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={fuelType}
                                         size="small"
                                         fullWidth
-                                        required
+                                        renderInput={(params) => <TextField {...params} label="Fuel Type" />}
                                     />
                                     <TextField
                                         type="text"
