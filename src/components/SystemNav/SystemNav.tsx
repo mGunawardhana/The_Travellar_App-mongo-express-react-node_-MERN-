@@ -1,12 +1,11 @@
 import React from "react";
+import { SystemNavData} from "../data";
 
-import {navigationData} from "../data";
-
-const Nav = () => {
+const SystemNav =() =>{
     return (
         <nav>
             <ul className="flex gap-x-8">
-                {navigationData.map((item, index) => {
+                {SystemNavData.map((item, index) => {
                     return (
                         <li key={index}>
                             <a href={item.href}>{item.name}</a>
@@ -18,4 +17,5 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+
+export default SystemNav;
