@@ -1,6 +1,7 @@
 import React from "react";
 
 import {
+    Autocomplete,
     Button,
     FormHelperText,
     Paper,
@@ -17,6 +18,11 @@ import customerBackground from "../../assets/redusebrightness.png";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 
 // const guide = [{label:"sample"},{label:"sample"}];
+
+const packages = [{label: "P001"}, {label: "P002"}, {label: "P003"}];
+const jeep_code = [{label: "J001"}, {label: "J002"}];
+const driver_code = [{label: "D001"}, {label: "D002"}];
+const customer_code = [{label: "C001"}, {label: "C002"}];
 
 const PackageBookingForm = () => {
     return (
@@ -52,10 +58,19 @@ const PackageBookingForm = () => {
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Package ID"
+                                        label="Booking ID"
                                         size="small"
                                         fullWidth
                                         required
+                                    />
+
+                                    <Autocomplete
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={packages}
+                                        size="small"
+                                        fullWidth
+                                        renderInput={(params) => <TextField {...params} label="Package Code"/>}
                                     />
                                     <TextField
                                         type="text"
@@ -67,25 +82,7 @@ const PackageBookingForm = () => {
                                         required
                                     />
                                 </Stack>
-                                {/*<Stack spacing={2} direction="row" sx={{marginBottom: 2}}>*/}
-                                {/*    <Autocomplete*/}
-                                {/*        disablePortal*/}
-                                {/*        id="combo-box-demo"*/}
-                                {/*        options={guide}*/}
-                                {/*        size="small"*/}
-                                {/*        fullWidth*/}
-                                {/*        renderInput={(params) => <TextField {...params} label="Guide Code" />}*/}
-                                {/*    />*/}
-                                {/*    <TextField*/}
-                                {/*        type="text"*/}
-                                {/*        variant="outlined"*/}
-                                {/*        color="secondary"*/}
-                                {/*        label="Guide Name"*/}
-                                {/*        size="small"*/}
-                                {/*        fullWidth*/}
-                                {/*        required*/}
-                                {/*    />*/}
-                                {/*</Stack>*/}
+
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         type="text"
@@ -96,11 +93,19 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         required
                                     />
+                                    <Autocomplete
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={jeep_code}
+                                        size="small"
+                                        fullWidth
+                                        renderInput={(params) => <TextField {...params} label="Jeep Code"/>}
+                                    />
                                     <TextField
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Discription"
+                                        label="Jeep Model"
                                         size="small"
                                         fullWidth
                                         required
@@ -116,11 +121,19 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         required
                                     />
+                                    <Autocomplete
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={driver_code}
+                                        size="small"
+                                        fullWidth
+                                        renderInput={(params) => <TextField {...params} label="Driver Code"/>}
+                                    />
                                     <TextField
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Package Amount"
+                                        label="Driver Name"
                                         size="small"
                                         fullWidth
                                         required
