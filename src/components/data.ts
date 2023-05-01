@@ -217,3 +217,22 @@ export const galleryData = [
         imagePack: Gal03,
     },
 ];
+
+export const SystemNavData = [
+  {
+    name: "Customer",
+    href: "#",
+  },
+  {
+    name: "Package",
+    href: "#",
+  },
+  {
+    name: "Jeep",
+    href: "#",
+  },
+  {
+    name: "Driver",
+    href: "#",
+  },
+];

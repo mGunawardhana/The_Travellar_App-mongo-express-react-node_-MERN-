@@ -4,9 +4,7 @@ import "./App.css";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
-
-import HomeLoader from "./pages/homeLoader/HomeLoader";
-import SystemForm from "./pages/system/SystemForm";
+import Content from "./components/Content/Content";
 
 //importing pages
 
@@ -18,8 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <HomeLoader />
-      <SystemForm />
+      <Content/>
     </div>
   );
 }
