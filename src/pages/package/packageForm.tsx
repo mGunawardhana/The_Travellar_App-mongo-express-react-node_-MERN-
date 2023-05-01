@@ -15,7 +15,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import customerBackground from "../../assets/redusebrightness.png";
-const CustomerForm = () => {
+const PackageForm = () => {
   return (
     <section
       style={{
@@ -40,14 +40,14 @@ const CustomerForm = () => {
             {/* <form onSubmit={handleSubmit} action={<Link to="/login" />}> */}
             <form className="py-[15px] px-[15px]">
               <FormHelperText style={{ fontSize: "25px," }}>
-                Customer Registration Form
+                Package Management Form
               </FormHelperText>
               <Stack spacing={2} direction="row" sx={{ marginBottom: 2 }}>
                 <TextField
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="ID"
+                  label="Package ID"
                   size="small"
                   fullWidth
                   required
@@ -56,7 +56,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="First Name"
+                  label="Package Name"
                   size="small"
                   fullWidth
                   required
@@ -67,7 +67,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="Last Name"
+                  label="Guide Code"
                   size="small"
                   fullWidth
                   required
@@ -76,7 +76,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="Address"
+                  label="Guide Name"
                   size="small"
                   fullWidth
                   required
@@ -87,7 +87,7 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="Contact"
+                  label="Day Count or Hrs Count"
                   size="small"
                   fullWidth
                   required
@@ -96,12 +96,33 @@ const CustomerForm = () => {
                   type="text"
                   variant="outlined"
                   color="secondary"
-                  label="Email"
+                  label="Discription"
                   size="small"
                   fullWidth
                   required
                 />
               </Stack>
+              <Stack spacing={2} direction="row" sx={{ marginBottom: 2 }}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  color="secondary"
+                  label="Offers"
+                  size="small"
+                  fullWidth
+                  required
+                />
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  color="secondary"
+                  label="Package Amount"
+                  size="small"
+                  fullWidth
+                  required
+                />
+              </Stack>
+
               <Button
                 style={{
                   backgroundColor: "#2ed573",
@@ -155,60 +176,44 @@ const CustomerForm = () => {
             <TableHead>
               <TableRow className="bg-black">
                 <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                  ID
+                  Code
                 </TableCell>
                 <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                  First Name
+                  Name
                 </TableCell>
                 <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                  Last Name
+                  Guide Code
                 </TableCell>
                 <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                  Address
+                  Guide Name
                 </TableCell>
                 <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                  Contact
+                  Days/Hrs
                 </TableCell>
                 <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                  Email
+                  Package Amount
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableCell>C001</TableCell>
-                <TableCell>Maneesha</TableCell>
-                <TableCell>Gunawardhana</TableCell>
-                <TableCell>Galle</TableCell>
-                <TableCell>071-9054432</TableCell>
-                <TableCell>manee@gmail.com</TableCell>
+                <TableCell>P001</TableCell>
+                <TableCell>Safari</TableCell>
+                <TableCell>G001</TableCell>
+                <TableCell>Mr.Saman</TableCell>
+                <TableCell>2 Nights</TableCell>
+                <TableCell>Rs.35,000.00</TableCell>
               </TableRow>
 
               <TableRow>
-                <TableCell>C002</TableCell>
-                <TableCell>Sasmitha</TableCell>
-                <TableCell>Gunawardhana</TableCell>
-                <TableCell>Galle</TableCell>
-                <TableCell>071-2344432</TableCell>
-                <TableCell>sas@gmail.com</TableCell>
+                <TableCell>P002</TableCell>
+                <TableCell>Beach Party</TableCell>
+                <TableCell>G002</TableCell>
+                <TableCell>Mr.Nuwan</TableCell>
+                <TableCell>Full day</TableCell>
+                <TableCell>Rs.80,000.00</TableCell>
               </TableRow>
 
-              <TableRow>
-                <TableCell>C003</TableCell>
-                <TableCell>Asoka</TableCell>
-                <TableCell>Gunawardhana</TableCell>
-                <TableCell>Galle</TableCell>
-                <TableCell>071-9124432</TableCell>
-                <TableCell>asoka@gmail.com</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>C004</TableCell>
-                <TableCell>Dinusha</TableCell>
-                <TableCell>Gunawardhana</TableCell>
-                <TableCell>Galle</TableCell>
-                <TableCell>071-9052332</TableCell>
-                <TableCell>dinu@gmail.com</TableCell>
-              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
@@ -217,4 +222,4 @@ const CustomerForm = () => {
   );
 };
 
-export default CustomerForm;
+export default PackageForm;
