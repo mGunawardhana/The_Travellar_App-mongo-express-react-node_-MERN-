@@ -187,31 +187,6 @@ const CustomerForm = () => {
                                     <TableCell>manee@gmail.com</TableCell>
                                 </TableRow>
 
-                                <TableRow>
-                                    <TableCell>C002</TableCell>
-                                    <TableCell>Sasmitha</TableCell>
-                                    <TableCell>Gunawardhana</TableCell>
-                                    <TableCell>Galle</TableCell>
-                                    <TableCell>071-2344432</TableCell>
-                                    <TableCell>sas@gmail.com</TableCell>
-                                </TableRow>
-
-                                <TableRow>
-                                    <TableCell>C003</TableCell>
-                                    <TableCell>Asoka</TableCell>
-                                    <TableCell>Gunawardhana</TableCell>
-                                    <TableCell>Galle</TableCell>
-                                    <TableCell>071-9124432</TableCell>
-                                    <TableCell>asoka@gmail.com</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>C004</TableCell>
-                                    <TableCell>Dinusha</TableCell>
-                                    <TableCell>Gunawardhana</TableCell>
-                                    <TableCell>Galle</TableCell>
-                                    <TableCell>071-9052332</TableCell>
-                                    <TableCell>dinu@gmail.com</TableCell>
-                                </TableRow>
                             </TableBody>
                         </Table>
                     </TableContainer>

@@ -14,9 +14,9 @@ const SystemHeader = () => {
     return (
         <header
             className="mb-12 lg:mb-0 z-20 relative px-4 lg:px-0 mt-10"
-            data-aos="fade-down"
-            data-aos-delay="1200"
-            data-aos-duration="1000"
+            // data-aos="fade-down"
+            // data-aos-delay="1200"
+            // data-aos-duration="1000"
 
         >
             <div
@@ -57,12 +57,6 @@ const SystemHeader = () => {
                     >
                         <SystemNavMobile/>
                     </div>
-
-                    <button className="btn flex items-center gap-x-[20px] group text-black">
-                        Shop Now
-                        {/* <BsArrowRight className="text-2xl text-accent-primary group-hover:text-white transition" /> */}
-                        <BsArrowRight className="text-2xl text-orange-500 "/>
-                    </button>
 
                     {/* nav trigger btn / only shows on mobile screens */}
                     <div

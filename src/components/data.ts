@@ -2,9 +2,7 @@ import {FaGithub, FaInstagram, FaYoutube} from "react-icons/fa";
 
 //background images
 import Gal01 from "../assets/gal/1.png";
-import Gal02 from "../assets/gal/2.png";
 import Gal03 from "../assets/gal/3.png";
-import Gal07 from "../assets/gal/7.png";
 
 //content images
 import Feature1Img from "../assets/1.png";
@@ -221,20 +219,20 @@ export const galleryData = [
 let cm = "http://localhost:3000"
 
 export const SystemNavData = [
-  {
-    name: "Customer",
-    href: `${cm}/customer`,
-  },
-  {
-    name: "Package",
-    href: `${cm}/package`,
-  },
-  {
-    name: "Jeep",
-    href:`${cm}/jeep`,
-  },
-  {
-    name: "Driver",
-    href: `${cm}/driver`,
-  },
+    {
+        name: "Customer",
+        href: `${cm}/customer`,
+    },
+    {
+        name: "Package",
+        href: `${cm}/package`,
+    },
+    {
+        name: "Jeep",
+        href: `${cm}/jeep`,
+    },
+    {
+        name: "Driver",
+        href: `${cm}/driver`,
+    },
 ];

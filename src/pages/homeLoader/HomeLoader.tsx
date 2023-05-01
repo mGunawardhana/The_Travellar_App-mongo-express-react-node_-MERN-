@@ -8,17 +8,17 @@ import Gallery from "../../components/gallery/Gallery";
 import Footer from "../../components/Footer/Footer";
 
 const HomeLoader = () => {
-  return (
-    <div>
-      <Hero />
-      <AboutCard />
-      <Features />
-      <Testimonials />
-      <CtaSection />
-      <Gallery />
-      <Footer />
-    </div>
-  );
+    return (
+        <div>
+            <Hero/>
+            <AboutCard/>
+            <Features/>
+            <Testimonials/>
+            <CtaSection/>
+            <Gallery/>
+            <Footer/>
+        </div>
+    );
 };
 
 export default HomeLoader;
