@@ -1,17 +1,15 @@
 import React from "react";
 import { SystemNavData} from "../data";
+import {NavLink} from "react-router-dom";
 
 const SystemNav =() =>{
     return (
         <nav>
             <ul className="flex gap-x-8">
-                {SystemNavData.map((item, index) => {
-                    return (
-                        <li key={index}>
-                            <a href={item.href}>{item.name}</a>
-                        </li>
-                    );
-                })}
+               <NavLink to={"/customer"}>Customer</NavLink>
+                <NavLink to={"/package"}>Package</NavLink>
+                <NavLink to={"/jeep"}>Vehicccle</NavLink>
+                <NavLink to={"/driver"}>Driver</NavLink>
             </ul>
         </nav>
     );

@@ -218,21 +218,23 @@ export const galleryData = [
     },
 ];
 
+let cm = "http://localhost:3000"
+
 export const SystemNavData = [
   {
     name: "Customer",
-    href: "http://localhost:3000/customer",
+    href: `${cm}/customer`,
   },
   {
     name: "Package",
-    href: "http://localhost:3000/package",
+    href: `${cm}/package`,
   },
   {
     name: "Jeep",
-    href: "http://localhost:3000/jeep",
+    href:`${cm}/jeep`,
   },
   {
     name: "Driver",
-    href: "http://localhost:3000/driver",
+    href: `${cm}/driver`,
   },
 ];
