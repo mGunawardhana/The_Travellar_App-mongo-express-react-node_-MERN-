@@ -30,6 +30,9 @@ const fuelType = [
     {label:"Diesel"},
 ];
 
+
+const availability =[{label:"Yes"},{label:"No"}];
+
 const JeepManagementForm = () => {
     return (
         <>
@@ -108,14 +111,13 @@ const JeepManagementForm = () => {
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Fuel Type" />}
                                     />
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Availability"
+                                    <Autocomplete
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={availability}
                                         size="small"
                                         fullWidth
-                                        required
+                                        renderInput={(params) => <TextField {...params} label="Jeep Availability" />}
                                     />
                                 </Stack>
 
