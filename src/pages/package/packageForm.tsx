@@ -16,6 +16,8 @@ import {
 import customerBackground from "../../assets/redusebrightness.png";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 
+// const guide = [{label:"sample"},{label:"sample"}];
+
 const PackageForm = () => {
     return (
         <>
@@ -65,26 +67,25 @@ const PackageForm = () => {
                                         required
                                     />
                                 </Stack>
-                                <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Guide Code"
-                                        size="small"
-                                        fullWidth
-                                        required
-                                    />
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Guide Name"
-                                        size="small"
-                                        fullWidth
-                                        required
-                                    />
-                                </Stack>
+                                {/*<Stack spacing={2} direction="row" sx={{marginBottom: 2}}>*/}
+                                {/*    <Autocomplete*/}
+                                {/*        disablePortal*/}
+                                {/*        id="combo-box-demo"*/}
+                                {/*        options={guide}*/}
+                                {/*        size="small"*/}
+                                {/*        fullWidth*/}
+                                {/*        renderInput={(params) => <TextField {...params} label="Guide Code" />}*/}
+                                {/*    />*/}
+                                {/*    <TextField*/}
+                                {/*        type="text"*/}
+                                {/*        variant="outlined"*/}
+                                {/*        color="secondary"*/}
+                                {/*        label="Guide Name"*/}
+                                {/*        size="small"*/}
+                                {/*        fullWidth*/}
+                                {/*        required*/}
+                                {/*    />*/}
+                                {/*</Stack>*/}
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         type="text"
