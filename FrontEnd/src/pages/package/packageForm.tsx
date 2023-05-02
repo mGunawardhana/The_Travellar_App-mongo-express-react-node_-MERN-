@@ -13,7 +13,7 @@ import {
     TableRow,
     TextField,
 } from "@mui/material";
-import customerBackground from "../../assets/redusebrightness.png";
+import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 
 // const guide = [{label:"sample"},{label:"sample"}];

@@ -14,7 +14,7 @@ import {
     TableRow,
     TextField,
 } from "@mui/material";
-import customerBackground from "../../assets/redusebrightness.png";
+import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 
 // const guide = [{label:"sample"},{label:"sample"}];
@@ -117,7 +117,7 @@ const PackageBookingForm = () => {
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Day Count or Hours Count"
+                                        label="Offers"
                                         size="small"
                                         fullWidth
                                         required
@@ -142,28 +142,30 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Offers"
-                                        size="small"
-                                        fullWidth
-                                        required
-                                    />
+
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
                                         options={customer_code}
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Driver Code"/>}
+                                        renderInput={(params) => <TextField {...params} label="Customer Code"/>}
                                     />
                                     <TextField
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Customer Code"
+                                        label="Customer Name"
+                                        size="small"
+                                        fullWidth
+                                        required
+                                    />
+
+                                    <TextField
+                                        type="text"
+                                        variant="outlined"
+                                        color="secondary"
+                                        label="Amount"
                                         size="small"
                                         fullWidth
                                         required
@@ -223,33 +225,33 @@ const PackageBookingForm = () => {
                             <TableHead>
                                 <TableRow className="bg-black">
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Code
+                                        Booking ID
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Name
+                                        Package ID
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Guide Code
+                                        Driver ID
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Guide Name
+                                        Customer ID
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Days/Hrs
+                                        Offers
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Package Amount
+                                        Amount
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell>P001</TableCell>
-                                    <TableCell>Safari</TableCell>
-                                    <TableCell>G001</TableCell>
-                                    <TableCell>Mr.Saman</TableCell>
-                                    <TableCell>2 Nights</TableCell>
-                                    <TableCell>Rs.35,000.00</TableCell>
+                                    {/*<TableCell>B001</TableCell>*/}
+                                    {/*<TableCell>P001</TableCell>*/}
+                                    {/*<TableCell>D001</TableCell>*/}
+                                    {/*<TableCell>C001</TableCell>*/}
+                                    {/*<TableCell>5.0%</TableCell>*/}
+                                    {/*<TableCell>Rs.35,000.00</TableCell>*/}
                                 </TableRow>
                             </TableBody>
                         </Table>
