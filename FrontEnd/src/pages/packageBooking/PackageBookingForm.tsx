@@ -84,15 +84,7 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Day Count or Hrs Count"
-                                        size="small"
-                                        fullWidth
-                                        required
-                                    />
+
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
@@ -110,13 +102,22 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         required
                                     />
+                                    <TextField
+                                        type="text"
+                                        variant="outlined"
+                                        color="secondary"
+                                        label="Jeep Price"
+                                        size="small"
+                                        fullWidth
+                                        required
+                                    />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Offers"
+                                        label="Day Count or Hours Count"
                                         size="small"
                                         fullWidth
                                         required
@@ -134,6 +135,35 @@ const PackageBookingForm = () => {
                                         variant="outlined"
                                         color="secondary"
                                         label="Driver Name"
+                                        size="small"
+                                        fullWidth
+                                        required
+                                    />
+                                </Stack>
+
+                                <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
+                                    <TextField
+                                        type="text"
+                                        variant="outlined"
+                                        color="secondary"
+                                        label="Offers"
+                                        size="small"
+                                        fullWidth
+                                        required
+                                    />
+                                    <Autocomplete
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={customer_code}
+                                        size="small"
+                                        fullWidth
+                                        renderInput={(params) => <TextField {...params} label="Driver Code"/>}
+                                    />
+                                    <TextField
+                                        type="text"
+                                        variant="outlined"
+                                        color="secondary"
+                                        label="Customer Code"
                                         size="small"
                                         fullWidth
                                         required

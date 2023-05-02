@@ -12,12 +12,12 @@ const Content = () => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomeLoader />}></Route>
-          <Route path="/customer" element={<CustomerForm />}></Route>
+          {/* <Route path="/" element={<HomeLoader />}></Route> */}
+          {/* <Route path="/" element={<CustomerForm />}></Route>
           <Route path="/package" element={<PackageForm />}></Route>
           <Route path="/jeep" element={<JeepManagementForm />}></Route>
-          <Route path="/driver" element={<DriverForm />}></Route>
-          <Route path="/packagebooking" element={<PackageBookingForm />}></Route>
+          <Route path="/driver" element={<DriverForm />}></Route> */}
+          <Route path="/" element={<PackageBookingForm />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
