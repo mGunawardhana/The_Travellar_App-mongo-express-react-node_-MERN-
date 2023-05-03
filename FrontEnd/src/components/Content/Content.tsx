@@ -6,7 +6,8 @@ import PackageForm from "../../pages/package/packageForm";
 import JeepManagementForm from "../../pages/jeep/JeepManagementForm";
 import DriverForm from "../../pages/driver/driverForm";
 import PackageBookingForm from "../../pages/packageBooking/PackageBookingForm";
-import Booking from "../../pages/Bookings/Booking";
+import Booking from "../../pages/Bookings/Payments";
+import Payments from "../../pages/Bookings/Payments";
 
 const Content = () => {
   return (
@@ -18,8 +19,8 @@ const Content = () => {
           <Route path="/package" element={<PackageForm />}></Route>
           <Route path="/jeep" element={<JeepManagementForm />}></Route>
           <Route path="/driver" element={<DriverForm />}></Route>
-          <Route path="/booking" element={<Booking />}></Route>
-          <Route path="/packagebooking" element={<PackageBookingForm />}></Route>
+          <Route path="/booking" element={<PackageBookingForm />}></Route>
+          <Route path="/payment" element={<Payments />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
