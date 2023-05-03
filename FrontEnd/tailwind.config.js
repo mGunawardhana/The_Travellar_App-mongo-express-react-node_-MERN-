@@ -24,11 +24,11 @@ module.exports = {
         primary: "#212353",
         secondary: "#4B5D68",
         accent: {
-          primary: "#9C69E2",
-          primary_hover: "#9059DB",
-          secondary: "#F063B8",
+          primary: "#eb4d4b",
+          primary_hover: "#FFC312",
+          secondary: "#ffa502",
           secondary_hover: "#E350A9",
-          tertiary: "#68C9BA",
+          tertiary: "#ffa502",
         },
       },
       backgroundImage: {
