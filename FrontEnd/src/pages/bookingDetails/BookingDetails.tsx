@@ -57,14 +57,14 @@ const BookingDetails = () => {
                     fullWidth
                     required
                   />
-                  <SearchBar
-                   
-                    // onChange={() => console.log("onChange")}
-                    // onRequestSearch={() => console.log("onRequestSearch")}
-                    style={{
-                      margin: "0 auto",
-                      maxWidth: 800,
-                    }}
+                  <TextField
+                    type="text"
+                    variant="outlined"
+                    color="secondary"
+                    label="Customer Name"
+                    size="small"
+                    fullWidth
+                    required
                   />
 
                   <Button
