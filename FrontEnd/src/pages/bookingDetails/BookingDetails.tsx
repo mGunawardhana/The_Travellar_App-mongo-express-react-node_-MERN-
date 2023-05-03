@@ -1,5 +1,5 @@
 import React from "react";
-
+import  SearchBar from "@mui/icons-material/Search";
 import {
   Button,
   FormHelperText,
@@ -12,6 +12,8 @@ import {
   TableHead,
   TableRow,
   TextField,
+  Box,
+
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
@@ -55,71 +57,29 @@ const BookingDetails = () => {
                     fullWidth
                     required
                   />
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="Customer Name"
-                    size="small"
-                    fullWidth
-                    required
-                    disabled
+                  <SearchBar
+                   
+                    // onChange={() => console.log("onChange")}
+                    // onRequestSearch={() => console.log("onRequestSearch")}
+                    style={{
+                      margin: "0 auto",
+                      maxWidth: 800,
+                    }}
                   />
-                </Stack>
-                <Stack spacing={2} direction="row" sx={{ marginBottom: 2 }}>
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="Full amount"
-                    size="small"
-                    fullWidth
-                    required
-                    disabled
-                  />
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="Cash"
-                    size="small"
-                    fullWidth
-                    required
-                  />
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="Balance"
-                    size="small"
-                    fullWidth
-                    required
-                  />
-                </Stack>
-                <Button
-                  style={{
-                    backgroundColor: "#2ed573",
-                    marginRight: "7px",
-                    fontWeight: "bolder",
-                  }}
-                  variant="contained"
-                  type="submit"
-                  className="gap-2"
-                >
-                  Confirm Booking
-                </Button>
 
-                <Button
-                  style={{
-                    backgroundColor: "#ff4757",
-                    marginRight: "7px",
-                    fontWeight: "bolder",
-                  }}
-                  variant="contained"
-                  type="submit"
-                >
-                  Remove Booking
-                </Button>
+                  <Button
+                    style={{
+                      backgroundColor: "#2ed573",
+                      // marginRight: "7px",
+                      fontWeight: "bolder",
+                    }}
+                    variant="contained"
+                    type="submit"
+                    // className="gap-2"
+                  >
+                    Search
+                  </Button>
+                </Stack>
               </form>
             </React.Fragment>
           </Paper>
