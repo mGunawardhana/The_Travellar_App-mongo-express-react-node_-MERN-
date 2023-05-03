@@ -11,6 +11,7 @@ const SystemNav = () => {
         <NavLink to={"/driver"}>Driver</NavLink>
         <NavLink to={"/booking"}>PlaceBooking</NavLink>
         <NavLink to={"/payment"}>Payments</NavLink>
+        <NavLink to={"/details"}>BookingDetails</NavLink>
       </ul>
     </nav>
   );
