@@ -1,5 +1,4 @@
 import express, {Router} from "express";
-import CustomerController from "../controllers/CustomerController";
 import PackageController from "../controllers/PackageController";
 
 export default class PackageRoutes {
@@ -15,18 +14,18 @@ export default class PackageRoutes {
     };
 
     private configRoutes = (): void => {
-        // POST /api/v1/category
-        this.router.post("/", this.packageController.createCustomer);
 
-        //     // GET /api/v1/category
-        //     this.router.get("/", this.packageController.getAllCustomer);
-        //
-        //     // PUT /api/v1/category/:id
-        //     this.router.put("/:id", this.packageController.updateCustomer);
-        //
-        //     // DELETE /api/v1/category/:id
-        //     this.router.delete("/:id", this.packageController.deleteCustomer);
-        // };
+        // POST /api/v1/category
+        this.router.post("/", this.packageController.createPackage);
+
+        // GET /api/v1/category
+        this.router.get("/", this.packageController.getAllPackages);
+
+        // PUT /api/v1/category/:id
+        this.router.delete("/:id", this.packageController.deletePackage);
+
+        // DELETE /api/v1/category/:id
+        this.router.delete("/:id", this.packageController.updatePackage);
 
     };
 }
