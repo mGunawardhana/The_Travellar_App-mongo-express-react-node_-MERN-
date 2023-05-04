@@ -17,5 +17,13 @@ export default class CategoryRoutes {
         // POST /api/v1/category
         this.router.post("/", this.CustomerController.createCustomer);
 
+        // GET /api/v1/category
+        this.router.get("/", this.CustomerController.getAllCustomer);
+
+        // PUT /api/v1/category/:id
+        this.router.put("/:id", this.CustomerController.updateCustomer);
+
+        // // DELETE /api/v1/category/:id
+        // this.router.delete("/:id", this.CustomerController.deleteCategory);
     };
 }

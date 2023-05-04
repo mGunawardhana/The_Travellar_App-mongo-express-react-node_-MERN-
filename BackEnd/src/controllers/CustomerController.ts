@@ -2,6 +2,8 @@ import {Request, RequestHandler, Response} from "express";
 import {Customer} from "../models/Customer";
 
 export default class CustomerFormController {
+
+    /** SAVE CUSTOMER */
     createCustomer: RequestHandler = async (
         req: Request,
         res: Response
@@ -25,4 +27,62 @@ export default class CustomerFormController {
             }
         }
     };
+
+    /** GET ALL CUSTOMERS */
+    getAllCustomer: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            let customer = await Customer.find();
+            return res.status(200).json({responseData: customer});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
+
+    updateCustomer: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        // try {
+        //     // destructuring assignment
+        //     const {customerID} = req.params;
+        //
+        //     let updatedCustomer = await Customer.findByIdAndUpdate(customerID, req.body, {new: true,});
+        //     return res
+        //         .status(200)
+        //         .json({message: "Category updated.", responseData: updatedCustomer});
+        // } catch (error: unknown) {
+        //     if (error instanceof Error) {
+        //         return res.status(500).json({message: error.message});
+        //     } else {
+        //         return res.status(500).json({message: "Unknown error occurred."});
+        //     }
+        // }
+
+        try {
+            // destructuring assignment
+            const { id } = req.params;
+
+            let updatedCustomer = await Customer.findByIdAndUpdate(id, req.body, {
+                new: true,
+            });
+            return res
+                .status(200)
+                .json({ message: "Customer updated.", responseData: updatedCustomer });
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({ message: error.message });
+            } else {
+                return res.status(500).json({ message: "Unknown error occured." });
+            }
+        }
+    };
+
+
 }
