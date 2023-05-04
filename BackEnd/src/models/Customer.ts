@@ -36,8 +36,7 @@ const CustomerSchema = new Schema(
             required: true,
         },
     },
-
     {timestamps: true}
 );
 
-export const Customer = model<ICustomer>("Customer", CustomerSchema)
+export const Customer = model<ICustomer>("Customer", CustomerSchema);

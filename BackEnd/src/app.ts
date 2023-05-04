@@ -5,16 +5,13 @@ import db from "mongoose";
 import {json, urlencoded} from "body-parser";
 import cors from "cors";
 import routes from "./routes";
-// dotenv configuration
+
 config();
 
-// Create the express app
 const app = express();
 
-// allow CORS
-// app.use(cors());
+app.use(cors());
 
-// Here you can add more origins to allow CORS
 const allowedOrigins = ["http://localhost:3000"];
 
 app.use(
@@ -29,21 +26,16 @@ app.use(
     })
 );
 
-// if you are receiving JSON data in request-body
 app.use(json());
 
-// if you are receiving url-encoded data in request-body
 app.use(urlencoded({extended: true}));
 
-// Mount the routes at /resourse URL path
 app.use("/", routes);
 
-// error handling middleware
 app.use((error: Error, req: Request, res: Response) => {
     res.status(500).json({message: error.message});
 });
 
-// connect to the database
 db.connect(process.env.MONGO_DB_URL!)
     .then(() => {
         console.log("Database connected!");

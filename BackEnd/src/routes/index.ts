@@ -1,10 +1,11 @@
-import { Router } from "express";
-import CustomerRoutes from "./CustomerRoutes";
+import {Router} from "express";
+import CustomerRoutes from "../routes/CustomerRoutes"
 
-const router: Router = Router();
 
-const url_prefix = "/api/v1";
+const router:Router = Router();
 
-router.use(`${url_prefix}/customer`, new CustomerRoutes().getRouter());
+const url_prefix="/api/v1";
 
+
+router.use(`${url_prefix}/customer`,new CustomerRoutes().getRouter());
 export default router;

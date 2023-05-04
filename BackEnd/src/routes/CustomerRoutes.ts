@@ -1,9 +1,9 @@
 import express, {Router} from "express";
-import CustomerFormController from "../controllers/CustomerFormController";
+import CustomerController from "../controllers/CustomerController";
 
-export default class CustomerRoutes {
+export default class CategoryRoutes {
     private router: Router = express.Router();
-    private customerController: CustomerFormController = new CustomerFormController();
+    private CustomerController: CustomerController = new CustomerController();
 
     constructor() {
         this.configRoutes();
@@ -15,15 +15,7 @@ export default class CustomerRoutes {
 
     private configRoutes = (): void => {
         // POST /api/v1/category
-        this.router.post("/", this.customerController.createCustomer);
+        this.router.post("/", this.CustomerController.createCustomer);
 
-        //     // GET /api/v1/category
-        //     this.router.get("/", this.customerController.retrieveAllCategories);
-        //
-        //     // PUT /api/v1/category/:id
-        //     this.router.put("/:id", this.customerController.updateCategory);
-        //
-        //     // DELETE /api/v1/category/:id
-        //     this.router.delete("/:id", this.customerController.deleteCategory)
     };
 }
