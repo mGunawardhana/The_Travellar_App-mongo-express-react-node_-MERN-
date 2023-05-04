@@ -31,23 +31,24 @@ export default class VehicleController {
             }
         }
     };
-    //
-    // /** GET ALL PACKAGES */
-    // getAllPackages: RequestHandler = async (
-    //     req: Request,
-    //     res: Response
-    // ): Promise<Response> => {
-    //     try {
-    //         let packageOne = await Package.find();
-    //         return res.status(200).json({responseData: packageOne});
-    //     } catch (error: unknown) {
-    //         if (error instanceof Error) {
-    //             return res.status(500).json({message: error.message});
-    //         } else {
-    //             return res.status(500).json({message: "Unknown error occurred."});
-    //         }
-    //     }
-    // };
+
+    /** GET ALL PACKAGES */
+    getAllVehicles: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            let vehicleOne = await Vehicle.find();
+            return res.status(200).json({responseData: vehicleOne});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
+
     //
     // deletePackage = async (req: Request, res: Response): Promise<Response> => {
     //     try {

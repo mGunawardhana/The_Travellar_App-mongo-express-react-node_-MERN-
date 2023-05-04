@@ -19,7 +19,7 @@ export default class VehicleRoutes {
         this.router.post("/", this.vehicleController.createVehicle);
 
         // GET /api/v1/category
-        // this.router.get("/", this.vehicleController.getAllCustomer);
+        this.router.get("/", this.vehicleController.getAllVehicles);
         //
         // // PUT /api/v1/category/:id
         // this.router.put("/:id", this.vehicleController.updateCustomer);
