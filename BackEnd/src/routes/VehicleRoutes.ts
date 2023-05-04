@@ -1,5 +1,4 @@
 import express, {Router} from "express";
-import CustomerController from "../controllers/CustomerController";
 import VehicleController from "../controllers/VehicleController";
 
 export default class VehicleRoutes {
@@ -20,11 +19,11 @@ export default class VehicleRoutes {
 
         // GET /api/v1/category
         this.router.get("/", this.vehicleController.getAllVehicles);
-        //
-        // // PUT /api/v1/category/:id
-        // this.router.put("/:id", this.vehicleController.updateCustomer);
-        //
-        // // DELETE /api/v1/category/:id
-        // this.router.delete("/:id", this.vehicleController.deleteCustomer);
+
+        // PUT /api/v1/category/:id
+        this.router.put("/:id", this.vehicleController.updateVehicle);
+
+        // DELETE /api/v1/category/:id
+        this.router.delete("/:id", this.vehicleController.deleteVehicle);
     };
 }

@@ -49,46 +49,45 @@ export default class VehicleController {
         }
     };
 
-    //
-    // deletePackage = async (req: Request, res: Response): Promise<Response> => {
-    //     try {
-    //         const {id} = req.params;
-    //         let deletePackage = await Package.findByIdAndDelete(id);
-    //         if (!deletePackage) {
-    //             new Error("Failed to delete post.");
-    //         }
-    //         return res
-    //             .status(200)
-    //             .json({message: "Package deleted.", responseData: deletePackage});
-    //     } catch (error: unknown) {
-    //         if (error instanceof Error) {
-    //             return res.status(500).json({message: error.message});
-    //         } else {
-    //             return res.status(500).json({message: "Unknown error occurred."});
-    //         }
-    //     }
-    // };
-    //
-    //
-    // updatePackage: RequestHandler = async (
-    //     req: Request,
-    //     res: Response
-    // ): Promise<Response> => {
-    //     try {
-    //         const {id} = req.params;
-    //         let updatedPackage = await Package.findByIdAndUpdate(id, req.body, {
-    //             new: true,
-    //         });
-    //         return res
-    //             .status(200)
-    //             .json({message: "Package updated.", responseData: updatedPackage});
-    //     } catch (error: unknown) {
-    //         if (error instanceof Error) {
-    //             return res.status(500).json({message: error.message});
-    //         } else {
-    //             return res.status(500).json({message: "Unknown error occurred."});
-    //         }
-    //     }
-    // };
+    deleteVehicle = async (req: Request, res: Response): Promise<Response> => {
+        try {
+            const {id} = req.params;
+            let deletePackage = await Vehicle.findByIdAndDelete(id);
+            if (!deletePackage) {
+                new Error("Failed to delete vehicle.");
+            }
+            return res
+                .status(200)
+                .json({message: "Vehicle deleted.", responseData: deletePackage});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
+
+
+    updateVehicle: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            const {id} = req.params;
+            let updatedPackage = await Vehicle.findByIdAndUpdate(id, req.body, {
+                new: true,
+            });
+            return res
+                .status(200)
+                .json({message: "Vehicle updated.", responseData: updatedPackage});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
 
 }
