@@ -23,7 +23,7 @@ export default class CategoryRoutes {
         // PUT /api/v1/category/:id
         this.router.put("/:id", this.CustomerController.updateCustomer);
 
-        // // DELETE /api/v1/category/:id
-        // this.router.delete("/:id", this.CustomerController.deleteCategory);
+        // DELETE /api/v1/category/:id
+        this.router.delete("/:id", this.CustomerController.deleteCustomer);
     };
 }

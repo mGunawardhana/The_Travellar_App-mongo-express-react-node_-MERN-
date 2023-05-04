@@ -49,26 +49,8 @@ export default class CustomerFormController {
         req: Request,
         res: Response
     ): Promise<Response> => {
-        // try {
-        //     // destructuring assignment
-        //     const {customerID} = req.params;
-        //
-        //     let updatedCustomer = await Customer.findByIdAndUpdate(customerID, req.body, {new: true,});
-        //     return res
-        //         .status(200)
-        //         .json({message: "Category updated.", responseData: updatedCustomer});
-        // } catch (error: unknown) {
-        //     if (error instanceof Error) {
-        //         return res.status(500).json({message: error.message});
-        //     } else {
-        //         return res.status(500).json({message: "Unknown error occurred."});
-        //     }
-        // }
-
         try {
-            // destructuring assignment
             const { id } = req.params;
-
             let updatedCustomer = await Customer.findByIdAndUpdate(id, req.body, {
                 new: true,
             });
@@ -79,10 +61,28 @@ export default class CustomerFormController {
             if (error instanceof Error) {
                 return res.status(500).json({ message: error.message });
             } else {
-                return res.status(500).json({ message: "Unknown error occured." });
+                return res.status(500).json({ message: "Unknown error occurred." });
             }
         }
     };
 
+    deleteCustomer = async (req: Request, res: Response): Promise<Response> => {
+        try {
+            const { id } = req.params;
+            let deletedCustomer = await Customer.findByIdAndDelete(id);
+            if (!deletedCustomer) {
+                new Error("Failed to delete post.");
+            }
+            return res
+                .status(200)
+                .json({ message: "Customer deleted.", responseData: deletedCustomer });
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({ message: error.message });
+            } else {
+                return res.status(500).json({ message: "Unknown error occurred." });
+            }
+        }
+    };
 
 }
