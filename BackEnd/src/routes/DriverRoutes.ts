@@ -20,11 +20,11 @@ export default class DriverRoutes {
 
         // GET /api/v1/category
         this.router.get("/", this.driverController.getAllDrivers);
-        //
-        // // PUT /api/v1/category/:id
+
+        // PUT /api/v1/category/:id
         this.router.put("/:id", this.driverController.updateDriver);
-        //
-        // // DELETE /api/v1/category/:id
-        // this.router.delete("/:id", this.driverController.deleteCustomer);
+
+        // DELETE /api/v1/category/:id
+        this.router.delete("/:id", this.driverController.deleteDriver);
     };
 }
