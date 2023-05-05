@@ -1,14 +1,13 @@
 import {Document, model, Schema} from "mongoose";
 
-export interface IPayment extends Document {
+export interface IConfirmedBookings extends Document {
     bookingID: string;
     customerName: string;
     fullAmount: number;
-    cash: number;
     balance: number;
 }
 
-const PaymentSchema = new Schema(
+const ConfirmedBookingSchema = new Schema(
     {
         bookingID: {
             type: String,
@@ -22,10 +21,6 @@ const PaymentSchema = new Schema(
             type: Number,
             required: true,
         },
-        cash: {
-            type: Number,
-            required: true,
-        },
         balance: {
             type: Number,
             required: true,
@@ -34,4 +29,4 @@ const PaymentSchema = new Schema(
     {timestamps: true}
 );
 
-export const Payment = model<IPayment>("Payment", PaymentSchema);
+export const ConfirmedBookings = model<IConfirmedBookings>("ConfirmedBookings", ConfirmedBookingSchema);
