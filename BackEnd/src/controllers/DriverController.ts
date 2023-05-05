@@ -1,5 +1,6 @@
 import {Request, RequestHandler, Response} from "express";
 import {Driver} from "../models/Driver";
+import {Customer} from "../models/Customer";
 
 export default class DriverController {
     createDriver: RequestHandler = async (
@@ -39,6 +40,27 @@ export default class DriverController {
                 return res.status(500).json({message: error.message});
             } else {
                 return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
+
+    updateDriver: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            const { id } = req.params;
+            let updateDriver = await Driver.findByIdAndUpdate(id, req.body, {
+                new: true,
+            });
+            return res
+                .status(200)
+                .json({ message: "Driver updated.", responseData: updateDriver });
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({ message: error.message });
+            } else {
+                return res.status(500).json({ message: "Unknown error occurred." });
             }
         }
     };

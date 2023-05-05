@@ -22,7 +22,7 @@ export default class DriverRoutes {
         this.router.get("/", this.driverController.getAllDrivers);
         //
         // // PUT /api/v1/category/:id
-        // this.router.put("/:id", this.driverController.updateCustomer);
+        this.router.put("/:id", this.driverController.updateDriver);
         //
         // // DELETE /api/v1/category/:id
         // this.router.delete("/:id", this.driverController.deleteCustomer);
