@@ -1,5 +1,6 @@
 import {Request, RequestHandler, Response} from "express";
 import {Vehicle} from "../models/Vehicle";
+import {Driver} from "../models/Driver";
 
 // let vehicle = new Vehicle(req.body);
 // let savedVehicle = await vehicle.save();
@@ -12,6 +13,9 @@ export default class VehicleController {
         req: Request,
         res: Response
     ): Promise<Response> => {
+
+
+
         try {
             const {vehicleID} = req.body;
             console.log(req.body);
