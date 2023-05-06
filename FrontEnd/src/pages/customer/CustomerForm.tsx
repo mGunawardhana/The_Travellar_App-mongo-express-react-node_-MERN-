@@ -292,30 +292,35 @@ const CustomerForm = () => {
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody onClick={(e)=>{
+                            {/*<TableBody onClick={(e) => {*/}
+                            {/*    idChange("sample text 01");*/}
+                            {/*    firstNameChange("sample text 02");*/}
+                            {/*    lastNameChange("sample text 03");*/}
+                            {/*    addressChange("sample text 04");*/}
+                            {/*    contactChange("sample text 05");*/}
+                            {/*    emailChange("sample text 06");*/}
+                            {/*}}>*/}
 
-                            }}>
+                            <TableBody>
                                 {customerList.map((customer) => (
                                     <TableRow
+                                        onClick={(e) => {
+                                            idChange(customer.customerID);
+                                            firstNameChange(customer.customerFirstName);
+                                            lastNameChange(customer.customerLastName);
+                                            addressChange(customer.customerAddress);
+                                            contactChange(customer.customerContact);
+                                            emailChange(customer.customerEmail);
+                                        }}
+
                                         key={customer.customerID}
-                                        sx={{"&:last-child td, &:last-child th": {border: 0}}}
-                                    >
+                                        sx={{"&:last-child td, &:last-child th": {border: 0}}}>
                                         <TableCell align="right">{customer.customerID}</TableCell>
-                                        <TableCell align="right">
-                                            {customer.customerFirstName}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {customer.customerLastName}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {customer.customerAddress}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {customer.customerContact}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {customer.customerEmail}
-                                        </TableCell>
+                                        <TableCell align="right">{customer.customerFirstName}</TableCell>
+                                        <TableCell align="right">{customer.customerLastName}</TableCell>
+                                        <TableCell align="right">{customer.customerAddress}</TableCell>
+                                        <TableCell align="right">{customer.customerContact}</TableCell>
+                                        <TableCell align="right">{customer.customerEmail}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
