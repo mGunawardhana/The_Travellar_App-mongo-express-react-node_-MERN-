@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {
+    Autocomplete,
     Button,
     FormHelperText,
     Paper,
@@ -12,28 +13,47 @@ import {
     TableHead,
     TableRow,
     TextField,
-    Autocomplete,
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
-import {Simulate} from "react-dom/test-utils";
-import paste = Simulate.paste;
+import {JeepProperties} from "../../types/JeepProperties";
+import axios from "../../axios";
 
 const passengerCount = [
-    {label:"8"},
-    {label:"12"},
-    {label:"16"},
+    {label: "8"},
+    {label: "12"},
+    {label: "16"},
 ];
 
 const fuelType = [
-    {label:"Petrol"},
-    {label:"Diesel"},
+    {label: "Petrol"},
+    {label: "Diesel"},
 ];
 
 
-const availability =[{label:"Yes"},{label:"No"}];
+const availability = [{label: "Yes"}, {label: "No"}];
 
 const JeepManagementForm = () => {
+
+    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+
+    const getAllJeeps = async () => {
+        try {
+            const response = await axios.get("jeep");
+            setJeepList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getAllJeeps().then(r => {
+            console.log(jeepList);
+        });
+    }, []);
+
+
     return (
         <>
             <SystemHeader/>
@@ -90,7 +110,7 @@ const JeepManagementForm = () => {
                                         options={passengerCount}
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Passenger Count" />}
+                                        renderInput={(params) => <TextField {...params} label="Passenger Count"/>}
                                     />
                                     <TextField
                                         type="text"
@@ -109,7 +129,7 @@ const JeepManagementForm = () => {
                                         options={fuelType}
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Fuel Type" />}
+                                        renderInput={(params) => <TextField {...params} label="Fuel Type"/>}
                                     />
                                     <Autocomplete
                                         disablePortal
@@ -117,7 +137,7 @@ const JeepManagementForm = () => {
                                         options={availability}
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Jeep Availability" />}
+                                        renderInput={(params) => <TextField {...params} label="Jeep Availability"/>}
                                     />
                                 </Stack>
 
@@ -195,14 +215,19 @@ const JeepManagementForm = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>V001</TableCell>
-                                    <TableCell>Wrangler</TableCell>
-                                    <TableCell>8</TableCell>
-                                    <TableCell>Luxury</TableCell>
-                                    <TableCell>Petrol</TableCell>
-                                    <TableCell>Yes</TableCell>
-                                </TableRow>
+                                {jeepList.map((jeep) => (
+                                    <TableRow
+                                        key={jeep.vehicleID}
+                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                    >
+                                        <TableCell align="right">{jeep.vehicleID}</TableCell>
+                                        <TableCell align="right">{jeep.vehicleModel}</TableCell>
+                                        <TableCell align="right">{jeep.passengerCount}</TableCell>
+                                        <TableCell align="right">{jeep.type}</TableCell>
+                                        <TableCell align="right">{jeep.fuelType}</TableCell>
+                                        <TableCell align="right">{jeep.jeepAvailability}</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
