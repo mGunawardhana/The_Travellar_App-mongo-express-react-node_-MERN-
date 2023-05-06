@@ -19,6 +19,15 @@ import axios from "../../axios";
 
 const CustomerForm = () => {
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+    const [mongoPrimaryKey, mongoChange] = useState("");
+    const [customerID, idChange] = useState("");
+    const [customerFirstName, firstNameChange] = useState("");
+    const [customerLastName, lastNameChange] = useState("");
+    const [customerAddress, addressChange] = useState("");
+    const [customerContact, contactChange] = useState("");
+    const [customerEmail, emailChange] = useState("");
+
+    let key_for_put_and_delete: string | undefined | any;
 
     const getAllCustomers = async () => {
         try {
@@ -35,13 +44,6 @@ const CustomerForm = () => {
             console.log(customerList);
         });
     }, []);
-
-    const [customerID, idChange] = useState("");
-    const [customerFirstName, firstNameChange] = useState("");
-    const [customerLastName, lastNameChange] = useState("");
-    const [customerAddress, addressChange] = useState("");
-    const [customerContact, contactChange] = useState("");
-    const [customerEmail, emailChange] = useState("");
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
@@ -83,19 +85,20 @@ const CustomerForm = () => {
             });
     };
 
-    // const deleteFromTable = (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //
-    //     axios
-    //         .delete("customer",)
-    //         .then((res) => {
-    //
-    //             getAllCustomers();
-    //         })
-    //         .catch((e) => {
-    //             console.log(e);
-    //         });
-    // }
+
+    const deleteFromTable = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        axios
+            .delete("customer", key_for_put_and_delete)
+            .then((res) => {
+
+                getAllCustomers();
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
 
 
     return (
@@ -232,6 +235,7 @@ const CustomerForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+
                                 >
                                     Delete
                                 </Button>
@@ -292,19 +296,12 @@ const CustomerForm = () => {
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
-                            {/*<TableBody onClick={(e) => {*/}
-                            {/*    idChange("sample text 01");*/}
-                            {/*    firstNameChange("sample text 02");*/}
-                            {/*    lastNameChange("sample text 03");*/}
-                            {/*    addressChange("sample text 04");*/}
-                            {/*    contactChange("sample text 05");*/}
-                            {/*    emailChange("sample text 06");*/}
-                            {/*}}>*/}
-
                             <TableBody>
                                 {customerList.map((customer) => (
                                     <TableRow
                                         onClick={(e) => {
+                                            console.log(customer._id);
+                                            key_for_put_and_delete = customer._id;
                                             idChange(customer.customerID);
                                             firstNameChange(customer.customerFirstName);
                                             lastNameChange(customer.customerLastName);

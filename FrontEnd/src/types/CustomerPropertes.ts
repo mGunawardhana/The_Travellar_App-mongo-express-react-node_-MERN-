@@ -1,4 +1,5 @@
 export type CustomerProperties = {
+    _id?: string;
     customerID: string;
     customerFirstName: string;
     customerLastName: string;
