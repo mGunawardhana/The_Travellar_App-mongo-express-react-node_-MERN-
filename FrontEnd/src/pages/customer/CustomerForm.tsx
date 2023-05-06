@@ -14,13 +14,13 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
-import {CustomerDetails} from "../../types/CustomerDetails";
+import {CustomerProperties} from "../../types/CustomerDetails";
 import axios from "../../axios";
 
 
 const CustomerForm = () => {
 
-    const [customerList, setCustomerList] = useState<CustomerDetails[]>([]);
+    const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
 
     const getAllCustomers = async () => {
         try {

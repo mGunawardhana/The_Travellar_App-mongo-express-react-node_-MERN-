@@ -1,4 +1,4 @@
-export type CustomerDetails = {
+export type CustomerProperties = {
     customerID: string;
     customerFirstName: string;
     customerLastName: string;

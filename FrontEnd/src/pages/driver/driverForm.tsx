@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
     Button,
@@ -15,8 +15,28 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
+import {DriverProperties} from "../../types/DriverProperties";
+import axios from "../../axios";
 
 const DriverForm = () => {
+
+    const [driverList, setDriverList]
+        = useState<DriverProperties[]>([]);
+
+
+    const getAllDrivers = async ()=>{
+        try {
+            const response = await axios.get("driver");
+            setDriverList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+
+
     return (
         <>
             <SystemHeader/>
