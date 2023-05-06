@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {
     Button,
@@ -15,10 +15,30 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
+import {PackageProperties} from "../../types/PackageProperties";
+import axios from "../../axios";
 
 // const guide = [{label:"sample"},{label:"sample"}];
 
 const PackageForm = () => {
+    const [packageList, setPackageList] = useState<PackageProperties[]>([]);
+
+    const getAllPackages = async () => {
+        try {
+            const response = await axios.get("package");
+            setPackageList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getAllPackages().then(r => {
+            console.log(packageList);
+        });
+    }, []);
+
     return (
         <>
             <SystemHeader/>
@@ -200,14 +220,19 @@ const PackageForm = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>P001</TableCell>
-                                    <TableCell>Safari</TableCell>
-                                    <TableCell>G001</TableCell>
-                                    <TableCell>Mr.Saman</TableCell>
-                                    <TableCell>2 Nights</TableCell>
-                                    <TableCell>Rs.35,000.00</TableCell>
-                                </TableRow>
+                                {packageList.map((samplePackage) => (
+                                    <TableRow
+                                        key={samplePackage.packageID}
+                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                    >
+                                        <TableCell align="right">{samplePackage.packageID}</TableCell>
+                                        <TableCell align="right">{samplePackage.packageName}</TableCell>
+                                        <TableCell align="right">{samplePackage.daysHrsCount}</TableCell>
+                                        <TableCell align="right">{samplePackage.description}</TableCell>
+                                        <TableCell align="right">{samplePackage.offers}</TableCell>
+                                        <TableCell align="right">{samplePackage.packageAmount}</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
