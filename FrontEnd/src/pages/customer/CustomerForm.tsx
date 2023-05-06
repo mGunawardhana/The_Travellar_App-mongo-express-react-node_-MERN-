@@ -33,11 +33,10 @@ const CustomerForm = () => {
     };
 
     useEffect(() => {
-        getAllCustomers();
+        getAllCustomers().then(r => {
+            console.log(customerList);
+        });
     }, []);
-
-
-    console.log(customerList);
 
     return (
         <>
