@@ -17,7 +17,7 @@ import {
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 
-// const guide = [{label:"sample"},{label:"sample"}];
+// const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
 
 const packages = [{label: "P001"}, {label: "P002"}, {label: "P003"}];
 const jeep_code = [{label: "J001"}, {label: "J002"}];

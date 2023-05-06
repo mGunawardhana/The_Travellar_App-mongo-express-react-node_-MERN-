@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-//importing sample logo
+//importing sample.tsx logo
 import Logo from "../../assets/logo.png";
 
 // import components

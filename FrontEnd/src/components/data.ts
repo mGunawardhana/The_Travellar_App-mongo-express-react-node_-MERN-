@@ -58,7 +58,7 @@ export const featuresData = {
     list: [
         {
             image: Feature1Img,
-            title: "sample data",
+            title: "sample.tsx data",
             description:
                 "Two nights in jungle with our crew members, You can see Jaguar's specially",
             linkText: "Learn more..",
@@ -66,7 +66,7 @@ export const featuresData = {
         },
         {
             image: Feature2Img,
-            title: "sample data",
+            title: "sample.tsx data",
             description:
                 "Don’t worry if your if is very fresh, the Athena provides a best fruits you ever seen",
             linkText: "Learn more..",
@@ -74,7 +74,7 @@ export const featuresData = {
         },
         {
             image: Feature3Img,
-            title: "sample data",
+            title: "sample.tsx data",
             description:
                 "Don’t worry if your if is very fresh, the Athena provides a best fruits you ever seen",
             linkText: "Learn more..",
@@ -82,7 +82,7 @@ export const featuresData = {
         },
         {
             image: Feature4Img,
-            title: "sample data",
+            title: "sample.tsx data",
             description:
                 "Don’t worry if your if is very fresh, the Athena provides a best fruits you ever seen",
             linkText: "Learn more..",
@@ -90,7 +90,7 @@ export const featuresData = {
         },
         {
             image: Feature6Img,
-            title: "sample data",
+            title: "sample.tsx data",
             description:
                 "Don’t worry if your if is very fresh, the Athena provides a best fruits you ever seen",
             linkText: "Learn more..",
@@ -98,7 +98,7 @@ export const featuresData = {
         },
         {
             image: Feature7Img,
-            title: "sample data",
+            title: "sample.tsx data",
             description:
                 "Don’t worry if your if is very fresh, the Athena provides a best fruits you ever seen",
             linkText: "Learn more..",
@@ -113,7 +113,7 @@ export const testimonialsData = [
         name: "Abdul Rahuman",
         web: "rahuman.com",
         message:
-            "sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer",
+            "sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer",
         delay: "300",
     },
     {
@@ -121,7 +121,7 @@ export const testimonialsData = [
         name: "Abdul Rahuman",
         web: "rahuman.com",
         message:
-            "sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer",
+            "sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer",
         delay: "300",
     },
     {
@@ -129,14 +129,14 @@ export const testimonialsData = [
         name: "Abdul Rahuman",
         web: "rahuman.com",
         message:
-            " sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer sample text here frm your customer",
+            " sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer sample.tsx text here frm your customer",
         delay: "300",
     },
 ];
 
 export const ctaData = {
     title: "Check it out!",
-    subtitle: "sample text in here for you",
+    subtitle: "sample.tsx text in here for you",
     btnText1: "learn more",
     btnText2: "Request free",
 };

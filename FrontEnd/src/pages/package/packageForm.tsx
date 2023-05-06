@@ -18,7 +18,7 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {PackageProperties} from "../../types/PackageProperties";
 import axios from "../../axios";
 
-// const guide = [{label:"sample"},{label:"sample"}];
+// const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
 
 const PackageForm = () => {
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
