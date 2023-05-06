@@ -6,7 +6,6 @@ import PackageForm from "../../pages/package/packageForm";
 import JeepManagementForm from "../../pages/jeep/JeepManagementForm";
 import DriverForm from "../../pages/driver/driverForm";
 import PackageBookingForm from "../../pages/packageBooking/PackageBookingForm";
-import Booking from "../../pages/Bookings/Payments";
 import Payments from "../../pages/Bookings/Payments";
 import BookingDetails from "../../pages/bookingDetails/BookingDetails";
 

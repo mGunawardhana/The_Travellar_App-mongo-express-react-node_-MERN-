@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, {useEffect, useState} from "react";
 import {
     Button,
     FormHelperText,
@@ -15,8 +14,31 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
+import {CustomerDetails} from "../../types/CustomerDetails";
+import axios from "../../axios";
+
 
 const CustomerForm = () => {
+
+    const [customerList, setCustomerList] = useState<CustomerDetails[]>([]);
+
+    const getAllCustomers = async () => {
+        try {
+            const response = await axios.get("customer");
+            setCustomerList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getAllCustomers();
+    }, []);
+
+
+    console.log(customerList);
+
     return (
         <>
             <SystemHeader/>
@@ -47,60 +69,72 @@ const CustomerForm = () => {
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        // value={customerID}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="ID"
                                         size="small"
+                                        // onChange={(e) => idChange(e.target.value)}
                                         fullWidth
                                         required
                                     />
                                     <TextField
+                                        // value={customerFirstName}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="First Name"
                                         size="small"
+                                        // onChange={(e) => fNameChange(e.target.value)}
                                         fullWidth
                                         required
                                     />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        // value={customerLastName}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Last Name"
                                         size="small"
+                                        // onChange={(e) => lNameChange(e.target.value)}
                                         fullWidth
                                         required
                                     />
                                     <TextField
+                                        // value={customerAddress}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Address"
                                         size="small"
+                                        // onChange={(e) => addressChange(e.target.value)}
                                         fullWidth
                                         required
                                     />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        // value={customerContact}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Contact"
                                         size="small"
+                                        // onChange={(e) => contactChange(e.target.value)}
                                         fullWidth
                                         required
                                     />
                                     <TextField
+                                        // value={customerEmail}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Email"
                                         size="small"
+                                        // onChange={(e) => emailChange(e.target.value)}
                                         fullWidth
                                         required
                                     />
@@ -156,37 +190,42 @@ const CustomerForm = () => {
                     >
                         <Table aria-label="simple table">
                             <TableHead>
-                                <TableRow className="bg-black">
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                <TableRow
+                                    className="bg-black">
+                                    <TableCell align="right" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         ID
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="right" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         First Name
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="right" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Last Name
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="right" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Address
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="right" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Contact
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="right" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Email
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>C001</TableCell>
-                                    <TableCell>Maneesha</TableCell>
-                                    <TableCell>Gunawardhana</TableCell>
-                                    <TableCell>Galle</TableCell>
-                                    <TableCell>071-9054432</TableCell>
-                                    <TableCell>manee@gmail.com</TableCell>
-                                </TableRow>
-
+                                {customerList.map((customer) => (
+                                    <TableRow
+                                        key={customer.customerID}
+                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                    >
+                                        <TableCell align="right">{customer.customerID}</TableCell>
+                                        <TableCell align="right">{customer.customerFirstName}</TableCell>
+                                        <TableCell align="right">{customer.customerLastName}</TableCell>
+                                        <TableCell align="right">{customer.customerAddress}</TableCell>
+                                        <TableCell align="right">{customer.customerContact}</TableCell>
+                                        <TableCell align="right">{customer.customerEmail}</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
