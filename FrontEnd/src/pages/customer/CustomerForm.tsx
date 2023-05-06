@@ -47,18 +47,27 @@ const CustomerForm = () => {
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
-        if (name === "customerID") {
-            idChange(value);
-        } else if (name == "customerFirstName") {
-            firstNameChange(value);
-        } else if (name == "customerLastName") {
-            lastNameChange(value);
-        } else if (name == "customerAddress") {
-            addressChange(value);
-        } else if (name == "customerContact") {
-            contactChange(value);
-        } else if (name == "customerEmail") {
-            emailChange(value);
+        switch (name) {
+            case "customerID":
+                idChange(value);
+                break;
+            case "customerFirstName":
+                firstNameChange(value);
+                break;
+            case "customerLastName":
+                lastNameChange(value);
+                break;
+            case "customerAddress":
+                addressChange(value);
+                break;
+            case "customerContact":
+                contactChange(value);
+                break;
+            case "customerEmail":
+                emailChange(value);
+                break;
+            default:
+                break;
         }
     };
 
@@ -240,9 +249,7 @@ const CustomerForm = () => {
                                     Delete
                                 </Button>
                             </form>
-                            {/* <small>
-              <Link to="/login">`Login Here</Link>
-            </small> */}
+
                         </React.Fragment>
                     </Paper>
 
