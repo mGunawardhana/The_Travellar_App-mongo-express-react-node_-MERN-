@@ -198,7 +198,9 @@ const PackageForm = () => {
                     >
                         <Table aria-label="simple table">
                             <TableHead>
-                                <TableRow className="bg-black">
+                                <TableRow
+                                    sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                    className="bg-black">
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Code
                                     </TableCell>
@@ -206,13 +208,13 @@ const PackageForm = () => {
                                         Name
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Guide Code
-                                    </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Guide Name
-                                    </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Days/Hrs
+                                    </TableCell>
+                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                        Note
+                                    </TableCell>
+                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                        Discount
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Package Amount
