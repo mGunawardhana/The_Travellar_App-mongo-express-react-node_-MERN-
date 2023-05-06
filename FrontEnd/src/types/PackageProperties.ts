@@ -1,8 +1,8 @@
-export type JeepProperties = {
-    vehicleID: string;
-    vehicleModel: string;
-    passengerCount: number;
-    type: string;
-    fuelType: string;
-    jeepAvailability: string;
+export type PackageProperties = {
+    packageID: string;
+    packageName: string;
+    daysHrsCount: string;
+    description: string;
+    offers: number;
+    packageAmount: number;
 };
