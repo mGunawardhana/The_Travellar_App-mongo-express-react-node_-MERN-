@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
-import {CustomerProperties} from "../../types/CustomerDetails";
+import {CustomerProperties} from "../../types/CustomerPropertes";
 import axios from "../../axios";
 
 

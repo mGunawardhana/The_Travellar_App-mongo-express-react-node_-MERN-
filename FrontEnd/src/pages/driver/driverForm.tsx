@@ -181,7 +181,9 @@ const DriverForm = () => {
                     >
                         <Table aria-label="simple table">
                             <TableHead>
-                                <TableRow className="bg-black">
+                                <TableRow
+                                    sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                    className="bg-black">
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         ID
                                     </TableCell>
@@ -203,17 +205,17 @@ const DriverForm = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {customerList.map((customer) => (
+                                {driverList.map((driver) => (
                                     <TableRow
-                                        key={customer.customerID}
+                                        key={driver.driverID}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                     >
-                                        <TableCell align="right">{customer.customerID}</TableCell>
-                                        <TableCell align="right">{customer.customerFirstName}</TableCell>
-                                        <TableCell align="right">{customer.customerLastName}</TableCell>
-                                        <TableCell align="right">{customer.customerAddress}</TableCell>
-                                        <TableCell align="right">{customer.customerContact}</TableCell>
-                                        <TableCell align="right">{customer.customerEmail}</TableCell>
+                                        <TableCell align="right">{driver.driverID}</TableCell>
+                                        <TableCell align="right">{driver.driverFirstName}</TableCell>
+                                        <TableCell align="right">{driver.driverLastName}</TableCell>
+                                        <TableCell align="right">{driver.driverLicense}</TableCell>
+                                        <TableCell align="right">{driver.driverContact}</TableCell>
+                                        <TableCell align="right">{driver.driverEmail}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
