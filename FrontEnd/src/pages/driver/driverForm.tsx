@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {
     Button,
@@ -24,7 +24,7 @@ const DriverForm = () => {
         = useState<DriverProperties[]>([]);
 
 
-    const getAllDrivers = async ()=>{
+    const getAllDrivers = async () => {
         try {
             const response = await axios.get("driver");
             setDriverList(response.data.responseData);
@@ -34,7 +34,11 @@ const DriverForm = () => {
         }
     };
 
-
+    useEffect(() => {
+        getAllDrivers().then(r => {
+            console.log(driverList);
+        });
+    }, []);
 
 
     return (
@@ -199,15 +203,19 @@ const DriverForm = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>C001</TableCell>
-                                    <TableCell>Maneesha</TableCell>
-                                    <TableCell>Gunawardhana</TableCell>
-                                    <TableCell>445788771</TableCell>
-                                    <TableCell>071-9054432</TableCell>
-                                    <TableCell>manee@gmail.com</TableCell>
-                                </TableRow>
-
+                                {customerList.map((customer) => (
+                                    <TableRow
+                                        key={customer.customerID}
+                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                    >
+                                        <TableCell align="right">{customer.customerID}</TableCell>
+                                        <TableCell align="right">{customer.customerFirstName}</TableCell>
+                                        <TableCell align="right">{customer.customerLastName}</TableCell>
+                                        <TableCell align="right">{customer.customerAddress}</TableCell>
+                                        <TableCell align="right">{customer.customerContact}</TableCell>
+                                        <TableCell align="right">{customer.customerEmail}</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
