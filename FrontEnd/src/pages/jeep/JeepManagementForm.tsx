@@ -236,41 +236,43 @@ const JeepManagementForm = () => {
                                     />
                                 </Stack>
                             </form>
-                            <Button
-                                style={{
-                                    backgroundColor: "#2ed573",
-                                    marginRight: "7px",
-                                    fontWeight: "bolder",
-                                }}
-                                variant="contained"
-                                type="submit"
-                                onClick={handleSubmit}
-                            >
-                                Save
-                            </Button>
-                            <Button
-                                style={{
-                                    backgroundColor: "#ffa502",
-                                    marginRight: "7px",
-                                    fontWeight: "bolder",
-                                }}
-                                variant="contained"
-                                type="submit"
-                            >
-                                Update
-                            </Button>
-                            <Button
-                                style={{
-                                    backgroundColor: "#ff4757",
-                                    marginRight: "7px",
-                                    fontWeight: "bolder",
-                                }}
-                                variant="contained"
-                                type="submit"
-                                onClick={handleDelete}
-                            >
-                                Delete
-                            </Button>
+                            <div className="ml-[15px] mt-[0px] pb-[15px]">
+                                <Button
+                                    style={{
+                                        backgroundColor: "#2ed573",
+                                        marginRight: "7px",
+                                        fontWeight: "bolder",
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                    onClick={handleSubmit}
+                                >
+                                    Save
+                                </Button>
+                                <Button
+                                    style={{
+                                        backgroundColor: "#ffa502",
+                                        marginRight: "7px",
+                                        fontWeight: "bolder",
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                >
+                                    Update
+                                </Button>
+                                <Button
+                                    style={{
+                                        backgroundColor: "#ff4757",
+                                        marginRight: "7px",
+                                        fontWeight: "bolder",
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                    onClick={handleDelete}
+                                >
+                                    Delete
+                                </Button>
+                            </div>
                         </React.Fragment>
                     </Paper>
 
