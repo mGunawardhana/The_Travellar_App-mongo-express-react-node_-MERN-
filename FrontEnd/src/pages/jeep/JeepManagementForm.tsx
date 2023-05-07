@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 
 import {
     Autocomplete,
@@ -31,13 +31,13 @@ const JeepManagementForm = () => {
 
     let key_for_put_and_delete: string | undefined | any;
 
-    // const passengerCountTxt = useRef(undefined);
-    // const fuelTxt = useRef("");
-    // const availabilityTxt = useRef("");
+    const passengerCountTxt = useRef('initial value');
+    const fuelTxt = useRef('initial value');
+    const availabilityTxt = useRef('initial value');
 
-    const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
-    const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
-    const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
+    // const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
+    // const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
+    // const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
 
 
     const passengerCountPack = ["8", "10", "12"];
@@ -326,14 +326,14 @@ const JeepManagementForm = () => {
                                             mongoChange(key_for_put_and_delete);
                                             vehicleIdChange(jeep.vehicleID);
                                             vehicleModelChange(jeep.vehicleModel);
-                                            passengerCountChange(jeep.passengerCount);
+                                            // passengerCountChange(jeep.passengerCount);
                                             typeChange(jeep.type);
-                                            fuelTypeChange(jeep.fuelType);
-                                            jeepAvailabilityChange(jeep.jeepAvailability);
+                                            // fuelTypeChange(jeep.fuelType);
+                                            // jeepAvailabilityChange(jeep.jeepAvailability);
 
-                                            passengerCountTxt.value = jeep.passengerCount;
-                                            fuelTxt.value = jeep.fuelType;
-                                            availabilityTxt.value = jeep.jeepAvailability;
+                                            passengerCountTxt.current = jeep.passengerCount;
+                                            fuelTxt.current = jeep.fuelType;
+                                            availabilityTxt.current = jeep.jeepAvailability;
                                         }}
                                         key={jeep.vehicleID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}
