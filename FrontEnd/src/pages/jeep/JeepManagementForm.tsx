@@ -326,10 +326,7 @@ const JeepManagementForm = () => {
                                             mongoChange(key_for_put_and_delete);
                                             vehicleIdChange(jeep.vehicleID);
                                             vehicleModelChange(jeep.vehicleModel);
-                                            // passengerCountChange(jeep.passengerCount);
                                             typeChange(jeep.type);
-                                            // fuelTypeChange(jeep.fuelType);
-                                            // jeepAvailabilityChange(jeep.jeepAvailability);
 
                                             passengerCountTxt.current = jeep.passengerCount;
                                             fuelTxt.current = jeep.fuelType;
