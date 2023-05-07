@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 import {
     Autocomplete,
@@ -19,30 +19,30 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {JeepProperties} from "../../types/JeepProperties";
 import axios from "../../axios";
 
-const passengerCountPack = [
-    {label: "8"},
-    {label: "12"},
-    {label: "16"},
-];
-
-const fuelTypePack = [
-    {label: "Petrol"},
-    {label: "Diesel"},
-];
-
-
-const availability = [{label: "Yes"}, {label: "No"}];
-
 const JeepManagementForm = () => {
-
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+    const [mongoPrimaryKey, mongoChange] = useState("");
     const [vehicleID, vehicleIdChange] = useState("");
     const [vehicleModel, vehicleModelChange] = useState("");
     const [passengerCount, passengerCountChange] = useState("");
     const [type, typeChange] = useState("");
     const [fuelType, fuelTypeChange] = useState("");
-    const [jeepAvailability,jeepAvailabilityChange] = useState("");
+    const [jeepAvailability, jeepAvailabilityChange] = useState("");
 
+    let key_for_put_and_delete: string | undefined | any;
+
+    // const passengerCountTxt = useRef(undefined);
+    // const fuelTxt = useRef("");
+    // const availabilityTxt = useRef("");
+
+    const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
+    const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
+    const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
+
+
+    const passengerCountPack = ["8", "10", "12"];
+    const fuelTypePack = ["Petrol", "Diesel"];
+    const availability = ["YES", "NO"];
 
     const getAllJeeps = async () => {
         try {
@@ -55,11 +55,71 @@ const JeepManagementForm = () => {
     };
 
     useEffect(() => {
-        getAllJeeps().then(r => {
+        getAllJeeps().then((r) => {
             console.log(jeepList);
         });
     }, []);
 
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = event.target;
+        switch (name) {
+            case "vehicleID":
+                vehicleIdChange(value);
+                break;
+            case "vehicleModel":
+                vehicleModelChange(value);
+                break;
+            case "passengerCount":
+                passengerCountChange(value);
+                break;
+            case "type":
+                typeChange(value);
+                break;
+            case "fuelType":
+                fuelTypeChange(value);
+                break;
+            case "jeepAvailability":
+                jeepAvailabilityChange(value);
+                break;
+            default:
+                break;
+        }
+    };
+
+    const handleSubmit = () => {
+        let responseBody = {
+            vehicleID: vehicleID,
+            vehicleModel: vehicleModel,
+            passengerCount: passengerCount,
+            type: type,
+            fuelType: fuelType,
+            jeepAvailability: jeepAvailability,
+        };
+
+        axios
+            .post("jeep", JSON.stringify(responseBody))
+            .then((res) => {
+                console.log(responseBody);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
+    const handleDelete = () => {
+        if (window.confirm("Do you want to remove this jeep ?")) {
+            axios
+                .delete(`jeep/${mongoPrimaryKey}`)
+                .then((response) => {
+                    // getAllCustomers();
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
+    };
 
     return (
         <>
@@ -83,109 +143,127 @@ const JeepManagementForm = () => {
                         }}
                     >
                         <React.Fragment>
-                            {/* <h2>Register Form</h2> */}
-                            {/* <form onSubmit={handleSubmit} action={<Link to="/login" />}> */}
                             <form className="py-[15px] px-[15px]">
                                 <FormHelperText style={{fontSize: "25px,"}}>
                                     Vehicle Management Form
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        name="vehicleID"
+                                        value={vehicleID}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Vehicle ID"
                                         size="small"
+                                        onChange={handleInputChange}
                                         fullWidth
                                         required
                                     />
                                     <TextField
+                                        name="vehicleModel"
+                                        value={vehicleModel}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Vehicle Model"
                                         size="small"
+                                        onChange={handleInputChange}
                                         fullWidth
                                         required
                                     />
-
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={passengerCountPack}
-                                        size="small"
-                                        fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Passenger Count"/>}
-                                    />
                                     <TextField
+                                        name="type"
+                                        value={type}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         label="Type"
                                         size="small"
+                                        onChange={handleInputChange}
                                         fullWidth
                                         required
                                     />
+                                    <Autocomplete
+                                        disablePortal
+                                        id="passengerCountTxt"
+                                        options={passengerCountPack}
+                                        size="small"
+                                        onCanPlay={handleInputChange}
+                                        fullWidth
+                                        renderInput={(params) => (
+                                            <TextField {...params} label="Passenger Count"/>
+                                        )}
+                                        // value={passengerCount}
+                                    />
+
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <Autocomplete
+                                        // value={fuelType}
                                         disablePortal
-                                        id="combo-box-demo"
+                                        id="fuelTxt"
                                         options={fuelTypePack}
                                         size="small"
+                                        onCanPlay={handleInputChange}
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Fuel Type"/>}
+                                        renderInput={(params) => (
+                                            <TextField {...params} label="Fuel Type"/>
+                                        )}
                                     />
+
                                     <Autocomplete
+                                        // value={jeepAvailability}
+                                        // ref={availability}
                                         disablePortal
-                                        id="combo-box-demo"
+                                        id="availabilityTxt"
                                         options={availability}
                                         size="small"
+                                        onCanPlay={handleInputChange}
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Jeep Availability"/>}
+                                        renderInput={(params) => (
+                                            <TextField {...params} label="Jeep Availability"/>
+                                        )}
                                     />
                                 </Stack>
-
-
-                                <Button
-                                    style={{
-                                        backgroundColor: "#2ed573",
-                                        marginRight: "7px",
-                                        fontWeight: "bolder",
-                                    }}
-                                    variant="contained"
-                                    type="submit"
-                                >
-                                    Save
-                                </Button>
-                                <Button
-                                    style={{
-                                        backgroundColor: "#ffa502",
-                                        marginRight: "7px",
-                                        fontWeight: "bolder",
-                                    }}
-                                    variant="contained"
-                                    type="submit"
-                                >
-                                    Update
-                                </Button>
-                                <Button
-                                    style={{
-                                        backgroundColor: "#ff4757",
-                                        marginRight: "7px",
-                                        fontWeight: "bolder",
-                                    }}
-                                    variant="contained"
-                                    type="submit"
-                                >
-                                    Delete
-                                </Button>
                             </form>
-                            {/* <small>
-              <Link to="/login">`Login Here</Link>
-            </small> */}
+                            <Button
+                                style={{
+                                    backgroundColor: "#2ed573",
+                                    marginRight: "7px",
+                                    fontWeight: "bolder",
+                                }}
+                                variant="contained"
+                                type="submit"
+                                onClick={handleSubmit}
+                            >
+                                Save
+                            </Button>
+                            <Button
+                                style={{
+                                    backgroundColor: "#ffa502",
+                                    marginRight: "7px",
+                                    fontWeight: "bolder",
+                                }}
+                                variant="contained"
+                                type="submit"
+                            >
+                                Update
+                            </Button>
+                            <Button
+                                style={{
+                                    backgroundColor: "#ff4757",
+                                    marginRight: "7px",
+                                    fontWeight: "bolder",
+                                }}
+                                variant="contained"
+                                type="submit"
+                                onClick={handleDelete}
+                            >
+                                Delete
+                            </Button>
                         </React.Fragment>
                     </Paper>
 
@@ -201,22 +279,40 @@ const JeepManagementForm = () => {
                         <Table aria-label="simple table">
                             <TableHead>
                                 <TableRow className="bg-black">
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell
+                                        align="center"
+                                        style={{color: "#ffffff", fontWeight: "bolder"}}
+                                    >
                                         Vehicle ID
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell
+                                        align="center"
+                                        style={{color: "#ffffff", fontWeight: "bolder"}}
+                                    >
                                         Vehicle Model
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell
+                                        align="center"
+                                        style={{color: "#ffffff", fontWeight: "bolder"}}
+                                    >
                                         Passenger Count
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell
+                                        align="center"
+                                        style={{color: "#ffffff", fontWeight: "bolder"}}
+                                    >
                                         Type
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell
+                                        align="center"
+                                        style={{color: "#ffffff", fontWeight: "bolder"}}
+                                    >
                                         Fuel Type
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell
+                                        align="center"
+                                        style={{color: "#ffffff", fontWeight: "bolder"}}
+                                    >
                                         Availability
                                     </TableCell>
                                 </TableRow>
@@ -224,15 +320,32 @@ const JeepManagementForm = () => {
                             <TableBody>
                                 {jeepList.map((jeep) => (
                                     <TableRow
+                                        onClick={(e) => {
+                                            console.log(jeep._id);
+                                            key_for_put_and_delete = jeep._id;
+                                            mongoChange(key_for_put_and_delete);
+                                            vehicleIdChange(jeep.vehicleID);
+                                            vehicleModelChange(jeep.vehicleModel);
+                                            passengerCountChange(jeep.passengerCount);
+                                            typeChange(jeep.type);
+                                            fuelTypeChange(jeep.fuelType);
+                                            jeepAvailabilityChange(jeep.jeepAvailability);
+
+                                            passengerCountTxt.value = jeep.passengerCount;
+                                            fuelTxt.value = jeep.fuelType;
+                                            availabilityTxt.value = jeep.jeepAvailability;
+                                        }}
                                         key={jeep.vehicleID}
-                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                        sx={{"&:last-child td, &:last-child th": {border: 0}}}
                                     >
-                                        <TableCell align="right">{jeep.vehicleID}</TableCell>
-                                        <TableCell align="right">{jeep.vehicleModel}</TableCell>
-                                        <TableCell align="right">{jeep.passengerCount}</TableCell>
-                                        <TableCell align="right">{jeep.type}</TableCell>
-                                        <TableCell align="right">{jeep.fuelType}</TableCell>
-                                        <TableCell align="right">{jeep.jeepAvailability}</TableCell>
+                                        <TableCell align="center">{jeep.vehicleID}</TableCell>
+                                        <TableCell align="center">{jeep.vehicleModel}</TableCell>
+                                        <TableCell align="center">{jeep.passengerCount}</TableCell>
+                                        <TableCell align="center">{jeep.type}</TableCell>
+                                        <TableCell align="center">{jeep.fuelType}</TableCell>
+                                        <TableCell align="center">
+                                            {jeep.jeepAvailability}
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

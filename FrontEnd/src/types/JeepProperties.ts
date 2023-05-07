@@ -1,7 +1,8 @@
 export type JeepProperties = {
+    _id:string;
     vehicleID: string;
     vehicleModel: string;
-    passengerCount: number;
+    passengerCount: string;
     type: string;
     fuelType: string;
     jeepAvailability: string;
