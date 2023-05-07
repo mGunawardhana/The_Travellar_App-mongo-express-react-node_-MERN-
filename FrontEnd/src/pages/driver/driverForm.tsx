@@ -301,12 +301,12 @@ const DriverForm = () => {
                                             console.log(driver._id);
                                             driver_key_for_put_and_delete = driver._id;
                                             mongoChange(key_for_put_and_delete);
-                                            idChange(customer.customerID);
-                                            firstNameChange(customer.customerFirstName);
-                                            lastNameChange(customer.customerLastName);
-                                            addressChange(customer.customerAddress);
-                                            contactChange(customer.customerContact);
-                                            emailChange(customer.customerEmail);
+                                            driverIdChange(driver.driverID);
+                                            driverFirstNameChange(driver.driverFirstName);
+                                            driverLastNameChange(driver.driverLastName);
+                                            driverAddressChange(driver.driverLicense);
+                                            driverContactChange(driver.driverContact);
+                                            driverEmailChange(driver.driverEmail);
                                         }}
 
                                         key={driver.driverID}
