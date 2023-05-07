@@ -20,8 +20,13 @@ import axios from "../../axios";
 
 const DriverForm = () => {
 
+    /** hook for loading driver table */
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
+
+    /** this hook is responsible to providing values to update and delete   */
     const [mongoPrimaryKeyDriver, mongoChangeDriver] = useState("");
+
+    /** text-fields managing hooks  */
     const [driverID, driverIdChange] = useState("");
     const [driverFirstName, driverFirstNameChange] = useState("");
     const [driverLastName, driverLastNameChange] = useState("");
