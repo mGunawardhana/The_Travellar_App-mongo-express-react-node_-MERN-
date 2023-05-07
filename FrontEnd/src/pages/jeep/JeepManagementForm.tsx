@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 import {
     Autocomplete,
@@ -37,6 +37,16 @@ const JeepManagementForm = () => {
 
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
 
+    const [mongoPrimaryKey, mongoChange] = useState("");
+    const [vehicleID, idChange] = useState("");
+    const [vehicleModel, modelChange] = useState("");
+    const [passengerCount, passengerCountChange] = useState("");
+    const [type, typeChange] = useState("");
+    const [fuelType, fuelChange] = useState("");
+    const [jeepAvailability, jeepChange] = useState("");
+
+
+
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
@@ -53,6 +63,31 @@ const JeepManagementForm = () => {
         });
     }, []);
 
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = event.target;
+        switch (name) {
+            case "customerID":
+                idChange(value);
+                break;
+            case "customerFirstName":
+                firstNameChange(value);
+                break;
+            case "customerLastName":
+                lastNameChange(value);
+                break;
+            case "customerAddress":
+                addressChange(value);
+                break;
+            case "customerContact":
+                contactChange(value);
+                break;
+            case "customerEmail":
+                emailChange(value);
+                break;
+            default:
+                break;
+        }
+    };
 
     return (
         <>
