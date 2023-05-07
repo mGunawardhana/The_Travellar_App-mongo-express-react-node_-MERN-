@@ -111,6 +111,33 @@ const DriverForm = () => {
         }
     }
 
+    const handleUpdate = () => {
+
+        let responseBody = {
+            driverID: driverID,
+            driverFirstName: driverFirstName,
+            driverLastName: driverLastName,
+            driverLicense: driverLicense,
+            driverContact: driverContact,
+            driverEmail: driverEmail,
+        };
+
+        if (window.confirm('Do you want to update this driver ?')) {
+
+            axios
+                .put(`driver/${mongoPrimaryKeyDriver}`,responseBody)
+                .then((response) => {
+                    getAllDrivers();
+                    alert("Data Updated successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error updating data. Because: "+error);
+                });
+        }
+    }
+
+
     return (
         <>
             <SystemHeader/>
@@ -235,6 +262,7 @@ const DriverForm = () => {
                                     Save
                                 </Button>
                                 <Button
+                                    onClick={handleUpdate}
                                     style={{
                                         backgroundColor: "#ffa502",
                                         marginRight: "7px",
