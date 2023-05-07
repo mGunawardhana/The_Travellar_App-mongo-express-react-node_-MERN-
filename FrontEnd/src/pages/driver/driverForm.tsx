@@ -141,6 +141,7 @@ const DriverForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={handleInputChangeDriver}
                                     />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
@@ -152,6 +153,7 @@ const DriverForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={handleInputChangeDriver}
                                     />
                                     <TextField
                                         type="text"
@@ -161,6 +163,7 @@ const DriverForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={handleInputChangeDriver}
                                     />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
@@ -172,6 +175,7 @@ const DriverForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={handleInputChangeDriver}
                                     />
                                     <TextField
                                         type="text"
@@ -181,6 +185,7 @@ const DriverForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={handleInputChangeDriver}
                                     />
                                 </Stack>
 
