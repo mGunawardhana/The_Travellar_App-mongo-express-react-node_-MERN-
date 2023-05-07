@@ -72,6 +72,28 @@ const DriverForm = () => {
         }
     };
 
+    const handleSubmitDriver = () => {
+
+        let responseBodyForDriver = {
+            customerID: driverID,
+            customerFirstName: driverFirstName,
+            customerLastName: driverLastName,
+            customerAddress: driverLicense,
+            customerContact: driverContact,
+            customerEmail: driverEmail,
+        };
+
+        axios
+            .post("driver", responseBodyForDriver)
+            .then((res) => {
+                console.log(responseBodyForDriver);
+
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+
     return (
         <>
             <SystemHeader/>
@@ -109,6 +131,7 @@ const DriverForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={handleInputChangeDriver}
                                     />
                                     <TextField
                                         type="text"
@@ -161,7 +184,12 @@ const DriverForm = () => {
                                     />
                                 </Stack>
 
+
+                            </form>
+
+                            <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
+                                    onClick={handleSubmitDriver}
                                     style={{
                                         backgroundColor: "#2ed573",
                                         marginRight: "7px",
@@ -194,10 +222,7 @@ const DriverForm = () => {
                                 >
                                     Delete
                                 </Button>
-                            </form>
-                            {/* <small>
-              <Link to="/login">`Login Here</Link>
-            </small> */}
+                            </div>
                         </React.Fragment>
                     </Paper>
 
