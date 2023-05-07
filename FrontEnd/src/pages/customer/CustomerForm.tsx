@@ -71,8 +71,30 @@ const CustomerForm = () => {
         }
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    //
+    //     let responseBody = {
+    //         customerID: customerID,
+    //         customerFirstName: customerFirstName,
+    //         customerLastName: customerLastName,
+    //         customerAddress: customerAddress,
+    //         customerContact: customerContact,
+    //         customerEmail: customerEmail,
+    //     };
+    //
+    //     axios
+    //         .post("customer", responseBody)
+    //         .then((res) => {
+    //             console.log(responseBody);
+    //             getAllCustomers();
+    //         })
+    //         .catch((e) => {
+    //             console.log(e);
+    //         });
+    // };
+
+    const handleSubmit= () => {
 
         let responseBody = {
             customerID: customerID,
@@ -92,7 +114,8 @@ const CustomerForm = () => {
             .catch((e) => {
                 console.log(e);
             });
-    };
+    }
+
 
     const handleDelete = () => {
         if (window.confirm('Do you want to remove this customer ?')) {
@@ -132,7 +155,8 @@ const CustomerForm = () => {
                         }}
                     >
                         <React.Fragment>
-                            <form className="py-[15px] px-[15px]" onSubmit={handleSubmit}>
+                            <form className="py-[15px] px-[15px]" >
+
                                 <FormHelperText style={{fontSize: "25px,"}}>
                                     Customer Registration Form
                                 </FormHelperText>
@@ -214,58 +238,20 @@ const CustomerForm = () => {
                                         required
                                     />
                                 </Stack>
-                                <div className="ml-[15px] mt-[0px] pb-[15px]">
-                                    <Button
-                                        // onClick={handleSubmit}
-                                        style={{
-                                            backgroundColor: "#2ed573",
-                                            marginRight: "7px",
-                                            fontWeight: "bolder",
-                                        }}
-                                        variant="contained"
-                                        type="submit"
-                                    >
-                                        Save
-                                    </Button>
-                                {/*    <Button*/}
-                                {/*        style={{*/}
-                                {/*            backgroundColor: "#ffa502",*/}
-                                {/*            marginRight: "7px",*/}
-                                {/*            fontWeight: "bolder",*/}
-                                {/*        }}*/}
-                                {/*        variant="contained"*/}
-                                {/*        type="submit"*/}
-                                {/*    >*/}
-                                {/*        Update*/}
-                                {/*    </Button>*/}
-                                {/*    <Button*/}
-                                {/*        onClick={handleDelete}*/}
-                                {/*        style={{*/}
-                                {/*            backgroundColor: "#ff4757",*/}
-                                {/*            marginRight: "7px",*/}
-                                {/*            fontWeight: "bolder",*/}
-                                {/*        }}*/}
-                                {/*        variant="contained"*/}
-                                {/*        type="submit"*/}
-
-                                {/*    >*/}
-                                {/*        Delete*/}
-                                {/*    </Button>*/}
-                                </div>
-
                             </form>
 
 
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
-                                    // onClick={handleSubmit}
+                                    onClick={handleSubmit}
                                     style={{
-                                        backgroundColor: "#2ed573",
+                                        backgroundColor: "#039b48",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
                                     type="submit"
+
                                 >
                                     Save
                                 </Button>
