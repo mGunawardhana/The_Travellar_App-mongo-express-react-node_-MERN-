@@ -94,19 +94,19 @@ const CustomerForm = () => {
             });
     };
 
-
-    const deleteFromTable = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        axios
-            .delete("customer", key_for_put_and_delete)
-            .then((res) => {
-
-                getAllCustomers();
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+    const handleDelete = () => {
+        if (window.confirm('Do you want to remove this customer ?')) {
+            axios
+                .delete(`customer/${mongoPrimaryKey}`)
+                .then((response) => {
+                    getAllCustomers();
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
     }
 
 
@@ -214,7 +214,51 @@ const CustomerForm = () => {
                                         required
                                     />
                                 </Stack>
+                                <div className="ml-[15px] mt-[0px] pb-[15px]">
+                                    <Button
+                                        // onClick={handleSubmit}
+                                        style={{
+                                            backgroundColor: "#2ed573",
+                                            marginRight: "7px",
+                                            fontWeight: "bolder",
+                                        }}
+                                        variant="contained"
+                                        type="submit"
+                                    >
+                                        Save
+                                    </Button>
+                                {/*    <Button*/}
+                                {/*        style={{*/}
+                                {/*            backgroundColor: "#ffa502",*/}
+                                {/*            marginRight: "7px",*/}
+                                {/*            fontWeight: "bolder",*/}
+                                {/*        }}*/}
+                                {/*        variant="contained"*/}
+                                {/*        type="submit"*/}
+                                {/*    >*/}
+                                {/*        Update*/}
+                                {/*    </Button>*/}
+                                {/*    <Button*/}
+                                {/*        onClick={handleDelete}*/}
+                                {/*        style={{*/}
+                                {/*            backgroundColor: "#ff4757",*/}
+                                {/*            marginRight: "7px",*/}
+                                {/*            fontWeight: "bolder",*/}
+                                {/*        }}*/}
+                                {/*        variant="contained"*/}
+                                {/*        type="submit"*/}
+
+                                {/*    >*/}
+                                {/*        Delete*/}
+                                {/*    </Button>*/}
+                                </div>
+
+                            </form>
+
+
+                            <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
+                                    // onClick={handleSubmit}
                                     style={{
                                         backgroundColor: "#2ed573",
                                         marginRight: "7px",
@@ -237,6 +281,7 @@ const CustomerForm = () => {
                                     Update
                                 </Button>
                                 <Button
+                                    onClick={handleDelete}
                                     style={{
                                         backgroundColor: "#ff4757",
                                         marginRight: "7px",
@@ -248,7 +293,7 @@ const CustomerForm = () => {
                                 >
                                     Delete
                                 </Button>
-                            </form>
+                            </div>
 
                         </React.Fragment>
                     </Paper>
@@ -309,6 +354,7 @@ const CustomerForm = () => {
                                         onClick={(e) => {
                                             console.log(customer._id);
                                             key_for_put_and_delete = customer._id;
+                                            mongoChange(key_for_put_and_delete);
                                             idChange(customer.customerID);
                                             firstNameChange(customer.customerFirstName);
                                             lastNameChange(customer.customerLastName);
