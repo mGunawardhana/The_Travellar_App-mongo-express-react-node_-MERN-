@@ -34,6 +34,7 @@ const DriverForm = () => {
     const [driverContact, driverContactChange] = useState("");
     const [driverEmail, driverEmailChange] = useState("");
 
+    /** variable for storing mongo primary key */
     let driver_key_for_put_and_delete: string | undefined | any;
 
     const getAllDrivers = async () => {
