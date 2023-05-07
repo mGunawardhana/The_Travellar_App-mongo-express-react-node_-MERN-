@@ -75,12 +75,12 @@ const DriverForm = () => {
     const handleSubmitDriver = () => {
 
         let responseBodyForDriver = {
-            customerID: driverID,
-            customerFirstName: driverFirstName,
-            customerLastName: driverLastName,
-            customerAddress: driverLicense,
-            customerContact: driverContact,
-            customerEmail: driverEmail,
+            driverID: driverID,
+            driverFirstName: driverFirstName,
+            driverLastName: driverLastName,
+            driverLicense: driverLicense,
+            driverContact: driverContact,
+            driverEmail: driverEmail,
         };
 
         axios
@@ -124,6 +124,8 @@ const DriverForm = () => {
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={driverID}
+                                        name="driverID"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -134,6 +136,8 @@ const DriverForm = () => {
                                         onChange={handleInputChangeDriver}
                                     />
                                     <TextField
+                                        value={driverFirstName}
+                                        name="driverFirstName"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -146,6 +150,8 @@ const DriverForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={driverLastName}
+                                        name="driverLastName"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -156,6 +162,8 @@ const DriverForm = () => {
                                         onChange={handleInputChangeDriver}
                                     />
                                     <TextField
+                                        value={driverLicense}
+                                        name="driverLicense"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -168,6 +176,8 @@ const DriverForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={driverContact}
+                                        name="driverContact"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -178,6 +188,8 @@ const DriverForm = () => {
                                         onChange={handleInputChangeDriver}
                                     />
                                     <TextField
+                                        value={driverEmail}
+                                        name="driverEmail"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
