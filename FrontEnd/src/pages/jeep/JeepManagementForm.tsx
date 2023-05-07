@@ -41,9 +41,13 @@ const JeepManagementForm = () => {
     let key_for_put_and_delete: string | undefined | any;
 
     /** useRef hooks */
-    const passengerCountTxt = useRef('initial value');
-    const fuelTxt = useRef('initial value');
-    const availabilityTxt = useRef('initial value');
+    // const passengerCountTxt = useRef('initial value');
+    // const fuelTxt = useRef('initial value');
+    // const availabilityTxt = useRef('initial value');
+
+  const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
+   const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
+   const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
 
     /** values for combo box's */
     const passengerCountPack = ["8", "10", "12"];
@@ -128,6 +132,30 @@ const JeepManagementForm = () => {
         }
     };
 
+    const handleUpdate = () => {
+        let responseBody = {
+            vehicleID: vehicleID,
+            vehicleModel: vehicleModel,
+            passengerCount: passengerCount,
+            type: type,
+            fuelType: fuelType,
+            jeepAvailability: jeepAvailability,
+        };
+
+        if (window.confirm("Do you want to update this jeep ?")) {
+            axios
+                .put(`jeep/${mongoPrimaryKey}`, JSON.stringify(responseBody))
+                .then((response) => {
+                    getAllJeeps();
+                    alert("Data Updated successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error updating data. Because: " + error);
+                });
+        }
+    };
+
     return (
         <>
             <SystemHeader/>
@@ -203,13 +231,13 @@ const JeepManagementForm = () => {
                                         renderInput={(params) => (
                                             <TextField {...params} label="Passenger Count"/>
                                         )}
-                                        // value={passengerCount}
+                                        value={passengerCount}
                                     />
 
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <Autocomplete
-                                        // value={fuelType}
+                                        value={fuelType}
                                         disablePortal
                                         id="fuelTxt"
                                         options={fuelTypePack}
@@ -222,7 +250,7 @@ const JeepManagementForm = () => {
                                     />
 
                                     <Autocomplete
-                                        // value={jeepAvailability}
+                                        value={jeepAvailability}
                                         // ref={availability}
                                         disablePortal
                                         id="availabilityTxt"
@@ -257,6 +285,7 @@ const JeepManagementForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+                                    onClick={handleUpdate}
                                 >
                                     Update
                                 </Button>
@@ -337,9 +366,9 @@ const JeepManagementForm = () => {
                                             vehicleModelChange(jeep.vehicleModel);
                                             typeChange(jeep.type);
 
-                                            passengerCountTxt.current = jeep.passengerCount;
-                                            fuelTxt.current = jeep.fuelType;
-                                            availabilityTxt.current = jeep.jeepAvailability;
+                                            passengerCountTxt.value = jeep.passengerCount;
+                                            fuelTxt.value = jeep.fuelType;
+                                            availabilityTxt.value = jeep.jeepAvailability;
                                         }}
                                         key={jeep.vehicleID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}
