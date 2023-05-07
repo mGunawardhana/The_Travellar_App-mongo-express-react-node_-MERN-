@@ -20,8 +20,16 @@ import {JeepProperties} from "../../types/JeepProperties";
 import axios from "../../axios";
 
 const JeepManagementForm = () => {
+
+    /** useState hooks */
+
+    /** this hook is using to load the table */
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+
+    /** this hook is responsible to providing values to update and delete   */
     const [mongoPrimaryKey, mongoChange] = useState("");
+
+    /** text-fields managing hooks  */
     const [vehicleID, vehicleIdChange] = useState("");
     const [vehicleModel, vehicleModelChange] = useState("");
     const [passengerCount, passengerCountChange] = useState("");
@@ -29,17 +37,15 @@ const JeepManagementForm = () => {
     const [fuelType, fuelTypeChange] = useState("");
     const [jeepAvailability, jeepAvailabilityChange] = useState("");
 
+    /** variable for storing mongo primary key */
     let key_for_put_and_delete: string | undefined | any;
 
+    /** useRef hooks */
     const passengerCountTxt = useRef('initial value');
     const fuelTxt = useRef('initial value');
     const availabilityTxt = useRef('initial value');
 
-    // const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
-    // const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
-    // const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
-
-
+    /** values for combo box's */
     const passengerCountPack = ["8", "10", "12"];
     const fuelTypePack = ["Petrol", "Diesel"];
     const availability = ["YES", "NO"];
@@ -99,6 +105,7 @@ const JeepManagementForm = () => {
         axios
             .post("jeep", JSON.stringify(responseBody))
             .then((res) => {
+                getAllJeeps();
                 console.log(responseBody);
             })
             .catch((e) => {
@@ -111,7 +118,7 @@ const JeepManagementForm = () => {
             axios
                 .delete(`jeep/${mongoPrimaryKey}`)
                 .then((response) => {
-                    // getAllCustomers();
+                    getAllJeeps();
                     alert("Data deleted successfully. ");
                 })
                 .catch((error) => {
