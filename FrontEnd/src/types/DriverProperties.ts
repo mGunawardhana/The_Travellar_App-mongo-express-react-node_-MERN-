@@ -1,4 +1,5 @@
 export type DriverProperties = {
+    _id?:string;
     driverID: string;
     driverFirstName: string;
     driverLastName: string;

@@ -21,6 +21,7 @@ import axios from "../../axios";
 const DriverForm = () => {
 
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
+    const [mongoPrimaryKeyDriver, mongoChangeDriver] = useState("");
     const [driverID, driverIdChange] = useState("");
     const [driverFirstName, driverFirstNameChange] = useState("");
     const [driverLastName, driverLastNameChange] = useState("");
@@ -92,6 +93,21 @@ const DriverForm = () => {
             .catch((e) => {
                 console.log(e);
             });
+    }
+
+    const handleDeleteDriver = () => {
+        if (window.confirm('Do you want to remove this driver ?')) {
+            axios
+                .delete(`driver/${mongoPrimaryKeyDriver}`)
+                .then((response) => {
+
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
     }
 
     return (
@@ -280,6 +296,19 @@ const DriverForm = () => {
                             <TableBody>
                                 {driverList.map((driver) => (
                                     <TableRow
+
+                                        onClick={(e) => {
+                                            console.log(driver._id);
+                                            driver_key_for_put_and_delete = driver._id;
+                                            mongoChange(key_for_put_and_delete);
+                                            idChange(customer.customerID);
+                                            firstNameChange(customer.customerFirstName);
+                                            lastNameChange(customer.customerLastName);
+                                            addressChange(customer.customerAddress);
+                                            contactChange(customer.customerContact);
+                                            emailChange(customer.customerEmail);
+                                        }}
+
                                         key={driver.driverID}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                     >
