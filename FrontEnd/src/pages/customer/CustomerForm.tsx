@@ -71,29 +71,6 @@ const CustomerForm = () => {
         }
     };
 
-    // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //
-    //     let responseBody = {
-    //         customerID: customerID,
-    //         customerFirstName: customerFirstName,
-    //         customerLastName: customerLastName,
-    //         customerAddress: customerAddress,
-    //         customerContact: customerContact,
-    //         customerEmail: customerEmail,
-    //     };
-    //
-    //     axios
-    //         .post("customer", responseBody)
-    //         .then((res) => {
-    //             console.log(responseBody);
-    //             getAllCustomers();
-    //         })
-    //         .catch((e) => {
-    //             console.log(e);
-    //         });
-    // };
-
     const handleSubmit= () => {
 
         let responseBody = {
@@ -128,6 +105,32 @@ const CustomerForm = () => {
                 .catch((error) => {
                     console.log(error);
                     alert("Error deleting data. ");
+                });
+        }
+    }
+
+    const handleUpdate = () => {
+
+        let responseBody = {
+            customerID: customerID,
+            customerFirstName: customerFirstName,
+            customerLastName: customerLastName,
+            customerAddress: customerAddress,
+            customerContact: customerContact,
+            customerEmail: customerEmail,
+        };
+
+        if (window.confirm('Do you want to update this customer ?')) {
+
+            axios
+                .put(`customer/${mongoPrimaryKey}`,responseBody)
+                .then((response) => {
+                    getAllCustomers();
+                    alert("Data Updated successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error updating data. Because: "+error);
                 });
         }
     }
@@ -256,6 +259,7 @@ const CustomerForm = () => {
                                     Save
                                 </Button>
                                 <Button
+                                    onClick={handleUpdate}
                                     style={{
                                         backgroundColor: "#ffa502",
                                         marginRight: "7px",
