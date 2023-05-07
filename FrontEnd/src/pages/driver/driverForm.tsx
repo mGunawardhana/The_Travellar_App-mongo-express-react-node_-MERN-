@@ -88,6 +88,7 @@ const DriverForm = () => {
             .post("driver", responseBodyForDriver)
             .then((res) => {
                 console.log(responseBodyForDriver);
+                getAllDrivers();
 
             })
             .catch((e) => {
@@ -100,7 +101,7 @@ const DriverForm = () => {
             axios
                 .delete(`driver/${mongoPrimaryKeyDriver}`)
                 .then((response) => {
-
+                    getAllDrivers();
                     alert("Data deleted successfully. ");
                 })
                 .catch((error) => {
@@ -245,6 +246,7 @@ const DriverForm = () => {
                                     Update
                                 </Button>
                                 <Button
+                                    onClick={handleDeleteDriver}
                                     style={{
                                         backgroundColor: "#ff4757",
                                         marginRight: "7px",
@@ -300,7 +302,7 @@ const DriverForm = () => {
                                         onClick={(e) => {
                                             console.log(driver._id);
                                             driver_key_for_put_and_delete = driver._id;
-                                            mongoChange(key_for_put_and_delete);
+                                            mongoChangeDriver(driver_key_for_put_and_delete);
                                             driverIdChange(driver.driverID);
                                             driverFirstNameChange(driver.driverFirstName);
                                             driverLastNameChange(driver.driverLastName);
