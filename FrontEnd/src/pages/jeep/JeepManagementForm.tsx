@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {
     Autocomplete,
@@ -19,13 +19,13 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {JeepProperties} from "../../types/JeepProperties";
 import axios from "../../axios";
 
-const passengerCount = [
+const passengerCountPack = [
     {label: "8"},
     {label: "12"},
     {label: "16"},
 ];
 
-const fuelType = [
+const fuelTypePack = [
     {label: "Petrol"},
     {label: "Diesel"},
 ];
@@ -36,15 +36,12 @@ const availability = [{label: "Yes"}, {label: "No"}];
 const JeepManagementForm = () => {
 
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
-
-    const [mongoPrimaryKey, mongoChange] = useState("");
-    const [vehicleID, idChange] = useState("");
-    const [vehicleModel, modelChange] = useState("");
+    const [vehicleID, vehicleIdChange] = useState("");
+    const [vehicleModel, vehicleModelChange] = useState("");
     const [passengerCount, passengerCountChange] = useState("");
     const [type, typeChange] = useState("");
-    const [fuelType, fuelChange] = useState("");
-    const [jeepAvailability, jeepChange] = useState("");
-
+    const [fuelType, fuelTypeChange] = useState("");
+    const [jeepAvailability,jeepAvailabilityChange] = useState("");
 
 
     const getAllJeeps = async () => {
@@ -63,31 +60,6 @@ const JeepManagementForm = () => {
         });
     }, []);
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = event.target;
-        switch (name) {
-            case "customerID":
-                idChange(value);
-                break;
-            case "customerFirstName":
-                firstNameChange(value);
-                break;
-            case "customerLastName":
-                lastNameChange(value);
-                break;
-            case "customerAddress":
-                addressChange(value);
-                break;
-            case "customerContact":
-                contactChange(value);
-                break;
-            case "customerEmail":
-                emailChange(value);
-                break;
-            default:
-                break;
-        }
-    };
 
     return (
         <>
@@ -142,7 +114,7 @@ const JeepManagementForm = () => {
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
-                                        options={passengerCount}
+                                        options={passengerCountPack}
                                         size="small"
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Passenger Count"/>}
@@ -161,7 +133,7 @@ const JeepManagementForm = () => {
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
-                                        options={fuelType}
+                                        options={fuelTypePack}
                                         size="small"
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Fuel Type"/>}
