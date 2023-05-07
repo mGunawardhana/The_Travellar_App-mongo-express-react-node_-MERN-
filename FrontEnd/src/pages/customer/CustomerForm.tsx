@@ -19,6 +19,7 @@ import axios from "../../axios";
 
 const CustomerForm = () => {
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+
     const [mongoPrimaryKey, mongoChange] = useState("");
     const [customerID, idChange] = useState("");
     const [customerFirstName, firstNameChange] = useState("");
@@ -355,6 +356,7 @@ const CustomerForm = () => {
 
                                         key={customer.customerID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}>
+
                                         <TableCell align="right">{customer.customerID}</TableCell>
                                         <TableCell align="right">{customer.customerFirstName}</TableCell>
                                         <TableCell align="right">{customer.customerLastName}</TableCell>

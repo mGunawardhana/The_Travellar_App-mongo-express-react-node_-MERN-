@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 import {
     Button,
@@ -20,9 +20,15 @@ import axios from "../../axios";
 
 const DriverForm = () => {
 
-    const [driverList, setDriverList]
-        = useState<DriverProperties[]>([]);
+    const [driverList, setDriverList] = useState<DriverProperties[]>([]);
+    const [driverID, driverIdChange] = useState("");
+    const [driverFirstName, driverFirstNameChange] = useState("");
+    const [driverLastName, driverLastNameChange] = useState("");
+    const [driverLicense, driverAddressChange] = useState("");
+    const [driverContact, driverContactChange] = useState("");
+    const [driverEmail, driverEmailChange] = useState("");
 
+    let driver_key_for_put_and_delete: string | undefined | any;
 
     const getAllDrivers = async () => {
         try {
@@ -40,6 +46,31 @@ const DriverForm = () => {
         });
     }, []);
 
+    const handleInputChangeDriver = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = event.target;
+        switch (name) {
+            case "driverID":
+                driverIdChange(value);
+                break;
+            case "driverFirstName":
+                driverFirstNameChange(value);
+                break;
+            case "driverLastName":
+                driverLastNameChange(value);
+                break;
+            case "driverLicense":
+                driverAddressChange(value);
+                break;
+            case "driverContact":
+                driverContactChange(value);
+                break;
+            case "driverEmail":
+                driverEmailChange(value);
+                break;
+            default:
+                break;
+        }
+    };
 
     return (
         <>
