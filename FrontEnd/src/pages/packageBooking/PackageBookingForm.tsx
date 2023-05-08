@@ -37,7 +37,7 @@ const PackageBookingForm = () => {
     /** customer combo loading operations --------------------------------------------------------------------------- */
 
 
-
+    /** API calling function for get all customers */
     const getAllCustomers = async () => {
         try {
             const response = await axios.get("customer");
