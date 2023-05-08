@@ -270,15 +270,15 @@ const PackageForm = () => {
                                     <TableRow
 
                                         onClick={(e) => {
-                                            console.log(customer._id);
-                                            key_for_put_and_delete = customer._id;
+                                            console.log(samplePackage._id);
+                                            key_for_put_and_delete = samplePackage._id;
                                             mongoChange(key_for_put_and_delete);
-                                            idChange(customer.customerID);
-                                            firstNameChange(customer.customerFirstName);
-                                            lastNameChange(customer.customerLastName);
-                                            addressChange(customer.customerAddress);
-                                            contactChange(customer.customerContact);
-                                            emailChange(customer.customerEmail);
+                                            idChange(samplePackage.packageID);
+                                            firstNameChange(samplePackage.packageName);
+                                            lastNameChange(samplePackage.daysHrsCount);
+                                            addressChange(samplePackage.description);
+                                            contactChange(samplePackage.offers);
+                                            emailChange(samplePackage.packageAmount);
                                         }}
 
 
