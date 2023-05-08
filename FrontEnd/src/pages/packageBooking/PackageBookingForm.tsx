@@ -40,7 +40,7 @@ const PackageBookingForm = () => {
 
     /** these hooks are responsible to manage driver lists and their id lists */
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
-
+    const [driver_code, setDriverCode] = useState<string[]>([]);
 
     /** API calling function for get all drivers */
     const getAllDrivers = async () => {
