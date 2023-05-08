@@ -28,8 +28,8 @@ const PackageForm = () => {
     const [packageName, packageNameChange] = useState("");
     const [daysHrsCount, daysHrsCountChange] = useState("");
     const [description, descriptionChange] = useState("");
-    const [offers, offersChange] = useState(2);
-    const [packageAmount, packageAmountChange] = useState(2);
+    const [offers, offersChange] = useState(0);
+    const [packageAmount, packageAmountChange] = useState(0);
 
     let key_for_put_and_delete: string | undefined | any;
 
@@ -144,7 +144,7 @@ const PackageForm = () => {
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         value={packageID}
-                                        name={}
+                                        name="packageID"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -156,7 +156,7 @@ const PackageForm = () => {
                                     />
                                     <TextField
                                         value={packageName}
-                                        name={}
+                                        name="packageName"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -171,7 +171,7 @@ const PackageForm = () => {
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         value={daysHrsCount}
-                                        name={}
+                                        name="daysHrsCount"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -183,7 +183,7 @@ const PackageForm = () => {
                                     />
                                     <TextField
                                         value={description}
-                                        name={}
+                                        name="description"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -197,7 +197,7 @@ const PackageForm = () => {
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         value={offers}
-                                        name={}
+                                        name="offers"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -209,7 +209,7 @@ const PackageForm = () => {
                                     />
                                     <TextField
                                         value={packageAmount}
-                                        name={}
+                                        name="packageAmount"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
