@@ -67,6 +67,7 @@ const PackageBookingForm = () => {
         }
     };
 
+    /** filtering only primary keys in jeep list */
     useEffect(() => {
         const codes = jeepList.map((jeep) => jeep.vehicleID);
         setJeepCode(codes);
