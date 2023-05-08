@@ -23,13 +23,16 @@ import {CustomerProperties} from "../../types/CustomerPropertes";
 
 const PackageBookingForm = () => {
 
-    /** these hooks responsible to store all there objects */
-    const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+    /** these hooks are responsible to manage jeep lists and there id lists */
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+    const [jeep_code, setJeepCode] = useState<string[]>([]);
 
     /** these hooks are responsible to storing their id's */
+    const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
     const [customer_code, setCustomerCode] = useState<string[]>([]);
-    const [jeep_code, setJeepCode] = useState<string[]>([]);
+
+    /** these hooks are responsible to storing their id's */
+
 
     const packages = ["P001", "P002", "P003"];
     const driver_code = ["D001", "D002"];
