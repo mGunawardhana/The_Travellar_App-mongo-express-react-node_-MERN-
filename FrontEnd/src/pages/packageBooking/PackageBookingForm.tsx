@@ -19,6 +19,7 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
 import {JeepProperties} from "../../types/JeepProperties";
 import {CustomerProperties} from "../../types/CustomerPropertes";
+import {PackageProperties} from "../../types/PackageProperties";
 
 
 const PackageBookingForm = () => {
@@ -31,8 +32,16 @@ const PackageBookingForm = () => {
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
     const [customer_code, setCustomerCode] = useState<string[]>([]);
 
-    /** these hooks are responsible to storing their id's */
-
+    const [packageList, setPackageList] = useState<PackageProperties[]>([]);
+    const getAllPackages = async () => {
+        try {
+            const response = await axios.get("package");
+            setPackageList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const packages = ["P001", "P002", "P003"];
     const driver_code = ["D001", "D002"];
