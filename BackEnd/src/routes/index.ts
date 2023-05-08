@@ -13,7 +13,7 @@ router.use(`${url_prefix}/customer`,new CustomerRoutes().getRouter());
 
 router.use(`${url_prefix}/package`,new PackageRoutes().getRouter());
 
-router.use(`${url_prefix}/vehicle`,new VehicleRoutes().getRouter());
+router.use(`${url_prefix}/jeep`,new VehicleRoutes().getRouter());
 
 router.use(`${url_prefix}/driver`,new DriverRoutes().getRouter());
 
