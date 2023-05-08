@@ -41,17 +41,29 @@ const PackageBookingForm = () => {
     /** these hooks are responsible to manage driver lists and their id lists */
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
 
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
 
+    /** API calling function for get all drivers */
     const getAllDrivers = async () => {
         try {
             const response = await axios.get("driver");
             setDriverList(response.data.responseData);
-            console.log(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
     };
+
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
     //TODO developers working top of the code do not enter -------------------------------------------------------------
 
     /** API calling function for get all packages */
