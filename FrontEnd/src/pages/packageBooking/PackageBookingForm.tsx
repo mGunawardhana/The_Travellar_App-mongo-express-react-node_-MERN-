@@ -24,6 +24,9 @@ import {PackageProperties} from "../../types/PackageProperties";
 
 const PackageBookingForm = () => {
 
+    const packages = ["P001", "P002", "P003"];
+    const driver_code = ["D001", "D002"];
+
     /** these hooks are responsible to manage jeep lists and their id lists */
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
     const [jeep_code, setJeepCode] = useState<string[]>([]);
@@ -46,8 +49,17 @@ const PackageBookingForm = () => {
         }
     };
 
-    const packages = ["P001", "P002", "P003"];
-    const driver_code = ["D001", "D002"];
+    //TODO Safe zone ---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
+
 
     /** API calling function for get all customers */
     const getAllCustomers = async () => {
