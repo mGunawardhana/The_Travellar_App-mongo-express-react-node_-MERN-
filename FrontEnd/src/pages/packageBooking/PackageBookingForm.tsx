@@ -72,6 +72,7 @@ const PackageBookingForm = () => {
         setJeepCode(codes);
     }, [jeepList]);
 
+    /** calling get all jeep's method */
     useEffect(() => {
         getAllJeeps().then(r => {
             console.log(r + " loading jeeps...")
