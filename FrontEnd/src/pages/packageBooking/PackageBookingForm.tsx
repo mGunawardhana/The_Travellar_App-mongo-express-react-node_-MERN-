@@ -53,7 +53,7 @@ const PackageBookingForm = () => {
         setCustomerCode(codes);
     }, [customerList]);
 
-    /**  */
+    /** calling get all customers method */
     useEffect(() => {
         getAllCustomers().then(r => {
             console.log(r + " loading customers...")
