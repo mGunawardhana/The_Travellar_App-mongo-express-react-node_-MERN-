@@ -88,13 +88,36 @@ const PackageForm = () => {
         axios
             .post("package", responseBody)
             .then((res) => {
-                alert(responseBody)
                 console.log(responseBody);
                 getAllPackages();
             })
             .catch((e) => {
                 console.log(e);
             });
+    };
+
+    const handleUpdate = () => {
+        let responseBody = {
+            packageID: packageID,
+            packageName: packageName,
+            daysHrsCount: daysHrsCount,
+            description: description,
+            offers: offers,
+            packageAmount: packageAmount,
+        };
+
+        if (window.confirm("Do you want to update this package ?")) {
+            axios
+                .put(`package/${mongoPrimaryKey}`, responseBody)
+                .then((response) => {
+                    getAllPackages();
+                    alert("Data Updated successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error updating data. Because: " + error);
+                });
+        }
     };
 
     const handleDelete = () => {
