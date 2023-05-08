@@ -161,7 +161,7 @@ const PackageBookingForm = () => {
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
-                                        options={packages}
+                                        options={package_code}
                                         size="small"
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Package Code"/>}
