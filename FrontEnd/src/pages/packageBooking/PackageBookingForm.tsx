@@ -23,8 +23,6 @@ import {PackageProperties} from "../../types/PackageProperties";
 
 
 const PackageBookingForm = () => {
-
-    const packages = ["P001", "P002", "P003"];
     const driver_code = ["D001", "D002"];
 
     /** these hooks are responsible to manage jeep lists and their id lists */
