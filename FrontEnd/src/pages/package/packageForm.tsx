@@ -28,8 +28,10 @@ const PackageForm = () => {
     const [packageName, packageNameChange] = useState("");
     const [daysHrsCount, daysHrsCountChange] = useState("");
     const [description, descriptionChange] = useState("");
-    const [offers, offersChange] = useState("");
-    const [packageAmount, packageAmountChange] = useState("");
+    const [offers, offersChange] = useState(2);
+    const [packageAmount, packageAmountChange] = useState(2);
+
+    let key_for_put_and_delete: string | undefined | any;
 
     const getAllPackages = async () => {
         try {
@@ -63,10 +65,10 @@ const PackageForm = () => {
                 descriptionChange(value);
                 break;
             case "offers":
-                offersChange(value);
+                offersChange(parseInt(value));
                 break;
             case "packageAmount":
-                packageAmountChange(value);
+                packageAmountChange(parseInt(value));
                 break;
             default:
                 break;
@@ -86,12 +88,28 @@ const PackageForm = () => {
         axios
             .post("package", responseBody)
             .then((res) => {
+                alert(responseBody)
                 console.log(responseBody);
                 getAllPackages();
             })
             .catch((e) => {
                 console.log(e);
             });
+    };
+
+    const handleDelete = () => {
+        if (window.confirm("Do you want to remove this customer ?")) {
+            axios
+                .delete(`package/${mongoPrimaryKey}`)
+                .then((response) => {
+                    getAllPackages();
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
     };
 
 
@@ -125,6 +143,8 @@ const PackageForm = () => {
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={packageID}
+                                        name={}
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -135,6 +155,8 @@ const PackageForm = () => {
                                         required
                                     />
                                     <TextField
+                                        value={packageName}
+                                        name={}
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -148,6 +170,8 @@ const PackageForm = () => {
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={daysHrsCount}
+                                        name={}
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -158,6 +182,8 @@ const PackageForm = () => {
                                         required
                                     />
                                     <TextField
+                                        value={description}
+                                        name={}
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -170,6 +196,8 @@ const PackageForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={offers}
+                                        name={}
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -180,6 +208,8 @@ const PackageForm = () => {
                                         required
                                     />
                                     <TextField
+                                        value={packageAmount}
+                                        name={}
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
@@ -190,10 +220,11 @@ const PackageForm = () => {
                                         required
                                     />
                                 </Stack>
-
                             </form>
+
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
+                                    onClick={handleSubmit}
                                     style={{
                                         backgroundColor: "#2ed573",
                                         marginRight: "7px",
@@ -201,7 +232,6 @@ const PackageForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
-                                    onClick={handleSubmit}
                                 >
                                     Save
                                 </Button>
@@ -217,6 +247,7 @@ const PackageForm = () => {
                                     Update
                                 </Button>
                                 <Button
+                                    onClick={handleDelete}
                                     style={{
                                         backgroundColor: "#ff4757",
                                         marginRight: "7px",
@@ -273,15 +304,13 @@ const PackageForm = () => {
                                             console.log(samplePackage._id);
                                             key_for_put_and_delete = samplePackage._id;
                                             mongoChange(key_for_put_and_delete);
-                                            idChange(samplePackage.packageID);
-                                            firstNameChange(samplePackage.packageName);
-                                            lastNameChange(samplePackage.daysHrsCount);
-                                            addressChange(samplePackage.description);
-                                            contactChange(samplePackage.offers);
-                                            emailChange(samplePackage.packageAmount);
+                                            packageIdChange(samplePackage.packageID);
+                                            packageNameChange(samplePackage.packageName);
+                                            daysHrsCountChange(samplePackage.daysHrsCount);
+                                            descriptionChange(samplePackage.description);
+                                            offersChange(samplePackage.offers);
+                                            packageAmountChange(samplePackage.packageAmount);
                                         }}
-
-
 
                                         key={samplePackage.packageID}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
