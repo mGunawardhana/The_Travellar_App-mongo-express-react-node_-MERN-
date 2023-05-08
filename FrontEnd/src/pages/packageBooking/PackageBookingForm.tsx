@@ -64,9 +64,9 @@ const PackageBookingForm = () => {
         }
     };
     useEffect(() => {
-        const codes = customerList.map((customer) => customer.customerID);
-        setCustomerCode(codes);
-    }, [customerList]);
+        const codes = jeepList.map((jeep) => jeep.vehicleID);
+        setJeepCode(codes);
+    }, [jeepList]);
 
     const setUpCustomerName = () => {
 
