@@ -41,6 +41,8 @@ const PackageBookingForm = () => {
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
     const [driver_code, setDriverCode] = useState<string[]>([]);
 
+    /* -------------------------------------------------------------------------------------------------------------- */
+
     /** API calling function for get all jeeps */
     const getAllJeeps = async () => {
         try {
@@ -50,6 +52,22 @@ const PackageBookingForm = () => {
             console.log(error);
         }
     };
+
+    /** filtering only primary keys in jeep list */
+    useEffect(() => {
+        const codes = jeepList.map((jeep) => jeep.vehicleID);
+        setJeepCode(codes);
+    }, [jeepList]);
+
+    /** calling get all jeep's method */
+    useEffect(() => {
+        getAllJeeps().then(r => {
+            console.log(r + " loading jeeps...")
+        });
+    }, []);
+
+
+    /* -------------------------------------------------------------------------------------------------------------- */
 
     /** API calling function for get all customers */
     const getAllCustomers = async () => {
@@ -61,21 +79,26 @@ const PackageBookingForm = () => {
         }
     };
 
+    /** filtering only primary keys in customer list */
+    useEffect(() => {
+        const codes = customerList.map((customer) => customer.customerID);
+        setCustomerCode(codes);
+    }, [customerList]);
+
+    /** calling get all customers method */
+    useEffect(() => {
+        getAllCustomers().then(r => {
+            console.log(r + " loading customers...")
+        });
+    }, []);
+
+    /* -------------------------------------------------------------------------------------------------------------- */
+
     /** API calling function for get all drivers */
     const getAllDrivers = async () => {
         try {
             const response = await axios.get("driver");
             setDriverList(response.data.responseData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    /** API calling function for get all packages */
-    const getAllPackages = async () => {
-        try {
-            const response = await axios.get("package");
-            setPackageList(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
@@ -94,7 +117,17 @@ const PackageBookingForm = () => {
         });
     }, []);
 
+    /* -------------------------------------------------------------------------------------------------------------- */
 
+    /** API calling function for get all packages */
+    const getAllPackages = async () => {
+        try {
+            const response = await axios.get("package");
+            setPackageList(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     /** filtering only primary keys in package list */
     useEffect(() => {
@@ -109,36 +142,7 @@ const PackageBookingForm = () => {
         });
     }, []);
 
-
-
-    /** filtering only primary keys in customer list */
-    useEffect(() => {
-        const codes = customerList.map((customer) => customer.customerID);
-        setCustomerCode(codes);
-    }, [customerList]);
-
-    /** calling get all customers method */
-    useEffect(() => {
-        getAllCustomers().then(r => {
-            console.log(r + " loading customers...")
-        });
-    }, []);
-
-
-
-    /** filtering only primary keys in jeep list */
-    useEffect(() => {
-        const codes = jeepList.map((jeep) => jeep.vehicleID);
-        setJeepCode(codes);
-    }, [jeepList]);
-
-    /** calling get all jeep's method */
-    useEffect(() => {
-        getAllJeeps().then(r => {
-            console.log(r + " loading jeeps...")
-        });
-    }, []);
-
+    /* -------------------------------------------------------------------------------------------------------------- */
 
     return (
         <>
