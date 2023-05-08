@@ -24,15 +24,18 @@ import {PackageProperties} from "../../types/PackageProperties";
 
 const PackageBookingForm = () => {
 
-    /** these hooks are responsible to manage jeep lists and there id lists */
+    /** these hooks are responsible to manage jeep lists and their id lists */
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
     const [jeep_code, setJeepCode] = useState<string[]>([]);
 
-    /** these hooks are responsible to manage customer lists and there id lists */
+    /** these hooks are responsible to manage customer lists and their id lists */
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
     const [customer_code, setCustomerCode] = useState<string[]>([]);
 
+    /** these hooks are responsible to manage customer lists and their id lists */
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
+    const [package_code, setPackageCode] = useState<string[]>([]);
+
     const getAllPackages = async () => {
         try {
             const response = await axios.get("package");
