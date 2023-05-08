@@ -23,13 +23,13 @@ import axios from "../../axios";
 const PackageForm = () => {
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
 
-      const [mongoPrimaryKey, mongoChange] = useState("");
-      const [packageID, packageIdChange] = useState("");
-      const [packageName, packageNameChange] = useState("");
-      const [daysHrsCount, daysHrsCountChange] = useState("");
-      const [description, descriptionChange] = useState("");
-      const [offers, offersChange] = useState("");
-      const [packageAmount, packageAmountChange] = useState("");
+    const [mongoPrimaryKey, mongoChange] = useState("");
+    const [packageID, packageIdChange] = useState("");
+    const [packageName, packageNameChange] = useState("");
+    const [daysHrsCount, daysHrsCountChange] = useState("");
+    const [description, descriptionChange] = useState("");
+    const [offers, offersChange] = useState("");
+    const [packageAmount, packageAmountChange] = useState("");
 
     const getAllPackages = async () => {
         try {
@@ -48,7 +48,7 @@ const PackageForm = () => {
     }, []);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
         switch (name) {
             case "packageID":
                 packageIdChange(value);
@@ -143,7 +143,7 @@ const PackageForm = () => {
                                         required
                                     />
                                 </Stack>
-                               
+
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         type="text"
@@ -186,39 +186,41 @@ const PackageForm = () => {
                                 </Stack>
 
                             </form>
-                            <Button
-                                style={{
-                                    backgroundColor: "#2ed573",
-                                    marginRight: "7px",
-                                    fontWeight: "bolder",
-                                }}
-                                variant="contained"
-                                type="submit"
-                            >
-                                Save
-                            </Button>
-                            <Button
-                                style={{
-                                    backgroundColor: "#ffa502",
-                                    marginRight: "7px",
-                                    fontWeight: "bolder",
-                                }}
-                                variant="contained"
-                                type="submit"
-                            >
-                                Update
-                            </Button>
-                            <Button
-                                style={{
-                                    backgroundColor: "#ff4757",
-                                    marginRight: "7px",
-                                    fontWeight: "bolder",
-                                }}
-                                variant="contained"
-                                type="submit"
-                            >
-                                Delete
-                            </Button>
+                            <div className="ml-[15px] mt-[0px] pb-[15px]">
+                                <Button
+                                    style={{
+                                        backgroundColor: "#2ed573",
+                                        marginRight: "7px",
+                                        fontWeight: "bolder",
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                >
+                                    Save
+                                </Button>
+                                <Button
+                                    style={{
+                                        backgroundColor: "#ffa502",
+                                        marginRight: "7px",
+                                        fontWeight: "bolder",
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                >
+                                    Update
+                                </Button>
+                                <Button
+                                    style={{
+                                        backgroundColor: "#ff4757",
+                                        marginRight: "7px",
+                                        fontWeight: "bolder",
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                >
+                                    Delete
+                                </Button>
+                            </div>
                         </React.Fragment>
                     </Paper>
 
