@@ -59,14 +59,6 @@ const PackageBookingForm = () => {
         setJeepCode(codes);
     }, [jeepList]);
 
-    /** calling get all jeep's method */
-    useEffect(() => {
-        getAllJeeps().then(r => {
-            console.log(r + " loading jeeps...")
-        });
-    }, []);
-
-
     /* -------------------------------------------------------------------------------------------------------------- */
 
     /** API calling function for get all customers */
@@ -84,13 +76,6 @@ const PackageBookingForm = () => {
         const codes = customerList.map((customer) => customer.customerID);
         setCustomerCode(codes);
     }, [customerList]);
-
-    /** calling get all customers method */
-    useEffect(() => {
-        getAllCustomers().then(r => {
-            console.log(r + " loading customers...")
-        });
-    }, []);
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
@@ -110,13 +95,6 @@ const PackageBookingForm = () => {
         setDriverCode(codes);
     }, [driverList]);
 
-    /** calling get all package method */
-    useEffect(() => {
-        getAllDrivers().then(r => {
-            console.log(r + " loading drivers...")
-        });
-    }, []);
-
     /* -------------------------------------------------------------------------------------------------------------- */
 
     /** API calling function for get all packages */
@@ -135,14 +113,28 @@ const PackageBookingForm = () => {
         setPackageCode(codes);
     }, [packageList]);
 
-    /** calling get all package method */
+    /* -------------------------------------------------------------------------------------------------------------- */
+
+    /** calling get all jeep's method */
     useEffect(() => {
+
+        getAllJeeps().then(r => {
+            console.log(r + " loading jeeps...")
+        });
+
+        getAllCustomers().then(r => {
+            console.log(r + " loading customers...")
+        });
+
+        getAllDrivers().then(r => {
+            console.log(r + " loading drivers...")
+        });
+
         getAllPackages().then(r => {
             console.log(r + " loading packages...")
         });
-    }, []);
 
-    /* -------------------------------------------------------------------------------------------------------------- */
+    }, []);
 
     return (
         <>
