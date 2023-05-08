@@ -49,11 +49,16 @@ const PackageBookingForm = () => {
         }
     };
 
-    //TODO Safe zone ---------------------------------------------------------------------------------------------------
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
 
 
 
 
+    /** filtering only primary keys in customer list */
+    useEffect(() => {
+        const codes = packageList.map((package) => package.customerID);
+        setCustomerCode(codes);
+    }, [customerList]);
 
 
 
