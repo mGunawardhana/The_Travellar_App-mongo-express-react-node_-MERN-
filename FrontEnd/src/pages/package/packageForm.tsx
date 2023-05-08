@@ -75,12 +75,12 @@ const PackageForm = () => {
 
     const handleSubmit = () => {
         let responseBody = {
-            packageID: customerID,
-            packageName: customerFirstName,
-            daysHrsCount: customerLastName,
-            description: customerAddress,
-            offers: customerContact,
-            packageAmount: customerEmail,
+            packageID: packageID,
+            packageName: packageName,
+            daysHrsCount: daysHrsCount,
+            description: description,
+            offers: offers,
+            packageAmount: packageAmount,
         };
 
         axios
