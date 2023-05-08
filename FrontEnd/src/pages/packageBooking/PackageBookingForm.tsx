@@ -67,7 +67,11 @@ const PackageBookingForm = () => {
         const codes = jeepList.map((jeep) => jeep.vehicleID);
         setJeepCode(codes);
     }, [jeepList]);
-
+    useEffect(() => {
+        getAllJeeps().then(r => {
+            console.log(r + " loading jeeps...")
+        });
+    }, []);
 
 
     return (
