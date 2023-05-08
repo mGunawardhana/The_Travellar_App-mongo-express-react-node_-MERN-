@@ -49,14 +49,21 @@ const PackageBookingForm = () => {
         }
     };
 
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
-
-
     /** filtering only primary keys in package list */
     useEffect(() => {
         const codes = packageList.map((pack) => pack.packageID);
         setPackageCode(codes);
     }, [packageList]);
+
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
+
+    /** calling get all customers method */
+    useEffect(() => {
+        getAllPackages().then(r => {
+            console.log(r + " loading customers...")
+        });
+    }, []);
+
 
 
     //TODO developers working top of the code do not enter -------------------------------------------------------------
