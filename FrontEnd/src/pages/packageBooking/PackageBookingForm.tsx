@@ -57,19 +57,12 @@ const PackageBookingForm = () => {
         setDriverCode(codes);
     }, [driverList]);
 
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
+    /** calling get all package method */
+    useEffect(() => {
+        getAllDrivers().then(r => {
+            console.log(r + " loading drivers...")
+        });
+    }, []);
 
     /** API calling function for get all packages */
     const getAllPackages = async () => {
