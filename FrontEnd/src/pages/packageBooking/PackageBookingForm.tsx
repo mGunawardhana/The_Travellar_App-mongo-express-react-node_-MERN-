@@ -57,7 +57,7 @@ const PackageBookingForm = () => {
 
     //TODO developers working top of the code do not enter -------------------------------------------------------------
 
-    /** calling get all customers method */
+    /** calling get all package method */
     useEffect(() => {
         getAllPackages().then(r => {
             console.log(r + " loading customers...")
