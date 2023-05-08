@@ -23,6 +23,14 @@ import axios from "../../axios";
 const PackageForm = () => {
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
 
+      const [mongoPrimaryKey, mongoChange] = useState("");
+      const [packageID, packageIdChange] = useState("");
+      const [packageName, packageNameChange] = useState("");
+      const [daysHrsCount, daysHrsCountChange] = useState("");
+      const [description, descriptionChange] = useState("");
+      const [offers, offersChange] = useState("");
+      const [packageAmount, packageAmountChange] = useState("");
+
     const getAllPackages = async () => {
         try {
             const response = await axios.get("package");
@@ -87,25 +95,7 @@ const PackageForm = () => {
                                         required
                                     />
                                 </Stack>
-                                {/*<Stack spacing={2} direction="row" sx={{marginBottom: 2}}>*/}
-                                {/*    <Autocomplete*/}
-                                {/*        disablePortal*/}
-                                {/*        id="combo-box-demo"*/}
-                                {/*        options={guide}*/}
-                                {/*        size="small"*/}
-                                {/*        fullWidth*/}
-                                {/*        renderInput={(params) => <TextField {...params} label="Guide Code" />}*/}
-                                {/*    />*/}
-                                {/*    <TextField*/}
-                                {/*        type="text"*/}
-                                {/*        variant="outlined"*/}
-                                {/*        color="secondary"*/}
-                                {/*        label="Guide Name"*/}
-                                {/*        size="small"*/}
-                                {/*        fullWidth*/}
-                                {/*        required*/}
-                                {/*    />*/}
-                                {/*</Stack>*/}
+                               
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         type="text"
