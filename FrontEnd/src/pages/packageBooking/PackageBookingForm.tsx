@@ -136,6 +136,23 @@ const PackageBookingForm = () => {
 
     }, []);
 
+    const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
+    const passengerName = document.getElementById('packageName') as HTMLInputElement;
+
+
+    function setUpCustomerProps() {
+        packageList.map((pack) => {
+            if (pack.packageID === passengerCountTxt.value) {
+                passengerName.value = pack.packageName.toString();
+//TODO heta udeta metanin patan ganna
+            }
+
+            console.log(pack.packageName);
+        });
+
+
+    }
+
     return (
         <>
             <SystemHeader/>
@@ -166,6 +183,7 @@ const PackageBookingForm = () => {
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        id="bookingId"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -178,17 +196,22 @@ const PackageBookingForm = () => {
 
                                     <Autocomplete
                                         disablePortal
-                                        id="combo-box-demo"
+                                        id="packageCode"
                                         options={package_code}
                                         size="small"
                                         fullWidth
+                                        onChange={event => {
+                                            setUpCustomerProps();
+                                        }}
+                                        // ref={myTextField}
                                         renderInput={(params) => <TextField {...params} label="Package Code"/>}
                                     />
                                     <TextField
+                                        id="packageName"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Package Name"
+                                        placeholder="Package Name"
                                         size="small"
                                         fullWidth
                                         required
@@ -287,7 +310,7 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Button
-                                    // onClick={getAllCustomers}
+                                    onClick={setUpCustomerProps}
                                     style={{
                                         backgroundColor: "#2ed573",
                                         marginRight: "7px",
