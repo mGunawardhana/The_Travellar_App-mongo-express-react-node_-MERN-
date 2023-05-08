@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 import {
     Button,
@@ -46,6 +46,33 @@ const PackageForm = () => {
             console.log(packageList);
         });
     }, []);
+
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        switch (name) {
+            case "packageID":
+                packageIdChange(value);
+                break;
+            case "packageName":
+                packageNameChange(value);
+                break;
+            case "daysHrsCount":
+                daysHrsCountChange(value);
+                break;
+            case "description":
+                descriptionChange(value);
+                break;
+            case "offers":
+                offersChange(value);
+                break;
+            case "packageAmount":
+                packageAmountChange(value);
+                break;
+            default:
+                break;
+        }
+    };
+
 
     return (
         <>
