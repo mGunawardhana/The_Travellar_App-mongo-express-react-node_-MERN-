@@ -17,15 +17,17 @@ import {
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
-import {CustomerProperties} from "../../types/CustomerPropertes";
 import {JeepProperties} from "../../types/JeepProperties";
+import {CustomerProperties} from "../../types/CustomerPropertes";
 
 
 const PackageBookingForm = () => {
 
     const packages = ["P001", "P002", "P003"];
-    const jeep_code = ["J001", "J002"];
+    // const jeep_code = ["J001", "J002"];
     const driver_code = ["D001", "D002"];
+
+    /** customer combo loading operations --------------------------------------------------------------------------- */
 
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
     const [customer_code, setCustomerCode] = useState<string[]>([]);
@@ -43,30 +45,24 @@ const PackageBookingForm = () => {
         const codes = customerList.map((customer) => customer.customerID);
         setCustomerCode(codes);
     }, [customerList]);
-
     useEffect(() => {
         getAllCustomers().then(r => {
             console.log(r + " loading customers...")
         });
     }, []);
 
+    /** ------------------------------------------------------------------------------------------------------------- */
 
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+    const [jeep_code, setJeepCode] = useState<string[]>([]);
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
             setJeepList(response.data.responseData);
-            console.log(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
     };
-
-
-
-
-
-
 
 
     const setUpCustomerName = () => {
