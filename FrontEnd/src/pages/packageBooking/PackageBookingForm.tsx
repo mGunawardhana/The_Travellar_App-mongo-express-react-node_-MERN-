@@ -41,6 +41,16 @@ const PackageBookingForm = () => {
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
     const [driver_code, setDriverCode] = useState<string[]>([]);
 
+    /** API calling function for get all jeeps */
+    const getAllJeeps = async () => {
+        try {
+            const response = await axios.get("jeep");
+            setJeepList(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     /** API calling function for get all drivers */
     const getAllDrivers = async () => {
         try {
@@ -110,15 +120,7 @@ const PackageBookingForm = () => {
         });
     }, []);
 
-    /** API calling function for get all jeeps */
-    const getAllJeeps = async () => {
-        try {
-            const response = await axios.get("jeep");
-            setJeepList(response.data.responseData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+
 
     /** filtering only primary keys in jeep list */
     useEffect(() => {
