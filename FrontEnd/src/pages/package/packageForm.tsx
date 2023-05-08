@@ -18,6 +18,7 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {PackageProperties} from "../../types/PackageProperties";
 import axios from "../../axios";
 
+
 // const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
 
 const PackageForm = () => {
@@ -96,6 +97,21 @@ const PackageForm = () => {
             });
     };
 
+    const handleDelete = () => {
+        if (window.confirm("Do you want to remove this customer ?")) {
+            axios
+                .delete(`package/${mongoPrimaryKey}`)
+                .then((response) => {
+                    getAllPackages();
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
+    };
+
     const handleUpdate = () => {
         let responseBody = {
             packageID: packageID,
@@ -116,21 +132,6 @@ const PackageForm = () => {
                 .catch((error) => {
                     console.log(error);
                     alert("Error updating data. Because: " + error);
-                });
-        }
-    };
-
-    const handleDelete = () => {
-        if (window.confirm("Do you want to remove this customer ?")) {
-            axios
-                .delete(`package/${mongoPrimaryKey}`)
-                .then((response) => {
-                    getAllPackages();
-                    alert("Data deleted successfully. ");
-                })
-                .catch((error) => {
-                    console.log(error);
-                    alert("Error deleting data. ");
                 });
         }
     };
@@ -259,6 +260,7 @@ const PackageForm = () => {
                                     Save
                                 </Button>
                                 <Button
+                                    onClick={handleUpdate}
                                     style={{
                                         backgroundColor: "#ffa502",
                                         marginRight: "7px",
