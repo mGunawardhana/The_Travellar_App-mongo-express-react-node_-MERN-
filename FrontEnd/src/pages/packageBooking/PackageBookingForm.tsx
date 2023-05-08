@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {
     Autocomplete,
@@ -16,15 +16,33 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
+import axios from "../../axios";
+import {CustomerProperties} from "../../types/CustomerPropertes";
 
-// const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
-
-const packages = [{label: "P001"}, {label: "P002"}, {label: "P003"}];
-const jeep_code = [{label: "J001"}, {label: "J002"}];
-const driver_code = [{label: "D001"}, {label: "D002"}];
-const customer_code = [{label: "C001"}, {label: "C002"}];
 
 const PackageBookingForm = () => {
+
+    const packages = ["P001", "P002", "P003"];
+    const jeep_code = ["J001", "J002"];
+    const driver_code = ["D001", "D002"];
+
+    const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+    const [customer_code, setCustomerCode] = useState<string[]>([]);
+
+    const getAllCustomers = async () => {
+        try {
+            const response = await axios.get("customer");
+            setCustomerList(response.data.responseData);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        const codes = customerList.map((customer) => customer.customerID);
+        setCustomerCode(codes);
+    }, [customerList]);
+
     return (
         <>
             <SystemHeader/>
@@ -64,6 +82,7 @@ const PackageBookingForm = () => {
                                         required
                                     />
 
+
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
@@ -93,6 +112,7 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Jeep Code"/>}
                                     />
+
                                     <TextField
                                         type="text"
                                         variant="outlined"
@@ -142,14 +162,15 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-
                                     <Autocomplete
                                         disablePortal
                                         id="combo-box-demo"
                                         options={customer_code}
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Customer Code"/>}
+                                        renderInput={(params) => (
+                                            <TextField {...params} label="Customer Code"/>
+                                        )}
                                     />
                                     <TextField
                                         type="text"
@@ -173,6 +194,7 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Button
+                                    // onClick={getAllCustomers}
                                     style={{
                                         backgroundColor: "#2ed573",
                                         marginRight: "7px",
