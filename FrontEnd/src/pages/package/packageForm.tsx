@@ -73,6 +73,27 @@ const PackageForm = () => {
         }
     };
 
+    const handleSubmit = () => {
+        let responseBody = {
+            packageID: customerID,
+            packageName: customerFirstName,
+            daysHrsCount: customerLastName,
+            description: customerAddress,
+            offers: customerContact,
+            packageAmount: customerEmail,
+        };
+
+        axios
+            .post("package", responseBody)
+            .then((res) => {
+                console.log(responseBody);
+                getAllCustomers();
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
 
     return (
         <>
