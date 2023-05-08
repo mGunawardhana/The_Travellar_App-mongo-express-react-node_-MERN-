@@ -51,11 +51,31 @@ const PackageBookingForm = () => {
         }
     };
 
+    /** API calling function for get all customers */
+    const getAllCustomers = async () => {
+        try {
+            const response = await axios.get("customer");
+            setCustomerList(response.data.responseData);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     /** API calling function for get all drivers */
     const getAllDrivers = async () => {
         try {
             const response = await axios.get("driver");
             setDriverList(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    /** API calling function for get all packages */
+    const getAllPackages = async () => {
+        try {
+            const response = await axios.get("package");
+            setPackageList(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
@@ -74,15 +94,7 @@ const PackageBookingForm = () => {
         });
     }, []);
 
-    /** API calling function for get all packages */
-    const getAllPackages = async () => {
-        try {
-            const response = await axios.get("package");
-            setPackageList(response.data.responseData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+
 
     /** filtering only primary keys in package list */
     useEffect(() => {
@@ -97,15 +109,7 @@ const PackageBookingForm = () => {
         });
     }, []);
 
-    /** API calling function for get all customers */
-    const getAllCustomers = async () => {
-        try {
-            const response = await axios.get("customer");
-            setCustomerList(response.data.responseData);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+
 
     /** filtering only primary keys in customer list */
     useEffect(() => {
