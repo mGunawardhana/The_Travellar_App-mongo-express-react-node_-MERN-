@@ -18,6 +18,7 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
 import {CustomerProperties} from "../../types/CustomerPropertes";
+import {JeepProperties} from "../../types/JeepProperties";
 
 
 const PackageBookingForm = () => {
@@ -42,6 +43,35 @@ const PackageBookingForm = () => {
         const codes = customerList.map((customer) => customer.customerID);
         setCustomerCode(codes);
     }, [customerList]);
+
+    useEffect(() => {
+        getAllCustomers().then(r => {
+            console.log(r + " loading customers...")
+        });
+    }, []);
+
+
+    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+    const getAllJeeps = async () => {
+        try {
+            const response = await axios.get("jeep");
+            setJeepList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+
+
+
+
+
+
+    const setUpCustomerName = () => {
+
+    }
 
     return (
         <>
