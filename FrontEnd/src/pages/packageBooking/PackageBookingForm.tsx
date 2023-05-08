@@ -37,7 +37,6 @@ const PackageBookingForm = () => {
         try {
             const response = await axios.get("package");
             setPackageList(response.data.responseData);
-            console.log(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
