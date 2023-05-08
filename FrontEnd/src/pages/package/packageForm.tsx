@@ -87,7 +87,7 @@ const PackageForm = () => {
             .post("package", responseBody)
             .then((res) => {
                 console.log(responseBody);
-                getAllCustomers();
+                getAllPackages();
             })
             .catch((e) => {
                 console.log(e);
