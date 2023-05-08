@@ -52,15 +52,11 @@ const PackageBookingForm = () => {
     //TODO developers working top of the code do not enter -------------------------------------------------------------
 
 
-
-
-    /** filtering only primary keys in customer list */
+    /** filtering only primary keys in package list */
     useEffect(() => {
-        const codes = packageList.map((package) => package.packageID);
+        const codes = packageList.map((pack) => pack.packageID);
         setPackageCode(codes);
     }, [packageList]);
-
-
 
 
     //TODO developers working top of the code do not enter -------------------------------------------------------------
