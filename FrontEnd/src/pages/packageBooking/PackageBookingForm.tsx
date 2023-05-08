@@ -36,6 +36,7 @@ const PackageBookingForm = () => {
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
     const [package_code, setPackageCode] = useState<string[]>([]);
 
+    /** API calling function for get all packages */
     const getAllPackages = async () => {
         try {
             const response = await axios.get("package");
