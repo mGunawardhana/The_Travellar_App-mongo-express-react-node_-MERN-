@@ -37,6 +37,12 @@ const PackageBookingForm = () => {
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
     const [package_code, setPackageCode] = useState<string[]>([]);
 
+
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
+
+
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
+
     /** API calling function for get all packages */
     const getAllPackages = async () => {
         try {
@@ -59,15 +65,6 @@ const PackageBookingForm = () => {
             console.log(r + " loading packages...")
         });
     }, []);
-
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
-
-
-
-
-
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
-
 
     /** API calling function for get all customers */
     const getAllCustomers = async () => {
