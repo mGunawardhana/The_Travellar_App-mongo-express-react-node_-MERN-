@@ -23,14 +23,20 @@ import {CustomerProperties} from "../../types/CustomerPropertes";
 
 const PackageBookingForm = () => {
 
+    /** these hooks responsible to store all there objects */
+    const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+
+    /** these hooks are responsible to storing their id's */
+    const [customer_code, setCustomerCode] = useState<string[]>([]);
+    const [jeep_code, setJeepCode] = useState<string[]>([]);
+
     const packages = ["P001", "P002", "P003"];
-    // const jeep_code = ["J001", "J002"];
     const driver_code = ["D001", "D002"];
 
     /** customer combo loading operations --------------------------------------------------------------------------- */
 
-    const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
-    const [customer_code, setCustomerCode] = useState<string[]>([]);
+
 
     const getAllCustomers = async () => {
         try {
@@ -41,10 +47,13 @@ const PackageBookingForm = () => {
         }
     };
 
+    /** filtering only primary keys in customer list */
     useEffect(() => {
         const codes = customerList.map((customer) => customer.customerID);
         setCustomerCode(codes);
     }, [customerList]);
+
+    /**  */
     useEffect(() => {
         getAllCustomers().then(r => {
             console.log(r + " loading customers...")
@@ -53,8 +62,8 @@ const PackageBookingForm = () => {
 
     /** ------------------------------------------------------------------------------------------------------------- */
 
-    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
-    const [jeep_code, setJeepCode] = useState<string[]>([]);
+
+
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
@@ -63,10 +72,12 @@ const PackageBookingForm = () => {
             console.log(error);
         }
     };
+
     useEffect(() => {
         const codes = jeepList.map((jeep) => jeep.vehicleID);
         setJeepCode(codes);
     }, [jeepList]);
+
     useEffect(() => {
         getAllJeeps().then(r => {
             console.log(r + " loading jeeps...")
