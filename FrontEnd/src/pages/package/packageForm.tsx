@@ -268,6 +268,21 @@ const PackageForm = () => {
                             <TableBody>
                                 {packageList.map((samplePackage) => (
                                     <TableRow
+
+                                        onClick={(e) => {
+                                            console.log(customer._id);
+                                            key_for_put_and_delete = customer._id;
+                                            mongoChange(key_for_put_and_delete);
+                                            idChange(customer.customerID);
+                                            firstNameChange(customer.customerFirstName);
+                                            lastNameChange(customer.customerLastName);
+                                            addressChange(customer.customerAddress);
+                                            contactChange(customer.customerContact);
+                                            emailChange(customer.customerEmail);
+                                        }}
+
+
+
                                         key={samplePackage.packageID}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                     >
