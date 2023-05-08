@@ -60,7 +60,7 @@ const PackageBookingForm = () => {
     /** calling get all package method */
     useEffect(() => {
         getAllPackages().then(r => {
-            console.log(r + " loading customers...")
+            console.log(r + " loading packages...")
         });
     }, []);
 
