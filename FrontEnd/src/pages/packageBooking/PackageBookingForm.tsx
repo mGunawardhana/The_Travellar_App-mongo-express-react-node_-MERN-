@@ -34,10 +34,11 @@ const PackageBookingForm = () => {
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
     const [customer_code, setCustomerCode] = useState<string[]>([]);
 
-    /** these hooks are responsible to manage customer lists and their id lists */
+    /** these hooks are responsible to manage driver lists and their id lists */
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
     const [package_code, setPackageCode] = useState<string[]>([]);
 
+    /** these hooks are responsible to manage driver lists and their id lists */
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
 
     //TODO developers working top of the code do not enter -------------------------------------------------------------
