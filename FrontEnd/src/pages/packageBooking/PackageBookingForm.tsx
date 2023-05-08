@@ -27,7 +27,7 @@ const PackageBookingForm = () => {
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
     const [jeep_code, setJeepCode] = useState<string[]>([]);
 
-    /** these hooks are responsible to storing their id's */
+    /** these hooks are responsible to manage customer lists and there id lists */
     const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
     const [customer_code, setCustomerCode] = useState<string[]>([]);
 
