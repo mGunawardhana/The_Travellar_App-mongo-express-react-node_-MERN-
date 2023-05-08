@@ -20,6 +20,7 @@ import axios from "../../axios";
 import {JeepProperties} from "../../types/JeepProperties";
 import {CustomerProperties} from "../../types/CustomerPropertes";
 import {PackageProperties} from "../../types/PackageProperties";
+import {DriverProperties} from "../../types/DriverProperties";
 
 
 const PackageBookingForm = () => {
@@ -37,10 +38,19 @@ const PackageBookingForm = () => {
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
     const [package_code, setPackageCode] = useState<string[]>([]);
 
+    const [driverList, setDriverList] = useState<DriverProperties[]>([]);
 
     //TODO developers working top of the code do not enter -------------------------------------------------------------
 
-
+    const getAllDrivers = async () => {
+        try {
+            const response = await axios.get("driver");
+            setDriverList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     //TODO developers working top of the code do not enter -------------------------------------------------------------
 
     /** API calling function for get all packages */
