@@ -34,9 +34,6 @@ const PackageBookingForm = () => {
     const packages = ["P001", "P002", "P003"];
     const driver_code = ["D001", "D002"];
 
-    /** customer combo loading operations --------------------------------------------------------------------------- */
-
-
     /** API calling function for get all customers */
     const getAllCustomers = async () => {
         try {
@@ -60,10 +57,7 @@ const PackageBookingForm = () => {
         });
     }, []);
 
-    /** ------------------------------------------------------------------------------------------------------------- */
-
-
-
+    /** API calling function for get all jeeps */
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
