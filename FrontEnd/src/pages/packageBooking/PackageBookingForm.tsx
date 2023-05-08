@@ -63,7 +63,10 @@ const PackageBookingForm = () => {
             console.log(error);
         }
     };
-
+    useEffect(() => {
+        const codes = customerList.map((customer) => customer.customerID);
+        setCustomerCode(codes);
+    }, [customerList]);
 
     const setUpCustomerName = () => {
 
