@@ -125,6 +125,7 @@ const PackageForm = () => {
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -134,6 +135,7 @@ const PackageForm = () => {
                                         required
                                     />
                                     <TextField
+                                        onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -146,6 +148,7 @@ const PackageForm = () => {
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -155,6 +158,7 @@ const PackageForm = () => {
                                         required
                                     />
                                     <TextField
+                                        onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -166,6 +170,7 @@ const PackageForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -175,6 +180,7 @@ const PackageForm = () => {
                                         required
                                     />
                                     <TextField
+                                        onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -195,6 +201,7 @@ const PackageForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+                                    onClick={handleSubmit}
                                 >
                                     Save
                                 </Button>
