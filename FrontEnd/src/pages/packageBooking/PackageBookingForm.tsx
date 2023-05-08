@@ -24,7 +24,6 @@ import {DriverProperties} from "../../types/DriverProperties";
 
 
 const PackageBookingForm = () => {
-    const driver_code = ["D001", "D002"];
 
     /** these hooks are responsible to manage jeep lists and their id lists */
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
@@ -55,7 +54,11 @@ const PackageBookingForm = () => {
     //TODO developers working top of the code do not enter -------------------------------------------------------------
 
 
-
+    /** filtering only primary keys in driver list */
+    useEffect(() => {
+        const codes = driverList.map((driver) => driver.driverID);
+        setDriverCode(codes);
+    }, [driverList]);
 
 
 
