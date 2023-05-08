@@ -56,9 +56,9 @@ const PackageBookingForm = () => {
 
     /** filtering only primary keys in customer list */
     useEffect(() => {
-        const codes = packageList.map((package) => package.customerID);
-        setCustomerCode(codes);
-    }, [customerList]);
+        const codes = packageList.map((package) => package.packageID);
+        setPackageCode(codes);
+    }, [packageList]);
 
 
 
