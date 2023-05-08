@@ -55,14 +55,16 @@ const PackageBookingForm = () => {
         setPackageCode(codes);
     }, [packageList]);
 
-    //TODO developers working top of the code do not enter -------------------------------------------------------------
-
     /** calling get all package method */
     useEffect(() => {
         getAllPackages().then(r => {
             console.log(r + " loading packages...")
         });
     }, []);
+
+    //TODO developers working top of the code do not enter -------------------------------------------------------------
+
+
 
 
 
