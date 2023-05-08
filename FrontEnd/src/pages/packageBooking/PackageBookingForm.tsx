@@ -68,9 +68,7 @@ const PackageBookingForm = () => {
         setJeepCode(codes);
     }, [jeepList]);
 
-    const setUpCustomerName = () => {
 
-    }
 
     return (
         <>
