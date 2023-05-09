@@ -161,7 +161,8 @@ const JeepManagementForm = () => {
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
-    //TODO this number auto generator -----------------------
+//TODO this number auto generator -----------------------
+
     let lastId = jeepList.length;
 
     function generateId(prefix: string, length: number): string {
@@ -172,6 +173,7 @@ const JeepManagementForm = () => {
 
     const customerId = generateId('C00', 3);
     console.log("my primary key " + customerId);
+
     //TODO this number auto generator -----------------------
 
     // @ts-ignore
