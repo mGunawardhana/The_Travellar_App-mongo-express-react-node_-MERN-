@@ -155,11 +155,10 @@ const PackageBookingForm = () => {
         jeepList.map((jeep) => {
             if (jeep.vehicleID === jeepCode.value) {
                 setJeepModelChange(jeep.vehicleModel);
-                setJeepPriceChange();
+                setJeepPriceChange(jeep.fuelType);
             }
         });
     }
-
 
 
     return (
@@ -210,7 +209,7 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
 
-                                        onChange={(e)=>{
+                                        onChange={(e) => {
                                             setUpCustomerProps();
                                         }}
 
@@ -236,6 +235,9 @@ const PackageBookingForm = () => {
                                         disablePortal
                                         id="jeepCode"
                                         options={jeep_code}
+                                        onChange={(e) => {
+                                            setUpJeepProps();
+                                        }}
                                         size="small"
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Jeep Code"/>}
