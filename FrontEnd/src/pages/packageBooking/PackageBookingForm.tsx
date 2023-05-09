@@ -377,9 +377,9 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                     >
-                                        {packageList.map((pack) => (
-                                            <MenuItem key={pack.packageID} value={pack.packageID}>
-                                                {pack.packageID}
+                                        {customerList.map((customer) => (
+                                            <MenuItem key={customer.customerID} value={customer.customerID}>
+                                                {customer.customerID}
                                             </MenuItem>
                                         ))}
                                     </Select>
