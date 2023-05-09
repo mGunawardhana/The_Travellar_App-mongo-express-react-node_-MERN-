@@ -177,12 +177,34 @@ const PackageBookingForm = () => {
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
 
 
+    //
+    // /** this hook is useful to get the selected value */
+    // const [selectedCustomer, setSelectedCustomerChange] = useState('');
+    //
+    // /** these hook is responsible to matching selected value and load their own value in to the text-fields */
+    // // const [customerName, setCustomerNameChange] = useState("");
+    // const [customerName, setCustomerNameChange] = useState("");
+    //
+    //
+    // /** this function is responsible to matching their id's and setting equivalent to his own object values */
+    // function setUpCustomerProps(selectedCustomer:string) {
+    //     customerList.map((customer) => {
+    //         if (customer.customerID === selectedCustomer) {
+    //             setCustomerNameChange(customer.customerFirstName);
+    //         }
+    //     });
+    // }
+
+
+
+    //TODO developers are working top of the code please do no enter ---------------------------------------------------
+
 
     /** this hook is useful to get the selected value */
     const [selectedCustomer, setSelectedCustomerChange] = useState('');
 
     /** these hook is responsible to matching selected value and load their own value in to the text-fields */
-    // const [customerName, setCustomerNameChange] = useState("");
+        // const [customerName, setCustomerNameChange] = useState("");
     const [customerName, setCustomerNameChange] = useState("");
 
 
@@ -195,9 +217,6 @@ const PackageBookingForm = () => {
         });
     }
 
-
-
-    //TODO developers are working top of the code please do no enter ---------------------------------------------------
 
     useEffect(() => {
         setUpJeepProps(selectedJeep);
