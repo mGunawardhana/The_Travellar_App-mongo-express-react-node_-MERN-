@@ -167,6 +167,11 @@ const PackageBookingForm = () => {
         setUpCustomerProps();
     }, [selectedJeep]);
 
+
+    const [packageName, setPackageNameChange] = useState("");
+    const [selectedPackage, setSelectedPackageChange] = useState('');
+
+
     return (
         <>
             <SystemHeader/>
@@ -208,19 +213,40 @@ const PackageBookingForm = () => {
                                     />
 
 
-                                    <Autocomplete
-                                        disablePortal
+                                    {/*<Autocomplete*/}
+                                    {/*    disablePortal*/}
+                                    {/*    id="packageCode"*/}
+                                    {/*    options={package_code}*/}
+                                    {/*    size="small"*/}
+                                    {/*    fullWidth*/}
+
+                                    {/*    onChange={(e) => {*/}
+                                    {/*        setUpCustomerProps();*/}
+                                    {/*    }}*/}
+
+                                    {/*    renderInput={(params) => <TextField {...params} label="Package Code"/>}*/}
+                                    {/*/>*/}
+
+                                    <Select
                                         id="packageCode"
-                                        options={package_code}
+                                        name="packageCode"
+                                        onChange={(e) => {
+                                            const selectedPackage = e.target.value;
+                                            setSelectedJeep(selectedJeep);
+                                            setUpJeepProps(selectedJeep);
+                                        }}
+                                        value={selectedPackage}
+                                        placeholder="Sample code"
                                         size="small"
                                         fullWidth
+                                    >
+                                        {jeepList.map((jeep) => (
+                                            <MenuItem key={jeep.vehicleID} value={jeep.vehicleID}>
+                                                {jeep.vehicleID}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
 
-                                        onChange={(e) => {
-                                            setUpCustomerProps();
-                                        }}
-
-                                        renderInput={(params) => <TextField {...params} label="Package Code"/>}
-                                    />
                                     <TextField
                                         name={customerName}
                                         value={customerName}
