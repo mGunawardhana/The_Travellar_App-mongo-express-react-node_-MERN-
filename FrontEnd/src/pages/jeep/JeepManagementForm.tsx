@@ -159,6 +159,7 @@ const JeepManagementForm = () => {
 
     /** this hook is useful to get the selected value */
     const [selectedAvailability, setSelectedAvailabilityChange] = useState('');
+    const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
 
     // @ts-ignore
@@ -251,7 +252,7 @@ const JeepManagementForm = () => {
                                         size="small"
                                         onChange={(e) => {
                                             const selectedFuelType = e.target.value;
-                                            setSelectedAvailabilityChange(selectedFuelType);
+                                            setSelectedFuelTypeChange(selectedFuelType);
 
                                         }}
                                         value={selectedFuelType}
@@ -263,19 +264,6 @@ const JeepManagementForm = () => {
                                             </MenuItem>
                                         ))}
                                     </Select>
-                                    {/*<Autocomplete*/}
-                                    {/*    value={fuelType}*/}
-                                    {/*    disablePortal*/}
-                                    {/*    id="fuelTxt"*/}
-                                    {/*    options={fuelTypePack}*/}
-                                    {/*    size="small"*/}
-                                    {/*    onCanPlay={handleInputChange}*/}
-                                    {/*    fullWidth*/}
-                                    {/*    renderInput={(params) => (*/}
-                                    {/*        <TextField {...params} label="Fuel Type"/>*/}
-                                    {/*    )}*/}
-                                    {/*/>*/}
-
 
                                     <Select
                                         id="availabilityTxt"
@@ -290,7 +278,7 @@ const JeepManagementForm = () => {
                                         value={selectedAvailability}
                                         label="Availability"
                                     >
-                                        {availability.map((option) => (
+                                        {fuelTypePack.map((option) => (
                                             <MenuItem key={option} value={option}>
                                                 {option}
                                             </MenuItem>
