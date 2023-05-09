@@ -396,10 +396,10 @@ const JeepManagementForm = () => {
                                             vehicleIdChange(jeep.vehicleID);
                                             vehicleModelChange(jeep.vehicleModel);
                                             typeChange(jeep.type);
+                                            setSelectedAvailabilityChange(jeep.jeepAvailability);
+                                            setSelectedSeatsCountChange(jeep.passengerCount);
+                                            setSelectedFuelTypeChange(jeep.fuelType);
 
-                                            passengerCountTxt.value = jeep.passengerCount;
-                                            fuelTxt.value = jeep.fuelType;
-                                            availabilityTxt.value = jeep.jeepAvailability;
                                         }}
                                         key={jeep.vehicleID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}
