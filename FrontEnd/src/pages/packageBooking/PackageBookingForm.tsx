@@ -139,13 +139,11 @@ const PackageBookingForm = () => {
     const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
     const [customerName, setCustomerNameChange] = useState("");
 
-    function setUpCustomerProps() {
-        packageList.map((pack) => {
-            if (pack.packageID === passengerCountTxt.value) {
-                setCustomerNameChange(pack.packageName);
-            }
-        });
-    }
+
+    const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
+
+
+
 
     return (
         <>
