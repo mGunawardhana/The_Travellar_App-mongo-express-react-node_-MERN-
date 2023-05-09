@@ -189,8 +189,10 @@ const PackageBookingForm = () => {
 
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
 
-    // /** this hook is useful to get the selected value */
-    // const [selectedPackage, setSelectedPackageChange] = useState('');
+
+
+    /** this hook is useful to get the selected value */
+    const [selectedCustomer, setSelectedCustomerChange] = useState('');
 
     // /** this function is responsible to matching their id's and setting equivalent to his own object values */
     // function setUpPackageProps(selectedPackage: string) {
