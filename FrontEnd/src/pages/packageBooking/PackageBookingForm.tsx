@@ -353,16 +353,6 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    {/*<Autocomplete*/}
-                                    {/*    disablePortal*/}
-                                    {/*    id="combo-box-demo"*/}
-                                    {/*    options={customer_code}*/}
-                                    {/*    size="small"*/}
-                                    {/*    fullWidth*/}
-                                    {/*    renderInput={(params) => (*/}
-                                    {/*        <TextField {...params} label="Customer Code"/>*/}
-                                    {/*    )}*/}
-                                    {/*/>*/}
 
                                     <Select
                                         id="customerCode"
@@ -372,7 +362,7 @@ const PackageBookingForm = () => {
                                             setSelectedCustomerChange(selectedCustomer);
                                             setUpCustomerProps(selectedCustomer);
                                         }}
-                                        value={selectedPackage}
+                                        value={selectedCustomer}
                                         placeholder="Sample code"
                                         size="small"
                                         fullWidth
