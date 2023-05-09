@@ -255,6 +255,25 @@ const JeepManagementForm = () => {
                                             <TextField {...params} label="Fuel Type"/>
                                         )}
                                     />
+                                    <Select
+                                        id="availabilityTxt"
+                                        name="availabilityTxt"
+                                        fullWidth
+                                        size="small"
+                                        onChange={(e) => {
+                                            const selectedAvailability = e.target.value;
+                                            setSelectedAvailabilityChange(selectedAvailability);
+
+                                        }}
+                                        value={selectedAvailability}
+                                        label="Availability"
+                                    >
+                                        {availability.map((option) => (
+                                            <MenuItem key={option} value={option}>
+                                                {option}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
 
                                     <Select
                                         id="availabilityTxt"
