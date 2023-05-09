@@ -243,26 +243,15 @@ const JeepManagementForm = () => {
 
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <Autocomplete
-                                        value={fuelType}
-                                        disablePortal
-                                        id="fuelTxt"
-                                        options={fuelTypePack}
-                                        size="small"
-                                        onCanPlay={handleInputChange}
-                                        fullWidth
-                                        renderInput={(params) => (
-                                            <TextField {...params} label="Fuel Type"/>
-                                        )}
-                                    />
+
                                     <Select
-                                        id="availabilityTxt"
-                                        name="availabilityTxt"
+                                        id="fuelType"
+                                        name="fuelType"
                                         fullWidth
                                         size="small"
                                         onChange={(e) => {
-                                            const selectedAvailability = e.target.value;
-                                            setSelectedAvailabilityChange(selectedAvailability);
+                                            const selectedFuelType = e.target.value;
+                                            setSelectedAvailabilityChange(selectedFuelType);
 
                                         }}
                                         value={selectedAvailability}
@@ -274,6 +263,19 @@ const JeepManagementForm = () => {
                                             </MenuItem>
                                         ))}
                                     </Select>
+                                    {/*<Autocomplete*/}
+                                    {/*    value={fuelType}*/}
+                                    {/*    disablePortal*/}
+                                    {/*    id="fuelTxt"*/}
+                                    {/*    options={fuelTypePack}*/}
+                                    {/*    size="small"*/}
+                                    {/*    onCanPlay={handleInputChange}*/}
+                                    {/*    fullWidth*/}
+                                    {/*    renderInput={(params) => (*/}
+                                    {/*        <TextField {...params} label="Fuel Type"/>*/}
+                                    {/*    )}*/}
+                                    {/*/>*/}
+
 
                                     <Select
                                         id="availabilityTxt"
