@@ -138,15 +138,13 @@ const PackageBookingForm = () => {
 
     const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
     const passengerName = document.getElementById('packageName') as HTMLInputElement;
-
+    const [customerName, setCustomerNameChange] = useState("");
 
     function setUpCustomerProps() {
         packageList.map((pack) => {
             if (pack.packageID === passengerCountTxt.value) {
-                passengerName.value = pack.packageName.toString();
-//TODO heta udeta metanin patan ganna
+                setCustomerNameChange(pack.packageName);
             }
-
             console.log(pack.packageName);
         });
 
@@ -207,6 +205,8 @@ const PackageBookingForm = () => {
                                         renderInput={(params) => <TextField {...params} label="Package Code"/>}
                                     />
                                     <TextField
+                                        name={customerName}
+                                        value={customerName}
                                         id="packageName"
                                         type="text"
                                         variant="outlined"
