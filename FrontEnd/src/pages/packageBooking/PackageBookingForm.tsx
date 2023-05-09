@@ -180,8 +180,7 @@ const PackageBookingForm = () => {
     }
 
     useEffect(() => {
-        setPackageNameChange(selectedPackage); // pass selectedJeep parameter
-        setUpPackageProps();
+        setUpPackageProps(selectedPackage);
     }, [selectedPackage]);
 
     return (
