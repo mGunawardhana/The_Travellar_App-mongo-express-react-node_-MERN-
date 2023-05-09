@@ -223,21 +223,6 @@ const PackageBookingForm = () => {
                                         required
                                     />
 
-
-                                    {/*<Autocomplete*/}
-                                    {/*    disablePortal*/}
-                                    {/*    id="packageCode"*/}
-                                    {/*    options={package_code}*/}
-                                    {/*    size="small"*/}
-                                    {/*    fullWidth*/}
-
-                                    {/*    onChange={(e) => {*/}
-                                    {/*        setUpCustomerProps();*/}
-                                    {/*    }}*/}
-
-                                    {/*    renderInput={(params) => <TextField {...params} label="Package Code"/>}*/}
-                                    {/*/>*/}
-
                                     <Select
                                         id="packageCode"
                                         name="packageCode"
