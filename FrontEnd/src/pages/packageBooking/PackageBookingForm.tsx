@@ -175,13 +175,13 @@ const PackageBookingForm = () => {
     }
 
     /** matching the values with array and  if it's true setting up it's value to the name changer hook */
-    // function setUpCustomerProps() {
-    //     packageList.map((pack) => {
-    //         if (pack.packageID === passengerCode.value) {
-    //             setCustomerNameChange(pack.packageName);
-    //         }
-    //     });
-    // }
+    function setUpCustomerProps(selectedCustomer:string) {
+        customerList.map((customer) => {
+            if (customer.customerID === passengerCode.value) {
+                setCustomerNameChange(customer.customerFirstName);
+            }
+        });
+    }
 
     useEffect(() => {
         setUpJeepProps(selectedJeep);
