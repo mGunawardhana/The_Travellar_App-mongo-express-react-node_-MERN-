@@ -136,19 +136,26 @@ const PackageBookingForm = () => {
 
     }, []);
 
-    const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
+    const passengerCode = document.getElementById('packageCode') as HTMLInputElement;
     const [customerName, setCustomerNameChange] = useState("");
 
     function setUpCustomerProps() {
         packageList.map((pack) => {
-            if (pack.packageID === passengerCountTxt.value) {
+            if (pack.packageID === passengerCode.value) {
                 setCustomerNameChange(pack.packageName);
             }
         });
     }
 
-    const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
+    const jeepCode = document.getElementById('jeepCode') as HTMLInputElement;
 
+    function setUpJeepProps() {
+        jeepList.map((jeep) => {
+            if (jeep.packageID === passengerCode.value) {
+                setCustomerNameChange(jeep.packageName);
+            }
+        });
+    }
 
 
 
@@ -204,7 +211,6 @@ const PackageBookingForm = () => {
                                             setUpCustomerProps();
                                         }}
 
-                                        // ref={myTextField}
                                         renderInput={(params) => <TextField {...params} label="Package Code"/>}
                                     />
                                     <TextField
@@ -225,7 +231,7 @@ const PackageBookingForm = () => {
 
                                     <Autocomplete
                                         disablePortal
-                                        id="combo-box-demo"
+                                        id="jeepCode"
                                         options={jeep_code}
                                         size="small"
                                         fullWidth
