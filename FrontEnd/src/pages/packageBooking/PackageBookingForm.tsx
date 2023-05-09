@@ -211,7 +211,6 @@ const PackageBookingForm = () => {
         });
     }
 
-
     useEffect(() => {
         setUpJeepProps(selectedJeep);
         setUpPackageProps(selectedPackage);
@@ -219,7 +218,8 @@ const PackageBookingForm = () => {
 
     useEffect(() => {
         setUpCustomerProps(selectedCustomer);
-    }, [selectedCustomer]);
+        setUpDriverProps(selectedDriver);
+    }, [selectedCustomer, selectedDriver]);
 
     return (
         <>
@@ -360,8 +360,8 @@ const PackageBookingForm = () => {
                                     {/*/>*/}
 
                                     <Select
-                                        id="customerCode"
-                                        name="customerCode"
+                                        id="driverCode"
+                                        name="driverCode"
                                         onChange={(e) => {
                                             const selectedDriver = e.target.value;
                                             setSelectedDriverChange(selectedDriver);
@@ -372,9 +372,9 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                     >
-                                        {customerList.map((customer) => (
-                                            <MenuItem key={customer.customerID} value={customer.customerID}>
-                                                {customer.customerID}
+                                        {driverList.map((driver) => (
+                                            <MenuItem key={driver.driverID} value={driver.driverID}>
+                                                {driver.driverID}
                                             </MenuItem>
                                         ))}
                                     </Select>
