@@ -171,10 +171,6 @@ const PackageBookingForm = () => {
         });
     }
 
-    //TODO developers are working top of the code please do no enter ---------------------------------------------------
-
-
-    //
     /** this hook is useful to get the selected value */
     const [selectedDriver, setSelectedDriverChange] = useState('');
 
@@ -189,10 +185,6 @@ const PackageBookingForm = () => {
             }
         });
     }
-
-
-    //TODO developers are working top of the code please do no enter ---------------------------------------------------
-
 
     /** this hook is useful to get the selected value */
     const [selectedCustomer, setSelectedCustomerChange] = useState('');
@@ -350,14 +342,6 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         required
                                     />
-                                    {/*<Autocomplete*/}
-                                    {/*    disablePortal*/}
-                                    {/*    id="combo-box-demo"*/}
-                                    {/*    options={driver_code}*/}
-                                    {/*    size="small"*/}
-                                    {/*    fullWidth*/}
-                                    {/*    renderInput={(params) => <TextField {...params} label="Driver Code"/>}*/}
-                                    {/*/>*/}
 
                                     <Select
                                         id="driverCode"

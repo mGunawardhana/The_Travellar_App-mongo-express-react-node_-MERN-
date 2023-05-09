@@ -1,10 +1,12 @@
-import React, {ChangeEvent, useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 import {
     Autocomplete,
     Button,
     FormHelperText,
+    MenuItem,
     Paper,
+    Select,
     Stack,
     Table,
     TableBody,
@@ -40,15 +42,10 @@ const JeepManagementForm = () => {
     /** variable for storing mongo primary key */
     let key_for_put_and_delete: string | undefined | any;
 
-    /** useRef hooks */
-    //TODO check what if this code not working
-    // const passengerCountTxt = useRef('initial value');
-    // const fuelTxt = useRef('initial value');
-    // const availabilityTxt = useRef('initial value');
 
-  const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
-   const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
-   const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
+    const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
+    const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
+    const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
 
     /** values for combo box's */
     const passengerCountPack = ["8", "10", "12"];
@@ -72,6 +69,7 @@ const JeepManagementForm = () => {
     }, []);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+
         const {name, value} = event.target;
         switch (name) {
             case "vehicleID":
@@ -97,6 +95,7 @@ const JeepManagementForm = () => {
         }
     };
 
+
     const handleSubmit = () => {
         let responseBody = {
             vehicleID: vehicleID,
@@ -116,6 +115,7 @@ const JeepManagementForm = () => {
             .catch((e) => {
                 console.log(e);
             });
+        alert(jeepAvailability)
     };
 
     const handleDelete = () => {
@@ -157,6 +157,11 @@ const JeepManagementForm = () => {
         }
     };
 
+    /** this hook is useful to get the selected value */
+    const [selectedAvailability, setSelectedAvailabilityChange] = useState('');
+
+
+    // @ts-ignore
     return (
         <>
             <SystemHeader/>
@@ -184,6 +189,7 @@ const JeepManagementForm = () => {
                                     Vehicle Management Form
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
+
                                     <TextField
                                         name="vehicleID"
                                         value={vehicleID}
@@ -227,7 +233,7 @@ const JeepManagementForm = () => {
                                         id="passengerCountTxt"
                                         options={passengerCountPack}
                                         size="small"
-                                        onCanPlay={handleInputChange}
+                                        // onChange={handleInputChange}
                                         fullWidth
                                         renderInput={(params) => (
                                             <TextField {...params} label="Passenger Count"/>
@@ -250,19 +256,25 @@ const JeepManagementForm = () => {
                                         )}
                                     />
 
-                                    <Autocomplete
-                                        value={jeepAvailability}
-                                        // ref={availability}
-                                        disablePortal
+                                    <Select
                                         id="availabilityTxt"
-                                        options={availability}
-                                        size="small"
-                                        onCanPlay={handleInputChange}
+                                        name="availabilityTxt"
                                         fullWidth
-                                        renderInput={(params) => (
-                                            <TextField {...params} label="Jeep Availability"/>
-                                        )}
-                                    />
+                                        size="small"
+                                        onChange={(e) => {
+                                            const selectedAvailability = e.target.value;
+                                            setSelectedAvailabilityChange(selectedAvailability);
+
+                                        }}
+                                        value={selectedAvailability}
+                                        label="Availability"
+                                    >
+                                        {availability.map((option) => (
+                                            <MenuItem key={option} value={option}>
+                                                {option}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
                                 </Stack>
                             </form>
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
@@ -274,6 +286,7 @@ const JeepManagementForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+
                                     onClick={handleSubmit}
                                 >
                                     Save
