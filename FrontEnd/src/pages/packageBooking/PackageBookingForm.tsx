@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 
 import {
-    Autocomplete,
     Button,
     FormHelperText,
     MenuItem,
@@ -183,7 +182,7 @@ const PackageBookingForm = () => {
     const [driverName, setDriverNameChange] = useState("");
 
     /** this function is responsible to matching their id's and setting equivalent to his own object values */
-    function setUpDriverProps(sel:string) {
+    function setUpDriverProps(sel: string) {
         driverList.map((driver) => {
             if (driver.driverID === selectedDriver) {
                 setDriverNameChange(driver.driverFirstName);
@@ -381,6 +380,7 @@ const PackageBookingForm = () => {
                                     </Select>
 
                                     <TextField
+                                        value={driverName}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
