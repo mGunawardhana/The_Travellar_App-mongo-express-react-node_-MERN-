@@ -138,7 +138,7 @@ const PackageBookingForm = () => {
     }, []);
 
     const passengerCode = document.getElementById('packageCode') as HTMLInputElement;
-    const [customerName, setCustomerNameChange] = useState("");
+
 
     /** matching the values with array and  if it's true setting up it's value to the name changer hook */
     function setUpCustomerProps() {
