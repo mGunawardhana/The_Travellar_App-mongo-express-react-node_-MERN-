@@ -170,6 +170,7 @@ const PackageBookingForm = () => {
 
     const [packageName, setPackageNameChange] = useState("");
     const [selectedPackage, setSelectedPackageChange] = useState('');
+
     function setUpPackageProps(selectedPackage: string) {
         packageList.map((pack) => {
             if (pack.packageID === selectedPackage) {
@@ -250,9 +251,9 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                     >
-                                        {jeepList.map((jeep) => (
-                                            <MenuItem key={jeep.vehicleID} value={jeep.vehicleID}>
-                                                {jeep.vehicleID}
+                                        {packageList.map((pack) => (
+                                            <MenuItem key={pack.packageID} value={pack.packageID}>
+                                                {pack.packageID}
                                             </MenuItem>
                                         ))}
                                     </Select>
