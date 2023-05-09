@@ -4,7 +4,9 @@ import {
     Autocomplete,
     Button,
     FormHelperText,
+    MenuItem,
     Paper,
+    Select,
     Stack,
     Table,
     TableBody,
@@ -146,27 +148,24 @@ const PackageBookingForm = () => {
         });
     }
 
-    const jeepCode = document.getElementById('jeepCode') as HTMLInputElement;
+    const jeepCode = document.getElementById('jeepId') as HTMLInputElement;
     const [jeepModel, setJeepModelChange] = useState("");
     const [jeepPrice, setJeepPriceChange] = useState("");
+    const [selectedJeep, setSelectedJeep] = useState('');
 
-    function setUpJeepProps() {
-        const matchingJeep = jeepList.find(jeep => jeep.vehicleID === jeepCode.value);
-        if (matchingJeep) {
-            setJeepModelChange(matchingJeep.vehicleModel);
-            setJeepPriceChange(matchingJeep.fuelType);
-        } else {
-            setJeepModelChange("");
-            setJeepPriceChange("");
-        }
+    function setUpJeepProps(selectedJeep: string) {
+        jeepList.map((jeep) => {
+            if (jeep.vehicleID === selectedJeep) {
+                setJeepModelChange(jeep.vehicleModel);
+                setJeepPriceChange(jeep.fuelType);
+            }
+        });
     }
 
     useEffect(() => {
-        setUpJeepProps();
+        setUpJeepProps(selectedJeep); // pass selectedJeep parameter
         setUpCustomerProps();
-    }, [2]);
-
-
+    }, [selectedJeep]);
 
     return (
         <>
@@ -237,18 +236,25 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-
-                                    <Autocomplete
-                                        disablePortal
-                                        id="jeepCode"
-                                        options={jeep_code}
+                                    <Select
+                                        id="jeepId"
+                                        name="sample"
                                         onChange={(e) => {
-                                            setUpJeepProps();
+                                            const selectedJeep = e.target.value;
+                                            setSelectedJeep(selectedJeep);
+                                            setUpJeepProps(selectedJeep);
                                         }}
+                                        value={selectedJeep}
+                                        placeholder="Sample code"
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Jeep Code"/>}
-                                    />
+                                    >
+                                        {jeepList.map((jeep) => (
+                                            <MenuItem key={jeep.vehicleID} value={jeep.vehicleID}>
+                                                {jeep.vehicleID}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
 
                                     <TextField
                                         name={jeepModel}
@@ -259,6 +265,7 @@ const PackageBookingForm = () => {
                                         label="Jeep Model"
                                         size="small"
                                         fullWidth
+                                        disabled={true}
                                         required
                                     />
                                     <TextField
@@ -269,6 +276,7 @@ const PackageBookingForm = () => {
                                         color="secondary"
                                         label="Jeep Price"
                                         size="small"
+                                        disabled={true}
                                         fullWidth
                                         required
                                     />
@@ -291,6 +299,7 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         renderInput={(params) => <TextField {...params} label="Driver Code"/>}
                                     />
+
                                     <TextField
                                         type="text"
                                         variant="outlined"
@@ -422,7 +431,8 @@ const PackageBookingForm = () => {
                 </div>
             </section>
         </>
-    );
+    )
+
 };
 
 export default PackageBookingForm;
