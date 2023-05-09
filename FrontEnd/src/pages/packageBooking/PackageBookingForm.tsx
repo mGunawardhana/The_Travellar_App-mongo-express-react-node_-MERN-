@@ -148,13 +148,14 @@ const PackageBookingForm = () => {
     }
 
     const jeepCode = document.getElementById('jeepCode') as HTMLInputElement;
-    const [jeepModel, setJeepModel] = useState("");
-    const [jeepPrice, setJeepPrice] = useState("");
+    const [jeepModel, setJeepModelChange] = useState("");
+    const [jeepPrice, setJeepPriceChange] = useState("");
 
     function setUpJeepProps() {
         jeepList.map((jeep) => {
             if (jeep.vehicleID === jeepCode.value) {
-                setCustomerNameChange(jeep.vehicleID);
+                setJeepModelChange(jeep.vehicleModel);
+                setJeepPriceChange();
             }
         });
     }
@@ -241,6 +242,8 @@ const PackageBookingForm = () => {
                                     />
 
                                     <TextField
+                                        name={jeepModel}
+                                        value={jeepModel}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -250,6 +253,8 @@ const PackageBookingForm = () => {
                                         required
                                     />
                                     <TextField
+                                        name={jeepPrice}
+                                        value={jeepPrice}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
