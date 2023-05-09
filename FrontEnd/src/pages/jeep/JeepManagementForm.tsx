@@ -229,18 +229,38 @@ const JeepManagementForm = () => {
                                         fullWidth
                                         required
                                     />
-                                    <Autocomplete
-                                        disablePortal
-                                        id="passengerCountTxt"
-                                        options={passengerCountPack}
-                                        size="small"
-                                        // onChange={handleInputChange}
+                                    {/*<Autocomplete*/}
+                                    {/*    disablePortal*/}
+                                    {/*    id="passengerCountTxt"*/}
+                                    {/*    options={passengerCountPack}*/}
+                                    {/*    size="small"*/}
+                                    {/*    // onChange={handleInputChange}*/}
+                                    {/*    fullWidth*/}
+                                    {/*    renderInput={(params) => (*/}
+                                    {/*        <TextField {...params} label="Passenger Count"/>*/}
+                                    {/*    )}*/}
+                                    {/*    value={passengerCount}*/}
+                                    {/*/>*/}
+
+                                    <Select
+                                        id="fuelType"
+                                        name="fuelType"
                                         fullWidth
-                                        renderInput={(params) => (
-                                            <TextField {...params} label="Passenger Count"/>
-                                        )}
-                                        value={passengerCount}
-                                    />
+                                        size="small"
+                                        onChange={(e) => {
+                                            const selectedFuelType = e.target.value;
+                                            setSelectedFuelTypeChange(selectedFuelType);
+
+                                        }}
+                                        value={selectedFuelType}
+                                        label="Availability"
+                                    >
+                                        {availability.map((option) => (
+                                            <MenuItem key={option} value={option}>
+                                                {option}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
 
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
