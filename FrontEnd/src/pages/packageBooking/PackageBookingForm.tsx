@@ -133,7 +133,6 @@ const PackageBookingForm = () => {
         getAllPackages().then(r => {
             console.log(r + " loading packages...")
         });
-
     }, []);
 
     const passengerCode = document.getElementById('packageCode') as HTMLInputElement;
@@ -152,13 +151,21 @@ const PackageBookingForm = () => {
     const [jeepPrice, setJeepPriceChange] = useState("");
 
     function setUpJeepProps() {
-        jeepList.map((jeep) => {
-            if (jeep.vehicleID === jeepCode.value) {
-                setJeepModelChange(jeep.vehicleModel);
-                setJeepPriceChange(jeep.fuelType);
-            }
-        });
+        const matchingJeep = jeepList.find(jeep => jeep.vehicleID === jeepCode.value);
+        if (matchingJeep) {
+            setJeepModelChange(matchingJeep.vehicleModel);
+            setJeepPriceChange(matchingJeep.fuelType);
+        } else {
+            setJeepModelChange("");
+            setJeepPriceChange("");
+        }
     }
+
+    useEffect(() => {
+        setUpJeepProps();
+        setUpCustomerProps();
+    }, [2]);
+
 
 
     return (
