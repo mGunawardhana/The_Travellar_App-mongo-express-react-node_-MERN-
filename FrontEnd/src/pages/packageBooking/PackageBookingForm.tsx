@@ -174,22 +174,6 @@ const PackageBookingForm = () => {
         });
     }
 
-    /** matching the values with array and  if it's true setting up it's value to the name changer hook */
-    function setUpCustomerProps(selectedCustomer:string) {
-        customerList.map((customer) => {
-            if (customer.customerID === passengerCode.value) {
-                setCustomerNameChange(customer.customerFirstName);
-            }
-        });
-    }
-
-    useEffect(() => {
-        setUpJeepProps(selectedJeep);
-        // setUpCustomerProps();
-        setUpCustomerProps(selectedCustomer);
-        setUpPackageProps(selectedPackage);
-    }, [selectedJeep, selectedPackage],[selectedCustomer]);
-
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
 
 
@@ -201,14 +185,22 @@ const PackageBookingForm = () => {
     const [customerName, setCustomerNameChange] = useState("");
 
     /** this function is responsible to matching their id's and setting equivalent to his own object values */
-    function setUpCustomerProps(selectedPackage: string) {
+    function setUpCustomerProps(selectedCustomer:string) {
         customerList.map((customer) => {
-            if (customer.customerID === selectedPackage) {
-                setPackageNameChange(customer.customerFirstName);
+            if (customer.customerID === selectedCustomer) {
+                setCustomerNameChange(customer.customerFirstName);
             }
         });
     }
 
+    useEffect(() => {
+        setUpJeepProps(selectedJeep);
+        setUpPackageProps(selectedPackage);
+    }, [selectedJeep, selectedPackage]);
+
+    useEffect(() => {
+        setUpCustomerProps(selectedCustomer);
+    }, [selectedCustomer]);
 
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
     return (
@@ -377,8 +369,8 @@ const PackageBookingForm = () => {
                                         name="customerCode"
                                         onChange={(e) => {
                                             const selectedCustomer = e.target.value;
-                                            setSelectedPackageChange(selectedCustomer);
-                                            setUpPackageProps(selectedCustomer);
+                                            setSelectedCustomerChange(selectedCustomer);
+                                            setUpCustomerProps(selectedCustomer);
                                         }}
                                         value={selectedPackage}
                                         placeholder="Sample code"
