@@ -254,6 +254,7 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        aria-readonly={true}
                                     />
                                 </Stack>
 
@@ -287,8 +288,7 @@ const PackageBookingForm = () => {
                                         label="Jeep Model"
                                         size="small"
                                         fullWidth
-                                        disabled={true}
-                                        required
+                                        aria-readonly={true} required
                                     />
                                     <TextField
                                         name={jeepPrice}
@@ -298,8 +298,7 @@ const PackageBookingForm = () => {
                                         color="secondary"
                                         label="Jeep Price"
                                         size="small"
-                                        disabled={true}
-                                        fullWidth
+                                        aria-readonly={true} fullWidth
                                         required
                                     />
                                 </Stack>
