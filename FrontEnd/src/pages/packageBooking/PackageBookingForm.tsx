@@ -140,6 +140,7 @@ const PackageBookingForm = () => {
     const passengerCode = document.getElementById('packageCode') as HTMLInputElement;
     const [customerName, setCustomerNameChange] = useState("");
 
+    /** matching the values with array and  if it's true setting up it's value to the name changer hook */
     function setUpCustomerProps() {
         packageList.map((pack) => {
             if (pack.packageID === passengerCode.value) {
@@ -166,7 +167,7 @@ const PackageBookingForm = () => {
     }
 
     useEffect(() => {
-        setUpJeepProps(selectedJeep); // pass selectedJeep parameter
+        setUpJeepProps(selectedJeep);
         setUpCustomerProps();
     }, [selectedJeep]);
 
