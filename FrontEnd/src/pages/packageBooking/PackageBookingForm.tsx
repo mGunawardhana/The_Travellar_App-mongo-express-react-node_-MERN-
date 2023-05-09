@@ -186,7 +186,7 @@ const PackageBookingForm = () => {
     function setUpDriverProps(sel:string) {
         driverList.map((driver) => {
             if (driver.driverID === selectedDriver) {
-                setCustomerNameChange(driver.driverFirstName);
+                setDriverNameChange(driver.driverFirstName);
             }
         });
     }
@@ -351,14 +351,34 @@ const PackageBookingForm = () => {
                                         fullWidth
                                         required
                                     />
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={driver_code}
+                                    {/*<Autocomplete*/}
+                                    {/*    disablePortal*/}
+                                    {/*    id="combo-box-demo"*/}
+                                    {/*    options={driver_code}*/}
+                                    {/*    size="small"*/}
+                                    {/*    fullWidth*/}
+                                    {/*    renderInput={(params) => <TextField {...params} label="Driver Code"/>}*/}
+                                    {/*/>*/}
+
+                                    <Select
+                                        id="customerCode"
+                                        name="customerCode"
+                                        onChange={(e) => {
+                                            const selectedDriver = e.target.value;
+                                            setSelectedDriverChange(selectedDriver);
+                                            setUpDriverProps(selectedDriver);
+                                        }}
+                                        value={selectedDriver}
+                                        placeholder="Sample code"
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => <TextField {...params} label="Driver Code"/>}
-                                    />
+                                    >
+                                        {customerList.map((customer) => (
+                                            <MenuItem key={customer.customerID} value={customer.customerID}>
+                                                {customer.customerID}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
 
                                     <TextField
                                         type="text"
