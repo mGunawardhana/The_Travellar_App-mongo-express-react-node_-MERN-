@@ -244,8 +244,8 @@ const PackageBookingForm = () => {
                                         name="packageCode"
                                         onChange={(e) => {
                                             const selectedPackage = e.target.value;
-                                            setSelectedJeep(selectedJeep);
-                                            setUpJeepProps(selectedJeep);
+                                            setSelectedPackageChange(selectedPackage);
+                                            setUpPackageProps(selectedPackage);
                                         }}
                                         value={selectedPackage}
                                         placeholder="Sample code"
