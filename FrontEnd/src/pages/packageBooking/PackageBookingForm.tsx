@@ -166,10 +166,7 @@ const PackageBookingForm = () => {
         });
     }
 
-    useEffect(() => {
-        setUpJeepProps(selectedJeep);
-        setUpCustomerProps();
-    }, [selectedJeep]);
+
 
 
     /** this hook is useful to get the selected value */
@@ -188,8 +185,11 @@ const PackageBookingForm = () => {
     }
 
     useEffect(() => {
+        setUpJeepProps(selectedJeep);
+        setUpCustomerProps();
         setUpPackageProps(selectedPackage);
-    }, [selectedPackage]);
+    }, [selectedJeep, selectedPackage]);
+
 
     return (
         <>
