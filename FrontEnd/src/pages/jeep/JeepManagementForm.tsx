@@ -161,6 +161,14 @@ const JeepManagementForm = () => {
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
+    function generateId(prefix: string, length: number): string {
+        const randomNumber = Math.floor(Math.random() * Math.pow(10, length));
+        return `${prefix}-${randomNumber.toString().padStart(length, '0')}`;
+    }
+
+    const customerId = generateId('C00', 3);
+    console.log("my primary key " + customerId);
+
 
     // @ts-ignore
     return (
