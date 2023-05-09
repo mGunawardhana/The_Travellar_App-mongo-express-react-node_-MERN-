@@ -197,14 +197,14 @@ const PackageBookingForm = () => {
     /** these hook is responsible to matching selected value and load their own value in to the text-fields */
     const [customerName, setCustomerNameChange] = useState("");
 
-    // /** this function is responsible to matching their id's and setting equivalent to his own object values */
-    // function setUpPackageProps(selectedPackage: string) {
-    //     packageList.map((pack) => {
-    //         if (pack.packageID === selectedPackage) {
-    //             setPackageNameChange(pack.packageName);
-    //         }
-    //     });
-    // }
+    /** this function is responsible to matching their id's and setting equivalent to his own object values */
+    function setUpCustomerProps(selectedPackage: string) {
+        packageList.map((customer) => {
+            if (customer.packageID === selectedPackage) {
+                setPackageNameChange(customer.packageName);
+            }
+        });
+    }
 
 
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
