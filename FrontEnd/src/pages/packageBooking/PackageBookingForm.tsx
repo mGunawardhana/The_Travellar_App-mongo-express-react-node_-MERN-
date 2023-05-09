@@ -173,6 +173,8 @@ const PackageBookingForm = () => {
 
 
     const [packageName, setPackageNameChange] = useState("");
+
+    /** these hook is responsible to matching selected value and load their own value in to the text-fields */
     const [selectedPackage, setSelectedPackageChange] = useState('');
 
     function setUpPackageProps(selectedPackage: string) {
