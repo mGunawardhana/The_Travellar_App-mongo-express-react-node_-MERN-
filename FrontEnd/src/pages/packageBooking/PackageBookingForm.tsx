@@ -170,7 +170,6 @@ const PackageBookingForm = () => {
 
     const [packageName, setPackageNameChange] = useState("");
     const [selectedPackage, setSelectedPackageChange] = useState('');
-
     function setUpPackageProps(selectedPackage: string) {
         packageList.map((pack) => {
             if (pack.packageID === selectedPackage) {
