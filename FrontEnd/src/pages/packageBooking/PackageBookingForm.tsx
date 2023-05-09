@@ -172,11 +172,13 @@ const PackageBookingForm = () => {
     }, [selectedJeep]);
 
 
-    const [packageName, setPackageNameChange] = useState("");
-
-    /** these hook is responsible to matching selected value and load their own value in to the text-fields */
+    /** this hook is useful to get the selected value */
     const [selectedPackage, setSelectedPackageChange] = useState('');
 
+    /** these hook is responsible to matching selected value and load their own value in to the text-fields */
+    const [packageName, setPackageNameChange] = useState("");
+
+    /** this function is responsible to matching their id's and setting equivalent to his own object values */
     function setUpPackageProps(selectedPackage: string) {
         packageList.map((pack) => {
             if (pack.packageID === selectedPackage) {
