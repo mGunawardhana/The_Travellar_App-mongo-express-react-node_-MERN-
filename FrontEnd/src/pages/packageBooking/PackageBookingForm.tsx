@@ -148,11 +148,12 @@ const PackageBookingForm = () => {
     }
 
     const jeepCode = document.getElementById('jeepCode') as HTMLInputElement;
+    const [jeepModel, setCustomerNameChange] = useState("");
 
     function setUpJeepProps() {
         jeepList.map((jeep) => {
-            if (jeep.packageID === passengerCode.value) {
-                setCustomerNameChange(jeep.packageName);
+            if (jeep.vehicleID === jeepCode.value) {
+                setCustomerNameChange(jeep.vehicleID);
             }
         });
     }
