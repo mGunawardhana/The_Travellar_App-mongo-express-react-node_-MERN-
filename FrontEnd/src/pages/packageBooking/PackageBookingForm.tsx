@@ -149,6 +149,7 @@ const PackageBookingForm = () => {
 
     const jeepCode = document.getElementById('jeepCode') as HTMLInputElement;
     const [jeepModel, setCustomerNameChange] = useState("");
+    const [jeepModel, setCustomerNameChange] = useState("");
 
     function setUpJeepProps() {
         jeepList.map((jeep) => {
