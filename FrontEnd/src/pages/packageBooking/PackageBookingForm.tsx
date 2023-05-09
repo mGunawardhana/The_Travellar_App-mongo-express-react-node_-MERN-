@@ -166,9 +166,6 @@ const PackageBookingForm = () => {
         });
     }
 
-
-
-
     /** this hook is useful to get the selected value */
     const [selectedPackage, setSelectedPackageChange] = useState('');
 
@@ -190,7 +187,22 @@ const PackageBookingForm = () => {
         setUpPackageProps(selectedPackage);
     }, [selectedJeep, selectedPackage]);
 
+    //TODO developers are working top of the code please do no enter ---------------------------------------------------
 
+    // /** this hook is useful to get the selected value */
+    // const [selectedPackage, setSelectedPackageChange] = useState('');
+
+    // /** this function is responsible to matching their id's and setting equivalent to his own object values */
+    // function setUpPackageProps(selectedPackage: string) {
+    //     packageList.map((pack) => {
+    //         if (pack.packageID === selectedPackage) {
+    //             setPackageNameChange(pack.packageName);
+    //         }
+    //     });
+    // }
+
+
+    //TODO developers are working top of the code please do no enter ---------------------------------------------------
     return (
         <>
             <SystemHeader/>
@@ -341,16 +353,37 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={customer_code}
+                                    {/*<Autocomplete*/}
+                                    {/*    disablePortal*/}
+                                    {/*    id="combo-box-demo"*/}
+                                    {/*    options={customer_code}*/}
+                                    {/*    size="small"*/}
+                                    {/*    fullWidth*/}
+                                    {/*    renderInput={(params) => (*/}
+                                    {/*        <TextField {...params} label="Customer Code"/>*/}
+                                    {/*    )}*/}
+                                    {/*/>*/}
+
+                                    <Select
+                                        id="customerCode"
+                                        name="customerCode"
+                                        onChange={(e) => {
+                                            const selectedCustomer = e.target.value;
+                                            setSelectedPackageChange(selectedCustomer);
+                                            setUpPackageProps(selectedCustomer);
+                                        }}
+                                        value={selectedPackage}
+                                        placeholder="Sample code"
                                         size="small"
                                         fullWidth
-                                        renderInput={(params) => (
-                                            <TextField {...params} label="Customer Code"/>
-                                        )}
-                                    />
+                                    >
+                                        {packageList.map((pack) => (
+                                            <MenuItem key={pack.packageID} value={pack.packageID}>
+                                                {pack.packageID}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+
                                     <TextField
                                         type="text"
                                         variant="outlined"
