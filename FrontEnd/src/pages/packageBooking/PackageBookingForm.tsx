@@ -377,6 +377,8 @@ const PackageBookingForm = () => {
                                     </Select>
 
                                     <TextField
+                                        value={customerName}
+                                        name={customerName}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
