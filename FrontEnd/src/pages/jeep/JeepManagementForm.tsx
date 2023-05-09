@@ -1,7 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 
 import {
-    Autocomplete,
     Button,
     FormHelperText,
     MenuItem,
@@ -100,10 +99,10 @@ const JeepManagementForm = () => {
         let responseBody = {
             vehicleID: vehicleID,
             vehicleModel: vehicleModel,
-            passengerCount: passengerCount,
+            passengerCount: selectedSeatType,
             type: type,
-            fuelType: fuelType,
-            jeepAvailability: jeepAvailability,
+            fuelType: selectedFuelType,
+            jeepAvailability: selectedAvailability,
         };
 
         axios
@@ -137,10 +136,10 @@ const JeepManagementForm = () => {
         let responseBody = {
             vehicleID: vehicleID,
             vehicleModel: vehicleModel,
-            passengerCount: passengerCount,
+            passengerCount: selectedSeatType,
             type: type,
-            fuelType: fuelType,
-            jeepAvailability: jeepAvailability,
+            fuelType: selectedFuelType,
+            jeepAvailability: selectedAvailability,
         };
 
         if (window.confirm("Do you want to update this jeep ?")) {
@@ -159,6 +158,7 @@ const JeepManagementForm = () => {
 
     /** this hook is useful to get the selected value */
     const [selectedAvailability, setSelectedAvailabilityChange] = useState('');
+    const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
 
@@ -229,33 +229,21 @@ const JeepManagementForm = () => {
                                         fullWidth
                                         required
                                     />
-                                    {/*<Autocomplete*/}
-                                    {/*    disablePortal*/}
-                                    {/*    id="passengerCountTxt"*/}
-                                    {/*    options={passengerCountPack}*/}
-                                    {/*    size="small"*/}
-                                    {/*    // onChange={handleInputChange}*/}
-                                    {/*    fullWidth*/}
-                                    {/*    renderInput={(params) => (*/}
-                                    {/*        <TextField {...params} label="Passenger Count"/>*/}
-                                    {/*    )}*/}
-                                    {/*    value={passengerCount}*/}
-                                    {/*/>*/}
 
                                     <Select
-                                        id="fuelType"
-                                        name="fuelType"
+                                        id="seatsCount"
+                                        name="seatsCount"
                                         fullWidth
                                         size="small"
                                         onChange={(e) => {
-                                            const selectedFuelType = e.target.value;
-                                            setSelectedFuelTypeChange(selectedFuelType);
+                                            const selectedSeatType = e.target.value;
+                                            setSelectedSeatsCountChange(selectedSeatType);
 
                                         }}
-                                        value={selectedFuelType}
+                                        value={selectedSeatType}
                                         label="Availability"
                                     >
-                                        {availability.map((option) => (
+                                        {passengerCountPack.map((option) => (
                                             <MenuItem key={option} value={option}>
                                                 {option}
                                             </MenuItem>
