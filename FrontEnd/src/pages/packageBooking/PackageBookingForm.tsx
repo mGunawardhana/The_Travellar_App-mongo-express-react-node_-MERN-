@@ -140,8 +140,6 @@ const PackageBookingForm = () => {
     const passengerCode = document.getElementById('packageCode') as HTMLInputElement;
 
 
-
-
     /** this hook is useful to get the selected value */
     const [selectedJeep, setSelectedJeep] = useState('');
 
@@ -178,23 +176,20 @@ const PackageBookingForm = () => {
 
 
     //
-    // /** this hook is useful to get the selected value */
-    // const [selectedCustomer, setSelectedCustomerChange] = useState('');
-    //
-    // /** these hook is responsible to matching selected value and load their own value in to the text-fields */
-    // // const [customerName, setCustomerNameChange] = useState("");
-    // const [customerName, setCustomerNameChange] = useState("");
-    //
-    //
-    // /** this function is responsible to matching their id's and setting equivalent to his own object values */
-    // function setUpCustomerProps(selectedCustomer:string) {
-    //     customerList.map((customer) => {
-    //         if (customer.customerID === selectedCustomer) {
-    //             setCustomerNameChange(customer.customerFirstName);
-    //         }
-    //     });
-    // }
+    /** this hook is useful to get the selected value */
+    const [selectedDriver, setSelectedDriverChange] = useState('');
 
+    /** these hook is responsible to matching selected value and load their own value in to the text-fields */
+    const [driverName, setDriverNameChange] = useState("");
+
+    /** this function is responsible to matching their id's and setting equivalent to his own object values */
+    function setUpDriverProps(sel:string) {
+        driverList.map((driver) => {
+            if (driver.driverID === selectedDriver) {
+                setCustomerNameChange(driver.driverFirstName);
+            }
+        });
+    }
 
 
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
@@ -209,7 +204,7 @@ const PackageBookingForm = () => {
 
 
     /** this function is responsible to matching their id's and setting equivalent to his own object values */
-    function setUpCustomerProps(selectedCustomer:string) {
+    function setUpCustomerProps(selectedCustomer: string) {
         customerList.map((customer) => {
             if (customer.customerID === selectedCustomer) {
                 setCustomerNameChange(customer.customerFirstName);
