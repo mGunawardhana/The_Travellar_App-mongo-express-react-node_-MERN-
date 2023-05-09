@@ -140,14 +140,7 @@ const PackageBookingForm = () => {
     const passengerCode = document.getElementById('packageCode') as HTMLInputElement;
 
 
-    /** matching the values with array and  if it's true setting up it's value to the name changer hook */
-    function setUpCustomerProps() {
-        packageList.map((pack) => {
-            if (pack.packageID === passengerCode.value) {
-                setCustomerNameChange(pack.packageName);
-            }
-        });
-    }
+
 
     /** this hook is useful to get the selected value */
     const [selectedJeep, setSelectedJeep] = useState('');
@@ -181,11 +174,21 @@ const PackageBookingForm = () => {
         });
     }
 
+    /** matching the values with array and  if it's true setting up it's value to the name changer hook */
+    // function setUpCustomerProps() {
+    //     packageList.map((pack) => {
+    //         if (pack.packageID === passengerCode.value) {
+    //             setCustomerNameChange(pack.packageName);
+    //         }
+    //     });
+    // }
+
     useEffect(() => {
         setUpJeepProps(selectedJeep);
-        setUpCustomerProps();
+        // setUpCustomerProps();
+        setUpCustomerProps(selectedCustomer);
         setUpPackageProps(selectedPackage);
-    }, [selectedJeep, selectedPackage]);
+    }, [selectedJeep, selectedPackage],[selectedCustomer]);
 
     //TODO developers are working top of the code please do no enter ---------------------------------------------------
 
@@ -411,7 +414,7 @@ const PackageBookingForm = () => {
                                 </Stack>
 
                                 <Button
-                                    onClick={setUpCustomerProps}
+
                                     style={{
                                         backgroundColor: "#2ed573",
                                         marginRight: "7px",
