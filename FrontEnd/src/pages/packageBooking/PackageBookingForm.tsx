@@ -137,7 +137,6 @@ const PackageBookingForm = () => {
     }, []);
 
     const passengerCountTxt = document.getElementById('packageCode') as HTMLInputElement;
-    const passengerName = document.getElementById('packageName') as HTMLInputElement;
     const [customerName, setCustomerNameChange] = useState("");
 
     function setUpCustomerProps() {
@@ -145,10 +144,7 @@ const PackageBookingForm = () => {
             if (pack.packageID === passengerCountTxt.value) {
                 setCustomerNameChange(pack.packageName);
             }
-            console.log(pack.packageName);
         });
-
-
     }
 
     return (
@@ -198,9 +194,11 @@ const PackageBookingForm = () => {
                                         options={package_code}
                                         size="small"
                                         fullWidth
-                                        onChange={event => {
+
+                                        onChange={(e)=>{
                                             setUpCustomerProps();
                                         }}
+
                                         // ref={myTextField}
                                         renderInput={(params) => <TextField {...params} label="Package Code"/>}
                                     />
