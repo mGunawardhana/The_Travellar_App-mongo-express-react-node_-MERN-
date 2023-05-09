@@ -199,9 +199,9 @@ const PackageBookingForm = () => {
 
     /** this function is responsible to matching their id's and setting equivalent to his own object values */
     function setUpCustomerProps(selectedPackage: string) {
-        packageList.map((customer) => {
-            if (customer.packageID === selectedPackage) {
-                setPackageNameChange(customer.packageName);
+        customerList.map((customer) => {
+            if (customer.customerID === selectedPackage) {
+                setPackageNameChange(customer.customerFirstName);
             }
         });
     }
