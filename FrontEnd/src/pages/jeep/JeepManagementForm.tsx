@@ -254,7 +254,7 @@ const JeepManagementForm = () => {
                                             setSelectedAvailabilityChange(selectedFuelType);
 
                                         }}
-                                        value={selectedAvailability}
+                                        value={selectedFuelType}
                                         label="Availability"
                                     >
                                         {availability.map((option) => (
