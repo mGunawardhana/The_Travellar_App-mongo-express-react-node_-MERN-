@@ -148,11 +148,14 @@ const PackageBookingForm = () => {
         });
     }
 
-    const jeepCode = document.getElementById('jeepId') as HTMLInputElement;
-    const [jeepModel, setJeepModelChange] = useState("");
-    const [jeepPrice, setJeepPriceChange] = useState("");
+    /** this hook is useful to get the selected value */
     const [selectedJeep, setSelectedJeep] = useState('');
 
+    /** these hooks are responsible to matching selected value and load their own value in to the text-fields */
+    const [jeepModel, setJeepModelChange] = useState("");
+    const [jeepPrice, setJeepPriceChange] = useState("");
+
+    /** this function is responsible to matching their id's and setting equivalent to his own object values */
     function setUpJeepProps(selectedJeep: string) {
         jeepList.map((jeep) => {
             if (jeep.vehicleID === selectedJeep) {
