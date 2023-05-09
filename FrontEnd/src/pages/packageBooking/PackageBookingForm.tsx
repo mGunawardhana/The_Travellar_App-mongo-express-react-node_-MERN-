@@ -171,11 +171,10 @@ const PackageBookingForm = () => {
     const [packageName, setPackageNameChange] = useState("");
     const [selectedPackage, setSelectedPackageChange] = useState('');
 
-    function setUpJeepProps(selectedJeep: string) {
-        jeepList.map((jeep) => {
-            if (jeep.vehicleID === selectedJeep) {
-                setJeepModelChange(jeep.vehicleModel);
-                setJeepPriceChange(jeep.fuelType);
+    function setUpPackageProps(selectedPackage: string) {
+        packageList.map((pack) => {
+            if (pack.packageID === selectedPackage) {
+                setPackageNameChange(pack.packageName);
             }
         });
     }
