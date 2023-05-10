@@ -1,16 +1,26 @@
 import {Request, RequestHandler, Response} from "express";
-import {Driver} from "../models/Driver";
 import {bookingPackage} from "../models/PackageBooking";
+import mongoose, {ClientSession} from "mongoose";
+import {Driver} from "../models/Driver";
 
 export default class PackageBookingController {
     createPlaceBooking: RequestHandler = async (
         req: Request,
         res: Response
     ): Promise<Response> => {
+
+        let session: ClientSession | null = null;
         try {
             const {packageID} = req.body;
-            console.log(req.body);
-            let bookedPackage = await bookingPackage.findOne({packageID:packageID});
+
+            session = await mongoose.startSession();
+            session.startTransaction();
+
+            let jeep =await Driver.findOne(
+
+            );
+
+            let bookedPackage = await bookingPackage.findOne({packageID: packageID});
             if (!bookedPackage) {
                 let bookedPackage = new bookingPackage(req.body);
                 let bookedPackage01 = await bookedPackage.save();
@@ -28,21 +38,21 @@ export default class PackageBookingController {
     };
 
 
-    // getAllDrivers: RequestHandler = async (
-    //     req: Request,
-    //     res: Response
-    // ): Promise<Response> => {
-    //     try {
-    //         let driver = await Driver.find();
-    //         return res.status(200).json({responseData: driver});
-    //     } catch (error: unknown) {
-    //         if (error instanceof Error) {
-    //             return res.status(500).json({message: error.message});
-    //         } else {
-    //             return res.status(500).json({message: "Unknown error occurred."});
-    //         }
-    //     }
-    // };
+    getAllPlaceBookings: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            let bookings = await bookingPackage.find();
+            return res.status(200).json({responseData: bookings});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
     //
     // updateDriver: RequestHandler = async (
     //     req: Request,

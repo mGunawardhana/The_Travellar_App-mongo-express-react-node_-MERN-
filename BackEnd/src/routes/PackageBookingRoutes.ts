@@ -19,7 +19,7 @@ export default class PackageBookingRoutes {
         this.router.post("/", this.packageBookingController.createPlaceBooking);
 
         // // GET /api/v1/category
-        // this.router.get("/", this.packageController.getAllPackages);
+        this.router.get("/", this.packageBookingController.getAllPlaceBookings);
         //
         // // DELETE /api/v1/category/:id
         // this.router.put("/:id", this.packageController.updatePackage);
