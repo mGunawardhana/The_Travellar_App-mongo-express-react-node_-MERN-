@@ -532,8 +532,8 @@ const PackageBookingForm = () => {
                                             setSelectedPackageChange(table.packageID);
                                             setSelectedDriverChange(table.driverCode);
                                             setSelectedCustomerChange(table.customerCode);
-                                            setOffersChange(table.offers);
-                                            setAmountChange(table.amount);
+                                            setOffersChange(table.offers.toString());
+                                            setAmountChange(table.amount.toString());
                                             setBookingIdChange(table.bookingID);
                                         }}
                                         key={table.bookingID}
