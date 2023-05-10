@@ -22,9 +22,12 @@ import {JeepProperties} from "../../types/JeepProperties";
 import {CustomerProperties} from "../../types/CustomerPropertes";
 import {PackageProperties} from "../../types/PackageProperties";
 import {DriverProperties} from "../../types/DriverProperties";
+import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 
 
 const PackageBookingForm = () => {
+
+    const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
 
     /** these hooks are responsible to manage jeep lists and their id lists */
     const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
@@ -43,6 +46,18 @@ const PackageBookingForm = () => {
     const [driver_code, setDriverCode] = useState<string[]>([]);
 
     /* -------------------------------------------------------------------------------------------------------------- */
+
+    /** API calling function for get all jeeps */
+    const loadAllTable = async () => {
+        try {
+            const response = await axios.get("booking");
+            setTableList(response.data.responseData);
+            console.log(tableList);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     /** API calling function for get all jeeps */
     const getAllJeeps = async () => {
@@ -118,6 +133,11 @@ const PackageBookingForm = () => {
 
     /** calling get all jeep's method */
     useEffect(() => {
+
+        loadAllTable().then(r => {
+            console.log(r + " loading table...")
+        });
+
 
         getAllJeeps().then(r => {
             console.log(r + " loading jeeps...")
@@ -494,14 +514,33 @@ const PackageBookingForm = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    {/*<TableCell>B001</TableCell>*/}
-                                    {/*<TableCell>P001</TableCell>*/}
-                                    {/*<TableCell>D001</TableCell>*/}
-                                    {/*<TableCell>C001</TableCell>*/}
-                                    {/*<TableCell>5.0%</TableCell>*/}
-                                    {/*<TableCell>Rs.35,000.00</TableCell>*/}
-                                </TableRow>
+                                {tableList.map((table) => (
+                                    <TableRow
+                                        onClick={(e) => {
+                                            // console.log(jeep._id);
+                                            // key_for_put_and_delete = jeep._id;
+                                            // mongoChange(key_for_put_and_delete);
+                                            // vehicleIdChange(jeep.vehicleID);
+                                            // vehicleModelChange(jeep.vehicleModel);
+                                            // typeChange(jeep.type);
+                                            // setSelectedAvailabilityChange(jeep.jeepAvailability);
+                                            // setSelectedSeatsCountChange(jeep.passengerCount);
+                                            // setSelectedFuelTypeChange(jeep.fuelType);
+
+                                        }}
+                                        key={table.bookingID}
+                                        sx={{"&:last-child td, &:last-child th": {border: 0}}}
+                                    >
+                                        <TableCell align="center">{table.bookingID}</TableCell>
+                                        <TableCell align="center">{table.packageID}</TableCell>
+                                        <TableCell align="center">{table.driverCode}</TableCell>
+                                        <TableCell align="center">{table.customerCode}</TableCell>
+                                        <TableCell align="center">{table.offers}</TableCell>
+                                        <TableCell align="center">
+                                            {table.amount}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
