@@ -532,6 +532,9 @@ const PackageBookingForm = () => {
                                             setSelectedPackageChange(table.packageID);
                                             setSelectedDriverChange(table.driverCode);
                                             setSelectedCustomerChange(table.customerCode);
+                                            setOffersChange(table.offers);
+                                            setAmountChange(table.amount);
+                                            setBookingIdChange(table.);
                                         }}
                                         key={table.bookingID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}
