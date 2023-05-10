@@ -236,7 +236,7 @@ const PackageBookingForm = () => {
 
     const [setAmount, setAmountChange] = useState("");
 
-    const [setAmount, setAmountChange] = useState("");
+    const [setBookingID, setBookingIdChange] = useState("");
 
 
     return (
