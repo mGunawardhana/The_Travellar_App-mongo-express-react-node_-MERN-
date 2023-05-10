@@ -238,7 +238,34 @@ const PackageBookingForm = () => {
 
     const [setBookingID, setBookingIdChange] = useState("");
 
+    const handleSubmit = () => {
+        let responseBody = {
 
+            bookingID:
+            packageID:
+            packageName:
+            jeepCode:
+            jeepModel:
+            jeepPrice:
+            offers:
+            driverCode:
+            driverName:
+            customerCode:
+            customerName:
+            amount:
+        };
+
+        axios
+            .post("booking", JSON.stringify(responseBody))
+            .then((res) => {
+                loadAllTable();
+                console.log(responseBody);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+    };
     return (
         <>
             <SystemHeader/>
@@ -408,6 +435,7 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+
                                     />
                                 </Stack>
 
@@ -454,6 +482,10 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={(e) => {
+                                            const amountValue = e.target.value;
+                                            setAmountChange(amountValue);
+                                        }}
                                     />
                                 </Stack>
 
@@ -466,6 +498,7 @@ const PackageBookingForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+                                    onClick={handleSubmit}
                                 >
                                     Save
                                 </Button>
