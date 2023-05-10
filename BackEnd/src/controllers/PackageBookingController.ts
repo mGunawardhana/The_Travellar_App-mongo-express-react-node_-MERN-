@@ -14,7 +14,7 @@ export default class PackageBookingController {
             if (!bookedPackage) {
                 let bookedPackage = new bookingPackage(req.body);
                 let bookedPackage01 = await bookedPackage.save();
-                return res.json({message: "New Driver added.!", responseData: bookedPackage01});
+                return res.json({message: "Booking Placed.!", responseData: bookedPackage01});
             } else {
                 return res.status(200).json({message: "Already exists."});
             }
