@@ -21,7 +21,7 @@ const Content = () => {
                     {/*<Route path="/package" element={<PackageForm/>}></Route>*/}
                     {/*<Route path="/jeep" element={<JeepManagementForm/>}></Route>*/}
                     {/*<Route path="/driver" element={<DriverForm/>}></Route>*/}
-                    {/*<Route path="/booking" element={<PackageBookingForm/>}></Route>*/}
+                    <Route path="/booking" element={<PackageBookingForm/>}></Route>
                     {/*<Route path="/payment" element={<Payments/>}></Route>*/}
                     {/*<Route path="/details" element={<BookingDetails/>}></Route>*/}
                 </Routes>
