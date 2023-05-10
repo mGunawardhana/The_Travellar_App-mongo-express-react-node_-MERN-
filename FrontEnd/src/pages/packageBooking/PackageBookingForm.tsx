@@ -277,6 +277,10 @@ const PackageBookingForm = () => {
                                         label="Booking ID"
                                         size="small"
                                         fullWidth
+                                        onChange={(e) => {
+                                            const bookingID = e.target.value;
+                                            setBookingIdChange(bookingID);
+                                        }}
                                         required
                                     />
 
@@ -369,6 +373,10 @@ const PackageBookingForm = () => {
                                         size="small"
                                         fullWidth
                                         required
+                                        onChange={(e) => {
+                                            const offer = e.target.value;
+                                            setOffersChange(offer);
+                                        }}
                                     />
 
                                     <Select
