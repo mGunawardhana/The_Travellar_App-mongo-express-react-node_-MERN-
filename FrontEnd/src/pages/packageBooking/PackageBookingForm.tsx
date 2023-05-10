@@ -269,6 +269,7 @@ const PackageBookingForm = () => {
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={setBookingID}
                                         id="bookingId"
                                         type="text"
                                         variant="outlined"
@@ -360,6 +361,7 @@ const PackageBookingForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        value={setOffers}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -437,6 +439,7 @@ const PackageBookingForm = () => {
 
                                     <TextField
                                         type="text"
+                                        value={setAmount}
                                         variant="outlined"
                                         color="secondary"
                                         label="Amount"
