@@ -210,7 +210,6 @@ const PackageBookingForm = () => {
     const [selectedCustomer, setSelectedCustomerChange] = useState('');
 
     /** these hook is responsible to matching selected value and load their own value in to the text-fields */
-        // const [customerName, setCustomerNameChange] = useState("");
     const [customerName, setCustomerNameChange] = useState("");
 
 
@@ -232,6 +231,11 @@ const PackageBookingForm = () => {
         setUpCustomerProps(selectedCustomer);
         setUpDriverProps(selectedDriver);
     }, [selectedCustomer, selectedDriver]);
+
+    const [setOffers, setOffersChange] = useState("");
+
+    const [setAmount, setAmountChange] = useState("");
+
 
     return (
         <>
@@ -517,16 +521,12 @@ const PackageBookingForm = () => {
                                 {tableList.map((table) => (
                                     <TableRow
                                         onClick={(e) => {
-                                            // console.log(jeep._id);
-                                            // key_for_put_and_delete = jeep._id;
-                                            // mongoChange(key_for_put_and_delete);
-                                            // vehicleIdChange(jeep.vehicleID);
-                                            // vehicleModelChange(jeep.vehicleModel);
-                                            // typeChange(jeep.type);
-                                            // setSelectedAvailabilityChange(jeep.jeepAvailability);
-                                            // setSelectedSeatsCountChange(jeep.passengerCount);
-                                            // setSelectedFuelTypeChange(jeep.fuelType);
 
+                                            console.log(table.jeepCode);
+                                            setSelectedJeep(table.jeepCode);
+                                            setSelectedPackageChange(table.packageID);
+                                            setSelectedDriverChange(table.driverCode);
+                                            setSelectedCustomerChange(table.customerCode);
                                         }}
                                         key={table.bookingID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}
