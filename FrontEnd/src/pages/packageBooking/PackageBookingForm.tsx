@@ -164,14 +164,15 @@ const PackageBookingForm = () => {
 
     /** these hooks are responsible to matching selected value and load their own value in to the text-fields */
     const [jeepModel, setJeepModelChange] = useState("");
-    const [jeepPrice, setJeepPriceChange] = useState("");
+    const [jeepSeatsCount, setJeepSeatsChange] = useState("");
 
     /** this function is responsible to matching their id's and setting equivalent to his own object values */
     function setUpJeepProps(selectedJeep: string) {
         jeepList.map((jeep) => {
             if (jeep.vehicleID === selectedJeep) {
                 setJeepModelChange(jeep.vehicleModel);
-                setJeepPriceChange(jeep.fuelType);
+                setJeepSeatsChange(jeep.passengerCount);
+                console.log(jeep);
             }
         });
     }
@@ -239,20 +240,20 @@ const PackageBookingForm = () => {
     const [setBookingID, setBookingIdChange] = useState("");
 
     const handleSubmit = () => {
-        let responseBody = {
 
-            bookingID:
-            packageID:
-            packageName:
-            jeepCode:
-            jeepModel:
-            jeepPrice:
-            offers:
-            driverCode:
-            driverName:
-            customerCode:
-            customerName:
-            amount:
+        let responseBody = {
+            bookingID: setBookingID,
+            packageID: selectedPackage,
+            packageName: packageName,
+            jeepCode: selectedJeep,
+            jeepModel: jeepModel,
+            jeepPrice: jeepSeatsCount,
+            offers: setOffers,
+            driverCode: selectedDriver,
+            driverName: driverName,
+            customerCode: selectedCustomer,
+            customerName: customerName,
+            amount: setAmount
         };
 
         axios
@@ -264,8 +265,24 @@ const PackageBookingForm = () => {
             .catch((e) => {
                 console.log(e);
             });
-
     };
+
+    const handleDelete = () => {
+        if (window.confirm("Do you want to remove this jeep ?")) {
+            axios
+                .delete(`jeep/${mongoPrimaryKey}`)
+                .then((response) => {
+                    getAllJeeps();
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
+    };
+
+
     return (
         <>
             <SystemHeader/>
@@ -332,7 +349,7 @@ const PackageBookingForm = () => {
                                     </Select>
 
                                     <TextField
-                                        name={packageName}
+                                        name="packageName"
                                         value={packageName}
                                         id="packageName"
                                         type="text"
@@ -368,7 +385,7 @@ const PackageBookingForm = () => {
                                     </Select>
 
                                     <TextField
-                                        name={jeepModel}
+                                        name="jeepModel"
                                         value={jeepModel}
                                         type="text"
                                         variant="outlined"
@@ -379,12 +396,12 @@ const PackageBookingForm = () => {
                                         aria-readonly={true} required
                                     />
                                     <TextField
-                                        name={jeepPrice}
-                                        value={jeepPrice}
+                                        name="jeepSeatsCount"
+                                        value={jeepSeatsCount}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Jeep Price"
+                                        label="Jeep Seats"
                                         size="small"
                                         aria-readonly={true} fullWidth
                                         required
@@ -463,7 +480,8 @@ const PackageBookingForm = () => {
 
                                     <TextField
                                         value={customerName}
-                                        name={customerName}
+                                        name="customerName"
+
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
@@ -497,7 +515,7 @@ const PackageBookingForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
-                                    type="submit"
+                                    type="button"
                                     onClick={handleSubmit}
                                 >
                                     Save
@@ -521,6 +539,7 @@ const PackageBookingForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+                                    onClick={handleDelete}
                                 >
                                     Delete
                                 </Button>

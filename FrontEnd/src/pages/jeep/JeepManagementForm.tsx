@@ -402,7 +402,7 @@ const JeepManagementForm = () => {
                             </TableHead>
                             <TableBody>
                                 {jeepList.map((jeep) => (
-                                    <TableRow
+                                    <TableRow className="hover:bg-amber-200"
                                         onClick={(e) => {
                                             console.log(jeep._id);
                                             key_for_put_and_delete = jeep._id;
@@ -422,10 +422,11 @@ const JeepManagementForm = () => {
                                         <TableCell align="center">{jeep.vehicleModel}</TableCell>
                                         <TableCell align="center">{jeep.passengerCount}</TableCell>
                                         <TableCell align="center">{jeep.type}</TableCell>
-                                        <TableCell align="center">{jeep.fuelType}</TableCell>
                                         <TableCell align="center">
                                             {jeep.jeepAvailability}
                                         </TableCell>
+                                        <TableCell align="center">{jeep.fuelType}</TableCell>
+
                                     </TableRow>
                                 ))}
                             </TableBody>
