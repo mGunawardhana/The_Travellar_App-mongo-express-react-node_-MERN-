@@ -12,7 +12,7 @@ export default class PackageBookingController {
         let session: ClientSession | null = null;
 
         try {
-            const {bookingID, jeepCode} = req.body;
+            const {bookingID, jeepCode,driverCode} = req.body;
 
             session = await mongoose.startSession();
             session.startTransaction();
@@ -20,7 +20,7 @@ export default class PackageBookingController {
                 bookingID: bookingID,
             });
             let vehicleFilter = await Vehicle.find();
-            let DriverFilter = await Driver.find();
+            let driverFilter = await Driver.find();
 
             await Promise.all(
                 vehicleFilter.map(async (option) => {
@@ -32,10 +32,18 @@ export default class PackageBookingController {
                         );
                     }
                 })
-
-
-
             );
+
+            console.log(req.body);
+
+            driverFilter.map(async(option)=>{
+                if (option.driverID === driverCode){
+                    await
+                }
+            })
+            //
+
+
             let bookedPackage01;
             if (!bookedPackage) {
                 const newBookedPackage = new bookingPackage(req.body);
