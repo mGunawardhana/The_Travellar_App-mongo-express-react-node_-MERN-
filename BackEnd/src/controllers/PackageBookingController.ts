@@ -82,8 +82,8 @@ export default class PackageBookingController {
             session = await mongoose.startSession();
             session.startTransaction();
 
-            const {id, jeepCode,driverCode} = req.params;
-            let deleteBooking = await bookingPackage.findByIdAndDelete(id);
+            const { id, jeepCode, driverCode } = req.params;
+
             let vehicleFilter = await Vehicle.find();
             let driverFilter = await Driver.find();
 
@@ -93,9 +93,10 @@ export default class PackageBookingController {
                 if (option.vehicleID === jeepCode) {
                     updatePromises.push(
                         Vehicle.findOneAndUpdate(
-                            {vehicleID: option.vehicleID},
-                            {jeepAvailability: "Available"}
-                        )
+                            { vehicleID: option.vehicleID },
+                            { jeepAvailability: "Available" },
+                            { session }
+                        ).exec()
                     );
                 }
             });
@@ -104,17 +105,23 @@ export default class PackageBookingController {
                 if (option.driverID === driverCode) {
                     updatePromises.push(
                         Driver.findOneAndUpdate(
-                            {driverID: option.driverID},
-                            {availability: "Available"}
-                        )
+                            { driverID: option.driverID },
+                            { availability: "Available" },
+                            { session }
+                        ).exec()
                     );
                 }
             });
 
+            let deleteBooking = await bookingPackage
+                .findByIdAndDelete(id)
+                .session(session)
+                .exec();
+
             await Promise.all(updatePromises);
 
             if (!deleteBooking) {
-                new Error("Failed to delete post.");
+                throw new Error("Failed to delete post.");
             }
 
             await session.commitTransaction();
@@ -122,15 +129,22 @@ export default class PackageBookingController {
 
             return res
                 .status(200)
-                .json({message: "Delete deleted.", responseData: deleteBooking});
+                .json({ message: "Booking deleted.", responseData: deleteBooking });
         } catch (error: unknown) {
+            if (session) {
+                await session.abortTransaction();
+                await session.endSession();
+            }
+
             if (error instanceof Error) {
-                return res.status(500).json({message: error.message});
+                return res.status(500).json({ message: error.message });
             } else {
-                return res.status(500).json({message: "Unknown error occurred."});
+                return res.status(500).json({ message: "Unknown error occurred." });
             }
         }
     };
+
+
 
     getAllPlaceBookings: RequestHandler = async (
         req: Request,
