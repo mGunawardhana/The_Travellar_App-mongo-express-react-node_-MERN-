@@ -282,7 +282,7 @@ const Payments = () => {
                                             setCustomerNameChange(payment.customerName);
                                             setPackageAmountChange(payment.fullAmount);
                                             setCashAmountChange(payment.cash);
-                                            setBalanceAmountChange();
+                                            setBalanceAmountChange(payment.balance);
 
                                         }}
                                         key={payment.bookingID}
