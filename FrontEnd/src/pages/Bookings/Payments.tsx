@@ -278,7 +278,11 @@ const Payments = () => {
                                     <TableRow
                                         onClick={(e) => {
                                             console.log(payment._id);
-                                            // key_for_put_and_delete = customer._id;
+                                            setSelectedPackageChange(payment.bookingID);
+                                            setCustomerNameChange(payment.customerName);
+                                            setPackageAmountChange();
+                                            setCashAmountChange();
+                                            setBalanceAmountChange();
 
                                         }}
                                         key={payment.bookingID}
