@@ -43,8 +43,8 @@ const Payments = () => {
     const [paymentList, setPaymentList] = useState<PaymentProperties[]>([]);
 
 
-    /** API calling function for get all jeeps */
-    const loadAllTable = async () => {
+    /** API calling function for get all bookings */
+    const loadAllDetailsToTheCombo = async () => {
         try {
             const response = await axios.get("booking");
             setTableList(response.data.responseData);
@@ -54,20 +54,32 @@ const Payments = () => {
         }
     };
 
+    /** API calling function for get all jeeps */
+    const loadAllPaymentDetails = async () => {
+        try {
+            const response = await axios.get("payment");
+            setPaymentList(response.data.responseData);
+            console.log(tableList);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     function setCustomerNameAndFullAmount(selectedPackage: string) {
         tableList.forEach((pack_values) => {
             if (pack_values.bookingID === selectedPackage) {
-                setCustomerNameChange(pack_values.customerName);
+                setCustomerNameChange(pack_values.customerCode);
                 setPackageAmountChange(pack_values.amount || 0);
             }
         });
     }
 
     useEffect(() => {
-        loadAllTable().then(r => {
+        loadAllDetailsToTheCombo().then(r => {
             console.log("load all tables ...");
             setCustomerNameAndFullAmount(selectedPackage);
         });
+        loadAllPaymentDetails();
     }, []);
 
     const handleSubmit = () => {
@@ -83,6 +95,7 @@ const Payments = () => {
             .post("payment", JSON.stringify(responseBody))
             .then((res) => {
                 console.log(responseBody);
+                loadAllPaymentDetails();
             })
             .catch((e) => {
                 console.log(e);
@@ -243,19 +256,19 @@ const Payments = () => {
                         <Table aria-label="simple table">
                             <TableHead>
                                 <TableRow className="bg-black">
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="center" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Booking ID
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="center" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Customer
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="center" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Full Amount
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="center" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Cash
                                     </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                    <TableCell align="center" style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Balance
                                     </TableCell>
                                 </TableRow>
@@ -263,31 +276,26 @@ const Payments = () => {
                             <TableBody>
                                 {paymentList.map((payment) => (
                                     <TableRow
-                                        // onClick={(e) => {
-                                        //     console.log(customer._id);
-                                        //     // key_for_put_and_delete = customer._id;
-                                        //     mongoChange(key_for_put_and_delete);
-                                        //     idChange(customer.customerID);
-                                        //     firstNameChange(customer.customerFirstName);
-                                        //     lastNameChange(customer.customerLastName);
-                                        //     addressChange(customer.customerAddress);
-                                        //     contactChange(customer.customerContact);
-                                        //     emailChange(customer.customerEmail);
-                                        // }}
+                                        onClick={(e) => {
+                                            console.log(payment._id);
+                                            // key_for_put_and_delete = customer._id;
+
+                                        }}
                                         key={payment.bookingID}
                                         sx={{"&:last-child td, &:last-child th": {border: 0}}}
                                     >
-                                        <TableCell align="right">{payment.bookingID}</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">{payment.bookingID}</TableCell>
+                                        <TableCell align="center">
+                                            {/* //TODO customer name kiyala gattata enne customer code eka eka balala hadanna poddak */}
                                             {payment.customerName}
                                         </TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             {payment.fullAmount}
                                         </TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             {payment.cash}
                                         </TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             {payment.balance}
                                         </TableCell>
                                     </TableRow>
