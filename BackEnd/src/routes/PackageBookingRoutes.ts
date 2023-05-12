@@ -1,5 +1,4 @@
-import express, { Router } from "express";
-import PackageController from "../controllers/PackageController";
+import express, {Router} from "express";
 import PackageBookingController from "../controllers/PackageBookingController";
 
 export default class PackageBookingRoutes {
@@ -22,7 +21,7 @@ export default class PackageBookingRoutes {
         this.router.get("/", this.packageBookingController.getAllPlaceBookings);
         //
         // // DELETE /api/v1/category/:id
-        this.router.delete("/:id/:jeepCode", this.packageBookingController.deletePlaceBooking);
+        this.router.delete("/:id/:jeepCode/:driverCode", this.packageBookingController.deletePlaceBooking);
         //
         // // PUT /api/v1/category/:id
         // this.router.delete("/:id", this.packageController.deletePackage);

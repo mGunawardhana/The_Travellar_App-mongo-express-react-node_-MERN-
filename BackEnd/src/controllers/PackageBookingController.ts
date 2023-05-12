@@ -82,23 +82,36 @@ export default class PackageBookingController {
             session = await mongoose.startSession();
             session.startTransaction();
 
-            const {id, jeepCode} = req.params;
+            const {id, jeepCode,driverCode} = req.params;
             let deleteBooking = await bookingPackage.findByIdAndDelete(id);
             let vehicleFilter = await Vehicle.find();
 
-            await Promise.all(
-                vehicleFilter.map(async (option) => {
-                    if (option.vehicleID === jeepCode) {
-                        console.log(option.vehicleID === jeepCode);
-                        await Vehicle.findOneAndUpdate(
-                            {vehicleID: option.vehicleID},
-                            {jeepAvailability: "Available"}
-                        );
-                    }
+            let driverFilter = await Driver.find();
 
-                    console.log(option.vehicleID + " " + jeepCode);
-                })
-            );
+            const updatePromises: Promise<any>[] = [];
+
+            vehicleFilter.forEach((option) => {
+                if (option.vehicleID === jeepCode) {
+                    console.log(option.vehicleID === jeepCode);
+                    Vehicle.findOneAndUpdate(
+                        {vehicleID: option.vehicleID},
+                        {jeepAvailability: "Available"}
+                    );
+                }
+            });
+
+            driverFilter.forEach((option) => {
+                if (option.driverID === driverCode) {
+                    updatePromises.push(
+                        Driver.findOneAndUpdate(
+                            {driverID: option.driverID},
+                            {availability: "Available"}
+                        )
+                    );
+                }
+            });
+
+            await Promise.all(updatePromises);
 
             if (!deleteBooking) {
                 new Error("Failed to delete post.");
