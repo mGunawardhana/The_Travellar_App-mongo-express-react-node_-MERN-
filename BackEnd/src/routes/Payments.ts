@@ -18,10 +18,10 @@ export default class PaymentRouts {
         this.router.post("/", this.paymentController.createPayment);
 
         // GET /api/v1/category
-        //this.router.get("/", this.packageController.getAllPackages);
+        this.router.get("/", this.paymentController.getAllPayment);
 
         // DELETE /api/v1/category/:id
-        //this.router.put("/:id", this.packageController.updatePackage);
+        this.router.delete("/:id", this.paymentController.deletePayment);
 
         // PUT /api/v1/category/:id
         //this.router.delete("/:id", this.packageController.deletePackage);
