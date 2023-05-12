@@ -60,7 +60,12 @@ export default class PackageBookingController {
         req: Request,
         res: Response
     ): Promise<Response> => {
+        let session: ClientSession | null = null;
+
         try {
+            session = await mongoose.startSession();
+            session.startTransaction();
+
             const {id, jeepCode} = req.params;
             let deleteBooking = await bookingPackage.findByIdAndDelete(id);
             let vehicleFilter = await Vehicle.find();
@@ -82,6 +87,10 @@ export default class PackageBookingController {
             if (!deleteBooking) {
                 new Error("Failed to delete post.");
             }
+
+            await session.commitTransaction();
+            await session.endSession();
+
             return res
                 .status(200)
                 .json({message: "Delete deleted.", responseData: deleteBooking});
