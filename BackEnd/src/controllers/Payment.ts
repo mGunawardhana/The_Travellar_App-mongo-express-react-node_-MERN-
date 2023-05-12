@@ -30,7 +30,7 @@ export default class PaymentController {
                         payment_filter.map(async (pm_filter) => {
                             if (bk_opt.bookingID === pm_filter.bookingID) {
                                 //TODO metanata mongo wala primary key  eka pass karaganna etakota wade goda
-                                await bookingPackage.findByIdAndDelete("645e01a3a5aa3234013e7674");
+                                await bookingPackage.findOneAndDelete(bookingID);
                             }
                         })
                     })
