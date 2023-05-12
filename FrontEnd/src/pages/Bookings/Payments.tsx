@@ -280,7 +280,7 @@ const Payments = () => {
                                             console.log(payment._id);
                                             setSelectedPackageChange(payment.bookingID);
                                             setCustomerNameChange(payment.customerName);
-                                            setPackageAmountChange();
+                                            setPackageAmountChange(payment.fullAmount);
                                             setCashAmountChange();
                                             setBalanceAmountChange();
 
