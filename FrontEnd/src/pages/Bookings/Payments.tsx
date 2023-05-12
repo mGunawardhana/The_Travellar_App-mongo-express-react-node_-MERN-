@@ -3,7 +3,9 @@ import React, {useEffect, useState} from "react";
 import {
     Button,
     FormHelperText,
+    MenuItem,
     Paper,
+    Select,
     Stack,
     Table,
     TableBody,
@@ -22,6 +24,8 @@ const Payments = () => {
 
     const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
 
+    /** this hook is useful to get the selected value */
+    const [selectedPackage, setSelectedPackageChange] = useState("");
 
     /** API calling function for get all jeeps */
     const loadAllTable = async () => {
@@ -35,7 +39,9 @@ const Payments = () => {
     };
 
     useEffect(() => {
-        loadAllTable();
+        loadAllTable().then(r => {
+            console.log("load all tables ...");
+        });
     }, []);
 
 
@@ -61,22 +67,32 @@ const Payments = () => {
                         }}
                     >
                         <React.Fragment>
-                            {/* <h2>Register Form</h2> */}
-                            {/* <form onSubmit={handleSubmit} action={<Link to="/login" />}> */}
                             <form className="py-[15px] px-[15px]">
                                 <FormHelperText style={{fontSize: "25px,"}}>
                                     Driver Registration Form
                                 </FormHelperText>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
-                                    <TextField
-                                        type="text"
-                                        variant="outlined"
-                                        color="secondary"
-                                        label="Booking ID"
+
+                                    <Select
+                                        id="packageCode"
+                                        name="packageCode"
+                                        onChange={(e) => {
+                                            const selectedPackage = e.target.value;
+                                            setSelectedPackageChange(selectedPackage);
+
+                                        }}
+                                        value={selectedPackage}
+                                        placeholder="Sample code"
                                         size="small"
                                         fullWidth
-                                        required
-                                    />
+                                    >
+                                        {tableList.map((packID) => (
+                                            <MenuItem key={packID.packageID} value={packID.packageID}>
+                                                {packID.packageID}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+
                                     <TextField
                                         type="text"
                                         variant="outlined"
