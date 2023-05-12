@@ -27,6 +27,12 @@ const Payments = () => {
     /** this hook is useful to get the selected value */
     const [selectedPackage, setSelectedPackageChange] = useState("");
 
+    const [setCustomerName, setCustomerNameChange] = useState("");
+
+    const [setPackageAmount, setPackageAmountChange] = useState("");
+
+
+
     /** API calling function for get all jeeps */
     const loadAllTable = async () => {
         try {
@@ -37,6 +43,14 @@ const Payments = () => {
             console.log(error);
         }
     };
+
+    function setCustomerNameAndFullAmount(selectedPackage: string) {
+        tableList.map((pack_values) => {
+            if (pack_values.bookingID === selectedPackage) {
+
+            }
+        });
+    }
 
     useEffect(() => {
         loadAllTable().then(r => {
