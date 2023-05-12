@@ -120,7 +120,7 @@ export default class PackageBookingController {
         }
     };
 
-    //
+
     // updateDriver: RequestHandler = async (
     //     req: Request,
     //     res: Response
