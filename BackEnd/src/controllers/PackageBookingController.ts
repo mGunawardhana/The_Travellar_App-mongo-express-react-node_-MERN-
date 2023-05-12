@@ -85,17 +85,17 @@ export default class PackageBookingController {
             const {id, jeepCode,driverCode} = req.params;
             let deleteBooking = await bookingPackage.findByIdAndDelete(id);
             let vehicleFilter = await Vehicle.find();
-
             let driverFilter = await Driver.find();
 
             const updatePromises: Promise<any>[] = [];
 
             vehicleFilter.forEach((option) => {
                 if (option.vehicleID === jeepCode) {
-                    console.log(option.vehicleID === jeepCode);
-                    Vehicle.findOneAndUpdate(
-                        {vehicleID: option.vehicleID},
-                        {jeepAvailability: "Available"}
+                    updatePromises.push(
+                        Vehicle.findOneAndUpdate(
+                            {vehicleID: option.vehicleID},
+                            {jeepAvailability: "Available"}
+                        )
                     );
                 }
             });
