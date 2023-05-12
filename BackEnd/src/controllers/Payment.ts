@@ -1,30 +1,60 @@
 import {Request, RequestHandler, Response} from "express";
 import {Payment} from "../models/Payments";
+import mongoose, {ClientSession} from "mongoose";
+import {bookingPackage} from "../models/PackageBooking";
 
 export default class PaymentController {
     createPayment: RequestHandler = async (
         req: Request,
         res: Response
     ): Promise<Response> => {
+        let session: ClientSession | null = null;
+
         try {
-            const {bookingID} = req.body;
-            console.log(req.body);
+            const {bookingID, _id} = req.body;
+
+            session = await mongoose.startSession();
+            session.startTransaction();
+
             let payment = await Payment.findOne({bookingID: bookingID});
             if (!payment) {
-                let payment = new Payment(req.body);
-                let paymentNew = await payment.save();
-                return res.json({message: "New Payment added.!", responseData: paymentNew});
+                payment = new Payment(req.body);
+                const paymentNew = await payment.save();
+
+                // Delete related bookingPackage record
+                let bk_package_filter = await bookingPackage.find();
+                let payment_filter = await Payment.find();
+
+                await Promise.all(
+                    bk_package_filter.map(async (bk_opt) => {
+                        payment_filter.map(async (pm_filter) => {
+                            if (bk_opt.bookingID === pm_filter.bookingID) {
+                                //TODO metanata mongo wala primary key  eka pass karaganna etakota wade goda
+                                await bookingPackage.findByIdAndDelete("645e01a3a5aa3234013e7674");
+                            }
+                        })
+                    })
+                );
+
+                await session.commitTransaction();
+                await session.endSession();
+                return res.json({message: 'New Payment added!', responseData: paymentNew});
             } else {
-                return res.status(200).json({message: "Already exists."});
+                await session.abortTransaction();
+                await session.endSession();
+                return res.status(200).json({message: 'Payment already exists.'});
             }
         } catch (error: unknown) {
             if (error instanceof Error) {
-                return res.status(500).json({message: error.message})
+                await session?.abortTransaction();
+                await session?.endSession();
+                return res.status(500).json({message: error.message});
             } else {
-                return res.status(500).json({message: "Unknown error occurred!"})
+                return res.status(500).json({message: 'Unknown error occurred!'});
             }
         }
     };
+
 
     getAllPayment: RequestHandler = async (
         req: Request,
