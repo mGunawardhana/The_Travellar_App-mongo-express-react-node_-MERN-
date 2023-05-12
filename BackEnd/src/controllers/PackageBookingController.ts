@@ -1,42 +1,98 @@
 import {Request, RequestHandler, Response} from "express";
 import {bookingPackage} from "../models/PackageBooking";
+import {Vehicle} from "../models/Vehicle";
 import mongoose, {ClientSession} from "mongoose";
-import {Driver} from "../models/Driver";
 
 export default class PackageBookingController {
     createPlaceBooking: RequestHandler = async (
         req: Request,
         res: Response
     ): Promise<Response> => {
-
         let session: ClientSession | null = null;
+
         try {
-            const {packageID} = req.body;
+            const {bookingID, jeepCode} = req.body;
 
             session = await mongoose.startSession();
             session.startTransaction();
+            const bookedPackage = await bookingPackage.findOne({
+                bookingID: bookingID,
+            });
+            let vehicleFilter = await Vehicle.find();
 
-            let jeep =await Driver.findOne(
+            await Promise.all(
+                vehicleFilter.map(async (option) => {
+                    if (option.vehicleID === jeepCode) {
+                        console.log(option.vehicleID === jeepCode);
+                        await Vehicle.findOneAndUpdate(
+                            {vehicleID: option.vehicleID},
+                            {jeepAvailability: "Unavailable"}
+                        );
+                    }
 
+                    console.log(option.vehicleID + " " + jeepCode);
+                })
             );
-
-            let bookedPackage = await bookingPackage.findOne({packageID: packageID});
+            let bookedPackage01;
             if (!bookedPackage) {
-                let bookedPackage = new bookingPackage(req.body);
-                let bookedPackage01 = await bookedPackage.save();
-                return res.json({message: "Booking Placed.!", responseData: bookedPackage01});
+                const newBookedPackage = new bookingPackage(req.body);
+                bookedPackage01 = await newBookedPackage.save();
             } else {
-                return res.status(200).json({message: "Already exists."});
+                return res.status(200).json({message: "Booking already exists."});
             }
+
+            await session.commitTransaction();
+            await session.endSession();
+            return res.json({
+                message: "Booking Placed.!",
+                responseData: bookedPackage01,
+            });
         } catch (error: unknown) {
             if (error instanceof Error) {
-                return res.status(500).json({message: error.message})
+                return res.status(500).json({message: error.message});
             } else {
-                return res.status(500).json({message: "Unknown error occurred!"})
+                return res.status(500).json({message: "Unknown error occurred!"});
             }
         }
     };
 
+    deletePlaceBooking = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            const {id, jeepCode} = req.params;
+            let deleteBooking = await bookingPackage.findByIdAndDelete(id);
+            let vehicleFilter = await Vehicle.find();
+
+            await Promise.all(
+                vehicleFilter.map(async (option) => {
+                    if (option.vehicleID === jeepCode) {
+                        console.log(option.vehicleID === jeepCode);
+                        await Vehicle.findOneAndUpdate(
+                            {vehicleID: option.vehicleID},
+                            {jeepAvailability: "Available"}
+                        );
+                    }
+
+                    console.log(option.vehicleID + " " + jeepCode);
+                })
+            );
+
+            if (!deleteBooking) {
+                new Error("Failed to delete post.");
+            }
+            return res
+                .status(200)
+                .json({message: "Delete deleted.", responseData: deleteBooking});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
 
     getAllPlaceBookings: RequestHandler = async (
         req: Request,
@@ -44,6 +100,7 @@ export default class PackageBookingController {
     ): Promise<Response> => {
         try {
             let bookings = await bookingPackage.find();
+            console.log(bookings);
             return res.status(200).json({responseData: bookings});
         } catch (error: unknown) {
             if (error instanceof Error) {
@@ -53,6 +110,7 @@ export default class PackageBookingController {
             }
         }
     };
+
     //
     // updateDriver: RequestHandler = async (
     //     req: Request,
@@ -75,22 +133,4 @@ export default class PackageBookingController {
     //     }
     // };
     //
-    // deleteDriver = async (req: Request, res: Response): Promise<Response> => {
-    //     try {
-    //         const {id} = req.params;
-    //         let deleteDriver = await Driver.findByIdAndDelete(id);
-    //         if (!deleteDriver) {
-    //             new Error("Failed to delete post.");
-    //         }
-    //         return res
-    //             .status(200)
-    //             .json({message: "Delete deleted.", responseData: deleteDriver});
-    //     } catch (error: unknown) {
-    //         if (error instanceof Error) {
-    //             return res.status(500).json({message: error.message});
-    //         } else {
-    //             return res.status(500).json({message: "Unknown error occurred."});
-    //         }
-    //     }
-    // };
 }

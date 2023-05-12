@@ -22,7 +22,7 @@ export default class PackageBookingRoutes {
         this.router.get("/", this.packageBookingController.getAllPlaceBookings);
         //
         // // DELETE /api/v1/category/:id
-        // this.router.put("/:id", this.packageController.updatePackage);
+        this.router.delete("/:id", this.packageBookingController.deletePlaceBooking);
         //
         // // PUT /api/v1/category/:id
         // this.router.delete("/:id", this.packageController.deletePackage);
