@@ -19,6 +19,7 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
+import {PaymentProperties} from "../../types/PaymentProperties";
 
 const Payments = () => {
 
@@ -37,6 +38,10 @@ const Payments = () => {
     /** this one is responsible to set the value for balance field */
     const [setBalanceAmount, setBalanceAmountChange] = useState<number>(0);
 
+    /** setting all payment list */
+    const [paymentList, setPaymentList] = useState<PaymentProperties[]>([]);
+
+
 
     /** API calling function for get all jeeps */
     const loadAllTable = async () => {
@@ -50,16 +55,6 @@ const Payments = () => {
     };
 
     function setCustomerNameAndFullAmount(selectedPackage: string) {
-        // tableList.map((pack_values) => {
-        //     console.log(tableList);
-        //     if (pack_values.packageID === selectedPackage) {
-        //
-        //
-        //         setCustomerNameChange(pack_values.customerName);
-        //         setPackageAmountChange(pack_values.amount);
-        //     }
-        // });
-
         tableList.forEach((pack_values) => {
             if (pack_values.packageID === selectedPackage) {
                 setCustomerNameChange(pack_values.customerName);
@@ -235,17 +230,45 @@ const Payments = () => {
                                         Full Amount
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                        Cash
+                                    </TableCell>
+                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Balance
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>B001</TableCell>
-                                    <TableCell>Maneesha</TableCell>
-                                    <TableCell>Rs.60,000.00</TableCell>
-                                    <TableCell>Rs.1500.00</TableCell>
-                                </TableRow>
+                                {paymentList.map((payment) => (
+                                    <TableRow
+                                        // onClick={(e) => {
+                                        //     console.log(customer._id);
+                                        //     // key_for_put_and_delete = customer._id;
+                                        //     mongoChange(key_for_put_and_delete);
+                                        //     idChange(customer.customerID);
+                                        //     firstNameChange(customer.customerFirstName);
+                                        //     lastNameChange(customer.customerLastName);
+                                        //     addressChange(customer.customerAddress);
+                                        //     contactChange(customer.customerContact);
+                                        //     emailChange(customer.customerEmail);
+                                        // }}
+                                        key={payment.bookingID}
+                                        sx={{"&:last-child td, &:last-child th": {border: 0}}}
+                                    >
+                                        <TableCell align="right">{payment.bookingID}</TableCell>
+                                        <TableCell align="right">
+                                            {payment.customerName}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            {payment.fullAmount}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            {payment.cash}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            {payment.balance}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
