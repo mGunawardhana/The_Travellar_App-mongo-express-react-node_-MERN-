@@ -280,7 +280,7 @@ const JeepManagementForm = () => {
                                         value={selectedFuelType}
                                         label="Availability"
                                     >
-                                        {availability.map((option) => (
+                                        {fuelTypePack.map((option) => (
                                             <MenuItem key={option} value={option}>
                                                 {option}
                                             </MenuItem>
@@ -300,7 +300,7 @@ const JeepManagementForm = () => {
                                         value={selectedAvailability}
                                         label="Availability"
                                     >
-                                        {fuelTypePack.map((option) => (
+                                        {availability.map((option) => (
                                             <MenuItem key={option} value={option}>
                                                 {option}
                                             </MenuItem>
@@ -403,29 +403,30 @@ const JeepManagementForm = () => {
                             <TableBody>
                                 {jeepList.map((jeep) => (
                                     <TableRow className="hover:bg-amber-200"
-                                        onClick={(e) => {
-                                            console.log(jeep._id);
-                                            key_for_put_and_delete = jeep._id;
-                                            mongoChange(key_for_put_and_delete);
-                                            vehicleIdChange(jeep.vehicleID);
-                                            vehicleModelChange(jeep.vehicleModel);
-                                            typeChange(jeep.type);
-                                            setSelectedAvailabilityChange(jeep.jeepAvailability);
-                                            setSelectedSeatsCountChange(jeep.passengerCount);
-                                            setSelectedFuelTypeChange(jeep.fuelType);
+                                              onClick={(e) => {
+                                                  console.log(jeep._id);
+                                                  key_for_put_and_delete = jeep._id;
+                                                  mongoChange(key_for_put_and_delete);
+                                                  vehicleIdChange(jeep.vehicleID);
+                                                  vehicleModelChange(jeep.vehicleModel);
+                                                  typeChange(jeep.type);
+                                                  setSelectedAvailabilityChange(jeep.jeepAvailability);
+                                                  setSelectedSeatsCountChange(jeep.passengerCount);
+                                                  setSelectedFuelTypeChange(jeep.fuelType);
 
-                                        }}
-                                        key={jeep.vehicleID}
-                                        sx={{"&:last-child td, &:last-child th": {border: 0}}}
+                                              }}
+                                              key={jeep.vehicleID}
+                                              sx={{"&:last-child td, &:last-child th": {border: 0}}}
                                     >
                                         <TableCell align="center">{jeep.vehicleID}</TableCell>
                                         <TableCell align="center">{jeep.vehicleModel}</TableCell>
                                         <TableCell align="center">{jeep.passengerCount}</TableCell>
                                         <TableCell align="center">{jeep.type}</TableCell>
+                                        <TableCell align="center">{jeep.fuelType}</TableCell>
+
                                         <TableCell align="center">
                                             {jeep.jeepAvailability}
                                         </TableCell>
-                                        <TableCell align="center">{jeep.fuelType}</TableCell>
 
                                     </TableRow>
                                 ))}

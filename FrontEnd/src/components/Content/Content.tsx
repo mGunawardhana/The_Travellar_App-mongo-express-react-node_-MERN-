@@ -15,7 +15,7 @@ const Content = () => {
         <div>
             <BrowserRouter>
                 <Routes>
-                    {/*<Route path="/" element={<Login/>}></Route>*/}
+                    <Route path="/login" element={<Login/>}></Route>
                     <Route path="/" element={<HomeLoader/>}></Route>
                     <Route path="/customer" element={<CustomerForm/>}></Route>
                     <Route path="/package" element={<PackageForm/>}></Route>

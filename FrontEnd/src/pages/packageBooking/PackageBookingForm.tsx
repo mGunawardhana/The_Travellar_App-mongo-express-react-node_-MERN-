@@ -27,6 +27,10 @@ import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 
 const PackageBookingForm = () => {
 
+
+    /** this hook is responsible to providing values to update and delete   */
+    const [mongoPrimaryKey, mongoChange] = useState("");
+
     const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
 
     /** these hooks are responsible to manage jeep lists and their id lists */
@@ -44,6 +48,9 @@ const PackageBookingForm = () => {
     /** these hooks are responsible to manage driver lists and their id lists */
     const [driverList, setDriverList] = useState<DriverProperties[]>([]);
     const [driver_code, setDriverCode] = useState<string[]>([]);
+
+    /** variable for storing mongo primary key */
+    let key_for_put_and_delete: string | undefined | any;
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
@@ -270,10 +277,9 @@ const PackageBookingForm = () => {
     const handleDelete = () => {
         if (window.confirm("Do you want to remove this jeep ?")) {
             axios
-                .delete(`jeep/${mongoPrimaryKey}`)
+                .delete(`booking/${mongoPrimaryKey}`)
                 .then((response) => {
-                    getAllJeeps();
-                    alert("Data deleted successfully. ");
+                    loadAllTable();                    alert("Data deleted successfully. ");
                 })
                 .catch((error) => {
                     console.log(error);
@@ -586,7 +592,8 @@ const PackageBookingForm = () => {
                                 {tableList.map((table) => (
                                     <TableRow
                                         onClick={(e) => {
-
+                                            key_for_put_and_delete = table._id;
+                                            mongoChange(key_for_put_and_delete);
                                             console.log(table.jeepCode);
                                             setSelectedJeep(table.jeepCode);
                                             setSelectedPackageChange(table.packageID);
