@@ -4,6 +4,7 @@ import PackageRoutes from "./PackageRoutes";
 import VehicleRoutes from "./VehicleRoutes";
 import DriverRoutes from "./DriverRoutes";
 import PackageBookingRoutes from "./PackageBookingRoutes";
+import PaymentRouts from "./Payments";
 
 
 const router:Router = Router();
@@ -19,6 +20,8 @@ router.use(`${url_prefix}/jeep`,new VehicleRoutes().getRouter());
 router.use(`${url_prefix}/driver`,new DriverRoutes().getRouter());
 
 router.use(`${url_prefix}/booking`,new PackageBookingRoutes().getRouter());
+
+router.use(`${url_prefix}/payment`,new PaymentRouts().getRouter());
 
 
 export default router;

@@ -1,7 +1,7 @@
 import express, {Router} from "express";
 import PaymentController from "../controllers/Payment";
 
-export default class PackageBookingRoutes {
+export default class PaymentRouts {
     private router: Router = express.Router();
     private paymentController: PaymentController = new PaymentController();
 
