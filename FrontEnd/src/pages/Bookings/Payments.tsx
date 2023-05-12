@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
   Button,
@@ -15,8 +15,27 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
+import axios from "../../axios";
+import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 
 const Payments = () => {
+
+  const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
+
+
+  /** API calling function for get all jeeps */
+  const loadAllTable = async () => {
+    try {
+      const response = await axios.get("booking");
+      setTableList(response.data.responseData);
+      console.log(tableList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
   return (
     <>
       <SystemHeader />
