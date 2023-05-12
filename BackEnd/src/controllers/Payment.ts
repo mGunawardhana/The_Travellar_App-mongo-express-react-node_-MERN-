@@ -1,5 +1,6 @@
 import {Request, RequestHandler, Response} from "express";
 import {Driver} from "../models/Driver";
+import {Payment} from "../models/Payments";
 
 export default class PaymentController{
     createPayment: RequestHandler = async (
@@ -7,13 +8,13 @@ export default class PaymentController{
         res: Response
     ): Promise<Response> => {
         try {
-            const {driverID} = req.body;
+            const {bookingID} = req.body;
             console.log(req.body);
-            let driver = await Driver.findOne({driverID: driverID});
-            if (!driver) {
-                let driver = new Driver(req.body);
-                let driver01 = await driver.save();
-                return res.json({message: "New Payment added.!", responseData: driver01});
+            let payment = await Payment.findOne({bookingID:bookingID});
+            if (!payment) {
+                let payment = new Payment(req.body);
+                let paymentNew = await payment.save();
+                return res.json({message: "New Payment added.!", responseData: paymentNew});
             } else {
                 return res.status(200).json({message: "Already exists."});
             }
