@@ -2,6 +2,7 @@ import {Request, RequestHandler, Response} from "express";
 import {Driver} from "../models/Driver";
 
 export default class DriverController {
+
     createDriver: RequestHandler = async (
         req: Request,
         res: Response

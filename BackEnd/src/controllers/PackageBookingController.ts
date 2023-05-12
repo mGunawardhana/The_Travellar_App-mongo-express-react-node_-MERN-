@@ -2,6 +2,7 @@ import {Request, RequestHandler, Response} from "express";
 import {bookingPackage} from "../models/PackageBooking";
 import {Vehicle} from "../models/Vehicle";
 import mongoose, {ClientSession} from "mongoose";
+import {Driver} from "../models/Driver";
 
 export default class PackageBookingController {
     createPlaceBooking: RequestHandler = async (
@@ -19,6 +20,7 @@ export default class PackageBookingController {
                 bookingID: bookingID,
             });
             let vehicleFilter = await Vehicle.find();
+            let DriverFilter = await Driver.find();
 
             await Promise.all(
                 vehicleFilter.map(async (option) => {
@@ -29,9 +31,10 @@ export default class PackageBookingController {
                             {jeepAvailability: "Unavailable"}
                         );
                     }
-
-                    console.log(option.vehicleID + " " + jeepCode);
                 })
+
+
+
             );
             let bookedPackage01;
             if (!bookedPackage) {

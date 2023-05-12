@@ -3,10 +3,11 @@ import {Document, model, Schema} from "mongoose";
 export interface IDriver extends Document {
     driverID: string;
     driverFirstName: string;
-    driverLastName: string;
     driverLicense: string;
     driverContact: string;
     driverEmail: string;
+    availability: string;
+
 }
 
 const DriverSchema = new Schema(
@@ -19,10 +20,6 @@ const DriverSchema = new Schema(
             type: String,
             required: true,
         },
-        driverLastName: {
-            type: String,
-            required: true,
-        },
         driverLicense: {
             type: String,
             required: true,
@@ -32,6 +29,10 @@ const DriverSchema = new Schema(
             required: true,
         },
         driverEmail: {
+            type: String,
+            required: true,
+        },
+        availability: {
             type: String,
             required: true,
         },
