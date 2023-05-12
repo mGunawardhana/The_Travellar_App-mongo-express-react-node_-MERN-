@@ -15,6 +15,7 @@ import {
     TableRow,
     TextField,
 } from "@mui/material";
+import { KeyboardEvent } from 'react';
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
@@ -29,8 +30,12 @@ const Payments = () => {
 
     const [setCustomerName, setCustomerNameChange] = useState("");
 
-    const [setPackageAmount, setPackageAmountChange] = useState("");
+    /** this one is responsible to set the value to full amount */
+    const [setPackageAmount, setPackageAmountChange] = useState<number>(0);
 
+    const [setCashAmount, setCashAmountChange] = useState<number>(0);
+
+    const [setBalanceAmount, setBalanceAmountChange] = useState<number>(0);
 
 
     /** API calling function for get all jeeps */
@@ -46,8 +51,12 @@ const Payments = () => {
 
     function setCustomerNameAndFullAmount(selectedPackage: string) {
         tableList.map((pack_values) => {
-            if (pack_values.bookingID === selectedPackage) {
+            console.log(tableList);
+            if (pack_values.packageID === selectedPackage) {
 
+
+                setCustomerNameChange(pack_values.customerName);
+                setPackageAmountChange(pack_values.amount);
             }
         });
     }
@@ -55,6 +64,7 @@ const Payments = () => {
     useEffect(() => {
         loadAllTable().then(r => {
             console.log("load all tables ...");
+            setCustomerNameAndFullAmount(selectedPackage);
         });
     }, []);
 
@@ -93,7 +103,7 @@ const Payments = () => {
                                         onChange={(e) => {
                                             const selectedPackage = e.target.value;
                                             setSelectedPackageChange(selectedPackage);
-
+                                            setCustomerNameAndFullAmount(selectedPackage);
                                         }}
                                         value={selectedPackage}
                                         placeholder="Sample code"
@@ -112,33 +122,43 @@ const Payments = () => {
                                         variant="outlined"
                                         color="secondary"
                                         label="Customer Name"
+                                        name="setCustomerName"
+                                        value={setCustomerName}
                                         size="small"
                                         fullWidth
                                         required
-                                        disabled
+                                        aria-readonly={true}
                                     />
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
                                         type="text"
+                                        value={setPackageAmount}
                                         variant="outlined"
                                         color="secondary"
                                         label="Full amount"
                                         size="small"
                                         fullWidth
                                         required
-                                        disabled
+                                        aria-readonly={true}
                                     />
                                     <TextField
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
+                                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                                            if (e.key === 'Tab') {
+                                                setBalanceAmountChange((setCashAmount - setPackageAmount));
+                                            }
+                                        }}
                                         label="Cash"
                                         size="small"
                                         fullWidth
                                         required
                                     />
+
                                     <TextField
+                                        value={setBalanceAmount}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
