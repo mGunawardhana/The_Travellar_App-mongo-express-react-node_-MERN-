@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {KeyboardEvent, useEffect, useState} from "react";
 
 import {
     Button,
@@ -15,7 +15,6 @@ import {
     TableRow,
     TextField,
 } from "@mui/material";
-import { KeyboardEvent } from 'react';
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
@@ -35,6 +34,7 @@ const Payments = () => {
 
     const [setCashAmount, setCashAmountChange] = useState<number>(0);
 
+    /** this one is responsible to set the value for balance field */
     const [setBalanceAmount, setBalanceAmountChange] = useState<number>(0);
 
 
@@ -50,13 +50,20 @@ const Payments = () => {
     };
 
     function setCustomerNameAndFullAmount(selectedPackage: string) {
-        tableList.map((pack_values) => {
-            console.log(tableList);
+        // tableList.map((pack_values) => {
+        //     console.log(tableList);
+        //     if (pack_values.packageID === selectedPackage) {
+        //
+        //
+        //         setCustomerNameChange(pack_values.customerName);
+        //         setPackageAmountChange(pack_values.amount);
+        //     }
+        // });
+
+        tableList.forEach((pack_values) => {
             if (pack_values.packageID === selectedPackage) {
-
-
                 setCustomerNameChange(pack_values.customerName);
-                setPackageAmountChange(pack_values.amount);
+                setPackageAmountChange(pack_values.amount || 0);
             }
         });
     }
@@ -142,14 +149,22 @@ const Payments = () => {
                                         required
                                         aria-readonly={true}
                                     />
+
                                     <TextField
+                                        value={setCashAmount || ""}
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
                                         onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
                                             if (e.key === 'Tab') {
-                                                setBalanceAmountChange((setCashAmount - setPackageAmount));
+                                                alert(setCashAmount + "  " + setPackageAmount);
+                                                setBalanceAmountChange((setCashAmount - (setPackageAmount || 0)));
                                             }
+                                        }}
+                                        onChange={(e) => {
+                                            const value = parseFloat(e.target.value); // convert string to number
+                                            setCashAmountChange(value || 0);
+                                            setBalanceAmountChange((value - (setPackageAmount || 0)));
                                         }}
                                         label="Cash"
                                         size="small"
@@ -157,7 +172,9 @@ const Payments = () => {
                                         required
                                     />
 
+
                                     <TextField
+                                        name="balance"
                                         value={setBalanceAmount}
                                         type="text"
                                         variant="outlined"
