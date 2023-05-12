@@ -281,7 +281,7 @@ const Payments = () => {
                                             setSelectedPackageChange(payment.bookingID);
                                             setCustomerNameChange(payment.customerName);
                                             setPackageAmountChange(payment.fullAmount);
-                                            setCashAmountChange();
+                                            setCashAmountChange(payment.cash);
                                             setBalanceAmountChange();
 
                                         }}
