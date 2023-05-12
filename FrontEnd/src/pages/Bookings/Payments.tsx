@@ -23,6 +23,7 @@ import {PaymentProperties} from "../../types/PaymentProperties";
 
 const Payments = () => {
 
+    /** this one is responsible to load details into the combo */
     const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
 
     /** this hook is useful to get the selected value */
@@ -42,7 +43,6 @@ const Payments = () => {
     const [paymentList, setPaymentList] = useState<PaymentProperties[]>([]);
 
 
-
     /** API calling function for get all jeeps */
     const loadAllTable = async () => {
         try {
@@ -56,7 +56,7 @@ const Payments = () => {
 
     function setCustomerNameAndFullAmount(selectedPackage: string) {
         tableList.forEach((pack_values) => {
-            if (pack_values.packageID === selectedPackage) {
+            if (pack_values.bookingID === selectedPackage) {
                 setCustomerNameChange(pack_values.customerName);
                 setPackageAmountChange(pack_values.amount || 0);
             }
@@ -69,6 +69,25 @@ const Payments = () => {
             setCustomerNameAndFullAmount(selectedPackage);
         });
     }, []);
+
+    const handleSubmit = () => {
+        let responseBody = {
+            bookingID: selectedPackage,
+            customerName: setCustomerName,
+            fullAmount: setPackageAmount,
+            cash: setCashAmount,
+            balance: setBalanceAmount,
+        };
+
+        axios
+            .post("payment", JSON.stringify(responseBody))
+            .then((res) => {
+                console.log(responseBody);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
 
 
     return (
@@ -113,8 +132,8 @@ const Payments = () => {
                                         fullWidth
                                     >
                                         {tableList.map((packID) => (
-                                            <MenuItem key={packID.packageID} value={packID.packageID}>
-                                                {packID.packageID}
+                                            <MenuItem key={packID.bookingID} value={packID.bookingID}>
+                                                {packID.bookingID}
                                             </MenuItem>
                                         ))}
                                     </Select>
@@ -180,6 +199,9 @@ const Payments = () => {
                                         required
                                     />
                                 </Stack>
+
+                            </form>
+                            <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
                                     style={{
                                         backgroundColor: "#2ed573",
@@ -187,8 +209,9 @@ const Payments = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
-                                    type="submit"
+                                    type="button"
                                     className="gap-2"
+                                    onClick={handleSubmit}
                                 >
                                     Confirm Booking
                                 </Button>
@@ -204,7 +227,7 @@ const Payments = () => {
                                 >
                                     Remove Booking
                                 </Button>
-                            </form>
+                            </div>
                         </React.Fragment>
                     </Paper>
 
