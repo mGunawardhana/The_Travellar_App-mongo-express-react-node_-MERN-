@@ -24,6 +24,6 @@ export default class PaymentRouts {
         this.router.delete("/:id", this.paymentController.deletePayment);
 
         // PUT /api/v1/category/:id
-        //this.router.delete("/:id", this.packageController.deletePackage);
+        this.router.put("/:id", this.paymentController.updatePayment);
     };
 }

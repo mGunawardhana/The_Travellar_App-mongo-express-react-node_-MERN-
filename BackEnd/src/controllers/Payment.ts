@@ -1,9 +1,7 @@
 import {Request, RequestHandler, Response} from "express";
-import {Driver} from "../models/Driver";
 import {Payment} from "../models/Payments";
-import {Vehicle} from "../models/Vehicle";
 
-export default class PaymentController{
+export default class PaymentController {
     createPayment: RequestHandler = async (
         req: Request,
         res: Response
@@ -11,7 +9,7 @@ export default class PaymentController{
         try {
             const {bookingID} = req.body;
             console.log(req.body);
-            let payment = await Payment.findOne({bookingID:bookingID});
+            let payment = await Payment.findOne({bookingID: bookingID});
             if (!payment) {
                 let payment = new Payment(req.body);
                 let paymentNew = await payment.save();
@@ -63,5 +61,25 @@ export default class PaymentController{
         }
     };
 
+    updatePayment: RequestHandler = async (
+        req: Request,
+        res: Response
+    ): Promise<Response> => {
+        try {
+            const {id} = req.params;
+            let updatePayment = await Payment.findByIdAndUpdate(id, req.body, {
+                new: true,
+            });
+            return res
+                .status(200)
+                .json({message: "payment updated.", responseData: updatePayment});
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return res.status(500).json({message: error.message});
+            } else {
+                return res.status(500).json({message: "Unknown error occurred."});
+            }
+        }
+    };
 
 }
