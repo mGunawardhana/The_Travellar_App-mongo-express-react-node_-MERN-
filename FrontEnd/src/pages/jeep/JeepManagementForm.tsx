@@ -49,7 +49,7 @@ const JeepManagementForm = () => {
     /** values for combo box's */
     const passengerCountPack = ["8", "10", "12"];
     const fuelTypePack = ["Petrol", "Diesel"];
-    const availability = ["YES", "NO"];
+    const availability = ["Available", "Unavailable"];
 
     const getAllJeeps = async () => {
         try {
