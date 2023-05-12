@@ -12,7 +12,7 @@ export default class PackageBookingController {
         let session: ClientSession | null = null;
 
         try {
-            const {bookingID, jeepCode,driverCode} = req.body;
+            const {bookingID, jeepCode, driverCode} = req.body;
 
             session = await mongoose.startSession();
             session.startTransaction();
@@ -22,26 +22,31 @@ export default class PackageBookingController {
             let vehicleFilter = await Vehicle.find();
             let driverFilter = await Driver.find();
 
-            await Promise.all(
-                vehicleFilter.map(async (option) => {
-                    if (option.vehicleID === jeepCode) {
-                        console.log(option.vehicleID === jeepCode);
-                        await Vehicle.findOneAndUpdate(
+            const updatePromises: Promise<any>[] = [];
+
+            vehicleFilter.forEach((option) => {
+                if (option.vehicleID === jeepCode) {
+                    updatePromises.push(
+                        Vehicle.findOneAndUpdate(
                             {vehicleID: option.vehicleID},
                             {jeepAvailability: "Unavailable"}
-                        );
-                    }
-                })
-            );
-
-            console.log(req.body);
-
-            driverFilter.map(async(option)=>{
-                if (option.driverID === driverCode){
-                    await
+                        )
+                    );
                 }
-            })
-            //
+            });
+
+            driverFilter.forEach((option) => {
+                if (option.driverID === driverCode) {
+                    updatePromises.push(
+                        Driver.findOneAndUpdate(
+                            {driverID: option.driverID},
+                            {availability: "Unavailable"}
+                        )
+                    );
+                }
+            });
+
+            await Promise.all(updatePromises);
 
 
             let bookedPackage01;
