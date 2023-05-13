@@ -280,6 +280,7 @@ const PackageBookingForm = () => {
             });
     };
 
+    /** delete function */
     const handleDelete = () => {
         if (window.confirm("Do you want to remove this jeep ?")) {
             axios
