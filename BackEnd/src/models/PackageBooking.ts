@@ -1,7 +1,7 @@
 import { Document, model, Schema } from "mongoose";
 import { type } from "os";
 
-export interface IBookingPackage extends Document {
+export interface IPackageBooking extends Document {
   bookingID: string;
   packageID: string;
   packageName: string;
@@ -17,7 +17,7 @@ export interface IBookingPackage extends Document {
 }
 
 
-const BookingPackage = new Schema(
+const PackageBookingSchema = new Schema(
     {
       bookingID: {
         type: String,
@@ -71,7 +71,7 @@ const BookingPackage = new Schema(
     },
     {timestamps: true}
 );
-export const bookingPackage = model<IBookingPackage>(
+export const PackageBooking = model<IPackageBooking>(
   "bookingPackage",
-  BookingPackage
+  PackageBookingSchema
 );

@@ -1,5 +1,5 @@
 import {Request, RequestHandler, Response} from "express";
-import {bookingPackage} from "../models/PackageBooking";
+import {PackageBooking} from "../models/PackageBooking";
 import {Vehicle} from "../models/Vehicle";
 import mongoose, {ClientSession} from "mongoose";
 import {Driver} from "../models/Driver";
@@ -16,7 +16,7 @@ export default class PackageBookingController {
 
             session = await mongoose.startSession();
             session.startTransaction();
-            const bookedPackage = await bookingPackage.findOne({
+            const bookedPackage = await PackageBooking.findOne({
                 bookingID: bookingID,
             });
             let vehicleFilter = await Vehicle.find();
@@ -51,7 +51,7 @@ export default class PackageBookingController {
 
             let bookedPackage01;
             if (!bookedPackage) {
-                const newBookedPackage = new bookingPackage(req.body);
+                const newBookedPackage = new PackageBooking(req.body);
                 bookedPackage01 = await newBookedPackage.save();
             } else {
                 return res.status(200).json({message: "Booking already exists."});
@@ -113,7 +113,8 @@ export default class PackageBookingController {
                 }
             });
 
-            let deleteBooking = await bookingPackage
+            //TODO ...............................................
+            let deleteBooking = await PackageBooking
                 .findByIdAndDelete(id)
                 .session(session)
                 .exec();
@@ -151,7 +152,8 @@ export default class PackageBookingController {
         res: Response
     ): Promise<Response> => {
         try {
-            let bookings = await bookingPackage.find();
+            //TODO ..................................................
+            let bookings = await PackageBooking.find();
             console.log(bookings);
             return res.status(200).json({responseData: bookings});
         } catch (error: unknown) {
