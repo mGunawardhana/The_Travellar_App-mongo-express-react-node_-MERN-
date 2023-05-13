@@ -32,16 +32,26 @@ const JeepManagementForm = () => {
 
     /** text-fields managing hooks  */
     const [vehicleID, vehicleIdChange] = useState("");
+
+    /** hooks for vehicle model management */
     const [vehicleModel, vehicleModelChange] = useState("");
+
+    /** hook for passenger count management */
     const [passengerCount, passengerCountChange] = useState("");
+
+    /** hook for type management */
     const [type, typeChange] = useState("");
+
+    /**  */
     const [fuelType, fuelTypeChange] = useState("");
+
+    /**  */
     const [jeepAvailability, jeepAvailabilityChange] = useState("");
 
     /** variable for storing mongo primary key */
     let key_for_put_and_delete: string | undefined | any;
 
-
+    //TODO developing and testing purposes
     const passengerCountTxt = document.getElementById('passengerCountTxt') as HTMLInputElement;
     const fuelTxt = document.getElementById('fuelTxt') as HTMLInputElement;
     const availabilityTxt = document.getElementById('availabilityTxt') as HTMLInputElement;
