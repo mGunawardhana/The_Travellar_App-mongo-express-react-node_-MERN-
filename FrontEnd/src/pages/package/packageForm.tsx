@@ -22,16 +22,32 @@ import axios from "../../axios";
 // const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
 
 const PackageForm = () => {
+
+    /** hook for loading all package details */
     const [packageList, setPackageList] = useState<PackageProperties[]>([]);
 
+    /** hook for mongo primary key */
     const [mongoPrimaryKey, mongoChange] = useState("");
+
+    /** */
     const [packageID, packageIdChange] = useState("");
+
+    /** */
     const [packageName, packageNameChange] = useState("");
+
+    /** */
     const [daysHrsCount, daysHrsCountChange] = useState("");
+
+    /** */
     const [description, descriptionChange] = useState("");
+
+    /** */
     const [offers, offersChange] = useState(0);
+
+    /** */
     const [packageAmount, packageAmountChange] = useState(0);
 
+    /** */
     let key_for_put_and_delete: string | undefined | any;
 
     const getAllPackages = async () => {
