@@ -28,16 +28,12 @@ const Payments = () => {
 
     /** this hook is useful to get the selected value */
     const [selectedPackage, setSelectedPackageChange] = useState("");
-
     const [setJeepCode, setJeepCodeChange] = useState("");
-
     const [setDriverCode, setDriverCodeChange] = useState("");
-
     const [setCustomerName, setCustomerNameChange] = useState("");
 
     /** this one is responsible to set the value to full amount */
     const [setPackageAmount, setPackageAmountChange] = useState<number>(0);
-
     const [setCashAmount, setCashAmountChange] = useState<number>(0);
 
     /** this one is responsible to set the value for balance field */
@@ -71,6 +67,7 @@ const Payments = () => {
         }
     };
 
+    /** checking with their id's and values */
     function setCustomerNameAndFullAmount(selectedPackage: string) {
         tableList.forEach((pack_values) => {
             if (pack_values.bookingID === selectedPackage) {
@@ -92,6 +89,7 @@ const Payments = () => {
         loadAllPaymentDetails();
     }, []);
 
+    /** save function */
     const handleSubmit = () => {
         let responseBody = {
             bookingID: selectedPackage,
