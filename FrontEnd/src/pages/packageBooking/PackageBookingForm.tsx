@@ -28,6 +28,7 @@ const PackageBookingForm = () => {
   /** this hook is responsible to providing values to update and delete   */
   const [mongoPrimaryKey, mongoChange] = useState("");
 
+  /** this hook is responsible to loading all data to table   */
   const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
 
   /** these hooks are responsible to manage jeep lists and their id lists */

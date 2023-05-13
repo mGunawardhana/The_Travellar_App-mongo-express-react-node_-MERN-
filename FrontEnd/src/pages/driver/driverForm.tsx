@@ -17,6 +17,7 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {DriverProperties} from "../../types/DriverProperties";
 import axios from "../../axios";
+import Swal from 'sweetalert2';
 
 const DriverForm = () => {
 
@@ -95,7 +96,25 @@ const DriverForm = () => {
             .then((res) => {
                 console.log(responseBodyForDriver);
                 getAllDrivers();
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    iconColor: '#2ed573',
+                    backdrop: 'true',
+                    background: '#ffffff',
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
+                // success , error , warning , info , question ,width,color
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Saved Successfully!'
+                })
             })
             .catch((e) => {
                 console.log(e);
@@ -108,7 +127,25 @@ const DriverForm = () => {
                 .delete(`driver/${mongoPrimaryKeyDriver}`)
                 .then((response) => {
                     getAllDrivers();
-                    alert("Data deleted successfully. ");
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        iconColor: '#ff4757',
+                        backdrop: 'true',
+                        background: '#ffffff',
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        },
+                    })
+
+                    // success , error , warning , info , question ,width,color
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Delete Successfully!'
+                    })
                 })
                 .catch((error) => {
                     console.log(error);
@@ -132,14 +169,33 @@ const DriverForm = () => {
         if (window.confirm('Do you want to update this driver ?')) {
 
             axios
-                .put(`driver/${mongoPrimaryKeyDriver}`,responseBody)
+                .put(`driver/${mongoPrimaryKeyDriver}`, responseBody)
                 .then((response) => {
                     getAllDrivers();
-                    alert("Data Updated successfully. ");
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        width:'300px',
+                        iconColor: '#ffa502',
+                        backdrop: 'true',
+                        background: '#ffffff',
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    // success , error , warning , info , question ,width,color
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Update Successfully!'
+                    })
                 })
                 .catch((error) => {
                     console.log(error);
-                    alert("Error updating data. Because: "+error);
+                    alert("Error updating data. Because: " + error);
                 });
         }
     }

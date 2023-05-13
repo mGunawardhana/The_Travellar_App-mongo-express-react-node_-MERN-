@@ -29,6 +29,10 @@ const Payments = () => {
     /** this hook is useful to get the selected value */
     const [selectedPackage, setSelectedPackageChange] = useState("");
 
+    const [setJeepCode, setJeepCodeChange] = useState("");
+
+    const [setDriverCode, setDriverCodeChange] = useState("");
+
     const [setCustomerName, setCustomerNameChange] = useState("");
 
     /** this one is responsible to set the value to full amount */
@@ -51,7 +55,6 @@ const Payments = () => {
         try {
             const response = await axios.get("booking");
             setTableList(response.data.responseData);
-            console.log(tableList);
         } catch (error) {
             console.log(error);
         }
@@ -73,6 +76,10 @@ const Payments = () => {
             if (pack_values.bookingID === selectedPackage) {
                 setCustomerNameChange(pack_values.customerCode);
                 setPackageAmountChange(pack_values.amount || 0);
+                setJeepCodeChange(pack_values.jeepCode);
+                setDriverCodeChange(pack_values.driverCode);
+                console.log("val - " + pack_values.bookingID + " " + pack_values.driverCode + " " + pack_values.jeepCode)
+
             }
         });
     }
@@ -92,6 +99,8 @@ const Payments = () => {
             fullAmount: setPackageAmount,
             cash: setCashAmount,
             balance: setBalanceAmount,
+            jeepCode: setJeepCode,
+            driverCode: setDriverCode,
         };
 
         axios
@@ -108,7 +117,7 @@ const Payments = () => {
     const handleDelete = () => {
         if (window.confirm("Do you want to remove this payment ?")) {
             axios
-                .delete(`payment/${mongoPrimaryKey}`)
+                .delete(`payment/${mongoPrimaryKey}/${setJeepCode}/${setDriverCode}`)
                 .then((response) => {
                     loadAllPaymentDetails();
                     alert("Data deleted successfully. ");
