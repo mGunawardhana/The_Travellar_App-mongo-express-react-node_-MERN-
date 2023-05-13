@@ -50,6 +50,7 @@ const PackageForm = () => {
     /** variable for storing mongo primary key */
     let key_for_put_and_delete: string | undefined | any;
 
+    /** method for load all packages */
     const getAllPackages = async () => {
         try {
             const response = await axios.get("package");
@@ -60,6 +61,7 @@ const PackageForm = () => {
         }
     };
 
+    /** calling function */
     useEffect(() => {
         getAllPackages().then(r => {
             console.log(packageList);
@@ -92,6 +94,7 @@ const PackageForm = () => {
         }
     };
 
+    /** function for save */
     const handleSubmit = () => {
         let responseBody = {
             packageID: packageID,
@@ -113,6 +116,7 @@ const PackageForm = () => {
             });
     };
 
+    /** function for delete */
     const handleDelete = () => {
         if (window.confirm("Do you want to remove this customer ?")) {
             axios
