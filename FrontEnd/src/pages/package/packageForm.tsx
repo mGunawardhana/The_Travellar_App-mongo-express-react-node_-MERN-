@@ -132,6 +132,7 @@ const PackageForm = () => {
         }
     };
 
+    /** update function */
     const handleUpdate = () => {
         let responseBody = {
             packageID: packageID,
