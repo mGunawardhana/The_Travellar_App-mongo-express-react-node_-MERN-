@@ -38,6 +38,7 @@ const DriverForm = () => {
     /** variable for storing mongo primary key */
     let driver_key_for_put_and_delete: string | undefined | any;
 
+    /** load all function */
     const getAllDrivers = async () => {
         try {
             const response = await axios.get("driver");
@@ -80,6 +81,7 @@ const DriverForm = () => {
         }
     };
 
+    /** save function */
     const handleSubmitDriver = () => {
 
         let responseBodyForDriver = {
@@ -121,6 +123,8 @@ const DriverForm = () => {
             });
     }
 
+
+    /** delete function */
     const handleDeleteDriver = () => {
         if (window.confirm('Do you want to remove this driver ?')) {
             axios
@@ -154,6 +158,7 @@ const DriverForm = () => {
         }
     }
 
+    /** update function */
     const handleUpdate = () => {
 
         let responseBody = {
