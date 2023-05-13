@@ -32,10 +32,10 @@ const PackageForm = () => {
     /** hook for package id */
     const [packageID, packageIdChange] = useState("");
 
-    /** */
+    /** hook for package name */
     const [packageName, packageNameChange] = useState("");
 
-    /** */
+    /** hook for days hrs count */
     const [daysHrsCount, daysHrsCountChange] = useState("");
 
     /** */
