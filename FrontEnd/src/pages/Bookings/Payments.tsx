@@ -104,8 +104,26 @@ const Payments = () => {
         axios
             .post("payment", JSON.stringify(responseBody))
             .then((res) => {
-                console.log(responseBody);
                 loadAllPaymentDetails();
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    iconColor: '#2ed573',
+                    backdrop: 'true',
+                    background: '#ffffff',
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                // success , error , warning , info , question ,width,color
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Saved Successfully!'
+                })
             })
             .catch((e) => {
                 console.log(e);
