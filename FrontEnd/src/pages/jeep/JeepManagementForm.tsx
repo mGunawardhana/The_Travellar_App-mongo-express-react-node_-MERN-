@@ -42,7 +42,7 @@ const JeepManagementForm = () => {
     /** hook for type management */
     const [type, typeChange] = useState("");
 
-    /**  */
+    /** hook for fuel type management */
     const [fuelType, fuelTypeChange] = useState("");
 
     /**  */
