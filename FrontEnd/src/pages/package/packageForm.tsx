@@ -38,16 +38,16 @@ const PackageForm = () => {
     /** hook for days hrs count */
     const [daysHrsCount, daysHrsCountChange] = useState("");
 
-    /** */
+    /** hook for description */
     const [description, descriptionChange] = useState("");
 
-    /** */
+    /** hook for offers */
     const [offers, offersChange] = useState(0);
 
-    /** */
+    /** hooks for package amount */
     const [packageAmount, packageAmountChange] = useState(0);
 
-    /** */
+    /** variable for storing mongo primary key */
     let key_for_put_and_delete: string | undefined | any;
 
     const getAllPackages = async () => {
