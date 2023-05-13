@@ -110,7 +110,7 @@ const Payments = () => {
             axios
                 .delete(`payment/${mongoPrimaryKey}`)
                 .then((response) => {
-                    //getAllCustomers();
+                    loadAllPaymentDetails();
                     alert("Data deleted successfully. ");
                 })
                 .catch((error) => {
