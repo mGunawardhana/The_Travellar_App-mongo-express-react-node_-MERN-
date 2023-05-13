@@ -16,7 +16,7 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import { CustomerProperties } from "../../types/CustomerPropertes";
 import axios from "../../axios";
-
+import Swal from 'sweetalert2';
 const CustomerForm = () => {
 
   /** loading all customers */

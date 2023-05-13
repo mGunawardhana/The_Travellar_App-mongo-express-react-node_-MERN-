@@ -17,7 +17,7 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {PackageProperties} from "../../types/PackageProperties";
 import axios from "../../axios";
-
+import Swal from 'sweetalert2';
 
 // const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
 

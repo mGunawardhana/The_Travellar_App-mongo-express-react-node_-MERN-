@@ -20,7 +20,7 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import axios from "../../axios";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 import {PaymentProperties} from "../../types/PaymentProperties";
-
+import Swal from 'sweetalert2';
 const Payments = () => {
 
     /** this one is responsible to load details into the combo */

@@ -19,7 +19,7 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {JeepProperties} from "../../types/JeepProperties";
 import axios from "../../axios";
-
+import Swal from 'sweetalert2';
 const JeepManagementForm = () => {
 
     /** useState hooks */
