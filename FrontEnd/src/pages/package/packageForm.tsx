@@ -141,7 +141,25 @@ const PackageForm = () => {
                 .delete(`package/${mongoPrimaryKey}`)
                 .then((response) => {
                     getAllPackages();
-                    alert("Data deleted successfully. ");
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        iconColor: '#ff4757',
+                        backdrop: 'true',
+                        background: '#ffffff',
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        },
+                    })
+
+                    // success , error , warning , info , question ,width,color
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Delete Successfully!'
+                    })
                 })
                 .catch((error) => {
                     console.log(error);
