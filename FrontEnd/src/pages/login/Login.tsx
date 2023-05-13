@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import trees from "../../assets/loginImage.png";
-import {Avatar, TextField} from "@mui/material";
+import {FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField} from "@mui/material";
+import {Fingerprint, VisibilityOff} from "@mui/icons-material";
 
 const Login = () => {
     return <div className="w-full  h-screen flex">
@@ -12,43 +13,44 @@ const Login = () => {
             </div>
             <div className="mx-2  flex-col  flex justify-center items-center">
 
-                <form>
-                    <h2 className="text-2xl font-bold text-center">
-                        mGunawardhana
-                    </h2>
-                    <div className="flex flex-col  justify-center items-center gap-4">
-                        <TextField
-                            className="mx-10"
-                            name="userName"
-                            value=""
-                            type="text"
-                            variant="outlined"
-                            color="secondary"
-                            label="Vehicle ID"
-                            size="small"
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            name="password"
-                            value=""
-                            type="text"
-                            variant="outlined"
-                            color="secondary"
-                            label="Vehicle ID"
-                            size="small"
+                <form className="w-9/12 ">
 
-                            fullWidth
-                            required
-                        />
+                    <div className="outline-4">
+                        <h2 className="text-2xl font-bold text-center">
+                            mGunawardhana
+                        </h2>
+                        <div className="flex flex-col  justify-center items-center gap-4">
+                            <TextField
+                                className="mt-[5px]"
+                                id="outlined-basic"
+                                label="Outlined"
+                                variant="outlined"
+                                fullWidth
+                                size="small"
+                            />
+                            <TextField
+                                label="Password"
+                                type="password"
+                                variant="outlined"
+                                fullWidth
+                                size="small"
+                            />
+                            <IconButton className="" aria-label="fingerprint" color="secondary">
+                                <Fingerprint />
+                            </IconButton>
+
+                        </div>
+
+                        <Link to={"/customer"}>
+                            <button className="w-full py-2 rounded-lg my-4 bg-green-400 hover:bg-green-600">
+                                Sign In
+                            </button>
+                        </Link>
+                        <p className="text-center">Forgot Username or Password?</p>
+
                     </div>
 
-                    <Link to={"/home"}>
-                        <button className="w-full py-2 rounded-lg my-4 bg-green-400 hover:bg-green-600">
-                            Sign In
-                        </button>
-                    </Link>
-                    <p className="text-center">Forgot Username or Password?</p>
+
                 </form>
                 <div className="flex justify-center items-center">
                     {/*<button className="w-1/3 justify py-2 rounded-lg my-4 bg-green-600 hover:bg-green-600">*/}

@@ -9,10 +9,10 @@ const Nav = () => {
         <ul className="flex gap-x-8">
           <nav>
             <ul className="flex gap-x-8">
-              <NavLink to={"/customer"}>Home</NavLink>
-              <NavLink to={"/package"}>About</NavLink>
-              <NavLink to={"/jeep"}>Packages</NavLink>
-              <NavLink to={"/driver"}>SignUp</NavLink>
+              <NavLink to={"#"}>Home</NavLink>
+              <NavLink to={"#"}>About</NavLink>
+              <NavLink to={"#"}>Packages</NavLink>
+              <NavLink to={"/login"}>SignUp</NavLink>
             </ul>
           </nav>
         </ul>

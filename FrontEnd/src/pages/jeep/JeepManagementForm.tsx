@@ -20,6 +20,7 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {JeepProperties} from "../../types/JeepProperties";
 import axios from "../../axios";
 import Swal from 'sweetalert2';
+import DeleteIcon from '@mui/icons-material/Delete';
 const JeepManagementForm = () => {
 
     /** useState hooks */
@@ -61,16 +62,34 @@ const JeepManagementForm = () => {
     const fuelTypePack = ["Petrol", "Diesel"];
     const availability = ["Available", "Unavailable"];
 
+
+
+
     /** get all function */
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
             setJeepList(response.data.responseData);
+            vehicleIdChange(generateId());
             console.log(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
     };
+
+    //TODO this number auto generator **********************************************************************************
+
+    function generateId() {
+        let newId = jeepList.length;
+        newId++;
+        return "C00-00"+newId;
+    }
+
+    console.log("*"+generateId());
+
+
+    //TODO this number auto generator **********************************************************************************
+
 
     useEffect(() => {
         getAllJeeps().then((r) => {
@@ -120,6 +139,7 @@ const JeepManagementForm = () => {
             .post("jeep", JSON.stringify(responseBody))
             .then((res) => {
                 getAllJeeps();
+                vehicleIdChange(generateId());
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -229,20 +249,7 @@ const JeepManagementForm = () => {
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
-    //TODO this number auto generator **********************************************************************************
 
-    let lastId = jeepList.length;
-
-    function generateId(prefix: string, length: number): string {
-        lastId++;
-        const idString = lastId.toString().padStart(length, '0'); // convert the ID to a zero-padded string
-        return `${prefix}-${idString}`;
-    }
-
-    const customerId = generateId('C00', 3);
-    console.log("my primary key " + customerId);
-
-    //TODO this number auto generator **********************************************************************************
 
     return (
         <>
@@ -408,6 +415,7 @@ const JeepManagementForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<DeleteIcon />}
                                     type="submit"
                                     onClick={handleDelete}
                                 >

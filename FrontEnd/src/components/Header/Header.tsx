@@ -61,7 +61,7 @@ const Header = () => {
                     </div>
 
                     <button className="btn flex items-center gap-x-[20px] group text-black">
-                        Shop Now
+
                         {/* <BsArrowRight className="text-2xl text-accent-primary group-hover:text-white transition" /> */}
                         <BsArrowRight className="text-2xl text-orange-500 "/>
                     </button>
