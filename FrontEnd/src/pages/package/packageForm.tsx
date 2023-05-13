@@ -166,7 +166,26 @@ const PackageForm = () => {
                 .put(`package/${mongoPrimaryKey}`, responseBody)
                 .then((response) => {
                     getAllPackages();
-                    alert("Data Updated successfully. ");
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        width:'300px',
+                        iconColor: '#ffa502',
+                        backdrop: 'true',
+                        background: '#ffffff',
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    // success , error , warning , info , question ,width,color
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Update Successfully!'
+                    })
                 })
                 .catch((error) => {
                     console.log(error);
