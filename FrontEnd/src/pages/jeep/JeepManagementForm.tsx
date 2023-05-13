@@ -21,6 +21,8 @@ import {JeepProperties} from "../../types/JeepProperties";
 import axios from "../../axios";
 import Swal from 'sweetalert2';
 import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
+import SaveIcon from '@mui/icons-material/Save';
 const JeepManagementForm = () => {
 
     /** useState hooks */
@@ -385,13 +387,13 @@ const JeepManagementForm = () => {
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
                                     style={{
-                                        backgroundColor: "#2ed573",
+                                        backgroundColor: "#20bf6b",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
                                     type="submit"
-
+                                    startIcon={<SaveIcon />}
                                     onClick={handleSubmit}
                                 >
                                     Save
@@ -404,6 +406,7 @@ const JeepManagementForm = () => {
                                     }}
                                     variant="contained"
                                     type="submit"
+                                    startIcon={<UpdateIcon/>}
                                     onClick={handleUpdate}
                                 >
                                     Update
