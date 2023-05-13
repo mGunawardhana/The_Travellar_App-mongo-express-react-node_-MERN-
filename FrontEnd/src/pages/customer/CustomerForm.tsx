@@ -19,8 +19,10 @@ import axios from "../../axios";
 
 const CustomerForm = () => {
 
+  /** loading all customers */
   const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
 
+  /** text fields managing hooks */
   const [mongoPrimaryKey, mongoChange] = useState("");
   const [customerID, idChange] = useState("");
   const [customerFirstName, firstNameChange] = useState("");
@@ -29,8 +31,10 @@ const CustomerForm = () => {
   const [customerContact, contactChange] = useState("");
   const [customerEmail, emailChange] = useState("");
 
+  /** variable for storing mongo primary key */
   let key_for_put_and_delete: string | undefined | any;
 
+  /** get all function */
   const getAllCustomers = async () => {
     try {
       const response = await axios.get("customer");
@@ -46,6 +50,7 @@ const CustomerForm = () => {
       console.log(customerList);
     });
   }, []);
+
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -73,6 +78,7 @@ const CustomerForm = () => {
     }
   };
 
+  /** save function */
   const handleSubmit = () => {
     let responseBody = {
       customerID: customerID,
@@ -94,6 +100,7 @@ const CustomerForm = () => {
       });
   };
 
+  /** delete function */
   const handleDelete = () => {
     if (window.confirm("Do you want to remove this customer ?")) {
       axios
@@ -109,6 +116,7 @@ const CustomerForm = () => {
     }
   };
 
+  /** update function */
   const handleUpdate = () => {
     let responseBody = {
       customerID: customerID,
