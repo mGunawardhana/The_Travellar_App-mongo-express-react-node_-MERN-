@@ -61,6 +61,7 @@ const JeepManagementForm = () => {
     const fuelTypePack = ["Petrol", "Diesel"];
     const availability = ["Available", "Unavailable"];
 
+    /** get all function */
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
@@ -104,7 +105,7 @@ const JeepManagementForm = () => {
         }
     };
 
-
+    /** save function */
     const handleSubmit = () => {
         let responseBody = {
             vehicleID: vehicleID,
@@ -127,6 +128,7 @@ const JeepManagementForm = () => {
         alert(jeepAvailability)
     };
 
+    /** delete function */
     const handleDelete = () => {
         if (window.confirm("Do you want to remove this jeep ?")) {
             axios
@@ -142,6 +144,7 @@ const JeepManagementForm = () => {
         }
     };
 
+    /** update function */
     const handleUpdate = () => {
         let responseBody = {
             vehicleID: vehicleID,
@@ -171,7 +174,7 @@ const JeepManagementForm = () => {
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
-//TODO this number auto generator -----------------------
+    //TODO this number auto generator -----------------------
 
     let lastId = jeepList.length;
 
@@ -186,7 +189,6 @@ const JeepManagementForm = () => {
 
     //TODO this number auto generator -----------------------
 
-    // @ts-ignore
     return (
         <>
             <SystemHeader/>
