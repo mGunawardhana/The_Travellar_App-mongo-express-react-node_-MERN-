@@ -23,7 +23,7 @@ import {CustomerProperties} from "../../types/CustomerPropertes";
 import {PackageProperties} from "../../types/PackageProperties";
 import {DriverProperties} from "../../types/DriverProperties";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
-
+import Swal from 'sweetalert2';
 const PackageBookingForm = () => {
     /** this hook is responsible to providing values to update and delete   */
     const [mongoPrimaryKey, mongoChange] = useState("");
@@ -273,7 +273,25 @@ const PackageBookingForm = () => {
             .post("booking", JSON.stringify(responseBody))
             .then((res) => {
                 loadAllTable();
-                console.log(responseBody);
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    iconColor: '#2ed573',
+                    backdrop: 'true',
+                    background: '#ffffff',
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                // success , error , warning , info , question ,width,color
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Saved Successfully!'
+                })
             })
             .catch((e) => {
                 console.log(e);
