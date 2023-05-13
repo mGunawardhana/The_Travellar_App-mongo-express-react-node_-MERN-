@@ -137,22 +137,28 @@ const PackageBookingForm = () => {
 
   /** calling get all jeep's method */
   useEffect(() => {
+
+    //loading table ...
     loadAllTable().then((r) => {
       console.log(r + " loading table...");
     });
 
+    //loading all jeeps ...
     getAllJeeps().then((r) => {
       console.log(r + " loading jeeps...");
     });
 
+    //loading all customers ...
     getAllCustomers().then((r) => {
       console.log(r + " loading customers...");
     });
 
+    //lading all tables ...
     getAllDrivers().then((r) => {
       console.log(r + " loading drivers...");
     });
 
+    //loading all packages ...
     getAllPackages().then((r) => {
       console.log(r + " loading packages...");
     });
