@@ -45,7 +45,7 @@ const JeepManagementForm = () => {
     /** hook for fuel type management */
     const [fuelType, fuelTypeChange] = useState("");
 
-    /**  */
+    /** hook for jeep availability management */
     const [jeepAvailability, jeepAvailabilityChange] = useState("");
 
     /** variable for storing mongo primary key */
