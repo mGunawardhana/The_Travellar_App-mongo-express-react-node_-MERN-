@@ -270,7 +270,7 @@ const PackageBookingForm = () => {
   const handleDelete = () => {
     if (window.confirm("Do you want to remove this jeep ?")) {
       axios
-        .delete(`booking/${mongoPrimaryKey}/${selectedJeep}`)
+        .delete(`booking/${mongoPrimaryKey}/${selectedJeep}/${selectedDriver}`)
         .then((response) => {
           loadAllTable();
           alert("Data deleted successfully. ");

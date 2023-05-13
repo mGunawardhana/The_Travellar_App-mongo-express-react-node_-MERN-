@@ -29,7 +29,7 @@ const DriverForm = () => {
     /** text-fields managing hooks  */
     const [driverID, driverIdChange] = useState("");
     const [driverFirstName, driverFirstNameChange] = useState("");
-    const [driverLastName, driverLastNameChange] = useState("");
+    const [availability, availabilityChange] = useState("");
     const [driverLicense, driverAddressChange] = useState("");
     const [driverContact, driverContactChange] = useState("");
     const [driverEmail, driverEmailChange] = useState("");
@@ -62,8 +62,8 @@ const DriverForm = () => {
             case "driverFirstName":
                 driverFirstNameChange(value);
                 break;
-            case "driverLastName":
-                driverLastNameChange(value);
+            case "availability":
+                availabilityChange(value);
                 break;
             case "driverLicense":
                 driverAddressChange(value);
@@ -84,10 +84,10 @@ const DriverForm = () => {
         let responseBodyForDriver = {
             driverID: driverID,
             driverFirstName: driverFirstName,
-            driverLastName: driverLastName,
             driverLicense: driverLicense,
             driverContact: driverContact,
             driverEmail: driverEmail,
+            availability: availability,
         };
 
         axios
@@ -122,10 +122,11 @@ const DriverForm = () => {
         let responseBody = {
             driverID: driverID,
             driverFirstName: driverFirstName,
-            driverLastName: driverLastName,
             driverLicense: driverLicense,
             driverContact: driverContact,
             driverEmail: driverEmail,
+            availability: availability,
+
         };
 
         if (window.confirm('Do you want to update this driver ?')) {
@@ -200,12 +201,12 @@ const DriverForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
-                                        value={driverLastName}
-                                        name="driverLastName"
+                                        value={driverEmail}
+                                        name="driverEmail"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Last Name"
+                                        label="Email"
                                         size="small"
                                         fullWidth
                                         required
@@ -238,17 +239,18 @@ const DriverForm = () => {
                                         onChange={handleInputChangeDriver}
                                     />
                                     <TextField
-                                        value={driverEmail}
-                                        name="driverEmail"
+                                        value={availability}
+                                        name="availability"
                                         type="text"
                                         variant="outlined"
                                         color="secondary"
-                                        label="Email"
+                                        label="Availability"
                                         size="small"
                                         fullWidth
                                         required
                                         onChange={handleInputChangeDriver}
                                     />
+
                                 </Stack>
 
 
@@ -316,9 +318,6 @@ const DriverForm = () => {
                                         First Name
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
-                                        Last Name
-                                    </TableCell>
-                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         License Number
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
@@ -326,6 +325,9 @@ const DriverForm = () => {
                                     </TableCell>
                                     <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
                                         Email
+                                    </TableCell>
+                                    <TableCell style={{color: "#ffffff", fontWeight: "bolder"}}>
+                                        Availability
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
@@ -339,7 +341,7 @@ const DriverForm = () => {
                                             mongoChangeDriver(driver_key_for_put_and_delete);
                                             driverIdChange(driver.driverID);
                                             driverFirstNameChange(driver.driverFirstName);
-                                            driverLastNameChange(driver.driverLastName);
+                                            availabilityChange(driver.availability);
                                             driverAddressChange(driver.driverLicense);
                                             driverContactChange(driver.driverContact);
                                             driverEmailChange(driver.driverEmail);
@@ -350,10 +352,10 @@ const DriverForm = () => {
                                     >
                                         <TableCell align="right">{driver.driverID}</TableCell>
                                         <TableCell align="right">{driver.driverFirstName}</TableCell>
-                                        <TableCell align="right">{driver.driverLastName}</TableCell>
                                         <TableCell align="right">{driver.driverLicense}</TableCell>
                                         <TableCell align="right">{driver.driverContact}</TableCell>
                                         <TableCell align="right">{driver.driverEmail}</TableCell>
+                                        <TableCell align="right">{driver.availability}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

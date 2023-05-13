@@ -42,6 +42,9 @@ const Payments = () => {
     /** setting all payment list */
     const [paymentList, setPaymentList] = useState<PaymentProperties[]>([]);
 
+    const [mongoPrimaryKey, mongoChange] = useState("");
+
+    let key_for_put_and_delete: string | undefined | any;
 
     /** API calling function for get all bookings */
     const loadAllDetailsToTheCombo = async () => {
@@ -100,6 +103,21 @@ const Payments = () => {
             .catch((e) => {
                 console.log(e);
             });
+    };
+
+    const handleDelete = () => {
+        if (window.confirm("Do you want to remove this payment ?")) {
+            axios
+                .delete(`payment/${mongoPrimaryKey}`)
+                .then((response) => {
+                    //getAllCustomers();
+                    alert("Data deleted successfully. ");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Error deleting data. ");
+                });
+        }
     };
 
 
@@ -236,7 +254,8 @@ const Payments = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
-                                    type="submit"
+                                    type="button"
+                                    onClick={handleDelete}
                                 >
                                     Remove Booking
                                 </Button>
@@ -277,7 +296,8 @@ const Payments = () => {
                                 {paymentList.map((payment) => (
                                     <TableRow
                                         onClick={(e) => {
-                                            console.log(payment._id);
+                                            key_for_put_and_delete = payment._id;
+                                            mongoChange(key_for_put_and_delete);
                                             setSelectedPackageChange(payment.bookingID);
                                             setCustomerNameChange(payment.customerName);
                                             setPackageAmountChange(payment.fullAmount);
