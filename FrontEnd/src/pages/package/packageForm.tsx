@@ -29,7 +29,7 @@ const PackageForm = () => {
     /** hook for mongo primary key */
     const [mongoPrimaryKey, mongoChange] = useState("");
 
-    /** */
+    /** hook for package id */
     const [packageID, packageIdChange] = useState("");
 
     /** */
