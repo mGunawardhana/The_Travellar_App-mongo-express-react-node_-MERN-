@@ -2,6 +2,8 @@ import {Request, RequestHandler, Response} from "express";
 import {Payment} from "../models/Payments";
 import mongoose, {ClientSession} from "mongoose";
 import {bookingPackage} from "../models/PackageBooking";
+import {Vehicle} from "../models/Vehicle";
+import {Driver} from "../models/Driver";
 
 export default class PaymentController {
     createPayment: RequestHandler = async (
@@ -11,45 +13,66 @@ export default class PaymentController {
         let session: ClientSession | null = null;
 
         try {
-            const {bookingID, _id} = req.body;
+            const { bookingID } = req.body;
 
             session = await mongoose.startSession();
             session.startTransaction();
 
-            let payment = await Payment.findOne({bookingID: bookingID});
+            let payment = await Payment.findOne({ bookingID: bookingID });
             if (!payment) {
                 payment = new Payment(req.body);
                 const paymentNew = await payment.save();
 
-                // Delete related bookingPackage record
-                let bk_package_filter = await bookingPackage.find();
-                let payment_filter = await Payment.find();
+                let vehicleFilter = await Vehicle.find();
+                let driverFilter = await Driver.find();
 
-                await Promise.all(
-                    bk_package_filter.map(async (bk_opt) => {
-                        payment_filter.map(async (pm_filter) => {
-                            if (bk_opt.bookingID === pm_filter.bookingID) {
-                                await bookingPackage.findOneAndDelete(bookingID);
-                            }
-                        })
-                    })
-                );
+                const updatePromises: Promise<any>[] = [];
+
+
+                //TODO mee deke values available kiyala change wenne naha habai bookingdetails eken delete wela payment eke hariyatama place wenwa
+                vehicleFilter.forEach((option) => {
+                    if (option.vehicleID === req.body.jeepCode) {
+                        updatePromises.push(
+                            Vehicle.findOneAndUpdate(
+                                { vehicleID: option.vehicleID },
+                                { jeepAvailability: "Available" },
+                                { session }
+                            ).exec()
+                        );
+                    }
+                });
+
+                driverFilter.forEach((option) => {
+                    if (option.driverID === req.body.driverCode) {
+                        updatePromises.push(
+                            Driver.findOneAndUpdate(
+                                { driverID: option.driverID },
+                                { availability: "Available" },
+                                { session }
+                            ).exec()
+                        );
+                    }
+                });
+
+                await Promise.all(updatePromises);
+
+                await bookingPackage.findOneAndDelete({ bookingID });
 
                 await session.commitTransaction();
                 await session.endSession();
-                return res.json({message: 'New Payment added!', responseData: paymentNew});
+                return res.json({ message: "New Payment added!", responseData: paymentNew });
             } else {
                 await session.abortTransaction();
                 await session.endSession();
-                return res.status(200).json({message: 'Payment already exists.'});
+                return res.status(200).json({ message: "Payment already exists." });
             }
         } catch (error: unknown) {
             if (error instanceof Error) {
                 await session?.abortTransaction();
                 await session?.endSession();
-                return res.status(500).json({message: error.message});
+                return res.status(500).json({ message: error.message });
             } else {
-                return res.status(500).json({message: 'Unknown error occurred!'});
+                return res.status(500).json({ message: "Unknown error occurred!" });
             }
         }
     };
