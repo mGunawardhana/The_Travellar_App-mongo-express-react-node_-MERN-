@@ -24,6 +24,10 @@ import {PackageProperties} from "../../types/PackageProperties";
 import {DriverProperties} from "../../types/DriverProperties";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 import Swal from 'sweetalert2';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
+import SaveIcon from '@mui/icons-material/Save';
+
 const PackageBookingForm = () => {
     /** this hook is responsible to providing values to update and delete   */
     const [mongoPrimaryKey, mongoChange] = useState("");
@@ -560,11 +564,13 @@ const PackageBookingForm = () => {
 
                                 <Button
                                     style={{
-                                        backgroundColor: "#2ed573",
+                                        backgroundColor: "#039b48",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<SaveIcon/>}
+
                                     type="button"
                                     onClick={handleSubmit}
                                 >
@@ -577,6 +583,8 @@ const PackageBookingForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<UpdateIcon/>}
+
                                     type="button"
                                 >
                                     Update
@@ -588,6 +596,8 @@ const PackageBookingForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<DeleteIcon/>}
+
                                     type="button"
                                     onClick={handleDelete}
                                 >

@@ -18,6 +18,9 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {PackageProperties} from "../../types/PackageProperties";
 import axios from "../../axios";
 import Swal from 'sweetalert2';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
+import SaveIcon from '@mui/icons-material/Save';
 
 // const guide = [{label:"sample.tsx"},{label:"sample.tsx"}];
 
@@ -189,7 +192,7 @@ const PackageForm = () => {
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000,
-                        width:'300px',
+                        width: '300px',
                         iconColor: '#ffa502',
                         backdrop: 'true',
                         background: '#ffffff',
@@ -326,11 +329,13 @@ const PackageForm = () => {
                                 <Button
                                     onClick={handleSubmit}
                                     style={{
-                                        backgroundColor: "#2ed573",
+                                        backgroundColor: "#039b48",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<SaveIcon/>}
+
                                     type="submit"
                                 >
                                     Save
@@ -343,6 +348,8 @@ const PackageForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<UpdateIcon/>}
+
                                     type="submit"
                                 >
                                     Update
@@ -355,6 +362,8 @@ const PackageForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<DeleteIcon/>}
+
                                     type="submit"
                                 >
                                     Delete

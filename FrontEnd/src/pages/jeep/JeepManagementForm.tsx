@@ -23,6 +23,7 @@ import Swal from 'sweetalert2';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import SaveIcon from '@mui/icons-material/Save';
+
 const JeepManagementForm = () => {
 
     /** useState hooks */
@@ -65,8 +66,6 @@ const JeepManagementForm = () => {
     const availability = ["Available", "Unavailable"];
 
 
-
-
     /** get all function */
     const getAllJeeps = async () => {
         try {
@@ -84,10 +83,10 @@ const JeepManagementForm = () => {
     function generateId() {
         let newId = jeepList.length;
         newId++;
-        return "C00-00"+newId;
+        return "C00-00" + newId;
     }
 
-    console.log("*"+generateId());
+    console.log("*" + generateId());
 
 
     //TODO this number auto generator **********************************************************************************
@@ -223,7 +222,7 @@ const JeepManagementForm = () => {
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000,
-                        width:'300px',
+                        width: '300px',
                         iconColor: '#ffa502',
                         backdrop: 'true',
                         background: '#ffffff',
@@ -250,7 +249,6 @@ const JeepManagementForm = () => {
     const [selectedAvailability, setSelectedAvailabilityChange] = useState('');
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
-
 
 
     return (
@@ -387,13 +385,13 @@ const JeepManagementForm = () => {
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
                                     style={{
-                                        backgroundColor: "#20bf6b",
+                                        backgroundColor: "#039b48",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
                                     type="submit"
-                                    startIcon={<SaveIcon />}
+                                    startIcon={<SaveIcon/>}
                                     onClick={handleSubmit}
                                 >
                                     Save
@@ -418,7 +416,7 @@ const JeepManagementForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
-                                    startIcon={<DeleteIcon />}
+                                    startIcon={<DeleteIcon/>}
                                     type="submit"
                                     onClick={handleDelete}
                                 >

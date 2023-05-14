@@ -17,7 +17,8 @@ import {
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
-
+import SearchIcon from '@mui/icons-material/Search';
+import DeleteIcon from "@mui/icons-material/Delete";
 const BookingDetails = () => {
   return (
     <>
@@ -54,28 +55,20 @@ const BookingDetails = () => {
                     color="secondary"
                     label="Booking ID"
                     size="small"
-                    fullWidth
-                    required
-                  />
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    color="secondary"
-                    label="Customer Name"
-                    size="small"
+
                     fullWidth
                     required
                   />
 
                   <Button
                     style={{
-                      backgroundColor: "#2ed573",
+                      backgroundColor: "#039b48",
                       // marginRight: "7px",
                       fontWeight: "bolder",
                     }}
                     variant="contained"
                     type="submit"
-                    // className="gap-2"
+                    startIcon={<SearchIcon/>}
                   >
                     Search
                   </Button>

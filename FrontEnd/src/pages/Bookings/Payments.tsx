@@ -21,6 +21,10 @@ import axios from "../../axios";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 import {PaymentProperties} from "../../types/PaymentProperties";
 import Swal from 'sweetalert2';
+import UpdateIcon from '@mui/icons-material/Update';
+import SaveIcon from '@mui/icons-material/Save';
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const Payments = () => {
 
     /** this one is responsible to load details into the combo */
@@ -279,13 +283,15 @@ const Payments = () => {
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
                                     style={{
-                                        backgroundColor: "#2ed573",
+                                        backgroundColor: "#039b48",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
                                     type="button"
                                     className="gap-2"
+                                    startIcon={<SaveIcon/>}
+
                                     onClick={handleSubmit}
                                 >
                                     Confirm Booking
@@ -299,6 +305,8 @@ const Payments = () => {
                                     }}
                                     variant="contained"
                                     type="button"
+                                    startIcon={<DeleteIcon/>}
+
                                     onClick={handleDelete}
                                 >
                                     Remove Booking

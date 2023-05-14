@@ -18,6 +18,9 @@ import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import {DriverProperties} from "../../types/DriverProperties";
 import axios from "../../axios";
 import Swal from 'sweetalert2';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
+import SaveIcon from '@mui/icons-material/Save';
 
 const DriverForm = () => {
 
@@ -182,7 +185,7 @@ const DriverForm = () => {
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000,
-                        width:'300px',
+                        width: '300px',
                         iconColor: '#ffa502',
                         backdrop: 'true',
                         background: '#ffffff',
@@ -321,11 +324,13 @@ const DriverForm = () => {
                                 <Button
                                     onClick={handleSubmitDriver}
                                     style={{
-                                        backgroundColor: "#2ed573",
+                                        backgroundColor: "#039b48",
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<SaveIcon/>}
+
                                     type="submit"
                                 >
                                     Save
@@ -338,6 +343,8 @@ const DriverForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<UpdateIcon/>}
+
                                     type="submit"
                                 >
                                     Update
@@ -350,6 +357,8 @@ const DriverForm = () => {
                                         fontWeight: "bolder",
                                     }}
                                     variant="contained"
+                                    startIcon={<DeleteIcon/>}
+
                                     type="submit"
                                 >
                                     Delete

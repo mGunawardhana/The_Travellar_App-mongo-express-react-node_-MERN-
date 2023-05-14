@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import {
   Button,
   FormHelperText,
@@ -16,9 +16,13 @@ import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import { CustomerProperties } from "../../types/CustomerPropertes";
 import axios from "../../axios";
-import Swal from 'sweetalert2';
-const CustomerForm = () => {
+import { Howl } from "howler";
+import Swal from "sweetalert2";
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpdateIcon from "@mui/icons-material/Update";
+import SaveIcon from "@mui/icons-material/Save";
 
+const CustomerForm = () => {
   /** loading all customers */
   const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
 
@@ -33,12 +37,14 @@ const CustomerForm = () => {
 
   /** variable for storing mongo primary key */
   let key_for_put_and_delete: string | undefined | any;
+  // let customerCount;
 
   /** get all function */
   const getAllCustomers = async () => {
     try {
       const response = await axios.get("customer");
       setCustomerList(response.data.responseData);
+      // customerCount = customerList.length;
       console.log(response.data.responseData);
     } catch (error) {
       console.log(error);
@@ -50,7 +56,6 @@ const CustomerForm = () => {
       console.log(customerList);
     });
   }, []);
-
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -78,6 +83,34 @@ const CustomerForm = () => {
     }
   };
 
+  // TODO testing sound track ..................................
+
+//   const [sound, setSound] = useState<Howl | null>(null);
+
+//   useEffect(() => {
+//     const soundUrl = "../../assets/sounds/popup/pop-94319.mp3";
+
+//     const newSound = new Howl({
+//       src: [soundUrl],
+//       loop: true,
+//       volume: 0.5,
+//     });
+
+//     setSound(newSound);
+
+//     return () => {
+//       newSound.unload();
+//     };
+//   }, []);
+
+//   const playSound = () => {
+//     if (sound) {
+//       sound.play();
+//     }
+//   };
+
+  // TODO testing sound track ..................................
+
   /** save function */
   const handleSubmit = () => {
     let responseBody = {
@@ -95,23 +128,23 @@ const CustomerForm = () => {
         getAllCustomers();
         const Toast = Swal.mixin({
           toast: true,
-          position: 'top-end',
+          position: "top-end",
           showConfirmButton: false,
           timer: 3000,
-          iconColor: '#2ed573',
-          backdrop: 'true',
-          background: '#ffffff',
+          iconColor: "#2ed573",
+          backdrop: "true",
+          background: "#ffffff",
           didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
         // success , error , warning , info , question ,width,color
         Toast.fire({
-          icon: 'success',
-          title: 'Saved Successfully!'
-        })
+          icon: "success",
+          title: "Saved Successfully!",
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -127,23 +160,23 @@ const CustomerForm = () => {
           getAllCustomers();
           const Toast = Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: "top-end",
             showConfirmButton: false,
             timer: 3000,
-            iconColor: '#ff4757',
-            backdrop: 'true',
-            background: '#ffffff',
+            iconColor: "#ff4757",
+            backdrop: "true",
+            background: "#ffffff",
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
-          })
+          });
 
           // success , error , warning , info , question ,width,color
           Toast.fire({
-            icon: 'success',
-            title: 'Delete Successfully!'
-          })
+            icon: "success",
+            title: "Delete Successfully!",
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -170,24 +203,24 @@ const CustomerForm = () => {
           getAllCustomers();
           const Toast = Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: "top-end",
             showConfirmButton: false,
             timer: 3000,
-            width:'300px',
-            iconColor: '#ffa502',
-            backdrop: 'true',
-            background: '#ffffff',
+            width: "300px",
+            iconColor: "#ffa502",
+            backdrop: "true",
+            background: "#ffffff",
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
 
           // success , error , warning , info , question ,width,color
           Toast.fire({
-            icon: 'success',
-            title: 'Update Successfully!'
-          })
+            icon: "success",
+            title: "Update Successfully!",
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -219,6 +252,12 @@ const CustomerForm = () => {
           >
             <React.Fragment>
               <form className="py-[15px] px-[15px]">
+                {/*<AvatarGroup className=" mr-2 mt-[10px]" total={customerList.length}>*/}
+                {/*    <Avatar alt="Remy Sharp" src={image01}/>*/}
+                {/*    <Avatar alt="Travis Howard" src={image02}/>*/}
+                {/*    <Avatar alt="Agnes Walker" src={image03}/>*/}
+                {/*    <Avatar alt="Trevor Henderson" src={image04}/>*/}
+                {/*</AvatarGroup>*/}
                 <FormHelperText style={{ fontSize: "25px," }}>
                   Customer Registration Form
                 </FormHelperText>
@@ -311,6 +350,7 @@ const CustomerForm = () => {
                     fontWeight: "bolder",
                   }}
                   variant="contained"
+                  startIcon={<SaveIcon />}
                   type="submit"
                 >
                   Save
@@ -323,6 +363,7 @@ const CustomerForm = () => {
                     fontWeight: "bolder",
                   }}
                   variant="contained"
+                  startIcon={<UpdateIcon />}
                   type="submit"
                 >
                   Update
@@ -335,6 +376,7 @@ const CustomerForm = () => {
                     fontWeight: "bolder",
                   }}
                   variant="contained"
+                  startIcon={<DeleteIcon />}
                   type="submit"
                 >
                   Delete
