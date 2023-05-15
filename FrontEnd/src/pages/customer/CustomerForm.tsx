@@ -226,10 +226,6 @@ const CustomerForm = () => {
           console.log(error);
           alert("Error updating data. Because: " + error);
         });
-      .catch((error) => {
-          console.log(error);
-          alert("Error updating data. Because: " + error);
-        });
     }
   };
 
