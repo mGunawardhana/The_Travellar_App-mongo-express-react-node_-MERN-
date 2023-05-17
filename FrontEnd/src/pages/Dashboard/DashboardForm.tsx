@@ -111,7 +111,15 @@ const DashboardForm = () => {
                                 <Typography className={"pr-5 pt-10 pl-4"}
                                             variant="h4">Customers</Typography>
                                 <Typography style={{textAlign: 'right',color:'#ffffff'}} className={"pr-5 pt-8"}
-                                            variant="h3">{customerList.length+7}</Typography>
+                                            variant="h3">{customerList.length}</Typography>
+                            </div>
+                        </Paper>
+                        <Paper elevation={3} style={{backgroundColor:'#2f3542',borderRadius:'10px'}} >
+                            <div style={{backgroundColor:'#ffa502',height:'100px'}} className={"flex flex-row"}>
+                                <Typography className={"pr-5 pt-10 pl-4"}
+                                            variant="h4">Payments</Typography>
+                                <Typography style={{textAlign: 'right',color:'#ffffff'}} className={"pr-5 pt-8"}
+                                            variant="h3">{paymentList.length}</Typography>
                             </div>
                         </Paper>
                         <Paper elevation={3} style={{backgroundColor:'#2f3542',borderRadius:'10px'}} >
@@ -130,14 +138,7 @@ const DashboardForm = () => {
                                             variant="h3">{customerList.length+7}</Typography>
                             </div>
                         </Paper>
-                        <Paper elevation={3} style={{backgroundColor:'#2f3542',borderRadius:'10px'}} >
-                            <div style={{backgroundColor:'#ffa502',height:'100px'}} className={"flex flex-row"}>
-                                <Typography className={"pr-5 pt-10 pl-4"}
-                                            variant="h4">Bookings</Typography>
-                                <Typography style={{textAlign: 'right',color:'#ffffff'}} className={"pr-5 pt-8"}
-                                            variant="h3">{paymentList.length}</Typography>
-                            </div>
-                        </Paper>
+
                     </Box>
                 </div>
             </section>
