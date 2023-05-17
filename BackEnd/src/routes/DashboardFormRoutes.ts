@@ -15,15 +15,15 @@ export default class DashboardFormRoutes {
   };
 
   private configRoutes = (): void => {
-    this.router.get("/", this.dashBoardFormController.getAllCustomer);
+    this.router.get("/customers", this.dashBoardFormController.getAllCustomer);
 
-    this.router.get("/", this.dashBoardFormController.getAllDrivers);
+    this.router.get("/drivers", this.dashBoardFormController.getAllDrivers);
 
     this.router.get("/", this.dashBoardFormController.getAllPlaceBookings);
 
     this.router.get("/", this.dashBoardFormController.getAllPackages);
 
-    this.router.get("/", this.dashBoardFormController.getAllPayment);
+    this.router.get("/payments", this.dashBoardFormController.getAllPayment);
 
     this.router.get("/", this.dashBoardFormController.getAllVehicles);
   };
