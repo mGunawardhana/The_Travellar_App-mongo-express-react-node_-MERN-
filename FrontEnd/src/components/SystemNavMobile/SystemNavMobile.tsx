@@ -6,6 +6,7 @@ const SystemNavMobile = () => {
       <ul className="flex flex-col px-6 py-8 gap-y-4">
         <li>
           <ul className="flex gap-x-10">
+              <NavLink to={"/dashboard"}>DashBoard</NavLink>
             <NavLink to={"/customer"}>Customer</NavLink>
             <NavLink to={"/package"}>Package</NavLink>
             <NavLink to={"/jeep"}>Vehicle</NavLink>

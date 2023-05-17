@@ -2,7 +2,7 @@ import React from "react";
 
 //import copyright data
 import { copyrightData } from "../data";
-
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 const Copyright = () => {
   const { text, icon } = copyrightData;
 
@@ -20,8 +20,8 @@ const Copyright = () => {
               className="w-[60px] h-[60px] flex items-center
             justify-center rounded-full bg-accent-primary/20 cursor-pointer group"
             >
-              <div className="text-3xl text-accent-primary group-hover:scale-110 transition-all">
-                {icon}
+              <div className="text-3xl text-accent-primary group-hover:scale-80 transition-all">
+                {<AddAPhotoIcon/>}
               </div>
             </div>
           </div>

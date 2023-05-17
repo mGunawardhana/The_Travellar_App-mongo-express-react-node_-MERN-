@@ -21,7 +21,6 @@ import axios from "../../axios";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 import {PaymentProperties} from "../../types/PaymentProperties";
 import Swal from 'sweetalert2';
-import UpdateIcon from '@mui/icons-material/Update';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -92,6 +91,15 @@ const Payments = () => {
         });
         loadAllPaymentDetails();
     }, []);
+
+    const clearTextFields = () => {
+        setSelectedPackageChange("");
+        setJeepCodeChange("");
+        setDriverCodeChange("");
+        setCustomerNameChange("");
+        setPackageAmountChange(0);
+        setCashAmountChange(0);
+    }
 
     /** save function */
     const handleSubmit = () => {
@@ -291,8 +299,11 @@ const Payments = () => {
                                     type="button"
                                     className="gap-2"
                                     startIcon={<SaveIcon/>}
-
-                                    onClick={handleSubmit}
+                                    onClick={(e) => {
+                                        handleSubmit();
+                                        clearTextFields();
+                                    }}
+                                    // onClick={handleSubmit}
                                 >
                                     Confirm Booking
                                 </Button>
@@ -307,7 +318,10 @@ const Payments = () => {
                                     type="button"
                                     startIcon={<DeleteIcon/>}
 
-                                    onClick={handleDelete}
+                                    onClick={(e)=>{
+                                        clearTextFields();
+                                        handleDelete();
+                                    }}
                                 >
                                     Remove Booking
                                 </Button>

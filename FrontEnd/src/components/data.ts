@@ -1,5 +1,3 @@
-import {FaGithub, FaInstagram, FaYoutube} from "react-icons/fa";
-
 //background images
 import Gal01 from "../assets/gal/1.png";
 import Gal03 from "../assets/gal/3.png";
@@ -11,6 +9,7 @@ import Feature3Img from "../assets/3.png";
 import Feature4Img from "../assets/4.png";
 import Feature6Img from "../assets/6.png";
 import Feature7Img from "../assets/7.png";
+
 
 //importing customers details
 import Avatar1Img from "../assets/avatar1.png";
@@ -183,20 +182,6 @@ export const footerData = {
         },
         {
             name: "Q & A",
-            href: "#",
-        },
-    ],
-    socialList: [
-        {
-            icon: typeof FaYoutube,
-            href: "#",
-        },
-        {
-            icon: typeof FaInstagram,
-            href: "#",
-        },
-        {
-            icon: typeof FaGithub,
             href: "#",
         },
     ],

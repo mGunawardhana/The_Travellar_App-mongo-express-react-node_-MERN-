@@ -84,6 +84,15 @@ const DriverForm = () => {
         }
     };
 
+    const clearText =()=>{
+        driverIdChange("");
+        driverFirstNameChange("");
+        availabilityChange("");
+        driverAddressChange("");
+        driverContactChange("");
+        driverEmailChange("");
+    }
+
     /** save function */
     const handleSubmitDriver = () => {
 
@@ -322,7 +331,10 @@ const DriverForm = () => {
 
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
-                                    onClick={handleSubmitDriver}
+                                    onClick={(e)=>{
+                                        handleSubmitDriver();
+                                        clearText();
+                                    }}
                                     style={{
                                         backgroundColor: "#039b48",
                                         marginRight: "7px",
@@ -336,7 +348,10 @@ const DriverForm = () => {
                                     Save
                                 </Button>
                                 <Button
-                                    onClick={handleUpdate}
+                                    onClick={(e)=>{
+                                        handleUpdate();
+                                        clearText();
+                                    }}
                                     style={{
                                         backgroundColor: "#ffa502",
                                         marginRight: "7px",
@@ -350,7 +365,10 @@ const DriverForm = () => {
                                     Update
                                 </Button>
                                 <Button
-                                    onClick={handleDeleteDriver}
+                                    onClick={(e)=>{
+                                        handleDeleteDriver();
+                                        clearText();
+                                    }}
                                     style={{
                                         backgroundColor: "#ff4757",
                                         marginRight: "7px",

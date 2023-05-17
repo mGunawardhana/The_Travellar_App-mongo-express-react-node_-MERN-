@@ -13,6 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
+
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import { CustomerProperties } from "../../types/CustomerPropertes";
 import axios from "../../axios";
@@ -21,6 +22,13 @@ import Swal from "sweetalert2";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
 import SaveIcon from "@mui/icons-material/Save";
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
+
+import image01 from "../../assets/1.png";
+import image02 from "../../assets/2.png";
+import image03 from "../../assets/3.png";
+import image04 from "../../assets/4.png";
 
 const CustomerForm = () => {
   /** loading all customers */
@@ -151,6 +159,15 @@ const CustomerForm = () => {
       });
   };
 
+  const clearTextFields = ()=>{
+    idChange("");
+    firstNameChange("");
+    lastNameChange("");
+    addressChange("");
+    contactChange("");
+    emailChange("");
+  }
+
   /** delete function */
   const handleDelete = () => {
     if (window.confirm("Do you want to remove this customer ?")) {
@@ -252,12 +269,15 @@ const CustomerForm = () => {
           >
             <React.Fragment>
               <form className="py-[15px] px-[15px]">
-                {/*<AvatarGroup className=" mr-2 mt-[10px]" total={customerList.length}>*/}
-                {/*    <Avatar alt="Remy Sharp" src={image01}/>*/}
-                {/*    <Avatar alt="Travis Howard" src={image02}/>*/}
-                {/*    <Avatar alt="Agnes Walker" src={image03}/>*/}
-                {/*    <Avatar alt="Trevor Henderson" src={image04}/>*/}
-                {/*</AvatarGroup>*/}
+                <AvatarGroup
+                  className=" mr-2 mt-[10px]"
+                  total={customerList.length}
+                >
+                  <Avatar alt="Remy Sharp" src={image01} />
+                  <Avatar alt="Travis Howard" src={image02} />
+                  <Avatar alt="Agnes Walker" src={image03} />
+                  <Avatar alt="Trevor Henderson" src={image04} />
+                </AvatarGroup>
                 <FormHelperText style={{ fontSize: "25px," }}>
                   Customer Registration Form
                 </FormHelperText>
@@ -343,7 +363,10 @@ const CustomerForm = () => {
 
               <div className="ml-[15px] mt-[0px] pb-[15px]">
                 <Button
-                  onClick={handleSubmit}
+                  onClick={(e)=>{
+                    handleSubmit();
+                    clearTextFields();
+                  }}
                   style={{
                     backgroundColor: "#039b48",
                     marginRight: "7px",
@@ -356,7 +379,10 @@ const CustomerForm = () => {
                   Save
                 </Button>
                 <Button
-                  onClick={handleUpdate}
+                  onClick={(e)=>{
+                    handleUpdate();
+                    clearTextFields();
+                  }}
                   style={{
                     backgroundColor: "#ffa502",
                     marginRight: "7px",
@@ -369,8 +395,10 @@ const CustomerForm = () => {
                   Update
                 </Button>
                 <Button
-                  onClick={handleDelete}
-                  style={{
+                    onClick={(e)=>{
+                      handleDelete();
+                      clearTextFields();
+                    }}                  style={{
                     backgroundColor: "#ff4757",
                     marginRight: "7px",
                     fontWeight: "bolder",

@@ -97,6 +97,15 @@ const PackageForm = () => {
         }
     };
 
+    const clearText = ()=>{
+        packageIdChange("");
+        packageNameChange("");
+        daysHrsCountChange("");
+        descriptionChange("");
+        offersChange(0);
+        packageAmountChange(0);
+    }
+
     /** function for save */
     const handleSubmit = () => {
         let responseBody = {
@@ -327,7 +336,10 @@ const PackageForm = () => {
 
                             <div className="ml-[15px] mt-[0px] pb-[15px]">
                                 <Button
-                                    onClick={handleSubmit}
+                                    onClick={(e)=>{
+                                        handleSubmit();
+                                        clearText();
+                                    }}
                                     style={{
                                         backgroundColor: "#039b48",
                                         marginRight: "7px",
@@ -341,7 +353,10 @@ const PackageForm = () => {
                                     Save
                                 </Button>
                                 <Button
-                                    onClick={handleUpdate}
+                                    onClick={(e)=>{
+                                        handleUpdate();
+                                        clearText();
+                                    }}
                                     style={{
                                         backgroundColor: "#ffa502",
                                         marginRight: "7px",
@@ -355,7 +370,9 @@ const PackageForm = () => {
                                     Update
                                 </Button>
                                 <Button
-                                    onClick={handleDelete}
+                                    onClick={(e)=>{
+                                        handleDelete();clearText();
+                                    }}
                                     style={{
                                         backgroundColor: "#ff4757",
                                         marginRight: "7px",

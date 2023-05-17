@@ -336,6 +336,21 @@ const PackageBookingForm = () => {
         }
     };
 
+    const clearText = () => {
+        setSelectedJeep("");
+        setJeepModelChange("");
+        setJeepSeatsChange("");
+        setSelectedPackageChange("");
+        setPackageNameChange("");
+        setSelectedDriverChange("");
+        setDriverNameChange("");
+        setSelectedCustomerChange("");
+        setCustomerNameChange("");
+        setOffersChange("");
+        setAmountChange("");
+        setBookingIdChange("");
+    }
+
     return (
         <>
             <SystemHeader/>
@@ -572,7 +587,10 @@ const PackageBookingForm = () => {
                                     startIcon={<SaveIcon/>}
 
                                     type="button"
-                                    onClick={handleSubmit}
+                                    onClick={(e) => {
+                                        handleSubmit();
+                                        clearText();
+                                    }}
                                 >
                                     Save
                                 </Button>
@@ -599,7 +617,10 @@ const PackageBookingForm = () => {
                                     startIcon={<DeleteIcon/>}
 
                                     type="button"
-                                    onClick={handleDelete}
+                                    onClick={(e) => {
+                                        handleDelete();
+                                        clearText();
+                                    }}
                                 >
                                     Delete
                                 </Button>

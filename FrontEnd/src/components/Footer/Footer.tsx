@@ -2,12 +2,12 @@ import React from "react";
 
 import { footerData } from "../data";
 import Copyright from "../Copyright/Copyright";
-
-// import Copyright from './Copyright'
-
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 const Footer = () => {
   // destructure footer data
-  const { logo, address, email, phone, list1, list2, socialList } = footerData;
+  const { logo, address, email, phone, list1, list2 } = footerData;
   return (
     <footer data-aos="fade-up">
       <div
@@ -66,21 +66,26 @@ const Footer = () => {
             <div>
               <div className="font-extrabold text-white mb-8">Social Media</div>
               <ul className="flex gap-y-4 gap-x-4 justify-center">
-                {socialList.map((item, index) => {
-                  return (
+                {/*{socialList.map((item, index) => {*/}
+                {/*  return (*/}
                     <li
                       className="w-12 h-12 bg-primary/10 flex justify-center items-center rounded-full cursor-pointer hover:bg-accent-secondary transition-all"
-                      key={index}
+                      //key={index}
                     >
                       <a
                         className="text-white text-xl hover:text-white"
-                        href={item.href}
+                        //href={item.href}
                       >
-                        {item.icon}
+
+                        <div className="">
+                          <LoyaltyIcon/>
+                          <FacebookIcon/>
+                          <InstagramIcon/>
+                        </div>
                       </a>
                     </li>
-                  );
-                })}
+                  {/*);*/}
+                {/*// })}*/}
               </ul>
             </div>
           </div>

@@ -39,6 +39,7 @@ const SystemNav = () => {
   return (
     <nav>
       <ul className="flex gap-x-12">
+        <NavLink to={"/dashboard"}>DashBoard</NavLink>
         <NavLink to={"/customer"}>Customer</NavLink>
         <NavLink to={"/package"}>Package</NavLink>
         <NavLink to={"/jeep"}>Vehicle</NavLink>
@@ -50,7 +51,7 @@ const SystemNav = () => {
             overlap="circular"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             variant="dot"
-            style={{marginLeft:120}}
+            
         >
           <Avatar
               sx={{ width: 35, height: 35 }}

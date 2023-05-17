@@ -125,6 +125,15 @@ const JeepManagementForm = () => {
         }
     };
 
+    const clearText = () => {
+        vehicleIdChange("");
+        vehicleModelChange("");
+        passengerCountChange("");
+        typeChange("");
+        fuelTypeChange("");
+        jeepAvailabilityChange("");
+    }
+
     /** save function */
     const handleSubmit = () => {
         let responseBody = {
@@ -392,7 +401,10 @@ const JeepManagementForm = () => {
                                     variant="contained"
                                     type="submit"
                                     startIcon={<SaveIcon/>}
-                                    onClick={handleSubmit}
+                                    onClick={(e) => {
+                                        handleSubmit();
+                                        clearText();
+                                    }}
                                 >
                                     Save
                                 </Button>
@@ -405,7 +417,10 @@ const JeepManagementForm = () => {
                                     variant="contained"
                                     type="submit"
                                     startIcon={<UpdateIcon/>}
-                                    onClick={handleUpdate}
+                                    onClick={(e)=>{
+                                        handleUpdate();
+                                        clearText();
+                                    }}
                                 >
                                     Update
                                 </Button>
@@ -418,7 +433,10 @@ const JeepManagementForm = () => {
                                     variant="contained"
                                     startIcon={<DeleteIcon/>}
                                     type="submit"
-                                    onClick={handleDelete}
+                                    onClick={(e)=>{
+                                        handleDelete();
+                                        clearText();
+                                    }}
                                 >
                                     Delete
                                 </Button>
