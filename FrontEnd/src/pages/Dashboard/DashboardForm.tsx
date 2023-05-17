@@ -81,7 +81,7 @@ const DashboardForm = () => {
     /** load all function */
     const getAllDrivers = async () => {
         try {
-            const response = await axios.get("dashboard/driver");
+            const response = await axios.get("dashboard/drivers");
             setDriverList(response.data.responseData);
             console.log(response.data.responseData);
         } catch (error) {
