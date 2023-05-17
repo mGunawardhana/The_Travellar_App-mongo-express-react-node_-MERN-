@@ -9,6 +9,7 @@ import axios from "../../axios";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 import {PaymentProperties} from "../../types/PaymentProperties";
 import {DriverProperties} from "../../types/DriverProperties";
+import {JeepProperties} from "../../types/JeepProperties";
 // import image01 from "../../assets/1.png";
 // import image02 from "../../assets/2.png";
 // import image03 from "../../assets/3.png";
@@ -95,6 +96,23 @@ const DashboardForm = () => {
         });
     }, []);
 
+    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
+    const getAllJeeps = async () => {
+        try {
+            const response = await axios.get("jeep");
+            setJeepList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getAllJeeps().then((r) => {
+            console.log(jeepList);
+        });
+    }, []);
+
     const Item = styled(Paper)(({theme}) => ({
         backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
         ...theme.typography.body2,
@@ -157,7 +175,7 @@ const DashboardForm = () => {
                                 <Typography className={"pr-5 pt-10 pl-4"}
                                             variant="h4">Vehicles</Typography>
                                 <Typography style={{textAlign: 'right',color:'#ffffff'}} className={"pr-5 pt-8"}
-                                            variant="h3">{customerList.length+7}</Typography>
+                                            variant="h3">{jeepList.length+7}</Typography>
                             </div>
                         </Paper>
 
