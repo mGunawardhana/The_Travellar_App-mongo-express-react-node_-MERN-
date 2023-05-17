@@ -8,6 +8,7 @@ import {CustomerProperties} from "../../types/CustomerPropertes";
 import axios from "../../axios";
 import {PackageBookingProperties} from "../../types/PackageBookinProperties";
 import {PaymentProperties} from "../../types/PaymentProperties";
+import {DriverProperties} from "../../types/DriverProperties";
 // import image01 from "../../assets/1.png";
 // import image02 from "../../assets/2.png";
 // import image03 from "../../assets/3.png";
@@ -73,6 +74,27 @@ const DashboardForm = () => {
         loadAllPaymentDetails();
     }, []);
 
+
+    /** hook for loading driver table */
+    const [driverList, setDriverList] = useState<DriverProperties[]>([]);
+
+    /** load all function */
+    const getAllDrivers = async () => {
+        try {
+            const response = await axios.get("dashboard/driver");
+            setDriverList(response.data.responseData);
+            console.log(response.data.responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getAllDrivers().then(r => {
+            console.log(driverList);
+        });
+    }, []);
+
     const Item = styled(Paper)(({theme}) => ({
         backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
         ...theme.typography.body2,
@@ -127,7 +149,7 @@ const DashboardForm = () => {
                                 <Typography className={"pr-5 pt-10 pl-4"}
                                             variant="h4">Drivers</Typography>
                                 <Typography style={{textAlign: 'right',color:'#ffffff'}} className={"pr-5 pt-8"}
-                                            variant="h3">{customerList.length+7}</Typography>
+                                            variant="h3">{driverList.length}</Typography>
                             </div>
                         </Paper>
                         <Paper elevation={3} style={{backgroundColor:'#2f3542',borderRadius:'10px'}} >
