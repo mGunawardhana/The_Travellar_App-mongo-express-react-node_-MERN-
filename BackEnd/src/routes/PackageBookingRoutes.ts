@@ -17,13 +17,13 @@ export default class PackageBookingRoutes {
         // POST /api/v1/category
         this.router.post("/", this.packageBookingController.createPlaceBooking);
 
-        // // GET /api/v1/category
+        //  GET /api/v1/category
         this.router.get("/", this.packageBookingController.getAllPlaceBookings);
         //
-        // // DELETE /api/v1/category/:id
+        //  DELETE /api/v1/category/:id
         this.router.delete("/:id/:jeepCode/:driverCode", this.packageBookingController.deletePlaceBooking);
         //
-        // // PUT /api/v1/category/:id
+        // /PUT /api/v1/category/:id
         // this.router.delete("/:id", this.packageController.deletePackage);
     };
 }
