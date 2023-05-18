@@ -100,6 +100,22 @@ const PackageForm = () => {
             $("#daysHrsCount").focus();
         }
     });
+
+  $("#daysHrsCount").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#description").focus();
+    }
+  });
+
+  $("#daysHrsCount").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#description").focus();
+    }
+  });
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
         switch (name) {
