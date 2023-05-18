@@ -85,7 +85,7 @@ const Login = () => {
                                 size="small"
                             />
 
-                        <Link to={"/customer"}>
+                        <Link to={"/dashboard"}>
                             <Button variant="contained" color="success">
                                 Sign In
                             </Button>

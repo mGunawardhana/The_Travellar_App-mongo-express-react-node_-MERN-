@@ -9,15 +9,16 @@ import Footer from "../../components/Footer/Footer";
 
 const HomeLoader = () => {
     return (
-        <div>
-            <Hero/>
-            <AboutCard/>
-            <Features/>
-            <Testimonials/>
-            <CtaSection/>
-            <Gallery/>
-            <Footer/>
-        </div>
+      <div
+      >
+        <Hero />
+        <AboutCard />
+        <Features />
+        <Testimonials />
+        <CtaSection />
+        <Gallery />
+        <Footer />
+      </div>
     );
 };
 

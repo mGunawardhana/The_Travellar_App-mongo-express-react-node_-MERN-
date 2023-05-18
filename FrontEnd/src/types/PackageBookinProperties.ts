@@ -1,5 +1,5 @@
 export type PackageBookingProperties = {
-    _id?: string;
+    _id: string;
     bookingID: string;
     packageID: string;
     packageName: string;

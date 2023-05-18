@@ -7,4 +7,5 @@ export type PackageProperties = {
     description: string;
     offers: number;
     packageAmount: number;
+    packageImage:string
 };
