@@ -23,6 +23,7 @@ import Swal from 'sweetalert2';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import SaveIcon from '@mui/icons-material/Save';
+import $ from "jquery";
 
 const JeepManagementForm = () => {
 
@@ -259,6 +260,49 @@ const JeepManagementForm = () => {
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
+    // vehicleID
+    // vehicleModel
+    // type
+    //     seatsCount
+    // fuelType
+    // availabilityTxt
+
+    $("#vehicleModel").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#type").focus();
+        }
+    });
+
+    $("#type").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#seatsCount").focus();
+        }
+    });
+    $("#seatsCount").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#fuelType").focus();
+        }
+    });
+    $("#fuelType").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#availabilityTxt").focus();
+        }
+    });
+    $("#availabilityTxt").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#saveBtn").focus();
+        }
+    });
 
     return (
         <>
@@ -289,6 +333,8 @@ const JeepManagementForm = () => {
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
 
                                     <TextField
+                                        id="vehicleID"
+
                                         name="vehicleID"
                                         value={vehicleID}
                                         type="text"
@@ -301,6 +347,8 @@ const JeepManagementForm = () => {
                                         required
                                     />
                                     <TextField
+                                        id="vehicleModel"
+
                                         name="vehicleModel"
                                         value={vehicleModel}
                                         type="text"
@@ -315,6 +363,8 @@ const JeepManagementForm = () => {
                                 </Stack>
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
                                     <TextField
+                                        id="type"
+
                                         name="type"
                                         value={type}
                                         type="text"
@@ -398,6 +448,7 @@ const JeepManagementForm = () => {
                                         marginRight: "7px",
                                         fontWeight: "bolder",
                                     }}
+                                    id="saveBtn"
                                     variant="contained"
                                     type="submit"
                                     startIcon={<SaveIcon/>}
@@ -417,7 +468,7 @@ const JeepManagementForm = () => {
                                     variant="contained"
                                     type="submit"
                                     startIcon={<UpdateIcon/>}
-                                    onClick={(e)=>{
+                                    onClick={(e) => {
                                         handleUpdate();
                                         clearText();
                                     }}
@@ -433,7 +484,7 @@ const JeepManagementForm = () => {
                                     variant="contained"
                                     startIcon={<DeleteIcon/>}
                                     type="submit"
-                                    onClick={(e)=>{
+                                    onClick={(e) => {
                                         handleDelete();
                                         clearText();
                                     }}
