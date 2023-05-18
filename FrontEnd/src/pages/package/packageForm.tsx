@@ -359,7 +359,7 @@ const PackageForm = () => {
                                     <TextField
                                         value={description}
                                         name="description"
-                                        is="description"
+                                        id="description"
                                         onChange={handleInputChange}
                                         type="text"
                                         variant="outlined"
