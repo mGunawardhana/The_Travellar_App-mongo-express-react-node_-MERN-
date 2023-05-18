@@ -124,6 +124,22 @@ const PackageForm = () => {
       $("#packageAmount").focus();
     }
   });
+
+  $("#packageAmount").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#file").focus();
+    }
+  });
+
+  $("#file").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#saveBtn").focus();
+    }
+  });
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
         switch (name) {
