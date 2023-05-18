@@ -109,11 +109,11 @@ const PackageForm = () => {
     }
   });
 
-  $("#daysHrsCount").keyup(function (event) {
+  $("#description").keyup(function (event) {
     let catchEvent = event.which;
     console.log(catchEvent);
     if (catchEvent === 13) {
-      $("#description").focus();
+      $("#offers").focus();
     }
   });
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
