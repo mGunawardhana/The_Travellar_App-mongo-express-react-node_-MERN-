@@ -29,6 +29,7 @@ import image01 from "../../assets/1.png";
 import image02 from "../../assets/2.png";
 import image03 from "../../assets/3.png";
 import image04 from "../../assets/4.png";
+import $ from "jquery";
 
 const CustomerForm = () => {
   /** loading all customers */
@@ -91,33 +92,6 @@ const CustomerForm = () => {
     }
   };
 
-  // TODO testing sound track ..................................
-
-//   const [sound, setSound] = useState<Howl | null>(null);
-
-//   useEffect(() => {
-//     const soundUrl = "../../assets/sounds/popup/pop-94319.mp3";
-
-//     const newSound = new Howl({
-//       src: [soundUrl],
-//       loop: true,
-//       volume: 0.5,
-//     });
-
-//     setSound(newSound);
-
-//     return () => {
-//       newSound.unload();
-//     };
-//   }, []);
-
-//   const playSound = () => {
-//     if (sound) {
-//       sound.play();
-//     }
-//   };
-
-  // TODO testing sound track ..................................
 
   /** save function */
   const handleSubmit = () => {
@@ -245,6 +219,48 @@ const CustomerForm = () => {
         });
     }
   };
+  // customerID
+  // customerFirstName
+  // customerLastName
+  // customerAddress
+  // customerContact
+  // customerEmail
+  $("#customerFirstName").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#customerLastName").focus();
+    }
+  });
+  $("#customerLastName").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#customerAddress").focus();
+    }
+  });
+  $("#customerAddress").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#customerContact").focus();
+    }
+  });
+  $("#customerContact").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#customerEmail").focus();
+    }
+  });
+  $("#customerEmail").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#saveBtn").focus();
+    }
+  });
+
 
   return (
     <>
@@ -286,6 +302,7 @@ const CustomerForm = () => {
                     value={customerID}
                     type="text"
                     name="customerID"
+                    id="customerID"
                     variant="outlined"
                     color="secondary"
                     label="ID"
@@ -298,6 +315,7 @@ const CustomerForm = () => {
                     value={customerFirstName}
                     type="text"
                     name="customerFirstName"
+                    id="customerFirstName"
                     variant="outlined"
                     color="secondary"
                     label="First Name"
@@ -312,6 +330,7 @@ const CustomerForm = () => {
                     value={customerLastName}
                     type="text"
                     name="customerLastName"
+                    id="customerLastName"
                     variant="outlined"
                     color="secondary"
                     label="Last Name"
@@ -324,6 +343,7 @@ const CustomerForm = () => {
                     value={customerAddress}
                     type="text"
                     name="customerAddress"
+                    id="customerAddress"
                     variant="outlined"
                     color="secondary"
                     label="Address"
@@ -337,6 +357,7 @@ const CustomerForm = () => {
                   <TextField
                     value={customerContact}
                     type="text"
+                    id="customerContact"
                     name="customerContact"
                     variant="outlined"
                     color="secondary"
@@ -350,6 +371,7 @@ const CustomerForm = () => {
                     value={customerEmail}
                     type="text"
                     name="customerEmail"
+                    id="customerEmail"
                     variant="outlined"
                     color="secondary"
                     label="Email"
@@ -367,6 +389,7 @@ const CustomerForm = () => {
                     handleSubmit();
                     clearTextFields();
                   }}
+                  id="saveBtn"
                   style={{
                     backgroundColor: "#039b48",
                     marginRight: "7px",

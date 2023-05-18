@@ -84,6 +84,7 @@ const PackageForm = () => {
             setImage(null);
         }
     };
+    /** ------------------------------------------------------------------------------------------------------------- */
 
     $("#packageID").keyup(function (event) {
         let catchEvent = event.which;
@@ -101,45 +102,47 @@ const PackageForm = () => {
         }
     });
 
-  $("#daysHrsCount").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#description").focus();
-    }
-  });
+    $("#daysHrsCount").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#description").focus();
+        }
+    });
 
-  $("#description").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#offers").focus();
-    }
-  });
+    $("#description").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#offers").focus();
+        }
+    });
 
-  $("#offers").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#packageAmount").focus();
-    }
-  });
+    $("#offers").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#packageAmount").focus();
+        }
+    });
 
-  $("#packageAmount").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#file").focus();
-    }
-  });
+    $("#packageAmount").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#file").focus();
+        }
+    });
 
-  $("#file").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#saveBtn").focus();
-    }
-  });
+    $("#file").keyup(function (event) {
+        let catchEvent = event.which;
+        console.log(catchEvent);
+        if (catchEvent === 13) {
+            $("#saveBtn").focus();
+        }
+    });
+
+    /** ------------------------------------------------------------------------------------------------------------- */
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
         switch (name) {
