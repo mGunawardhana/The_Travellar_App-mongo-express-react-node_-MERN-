@@ -116,6 +116,14 @@ const PackageForm = () => {
       $("#offers").focus();
     }
   });
+
+  $("#offers").keyup(function (event) {
+    let catchEvent = event.which;
+    console.log(catchEvent);
+    if (catchEvent === 13) {
+      $("#packageAmount").focus();
+    }
+  });
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
         switch (name) {
