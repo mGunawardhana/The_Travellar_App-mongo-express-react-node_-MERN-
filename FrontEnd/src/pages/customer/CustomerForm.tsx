@@ -46,12 +46,6 @@ const CustomerForm = () => {
     }
   };
 
-  useEffect(() => {
-    getAllCustomers().then((r) => {
-      console.log(customerList);
-    });
-  }, []);
-
   let value2;
   /** loading all customers */
   const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
@@ -60,6 +54,12 @@ const CustomerForm = () => {
     getAllCustomers();
     return "C00-00" + (customerList.length + 1);
   }
+  useEffect(() => {
+    getAllCustomers().then((r) => {
+      console.log(customerList);
+    });
+    idIncrement();
+  }, []);
 
   const [customerID, idChange] = useState("");
 
@@ -75,7 +75,7 @@ const CustomerForm = () => {
   let key_for_put_and_delete: string | undefined | any;
 
   const [isCustomerNameValid, setCustomerNameValid] = useState(false);
-
+  const [ifBooleanType, booleanTYpeChange] = useState(false);
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     switch (name) {
@@ -116,6 +116,8 @@ const CustomerForm = () => {
     axios
       .post("customer", responseBody)
       .then((res) => {
+        booleanTYpeChange(false);
+
         getAllCustomers();
         const Toast = Swal.mixin({
           toast: true,
@@ -157,6 +159,7 @@ const CustomerForm = () => {
       axios
         .delete(`customer/${mongoPrimaryKey}`)
         .then((response) => {
+          booleanTYpeChange(false);
           getAllCustomers();
           const Toast = Swal.mixin({
             toast: true,
@@ -171,6 +174,8 @@ const CustomerForm = () => {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
+
+          getAllCustomers();
 
           // success , error , warning , info , question ,width,color
           Toast.fire({
@@ -200,7 +205,9 @@ const CustomerForm = () => {
       axios
         .put(`customer/${mongoPrimaryKey}`, responseBody)
         .then((response) => {
+           booleanTYpeChange(false);
           getAllCustomers();
+
           const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -266,7 +273,7 @@ const CustomerForm = () => {
                 </FormHelperText>
                 <Stack spacing={2} direction="row" sx={{ marginBottom: 3 }}>
                   <TextField
-                    value={idIncrement()}
+                    value={ifBooleanType ? customerID : idIncrement()}
                     type="text"
                     name="customerID"
                     id="customerID"
@@ -276,6 +283,7 @@ const CustomerForm = () => {
                     size="small"
                     onChange={handleInputChange}
                     fullWidth
+                    contentEditable={false}
                     required
                   />
 
@@ -477,6 +485,8 @@ const CustomerForm = () => {
                       key_for_put_and_delete = customer._id;
                       mongoChange(key_for_put_and_delete);
                       idChange(customer.customerID);
+                      //$("#customerID").val(customer.customerID);
+                      booleanTYpeChange(true);
                       firstNameChange(customer.customerFirstName);
                       lastNameChange(customer.customerLastName);
                       addressChange(customer.customerAddress);
