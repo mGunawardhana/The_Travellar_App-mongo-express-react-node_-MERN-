@@ -23,14 +23,11 @@ import Swal from 'sweetalert2';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import SaveIcon from '@mui/icons-material/Save';
-import $ from "jquery";
 
 const JeepManagementForm = () => {
 
     /** useState hooks */
 
-    /** this hook is using to load the table */
-    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
 
     /** this hook is responsible to providing values to update and delete   */
     const [mongoPrimaryKey, mongoChange] = useState("");
@@ -66,38 +63,34 @@ const JeepManagementForm = () => {
     const fuelTypePack = ["Petrol", "Diesel"];
     const availability = ["Available", "Unavailable"];
 
+    /** this hook is using to load the table */
+    const [jeepList, setJeepList] = useState<JeepProperties[]>([]);
 
     /** get all function */
     const getAllJeeps = async () => {
         try {
             const response = await axios.get("jeep");
             setJeepList(response.data.responseData);
-            vehicleIdChange(generateId());
+
             console.log(response.data.responseData);
         } catch (error) {
             console.log(error);
         }
     };
 
-    //TODO this number auto generator **********************************************************************************
+    let count = jeepList.length + 1;
 
-    function generateId() {
-        let newId = jeepList.length;
-        newId++;
-        return "C00-00" + newId;
-    }
-
-    console.log("*" + generateId());
 
 
     //TODO this number auto generator **********************************************************************************
 
 
     useEffect(() => {
-        getAllJeeps().then((r) => {
-            console.log(jeepList);
+        getAllJeeps().then(() => {
+            vehicleIdChange(("V00-00" + count));
         });
     }, []);
+
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 
@@ -150,7 +143,6 @@ const JeepManagementForm = () => {
             .post("jeep", JSON.stringify(responseBody))
             .then((res) => {
                 getAllJeeps();
-                vehicleIdChange(generateId());
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -260,49 +252,6 @@ const JeepManagementForm = () => {
     const [selectedSeatType, setSelectedSeatsCountChange] = useState('');
     const [selectedFuelType, setSelectedFuelTypeChange] = useState('');
 
-    // vehicleID
-    // vehicleModel
-    // type
-    //     seatsCount
-    // fuelType
-    // availabilityTxt
-
-    $("#vehicleModel").keyup(function (event) {
-        let catchEvent = event.which;
-        console.log(catchEvent);
-        if (catchEvent === 13) {
-            $("#type").focus();
-        }
-    });
-
-    $("#type").keyup(function (event) {
-        let catchEvent = event.which;
-        console.log(catchEvent);
-        if (catchEvent === 13) {
-            $("#seatsCount").focus();
-        }
-    });
-    $("#seatsCount").keyup(function (event) {
-        let catchEvent = event.which;
-        console.log(catchEvent);
-        if (catchEvent === 13) {
-            $("#fuelType").focus();
-        }
-    });
-    $("#fuelType").keyup(function (event) {
-        let catchEvent = event.which;
-        console.log(catchEvent);
-        if (catchEvent === 13) {
-            $("#availabilityTxt").focus();
-        }
-    });
-    $("#availabilityTxt").keyup(function (event) {
-        let catchEvent = event.which;
-        console.log(catchEvent);
-        if (catchEvent === 13) {
-            $("#saveBtn").focus();
-        }
-    });
 
     return (
         <>

@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import {
+  Alert,
+  AlertTitle,
   Button,
   FormHelperText,
   Paper,
@@ -13,11 +15,10 @@ import {
   TextField,
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
-
+import $ from "jquery";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
 import { CustomerProperties } from "../../types/CustomerPropertes";
 import axios from "../../axios";
-import { Howl } from "howler";
 import Swal from "sweetalert2";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
@@ -29,31 +30,16 @@ import image01 from "../../assets/1.png";
 import image02 from "../../assets/2.png";
 import image03 from "../../assets/3.png";
 import image04 from "../../assets/4.png";
-import $ from "jquery";
+import ErrorAlert from "../../components/Error_alert/ErrorAlert";
+import { idText } from "typescript";
 
 const CustomerForm = () => {
-  /** loading all customers */
-  const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
-
-  /** text fields managing hooks */
-  const [mongoPrimaryKey, mongoChange] = useState("");
-  const [customerID, idChange] = useState("");
-  const [customerFirstName, firstNameChange] = useState("");
-  const [customerLastName, lastNameChange] = useState("");
-  const [customerAddress, addressChange] = useState("");
-  const [customerContact, contactChange] = useState("");
-  const [customerEmail, emailChange] = useState("");
-
-  /** variable for storing mongo primary key */
-  let key_for_put_and_delete: string | undefined | any;
-  // let customerCount;
-
   /** get all function */
   const getAllCustomers = async () => {
     try {
       const response = await axios.get("customer");
       setCustomerList(response.data.responseData);
-      // customerCount = customerList.length;
+
       console.log(response.data.responseData);
     } catch (error) {
       console.log(error);
@@ -65,6 +51,30 @@ const CustomerForm = () => {
       console.log(customerList);
     });
   }, []);
+
+  let value2;
+  /** loading all customers */
+  const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+
+  function idIncrement() {
+    getAllCustomers();
+    return "C00-00" + (customerList.length + 1);
+  }
+
+  const [customerID, idChange] = useState("");
+
+  /** text fields managing hooks */
+  const [mongoPrimaryKey, mongoChange] = useState("");
+  const [customerFirstName, firstNameChange] = useState("");
+  const [customerLastName, lastNameChange] = useState("");
+  const [customerAddress, addressChange] = useState("");
+  const [customerContact, contactChange] = useState("");
+  const [customerEmail, emailChange] = useState("");
+
+  /** variable for storing mongo primary key */
+  let key_for_put_and_delete: string | undefined | any;
+
+  const [isCustomerNameValid, setCustomerNameValid] = useState(false);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -92,11 +102,10 @@ const CustomerForm = () => {
     }
   };
 
-
   /** save function */
   const handleSubmit = () => {
     let responseBody = {
-      customerID: customerID,
+      customerID: $("#customerID").val(),
       customerFirstName: customerFirstName,
       customerLastName: customerLastName,
       customerAddress: customerAddress,
@@ -133,14 +142,14 @@ const CustomerForm = () => {
       });
   };
 
-  const clearTextFields = ()=>{
+  const clearTextFields = () => {
     idChange("");
     firstNameChange("");
     lastNameChange("");
     addressChange("");
     contactChange("");
     emailChange("");
-  }
+  };
 
   /** delete function */
   const handleDelete = () => {
@@ -219,48 +228,6 @@ const CustomerForm = () => {
         });
     }
   };
-  // customerID
-  // customerFirstName
-  // customerLastName
-  // customerAddress
-  // customerContact
-  // customerEmail
-  $("#customerFirstName").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#customerLastName").focus();
-    }
-  });
-  $("#customerLastName").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#customerAddress").focus();
-    }
-  });
-  $("#customerAddress").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#customerContact").focus();
-    }
-  });
-  $("#customerContact").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#customerEmail").focus();
-    }
-  });
-  $("#customerEmail").keyup(function (event) {
-    let catchEvent = event.which;
-    console.log(catchEvent);
-    if (catchEvent === 13) {
-      $("#saveBtn").focus();
-    }
-  });
-
 
   return (
     <>
@@ -299,7 +266,7 @@ const CustomerForm = () => {
                 </FormHelperText>
                 <Stack spacing={2} direction="row" sx={{ marginBottom: 3 }}>
                   <TextField
-                    value={customerID}
+                    value={idIncrement()}
                     type="text"
                     name="customerID"
                     id="customerID"
@@ -311,13 +278,26 @@ const CustomerForm = () => {
                     fullWidth
                     required
                   />
+
                   <TextField
                     value={customerFirstName}
                     type="text"
                     name="customerFirstName"
                     id="customerFirstName"
-                    variant="outlined"
-                    color="secondary"
+                    onKeyDown={(e) => {
+                      if (/^[A-Za-z]+$/.test(customerFirstName)) {
+                        $("#customerFirstName").css({
+                          border: "3px solid green",
+                          "border-radius": "10px",
+                        });
+                      } else {
+                        $("#customerFirstName").css("border", "3px solid red");
+
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="First Name"
                     size="small"
                     onChange={handleInputChange}
@@ -384,8 +364,9 @@ const CustomerForm = () => {
               </form>
 
               <div className="ml-[15px] mt-[0px] pb-[15px]">
+                {" "}
                 <Button
-                  onClick={(e)=>{
+                  onClick={(e) => {
                     handleSubmit();
                     clearTextFields();
                   }}
@@ -398,11 +379,12 @@ const CustomerForm = () => {
                   variant="contained"
                   startIcon={<SaveIcon />}
                   type="submit"
+                  size="small"
                 >
                   Save
                 </Button>
                 <Button
-                  onClick={(e)=>{
+                  onClick={(e) => {
                     handleUpdate();
                     clearTextFields();
                   }}
@@ -418,10 +400,11 @@ const CustomerForm = () => {
                   Update
                 </Button>
                 <Button
-                    onClick={(e)=>{
-                      handleDelete();
-                      clearTextFields();
-                    }}                  style={{
+                  onClick={(e) => {
+                    handleDelete();
+                    clearTextFields();
+                  }}
+                  style={{
                     backgroundColor: "#ff4757",
                     marginRight: "7px",
                     fontWeight: "bolder",
