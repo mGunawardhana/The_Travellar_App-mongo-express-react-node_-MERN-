@@ -325,6 +325,17 @@ const DriverForm = () => {
                     variant="outlined"
                     label="License Number"
                     size="small"
+                    color={driver_license_number ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-z]{2,10}$/.test(driverLicense)) {
+                        driver_license_number_change(true);
+                      } else {
+                        driver_license_number_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     fullWidth
                     required
                     onChange={handleInputChangeDriver}
