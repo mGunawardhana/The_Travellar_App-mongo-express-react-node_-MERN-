@@ -308,7 +308,7 @@ const JeepManagementForm = () => {
                     variant="outlined"
                     color={vehicle_model ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(vehicleModel)) {
+                      if (/^[A-z]{2,10}$/.test(vehicleModel)) {
                         vehicle_model_change(true);
                       } else {
                         vehicle_model_change(false);
@@ -333,7 +333,7 @@ const JeepManagementForm = () => {
                     variant="outlined"
                     color={vehicle_type ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(vehicleModel)) {
+                      if (/^[A-z]{2,10}$/.test(vehicleModel)) {
                         vehicle_type_change(true);
                       } else {
                         vehicle_type_change(false);
