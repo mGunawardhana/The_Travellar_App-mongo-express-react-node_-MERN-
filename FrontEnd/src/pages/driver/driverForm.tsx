@@ -102,7 +102,8 @@ const DriverForm = () => {
 
   const [driver_first_name, driver_first_name_change] =
     useState<boolean>(false);
-  const [driver_license_number, driver_license_number_change] = useState<boolean>(false);
+  const [driver_license_number, driver_license_number_change] =
+    useState<boolean>(false);
   const [driver_contact, driver_contact_change] = useState<boolean>(false);
   const [driver_email, driver_email_change] = useState<boolean>(false);
   const [driver_availability, driver_availability_change] =
@@ -279,7 +280,7 @@ const DriverForm = () => {
                     variant="outlined"
                     color={driver_first_name ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-z]{2,10}$/.test(driverFirstName)) {
+                      if (/^[A-z]{3,30}$/.test(driverFirstName)) {
                         driver_first_name_change(true);
                       } else {
                         driver_first_name_change(false);
@@ -303,7 +304,11 @@ const DriverForm = () => {
                     variant="outlined"
                     color={driver_email ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-z]{2,10}$/.test(driverEmail)) {
+                      if (
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                          driverEmail
+                        )
+                      ) {
                         driver_email_change(true);
                       } else {
                         driver_email_change(false);
@@ -327,7 +332,7 @@ const DriverForm = () => {
                     size="small"
                     color={driver_license_number ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-z]{2,10}$/.test(driverLicense)) {
+                      if (/^[1-9]{2,10}$/.test(driverLicense)) {
                         driver_license_number_change(true);
                       } else {
                         driver_license_number_change(false);
@@ -350,7 +355,9 @@ const DriverForm = () => {
                     label="Contact"
                     color={driver_contact ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-z]{2,10}$/.test(driverContact)) {
+                      if (
+                        /^(07([1245678])|091)(-)[0-9]{7}$/.test(driverContact)
+                      ) {
                         driver_contact_change(true);
                       } else {
                         driver_contact_change(false);
