@@ -14,6 +14,7 @@ import {
   TableRow,
   TextField,
 } from "@mui/material";
+
 import customerBackground from "../../assets/6960243.jpg";
 import $ from "jquery";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
@@ -34,6 +35,18 @@ import ErrorAlert from "../../components/Error_alert/ErrorAlert";
 import { idText } from "typescript";
 
 const CustomerForm = () => {
+  const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
+
+  const [customerID, idChange] = useState("");
+
+  /** text fields managing hooks */
+  const [mongoPrimaryKey, mongoChange] = useState("");
+  const [customerFirstName, firstNameChange] = useState("");
+  const [customerLastName, lastNameChange] = useState("");
+  const [customerAddress, addressChange] = useState("");
+  const [customerContact, contactChange] = useState("");
+  const [customerEmail, emailChange] = useState("");
+
   /** get all function */
   const getAllCustomers = async () => {
     try {
@@ -48,7 +61,6 @@ const CustomerForm = () => {
 
   let value2;
   /** loading all customers */
-  const [customerList, setCustomerList] = useState<CustomerProperties[]>([]);
 
   function idIncrement() {
     getAllCustomers();
@@ -60,16 +72,6 @@ const CustomerForm = () => {
     });
     idIncrement();
   }, []);
-
-  const [customerID, idChange] = useState("");
-
-  /** text fields managing hooks */
-  const [mongoPrimaryKey, mongoChange] = useState("");
-  const [customerFirstName, firstNameChange] = useState("");
-  const [customerLastName, lastNameChange] = useState("");
-  const [customerAddress, addressChange] = useState("");
-  const [customerContact, contactChange] = useState("");
-  const [customerEmail, emailChange] = useState("");
 
   /** variable for storing mongo primary key */
   let key_for_put_and_delete: string | undefined | any;
@@ -190,6 +192,8 @@ const CustomerForm = () => {
     }
   };
 
+  const [fName, fNameChange] = useState<boolean>(false);
+
   /** update function */
   const handleUpdate = () => {
     let responseBody = {
@@ -205,7 +209,7 @@ const CustomerForm = () => {
       axios
         .put(`customer/${mongoPrimaryKey}`, responseBody)
         .then((response) => {
-           booleanTYpeChange(false);
+          booleanTYpeChange(false);
           getAllCustomers();
 
           const Toast = Swal.mixin({
@@ -292,15 +296,13 @@ const CustomerForm = () => {
                     type="text"
                     name="customerFirstName"
                     id="customerFirstName"
+                    variant="outlined" // You can also use "filled" or "standard"
+                    color={fName ? "success" : "error"}
                     onKeyDown={(e) => {
                       if (/^[A-Za-z]+$/.test(customerFirstName)) {
-                        $("#customerFirstName").css({
-                          border: "3px solid green",
-                          "border-radius": "10px",
-                        });
+                        fNameChange(true);
                       } else {
-                        $("#customerFirstName").css("border", "3px solid red");
-
+                        fNameChange(false);
                         if (e.key === "Tab" || e.key === "Enter") {
                           e.preventDefault();
                         }
