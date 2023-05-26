@@ -100,6 +100,14 @@ const DriverForm = () => {
     driverEmailChange("");
   };
 
+  const [driver_first_name, driver_first_name_change] =
+    useState<boolean>(false);
+  const [driver_last_name, driver_last_name_change] = useState<boolean>(false);
+  const [driver_contact, driver_contact_change] = useState<boolean>(false);
+  const [driver_email, driver_email_change] = useState<boolean>(false);
+  const [driver_availability, driver_availability_change] =
+    useState<boolean>(false);
+
   /** save function */
   const handleSubmitDriver = () => {
     let responseBodyForDriver = {
