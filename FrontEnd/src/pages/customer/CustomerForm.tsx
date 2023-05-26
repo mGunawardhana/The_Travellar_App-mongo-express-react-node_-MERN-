@@ -196,7 +196,7 @@ const CustomerForm = () => {
   const [lName, lNameChange] = useState<boolean>(false);
   const [address,address_changeCol] = useState<boolean>(false);
   const [contact, contact_change] = useState<boolean>(false);
-  const [email, emai_change] = useState<boolean>(false);
+  const [email, email_change] = useState<boolean>(false);
   /** update function */
   const handleUpdate = () => {
     let responseBody = {
@@ -373,7 +373,17 @@ const CustomerForm = () => {
                     id="customerContact"
                     name="customerContact"
                     variant="outlined"
-                    color="secondary"
+                    color={contact ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(customerContact)) {
+                        contact_change(true);
+                      } else {
+                        contact_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Contact"
                     size="small"
                     onChange={handleInputChange}
@@ -386,7 +396,17 @@ const CustomerForm = () => {
                     name="customerEmail"
                     id="customerEmail"
                     variant="outlined"
-                    color="secondary"
+                    color={email ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(customerEmail)) {
+                        email_change(true);
+                      } else {
+                        email_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Email"
                     size="small"
                     onChange={handleInputChange}
