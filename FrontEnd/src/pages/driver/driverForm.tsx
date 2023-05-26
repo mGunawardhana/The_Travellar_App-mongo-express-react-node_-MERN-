@@ -347,8 +347,18 @@ const DriverForm = () => {
                     name="driverContact"
                     type="text"
                     variant="outlined"
-                    color="secondary"
                     label="Contact"
+                    color={driver_contact ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-z]{2,10}$/.test(driverContact)) {
+                        driver_contact_change(true);
+                      } else {
+                        driver_contact_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     size="small"
                     fullWidth
                     required

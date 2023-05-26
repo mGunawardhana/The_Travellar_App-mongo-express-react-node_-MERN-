@@ -255,6 +255,9 @@ const PackageBookingForm = () => {
   /** hook for booking id */
   const [setBookingID, setBookingIdChange] = useState("");
 
+  // ^(Rs|\₹)?\d+(\.\d{1,2})?\s?-\s?(Rs|\₹)?\d+(\.\d{1,2})?$
+
+  const [price, price_change] = useState<boolean>(false);
   /** submitting function */
   const handleSubmit = () => {
     let responseBody = {
@@ -564,7 +567,17 @@ const PackageBookingForm = () => {
                     type="text"
                     value={setAmount}
                     variant="outlined"
-                    color="secondary"
+                    color={price ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(setAmount)) {
+                        price_change(true);
+                      } else {
+                        price_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Amount"
                     size="small"
                     fullWidth
