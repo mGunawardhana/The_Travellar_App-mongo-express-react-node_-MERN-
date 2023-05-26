@@ -307,7 +307,17 @@ const PackageForm = () => {
                     onChange={handleInputChange}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={dayCount ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(daysHrsCount)) {
+                        day_change(true);
+                      } else {
+                        day_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Day Count or Hrs Count"
                     size="small"
                     fullWidth
