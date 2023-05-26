@@ -102,7 +102,7 @@ const DriverForm = () => {
 
   const [driver_first_name, driver_first_name_change] =
     useState<boolean>(false);
-  const [driver_last_name, driver_last_name_change] = useState<boolean>(false);
+  const [driver_license_number, driver_license_number_change] = useState<boolean>(false);
   const [driver_contact, driver_contact_change] = useState<boolean>(false);
   const [driver_email, driver_email_change] = useState<boolean>(false);
   const [driver_availability, driver_availability_change] =
@@ -301,12 +301,12 @@ const DriverForm = () => {
                     name="driverEmail"
                     type="text"
                     variant="outlined"
-                    color={driver_last_name ? "success" : "error"}
+                    color={driver_email ? "success" : "error"}
                     onKeyUp={(e) => {
                       if (/^[A-z]{2,10}$/.test(driverEmail)) {
-                        driver_last_name_change(true);
+                        driver_email_change(true);
                       } else {
-                        driver_last_name_change(false);
+                        driver_email_change(false);
                         if (e.key === "Tab" || e.key === "Enter") {
                           e.preventDefault();
                         }
@@ -323,7 +323,6 @@ const DriverForm = () => {
                     name="driverLicense"
                     type="text"
                     variant="outlined"
-                    color="secondary"
                     label="License Number"
                     size="small"
                     fullWidth
