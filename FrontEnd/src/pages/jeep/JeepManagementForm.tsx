@@ -121,8 +121,7 @@ const JeepManagementForm = () => {
   };
 
   const [vehicle_model, vehicle_model_change] = useState<boolean>(false);
-  const [vehicle_type, vehicle_type_change] = useState<boolean>(false); 
-  
+  const [vehicle_type, vehicle_type_change] = useState<boolean>(false);
 
   const clearText = () => {
     vehicleIdChange("");

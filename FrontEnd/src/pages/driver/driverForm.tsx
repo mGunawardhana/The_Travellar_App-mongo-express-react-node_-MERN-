@@ -277,7 +277,17 @@ const DriverForm = () => {
                     name="driverFirstName"
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={driver_first_name ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-z]{2,10}$/.test(driverFirstName)) {
+                        driver_first_name_change(true);
+                      } else {
+                        driver_first_name_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="First Name"
                     size="small"
                     fullWidth
