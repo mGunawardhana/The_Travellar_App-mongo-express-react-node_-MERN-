@@ -331,7 +331,17 @@ const JeepManagementForm = () => {
                     value={type}
                     type="text"
                     variant="outlined"
-                    
+                    color={vehicle_type ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(vehicleModel)) {
+                        vehicle_type_change(true);
+                      } else {
+                        vehicle_type_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Type"
                     size="small"
                     onChange={handleInputChange}
