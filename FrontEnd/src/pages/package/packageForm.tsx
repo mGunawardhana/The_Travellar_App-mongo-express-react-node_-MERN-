@@ -118,6 +118,7 @@ const PackageForm = () => {
     }
   };
 
+  const [packName, pack_name_change] = useState<boolean>(false);
   const [dayCount, day_change] = useState<boolean>(false);
   const [description0, change_description] = useState<boolean>(false);
   const [offer, change_offers] = useState<boolean>(false);
@@ -291,7 +292,17 @@ const PackageForm = () => {
                     onChange={handleInputChange}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={packName ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(packageName)) {
+                        pack_name_change(true);
+                      } else {
+                        pack_name_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Package Name"
                     size="small"
                     fullWidth
