@@ -320,7 +320,7 @@ const PackageForm = () => {
                     variant="outlined"
                     color={dayCount ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(daysHrsCount)) {
+                      if (/^[0-9]{1,4}$/.test(daysHrsCount)) {
                         day_change(true);
                       } else {
                         day_change(false);
@@ -343,7 +343,7 @@ const PackageForm = () => {
                     variant="outlined"
                     color={description0 ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(description)) {
+                      if (/^[A-z]{3,30}$/.test(description)) {
                         change_description(true);
                       } else {
                         change_description(false);
@@ -368,7 +368,7 @@ const PackageForm = () => {
                     variant="outlined"
                     color={offer ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(offer.toString())) {
+                      if (/^[0-9]{1,4}$/.test(offer.toString())) {
                         change_offers(true);
                       } else {
                         change_offers(false);
@@ -391,11 +391,7 @@ const PackageForm = () => {
                     variant="outlined"
                     color={package_amount ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (
-                        /^([0-9]{2,6}.[0-9]{1,2})$/.test(
-                          packageAmount.toString()
-                        )
-                      ) {
+                      if (/^[0-9]{1,4}$/.test(packageAmount.toString())) {
                         package_amount_change(true);
                       } else {
                         package_amount_change(false);

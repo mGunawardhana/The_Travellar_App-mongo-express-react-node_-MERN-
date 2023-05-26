@@ -302,7 +302,7 @@ const CustomerForm = () => {
                     variant="outlined" // You can also use "filled" or "standard"
                     color={fName ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(customerFirstName)) {
+                      if (/^[A-z]{3,30}$/.test(customerFirstName)) {
                         fNameChange(true);
                       } else {
                         fNameChange(false);
@@ -327,7 +327,7 @@ const CustomerForm = () => {
                     variant="outlined"
                     color={lName ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(customerLastName)) {
+                      if (/^[A-z]{3,30}$/.test(customerLastName)) {
                         lNameChange(true);
                       } else {
                         lNameChange(false);
@@ -350,7 +350,7 @@ const CustomerForm = () => {
                     variant="outlined"
                     color={address ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(customerAddress)) {
+                      if (/^[A-z]{3,30}$/.test(customerAddress)) {
                         address_changeCol(true);
                       } else {
                         address_changeCol(false);
@@ -375,7 +375,9 @@ const CustomerForm = () => {
                     variant="outlined"
                     color={contact ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(customerContact)) {
+                      if (
+                        /^(07([1245678])|091)(-)[0-9]{7}$/.test(customerContact)
+                      ) {
                         contact_change(true);
                       } else {
                         contact_change(false);
@@ -398,7 +400,11 @@ const CustomerForm = () => {
                     variant="outlined"
                     color={email ? "success" : "error"}
                     onKeyUp={(e) => {
-                      if (/^[A-Za-z]+$/.test(customerEmail)) {
+                      if (
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                          customerEmail
+                        )
+                      ) {
                         email_change(true);
                       } else {
                         email_change(false);
