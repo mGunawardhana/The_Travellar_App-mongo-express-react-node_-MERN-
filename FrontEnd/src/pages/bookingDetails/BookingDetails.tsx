@@ -1,5 +1,5 @@
-import React from "react";
-import  SearchBar from "@mui/icons-material/Search";
+import React, { useEffect, useState } from "react";
+import SearchBar from "@mui/icons-material/Search";
 import {
   Button,
   FormHelperText,
@@ -13,13 +13,36 @@ import {
   TableRow,
   TextField,
   Box,
-
 } from "@mui/material";
 import customerBackground from "../../assets/6960243.jpg";
 import SystemHeader from "../../components/SystemHeader/SystemHeader";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { PackageBookingProperties } from "../../types/PackageBookinProperties";
+import axios from "../../axios";
+import $ from "jquery";
+
+import { PaymentProperties } from "../../types/PaymentProperties";
 const BookingDetails = () => {
+  /** this one is responsible to load details into the combo */
+  const [tableList, setTableList] = useState<PackageBookingProperties[]>([]);
+
+  const [paymentList, setPaymentList] = useState<PaymentProperties[]>([]);
+  const loadAllPaymentDetails = async () => {
+    try {
+      const response = await axios.get("payment");
+      setPaymentList(response.data.responseData);
+      console.log(tableList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [searchValue, searchValueChange] = useState<any>();
+
+  useEffect(() => {
+    loadAllPaymentDetails();
+  }, []);
   return (
     <>
       <SystemHeader />
@@ -51,11 +74,15 @@ const BookingDetails = () => {
                 <Stack spacing={2} direction="row" sx={{ marginBottom: 2 }}>
                   <TextField
                     type="text"
+                    id="search"
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      searchValueChange(value.toString());
+                    }}
                     variant="outlined"
                     color="secondary"
                     label="Booking ID"
                     size="small"
-
                     fullWidth
                     required
                   />
@@ -68,7 +95,7 @@ const BookingDetails = () => {
                     }}
                     variant="contained"
                     type="submit"
-                    startIcon={<SearchIcon/>}
+                    startIcon={<SearchIcon />}
                   >
                     Search
                   </Button>
@@ -93,23 +120,65 @@ const BookingDetails = () => {
                     Booking ID
                   </TableCell>
                   <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                    Customer
+                    Customer Code
                   </TableCell>
                   <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
-                    Full Amount
+                    Package Code
                   </TableCell>
                   <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
                     Balance
                   </TableCell>
+                  <TableCell style={{ color: "#ffffff", fontWeight: "bolder" }}>
+                    Charge
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow>
-                  <TableCell>B001</TableCell>
-                  <TableCell>Maneesha</TableCell>
-                  <TableCell>Rs.60,000.00</TableCell>
-                  <TableCell>Rs.1500.00</TableCell>
-                </TableRow>
+                {paymentList.map((payment) => {
+                  if (searchValue === payment.bookingID.toString()) {
+                    return (
+                      <TableRow
+                        key={payment.bookingID}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell align="center">
+                          {payment.bookingID}
+                        </TableCell>
+                        <TableCell align="center">
+                          {payment.customerName}
+                        </TableCell>
+                        <TableCell align="center">
+                          {payment.fullAmount}
+                        </TableCell>
+                        <TableCell align="center">{payment.cash}</TableCell>
+                        <TableCell align="center">{payment.balance}</TableCell>
+                      </TableRow>
+                    );
+                  } else  {
+                    // return (
+                    //   <TableRow
+                    //     key={payment.bookingID}
+                    //     sx={{
+                    //       "&:last-child td, &:last-child th": { border: 0 },
+                    //     }}
+                    //   >
+                    //     <TableCell align="center">
+                    //       {payment.bookingID}
+                    //     </TableCell>
+                    //     <TableCell align="center">
+                    //       {payment.customerName}
+                    //     </TableCell>
+                    //     <TableCell align="center">
+                    //       {payment.fullAmount}
+                    //     </TableCell>
+                    //     <TableCell align="center">{payment.cash}</TableCell>
+                    //     <TableCell align="center">{payment.balance}</TableCell>
+                    //   </TableRow>
+                    // );
+                  } // Render nothing if the condition is not met
+                })}
               </TableBody>
             </Table>
           </TableContainer>

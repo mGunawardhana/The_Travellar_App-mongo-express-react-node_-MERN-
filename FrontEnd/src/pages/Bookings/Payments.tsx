@@ -49,6 +49,7 @@ const Payments = () => {
 
     let key_for_put_and_delete: string | undefined | any;
 
+
     /** API calling function for get all bookings */
     const loadAllDetailsToTheCombo = async () => {
         try {
@@ -58,6 +59,11 @@ const Payments = () => {
             console.log(error);
         }
     };
+
+    // function idIncrement() {
+    //     loadAllPaymentDetails();
+    //     return "P00-00" + (paymentList.length + 1);
+    // }
 
     /** API calling function for get all jeeps */
     const loadAllPaymentDetails = async () => {
@@ -89,6 +95,7 @@ const Payments = () => {
             console.log("load all tables ...");
             setCustomerNameAndFullAmount(selectedPackage);
         });
+        // idIncrement();
         loadAllPaymentDetails();
     }, []);
 
@@ -116,6 +123,8 @@ const Payments = () => {
         axios
             .post("payment", JSON.stringify(responseBody))
             .then((res) => {
+                // booleanTYpeChange(false);
+
                 loadAllPaymentDetails();
                 const Toast = Swal.mixin({
                     toast: true,
@@ -148,6 +157,8 @@ const Payments = () => {
             axios
                 .delete(`payment/${mongoPrimaryKey}/${setJeepCode}/${setDriverCode}`)
                 .then((response) => {
+                    // booleanTYpeChange(false);
+
                     loadAllPaymentDetails();
                     const Toast = Swal.mixin({
                         toast: true,
@@ -206,14 +217,15 @@ const Payments = () => {
                                 <Stack spacing={2} direction="row" sx={{marginBottom: 2}}>
 
                                     <Select
+                                        value={selectedPackage}
                                         id="packageCode"
                                         name="packageCode"
+
                                         onChange={(e) => {
                                             const selectedPackage = e.target.value;
                                             setSelectedPackageChange(selectedPackage);
                                             setCustomerNameAndFullAmount(selectedPackage);
                                         }}
-                                        value={selectedPackage}
                                         placeholder="Sample code"
                                         size="small"
                                         fullWidth
@@ -318,7 +330,7 @@ const Payments = () => {
                                     type="button"
                                     startIcon={<DeleteIcon/>}
 
-                                    onClick={(e)=>{
+                                    onClick={(e) => {
                                         clearTextFields();
                                         handleDelete();
                                     }}
