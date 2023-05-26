@@ -193,7 +193,10 @@ const CustomerForm = () => {
   };
 
   const [fName, fNameChange] = useState<boolean>(false);
-
+  const [lName, lNameChange] = useState<boolean>(false);
+  const [address,address_changeCol] = useState<boolean>(false);
+  const [contact, contact_change] = useState<boolean>(false);
+  const [email, emai_change] = useState<boolean>(false);
   /** update function */
   const handleUpdate = () => {
     let responseBody = {
@@ -298,7 +301,7 @@ const CustomerForm = () => {
                     id="customerFirstName"
                     variant="outlined" // You can also use "filled" or "standard"
                     color={fName ? "success" : "error"}
-                    onKeyDown={(e) => {
+                    onKeyUp={(e) => {
                       if (/^[A-Za-z]+$/.test(customerFirstName)) {
                         fNameChange(true);
                       } else {
@@ -322,7 +325,17 @@ const CustomerForm = () => {
                     name="customerLastName"
                     id="customerLastName"
                     variant="outlined"
-                    color="secondary"
+                    color={lName ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(customerLastName)) {
+                        lNameChange(true);
+                      } else {
+                        lNameChange(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Last Name"
                     size="small"
                     onChange={handleInputChange}
