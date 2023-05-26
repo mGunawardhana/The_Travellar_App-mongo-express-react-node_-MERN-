@@ -119,7 +119,7 @@ const PackageForm = () => {
   };
 
   const [dayCount, day_change] = useState<boolean>(false);
-  const [discription, change_discription] = useState<boolean>(false);
+  const [description0, change_description] = useState<boolean>(false);
   const [offer, change_offers] = useState<boolean>(false);
   const [package_amount, package_amount_change] = useState<boolean>(false);
 
@@ -330,7 +330,17 @@ const PackageForm = () => {
                     onChange={handleInputChange}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={description0 ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(description)) {
+                        change_description(true);
+                      } else {
+                        change_description(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Discription"
                     size="small"
                     fullWidth
