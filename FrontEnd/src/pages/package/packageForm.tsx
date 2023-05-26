@@ -355,7 +355,17 @@ const PackageForm = () => {
                     onChange={handleInputChange}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={offer ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(offer.toString())) {
+                        change_offers(true);
+                      } else {
+                        change_offers(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Offers"
                     size="small"
                     fullWidth
@@ -368,7 +378,21 @@ const PackageForm = () => {
                     onChange={handleInputChange}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={package_amount ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (
+                        /^([0-9]{2,6}.[0-9]{1,2})$/.test(
+                          packageAmount.toString()
+                        )
+                      ) {
+                        package_amount_change(true);
+                      } else {
+                        package_amount_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Package Amount"
                     size="small"
                     fullWidth
