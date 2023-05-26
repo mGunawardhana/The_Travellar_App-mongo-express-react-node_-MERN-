@@ -301,7 +301,17 @@ const DriverForm = () => {
                     name="driverEmail"
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    color={driver_last_name ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-z]{2,10}$/.test(driverEmail)) {
+                        driver_last_name_change(true);
+                      } else {
+                        driver_last_name_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Email"
                     size="small"
                     fullWidth
