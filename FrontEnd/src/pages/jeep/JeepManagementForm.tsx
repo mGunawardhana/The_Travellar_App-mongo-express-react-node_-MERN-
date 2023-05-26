@@ -120,6 +120,10 @@ const JeepManagementForm = () => {
     }
   };
 
+  const [vehicle_model, vehicle_model_change] = useState<boolean>(false);
+  const [vehicle_type, vehicle_type_change] = useState<boolean>(false); 
+  
+
   const clearText = () => {
     vehicleIdChange("");
     vehicleModelChange("");
@@ -302,7 +306,21 @@ const JeepManagementForm = () => {
                     value={vehicleModel}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    // color={package_amount ? "success" : "error"}
+                    // onKeyUp={(e) => {
+                    //   if (
+                    //     /^([0-9]{2,6}.[0-9]{1,2})$/.test(
+                    //       packageAmount.toString()
+                    //     )
+                    //   ) {
+                    //     package_amount_change(true);
+                    //   } else {
+                    //     package_amount_change(false);
+                    //     if (e.key === "Tab" || e.key === "Enter") {
+                    //       e.preventDefault();
+                    //     }
+                    //   }
+                    // }}
                     label="Vehicle Model"
                     size="small"
                     onChange={handleInputChange}
@@ -497,8 +515,8 @@ const JeepManagementForm = () => {
                       key_for_put_and_delete = jeep._id;
                       mongoChange(key_for_put_and_delete);
                       vehicleIdChange(jeep.vehicleID);
-                        
-                        booleanTYpeChange(true);
+
+                      booleanTYpeChange(true);
                       vehicleModelChange(jeep.vehicleModel);
                       typeChange(jeep.type);
                       setSelectedAvailabilityChange(jeep.jeepAvailability);
