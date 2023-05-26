@@ -118,6 +118,11 @@ const PackageForm = () => {
     }
   };
 
+  const [dayCount, day_change] = useState<boolean>(false);
+  const [discription, change_discription] = useState<boolean>(false);
+  const [offer, change_offers] = useState<boolean>(false);
+  const [package_amount, package_amount_change] = useState<boolean>(false);
+
   const clearText = () => {
     packageIdChange("");
     packageNameChange("");
@@ -129,7 +134,7 @@ const PackageForm = () => {
 
   const handleSubmit = (): void => {
     const requestBody = {
-      packageID:$("#packageID").val(),
+      packageID: $("#packageID").val(),
       packageName,
       daysHrsCount,
       description,

@@ -99,6 +99,7 @@ const Payments = () => {
         loadAllPaymentDetails();
     }, []);
 
+
     const clearTextFields = () => {
         setSelectedPackageChange("");
         setJeepCodeChange("");
