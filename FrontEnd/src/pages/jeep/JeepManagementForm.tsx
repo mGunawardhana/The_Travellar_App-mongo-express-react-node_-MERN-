@@ -306,21 +306,17 @@ const JeepManagementForm = () => {
                     value={vehicleModel}
                     type="text"
                     variant="outlined"
-                    // color={package_amount ? "success" : "error"}
-                    // onKeyUp={(e) => {
-                    //   if (
-                    //     /^([0-9]{2,6}.[0-9]{1,2})$/.test(
-                    //       packageAmount.toString()
-                    //     )
-                    //   ) {
-                    //     package_amount_change(true);
-                    //   } else {
-                    //     package_amount_change(false);
-                    //     if (e.key === "Tab" || e.key === "Enter") {
-                    //       e.preventDefault();
-                    //     }
-                    //   }
-                    // }}
+                    color={vehicle_model ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^([0-9]{2,6}.[0-9]{1,2})$/.test(vehicleModel)) {
+                        vehicle_model_change(true);
+                      } else {
+                        vehicle_model_change(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Vehicle Model"
                     size="small"
                     onChange={handleInputChange}
@@ -335,7 +331,7 @@ const JeepManagementForm = () => {
                     value={type}
                     type="text"
                     variant="outlined"
-                    color="secondary"
+                    
                     label="Type"
                     size="small"
                     onChange={handleInputChange}
