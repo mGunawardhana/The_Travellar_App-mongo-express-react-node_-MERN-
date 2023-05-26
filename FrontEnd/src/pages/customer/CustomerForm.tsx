@@ -348,7 +348,17 @@ const CustomerForm = () => {
                     name="customerAddress"
                     id="customerAddress"
                     variant="outlined"
-                    color="secondary"
+                    color={address ? "success" : "error"}
+                    onKeyUp={(e) => {
+                      if (/^[A-Za-z]+$/.test(customerAddress)) {
+                        address_changeCol(true);
+                      } else {
+                        address_changeCol(false);
+                        if (e.key === "Tab" || e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }
+                    }}
                     label="Address"
                     size="small"
                     onChange={handleInputChange}
