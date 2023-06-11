@@ -53,7 +53,7 @@ export const aboutData = {
 export const featuresData = {
     title: "Features",
     subtitle:
-        "Some of the features and advantages that we provide for those of you who store data in this Data Warehouse.",
+        "Some of the features and advantages that we provide for those of you who store data.",
     list: [
         {
             image: Feature1Img,

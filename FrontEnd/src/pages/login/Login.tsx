@@ -46,7 +46,9 @@ const Login = () => {
   function checkAuth() {
     authList.map((auth) => {
       console.log(auth.userName === userName);
-      if (auth.userName === userName || auth.password === password) {
+      //TODO uncoment the logic after showing this project in interview`
+      // if (auth.userName === userName || auth.password === password) {
+      if (true) {
         authValueChange(true);
       }
     });
@@ -137,7 +139,9 @@ const Login = () => {
                 size="small"
               />
 
-              <Link to={authValue ? "/dashboard" : ""}>
+              {/* <Link to={authValue ? "/dashboard" : ""}> */}
+
+              <Link to={true ? "/dashboard" : ""}>
                 <Button
                   variant="contained"
                   color={authValue ? "success" : "error"}
