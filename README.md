@@ -36,8 +36,6 @@
 
 
 <div align="center">
-     clear
-     clear
    <img src="https://skillicons.dev/icons?i=mongodb,express,react,nodejs" /> 
 </div>
 
