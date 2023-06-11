@@ -10,16 +10,7 @@ export default class CustomerFormController {
     ): Promise<Response> => {
         try {
             const {customerID} = req.body;
-            // console.log(req.body);
-            // let customer = await Customer.findOne({customerID: customerID});
-            // if (!customer) {
-            //     let customer = new Customer(req.body);
-            //     let customerOne = await customer.save();
-            //     return res.json({message: "New customer added.!", responseData: customerOne});
-            // } else {
-            //     return res.status(200).json({message: "Already exists."});
-            // }
-
+            
             let vehicle = new Customer(req.body);
             let savedVehicle = await vehicle.save();
             return res.status(200).json({message: savedVehicle});

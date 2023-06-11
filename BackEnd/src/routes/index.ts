@@ -6,6 +6,7 @@ import DriverRoutes from "./DriverRoutes";
 import PackageBookingRoutes from "./PackageBookingRoutes";
 import PaymentRouts from "./Payments";
 import DashboardFormRoutes from "./DashboardFormRoutes";
+import UserRoutes from "./UserRoutes";
 
 
 const router:Router = Router();
@@ -25,5 +26,8 @@ router.use(`${url_prefix}/booking`,new PackageBookingRoutes().getRouter());
 router.use(`${url_prefix}/payment`,new PaymentRouts().getRouter());
 
 router.use(`${url_prefix}/dashboard`, new DashboardFormRoutes().getRouter());
+
+router.use(`${url_prefix}/user`, new UserRoutes().getRouter());
+
 
 export default router;
