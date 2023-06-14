@@ -27,10 +27,10 @@ import SaveIcon from "@mui/icons-material/Save";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 
-import image01 from "../../assets/1.png";
-import image02 from "../../assets/2.png";
-import image03 from "../../assets/3.png";
-import image04 from "../../assets/4.png";
+import image01 from "../../assets/ben-affleck.png";
+import image02 from "../../assets/avatar2.png";
+import image03 from "../../assets/profile-adam-levine.png";
+// import image04 from "../../assets/avatar3.png";
 import ErrorAlert from "../../components/Error_alert/ErrorAlert";
 import { idText } from "typescript";
 
@@ -273,7 +273,6 @@ const CustomerForm = () => {
                   <Avatar alt="Remy Sharp" src={image01} />
                   <Avatar alt="Travis Howard" src={image02} />
                   <Avatar alt="Agnes Walker" src={image03} />
-                  <Avatar alt="Trevor Henderson" src={image04} />
                 </AvatarGroup>
                 <FormHelperText style={{ fontSize: "25px," }}>
                   Customer Registration Form

@@ -121,7 +121,7 @@ const Login = () => {
                 id="userName"
                 value={userName}
                 name="userName"
-                label="Outlined"
+                label="UserName"
                 variant="outlined"
                 fullWidth
                 onChange={handleInputChange}
