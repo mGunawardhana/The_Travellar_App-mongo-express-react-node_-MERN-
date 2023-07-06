@@ -1,5 +1,14 @@
 import {Document, model, Schema} from "mongoose";
 
+// export interface ICustomer extends Document {
+//     customerID: string;
+//     customerFirstName: string;
+//     customerLastName: string;
+//     customerAddress: string;
+//     customerContact: string;
+//     customerEmail: string;
+// }
+
 export interface ICustomer extends Document {
     customerID: string;
     customerFirstName: string;
