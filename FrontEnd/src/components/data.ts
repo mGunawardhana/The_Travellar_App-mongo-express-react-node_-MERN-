@@ -17,7 +17,7 @@ import Avatar2Img from "../assets/avatar2.png";
 import Avatar3Img from "../assets/avatar3.png";
 
 //about image
-import AboutImg from "../assets/Untitled design(1).png";
+import AboutImg from "../assets/Untitled_design-removebg-preview.png";
 
 //logo
 import LogoV2 from "../assets/footer3.png";
