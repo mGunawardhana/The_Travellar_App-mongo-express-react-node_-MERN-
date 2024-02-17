@@ -1,0 +1,586 @@
+repo_name: mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-
+report_id: 675593625e36c2da84225010a587300b
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-17T14:05:50+00:00'
+requested_by: mGunawardhana
+provider: github
+branch: master
+detected_tools_count: 42
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-
+  detection_source: Repo Metadata
+- name: Autoprefixer
+  description: PostCSS plugin to parse CSS and add vendor prefixes to CSS rules
+  website_url: https://github.com/postcss/autoprefixer
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/2202/72d087642cfce6fef6f2dabec5bf49e8_400x400.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: ExpressJS
+  description: Sinatra inspired web development framework for node.js -- insanely
+    fast, flexible, and simple
+  website_url: http://expressjs.com/
+  version: 4.18.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Microframeworks (Backend)
+  image_url: https://img.stackshare.io/service/1163/hashtag.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-03 05:46:25.000000000 Z
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-03 05:46:25.000000000 Z
+- name: PostCSS
+  description: Transform CSS with JS plugins
+  website_url: https://github.com/postcss/postcss
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/3339/rlFcjEdI.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: React Router
+  description: A complete routing solution for React.js
+  website_url: https://github.com/rackt/react-router
+  version: 6.10.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/3350/8261421.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: Tailwind CSS
+  description: A utility-first CSS framework for rapid UI development
+  website_url: https://tailwindcss.com
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Front-End Frameworks
+  image_url: https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: jQuery
+  description: The Write Less, Do More, JavaScript Library.
+  website_url: http://jquery.com/
+  version: 3.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1021/lxEKmMnB_400x400.jpg
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-18 16:57:39.000000000 Z
+- name: styled-components
+  description: Visual primitives for the component age. Use the best bits of ES6 and
+    CSS to style your apps without stress.
+  website_url: https://styled-components.com
+  version: 5.3.10
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/6749/styled-components.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: Mongoose
+  description: MongoDB object modeling designed to work in an asynchronous environment
+  website_url: http://mongoosejs.com/
+  version: 7.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Object Document Mapper (ODM)
+  image_url: https://img.stackshare.io/service/1231/0TXzZU7W_400x400.jpg
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-13 08:21:49.000000000 Z
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-03 06:02:46.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-
+  detection_source: Repo Metadata
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 27.5.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: nodemon
+  description: A simple monitor script for use during development of a node.js app
+  website_url: http://nodemon.io/
+  version: 2.0.22
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Monitoring
+  sub_category: node.js Application Monitoring
+  image_url: https://img.stackshare.io/service/5577/preview.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-04 02:56:48.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: SweetAlert
+  description: A beautiful replacement for JavaScript's "alert"
+  website_url: https://sweetalert.js.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://ucarecdn.com/c4c55828-7bcf-4661-8f4f-52745636aafd/
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-13 08:21:49.000000000 Z
+- name: axios
+  description: Promise based HTTP client for the browser and node.js
+  website_url: https://github.com/mzabriskie/axios
+  version: 1.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/no-img-open-source.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-06 04:36:08.000000000 Z
+- name: "@emotion/styled"
+  description: Styled API for emotion
+  package_url: https://www.npmjs.com/@emotion/styled
+  version: 11.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16702/default_4b738bf1758d38dddd276589bbea47fca5a990df.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: "@testing-library/jest-dom"
+  description: Custom jest matchers to test the state of the DOM
+  package_url: https://www.npmjs.com/@testing-library/jest-dom
+  version: 5.16.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17424/default_1cdcda15ebb7caed879f8340bc212b44c4ec9dac.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: "@testing-library/react"
+  description: Simple and complete React DOM testing utilities that encourage good
+    testing practices
+  package_url: https://www.npmjs.com/@testing-library/react
+  version: 13.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16549/default_d522554c6a41cb28d922d6d3ad32ad4afa0e3bb5.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: "@types/cors"
+  description: TypeScript definitions for cors
+  package_url: https://www.npmjs.com/@types/cors
+  version: 2.8.13
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17290/default_b2015e9577d171c4c3f12c3c8d253c01fe63ba8d.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-26 18:00:59.000000000 Z
+- name: "@types/express"
+  description: TypeScript definitions for Express
+  package_url: https://www.npmjs.com/@types/express
+  version: 4.17.17
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16100/default_d947c1690e032a288145c7e2491999eab3ea8ede.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-26 18:00:59.000000000 Z
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 27.5.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-18 16:57:39.000000000 Z
+- name: "@types/jquery"
+  description: TypeScript definitions for jQuery
+  package_url: https://www.npmjs.com/@types/jquery
+  version: 3.5.16
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16363/default_97104dc50154593d2dde1d791400955934c9c715.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-18 16:57:39.000000000 Z
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 18.16.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-26 18:00:59.000000000 Z
+- name: "@types/react"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react
+  version: 18.0.38
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-18 16:57:39.000000000 Z
+- name: "@types/react-dom"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react-dom
+  version: 18.0.11
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-18 16:57:39.000000000 Z
+- name: body-parser
+  description: Node.js body parsing middleware
+  package_url: https://www.npmjs.com/body-parser
+  version: 1.20.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15906/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-03 05:46:25.000000000 Z
+- name: cors
+  description: Node.js CORS middleware
+  package_url: https://www.npmjs.com/cors
+  version: 2.8.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16165/default_41f04716a804e853d5c38a5b81ee0ea8a842ad82.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-03 06:02:46.000000000 Z
+- name: express
+  description: Fast, unopinionated, minimalist web framework
+  package_url: https://www.npmjs.com/express
+  version: 4.18.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15818/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-03 05:46:25.000000000 Z
+- name: jsonwebtoken
+  description: JSON Web Token implementation
+  package_url: https://www.npmjs.com/jsonwebtoken
+  version: 9.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16155/default_77b54a203c743d16eddb6b6390cba17218454fa0.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-13 01:17:15.000000000 Z
+- name: multer
+  description: Middleware for handling `multipart/form-data`
+  package_url: https://www.npmjs.com/multer
+  version: 1.4.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16421/default_23e0dabcd0197f0c1f0a41268f8ca3f7e8b1f1e2.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-26 18:00:59.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: react-icons
+  description: SVG React icons of popular icon packs using ES6 imports
+  package_url: https://www.npmjs.com/react-icons
+  version: 4.8.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16909/default_7b9968788548874538c601457e8dcd9c74bd2051.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: react-router-dom
+  description: DOM bindings for React Router
+  package_url: https://www.npmjs.com/react-router-dom
+  version: 6.10.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16025/default_e25d1fbb04a118c79fb444294461417342bd03bf.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: react-scripts
+  description: Configuration and scripts for Create React App
+  package_url: https://www.npmjs.com/react-scripts
+  version: 5.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15985/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-09 05:23:53.000000000 Z
+- name: sweetalert2
+  description: A beautiful
+  package_url: https://www.npmjs.com/sweetalert2
+  version: 11.7.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18093/image.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/BackEnd/package-lock.json
+  detection_source: BackEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-05-13 08:21:49.000000000 Z
+  vulnerabilities:
+  - name: sweetalert2 v11.6.14 and above contains potentially undesirable behavior
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-mrr8-v49w-3333
+    detected_date: Jul 11
+    severity: low
+    first_patched: 
+- name: swiper
+  description: Most modern mobile touch slider and framework with hardware accelerated
+    transitions
+  package_url: https://www.npmjs.com/swiper
+  version: 8.4.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17656/default_b06ec1ccf403dac1459596b8571a4fb6a46577e1.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
+- name: tailwindcss
+  description: A utility-first CSS framework for rapidly building custom user interfaces
+  package_url: https://www.npmjs.com/tailwindcss
+  version: 3.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17398/default_2cd7ed1c123f2fca074a6f4b16c4e73d5bfe82be.png
+  detection_source_url: https://github.com/mGunawardhana/The_Travellar_App-mongo-express-react-node_-MERN-/blob/master/FrontEnd/package-lock.json
+  detection_source: FrontEnd/package.json
+  last_updated_by: mGunawardhana
+  last_updated_on: 2023-04-30 06:58:29.000000000 Z
